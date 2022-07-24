@@ -22,10 +22,12 @@ body .nav img:hover {
   cursor: pointer;
 }
 body .nav input {
-  border-radius: 0.2em;
+  border-radius: 0.3em;
+  border: none;
+  height: 100%;
 }
 body .nav .search {
-  height: 1.2em;
+  height: 1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
