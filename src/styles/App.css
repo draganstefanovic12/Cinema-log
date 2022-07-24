@@ -1,0 +1,87 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap);
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #18181b;
+}
+body .nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  background-color: #0f172a;
+}
+body .nav img {
+  height: 1.2em;
+}
+body .nav img:hover {
+  cursor: pointer;
+}
+body .nav input {
+  border-radius: 0.2em;
+}
+body .nav .search {
+  height: 1.2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+body .nav a {
+  text-decoration: none;
+  color: white;
+}
+body .main-container {
+  display: grid;
+  justify-content: center;
+  padding: 1em;
+  grid-template-columns: repeat(auto-fill, 15em);
+}
+body .main-container .movie-cont {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 14em;
+}
+body .main-container .movie-cont .poster {
+  height: 20em;
+}
+body .main-container .movie-cont p {
+  color: white;
+}
+body .form-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+body .form-container form {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  flex-direction: column;
+  width: 15em;
+}
+body .form-container form button {
+  align-self: center;
+  width: 5em;
+}
+body .watch-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 50%;
+}
+body .watch-container img {
+  height: 25em;
+  width: 20em;
+}
+body .watch-container iframe {
+  height: 40em;
+  width: 70em;
+  border: none;
+}
+
+/*# sourceMappingURL=App.css.map */
