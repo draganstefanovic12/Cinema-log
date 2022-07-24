@@ -8,7 +8,9 @@ export const Nav: React.FC = () => {
 
   return (
     <nav className="nav">
-      <img className="logo" alt="logo" src={logo} />
+      <Link to="/">
+        <img className="logo" alt="logo" src={logo} />
+      </Link>
       <div>
         <input
           placeholder="Search..."
