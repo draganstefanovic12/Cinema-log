@@ -10,9 +10,9 @@
 
 body {
   margin: 0;
-  background-color: #18181b;
   min-height: 100vh;
   animation: fade 500ms 1 ease-in-out forwards;
+  background: #141E30;
 }
 body .nav {
   display: flex;
@@ -102,18 +102,36 @@ body .form-container form button {
 body .form-container button {
   height: 2em;
 }
-body .movie-main {
+body .cont .movie-main {
   display: flex;
   justify-content: center;
   justify-content: center;
   height: 35em;
   overflow: hidden;
 }
-body .movie-main img {
+body .cont .movie-main .backdrop {
   display: flex;
   justify-self: center;
   width: 100%;
   height: 40em;
+}
+body .cont .movie-info {
+  display: flex;
+}
+body .cont .movie-info img {
+  margin-top: -2em;
+}
+body .cont .movie-info .movie-name {
+  font-family: "Lato", sans-serif;
+  margin-left: 1em;
+  margin-top: 0.2em;
+}
+body .cont .movie-info .movie-overview {
+  font-family: "Lato", sans-serif;
+  margin-left: 2.3em;
+}
+body .cont .movie-info .poster-main {
+  height: 20em;
 }
 
 @keyframes fade {
@@ -126,7 +144,6 @@ body .movie-main img {
 }
 .profile-container {
   margin-top: 0;
-  background-image: url("../assets/profile-cover.jpg");
   background-size: cover;
   padding-top: 5em;
   height: calc(100vh - 55px);
