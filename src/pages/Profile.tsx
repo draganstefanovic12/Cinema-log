@@ -10,7 +10,7 @@ export const Profile = () => {
   const params = useParams();
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
 
-  const [state, setState] = useState<string>();
+  const [state, setState] = useState<string>("feed");
 
   return (
     <div className="profile-container">
@@ -38,6 +38,7 @@ export const Profile = () => {
               </Typography>
             </Grid>
             <Grid
+              item
               sx={{
                 height: "2em",
                 display: "flex",
