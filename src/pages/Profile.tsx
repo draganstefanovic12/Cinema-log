@@ -39,7 +39,7 @@ export const Profile = () => {
                 display: "flex",
                 flexDirection: "space-around",
               }}
-              xs={1}
+              xs={2}
             >
               <Typography
                 align="left"

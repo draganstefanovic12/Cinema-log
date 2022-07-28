@@ -8,11 +8,7 @@ export const useFetch = (param: string) => {
 
   useEffect(() => {
     const handleData = async () => {
-      const data = await axios.get(param, {
-        headers: {
-          Authorization: `Bearer ${user!.token}`,
-        },
-      });
+      const data = await axios.get(param);
       setData(data);
     };
     handleData();
