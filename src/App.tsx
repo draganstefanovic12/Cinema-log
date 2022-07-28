@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import { Nav } from "./components/Nav";
 import { Search } from "./pages/Search";
-import { MoviePage } from "./pages/MoviePage";
+import { MediaPage } from "./pages/MediaPage";
 import { Login } from "./pages/Login";
 import { Homepage } from "./pages/Homepage";
 import { createTheme, ThemeProvider } from "@mui/material";
@@ -30,7 +30,7 @@ const App = () => {
           ></Route>
           <Route path="/user/:user" element={<Profile />}></Route>
           <Route path="/search/:query" element={<Search />}></Route>
-          <Route path="/movie/:id" element={<MoviePage />}></Route>
+          <Route path="/:type/:id/" element={<MediaPage />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route
             path="/login"
