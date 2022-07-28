@@ -2,7 +2,7 @@ import { useFetch } from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
 import { Card, CardMedia, Grid, Typography } from "@mui/material";
 
-interface Result {
+export interface Result {
   id: string;
   poster_path: string;
   title: string;
@@ -39,7 +39,7 @@ export const Search = () => {
               <Link
                 style={{ color: "white" }}
                 className="movie-poster-link"
-                to={`/movie/${result.id}`}
+                to={`/${result.media_type}/${result.id}`}
               >
                 <Grid container>
                   <CardMedia>

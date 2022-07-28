@@ -102,20 +102,18 @@ body .form-container form button {
 body .form-container button {
   height: 2em;
 }
-body .watch-container {
+body .movie-main {
   display: flex;
   justify-content: center;
-  flex-direction: row;
-  height: 50%;
+  justify-content: center;
+  height: 35em;
+  overflow: hidden;
 }
-body .watch-container img {
-  height: 25em;
-  width: 20em;
-}
-body .watch-container iframe {
+body .movie-main img {
+  display: flex;
+  justify-self: center;
+  width: 100%;
   height: 40em;
-  width: 70em;
-  border: none;
 }
 
 @keyframes fade {
