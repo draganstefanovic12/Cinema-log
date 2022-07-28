@@ -4,16 +4,26 @@
   font-family: "Lato", sans-serif;
 }
 
+#root {
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
-  height: 100vh;
   background-color: #18181b;
+  min-height: 100vh;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
 body .nav {
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  align-items: center;
+  padding: 0.5em;
   background-color: #0f172a;
+}
+body .nav .avatar-container {
+  display: flex;
+  gap: 1em;
 }
 body .nav img {
   height: 1.2em;
@@ -37,9 +47,19 @@ body .nav a {
 }
 body .main-container {
   display: grid;
-  justify-content: center;
+  justify-content: space-around;
   padding: 1em;
-  grid-template-columns: repeat(auto-fill, 15em);
+  grid-template-columns: repeat(auto-fill, 50em);
+  animation: fade 500ms 1 ease-in-out forwards;
+}
+body .main-container .movie-card {
+  animation: fade 500ms 1 ease-in-out forwards;
+}
+body .main-container .poster {
+  width: 15em;
+}
+body .main-container .movie-poster-link {
+  text-decoration: none;
 }
 body .main-container .movie-cont {
   display: flex;
@@ -47,28 +67,40 @@ body .main-container .movie-cont {
   flex-direction: column;
   width: 14em;
 }
-body .main-container .movie-cont .poster {
-  height: 20em;
-}
 body .main-container .movie-cont p {
   color: white;
 }
 body .form-container {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 53px);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body .form-container form {
   display: flex;
   justify-content: center;
+  height: 25em;
+  background-color: #0f172a;
   gap: 1em;
+  color: white;
   text-align: center;
+  align-items: center;
+  align-self: center;
   flex-direction: column;
-  width: 15em;
+  width: 25em;
+  border-radius: 1em;
+}
+body .form-container form .inpt {
+  width: 75%;
+  align-self: center;
 }
 body .form-container form button {
   align-self: center;
   width: 5em;
+}
+body .form-container button {
+  height: 2em;
 }
 body .watch-container {
   display: flex;
@@ -84,6 +116,22 @@ body .watch-container iframe {
   height: 40em;
   width: 70em;
   border: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.profile-container {
+  margin-top: 0;
+  background-image: url("../assets/profile-cover.jpg");
+  background-size: cover;
+  padding-top: 5em;
+  height: calc(100vh - 55px);
 }
 
 /*# sourceMappingURL=App.css.map */
