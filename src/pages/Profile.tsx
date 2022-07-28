@@ -1,13 +1,17 @@
 import { Avatar, Divider, Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Movies } from "../components/Movies";
 import { UserFeed } from "../components/UserFeed";
 import { useFetch } from "../hooks/useFetch";
 
 export const Profile = () => {
   const params = useParams();
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
-  data && console.log(data);
+
+  const [state, setState] = useState<string>();
+
   return (
     <div className="profile-container">
       <Container
@@ -70,22 +74,49 @@ export const Profile = () => {
                 color: "white",
               }}
             >
-              <ListItem sx={{ justifyContent: "center" }} button>
+              <ListItem
+                onClick={() => setState("feed")}
+                sx={{
+                  justifyContent: "center",
+                  backgroundColor: state === "feed" ? "#141c30" : "#0f172a",
+                }}
+                button
+              >
                 User Feed
               </ListItem>
               <Divider orientation="vertical" />
-              <ListItem sx={{ justifyContent: "center" }} button>
+              <ListItem
+                onClick={() => setState("movies")}
+                sx={{
+                  justifyContent: "center",
+                  backgroundColor: state === "movies" ? "#141c30" : "#0f172a",
+                }}
+                button
+              >
                 Movies
               </ListItem>
               <Divider orientation="vertical" />
-              <ListItem sx={{ justifyContent: "center" }} button>
+              <ListItem
+                onClick={() => setState("shows")}
+                sx={{
+                  justifyContent: "center",
+                  backgroundColor: state === "shows" ? "#141c30" : "#0f172a",
+                }}
+                button
+              >
                 TV Shows
               </ListItem>
             </Grid>
           </Grid>
         )}
       </Container>
-      {data && <UserFeed feed={data.data.user.feed} />}
+      {data && (
+        <>
+          {state === "feed" && <UserFeed feed={data.data.user.feed} />}
+          {state === "movies" && <Movies movies={data.data.user.movies} />}
+          {state === "shows"}
+        </>
+      )}
     </div>
   );
 };
