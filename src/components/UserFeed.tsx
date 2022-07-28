@@ -19,8 +19,7 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
           <Typography sx={{ color: "white" }}>
             {event.content}{" "}
             <span style={{ color: "grey" }}>
-              {formatDistanceToNow(new Date(event.created))}
-              /n ago.
+              {formatDistanceToNow(new Date(event.created))} ago.
             </span>
           </Typography>
         ))}
