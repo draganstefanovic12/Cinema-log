@@ -16,7 +16,7 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
         }}
       >
         {feed.map((event) => (
-          <Typography sx={{ color: "white" }}>
+          <Typography key={event.created} sx={{ color: "white" }}>
             {event.content}{" "}
             <span style={{ color: "grey" }}>
               {formatDistanceToNow(new Date(event.created))} ago.
