@@ -54,7 +54,7 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
                     {event.name}
                   </Link>
                 )}{" "}
-                {event.id && `to the watchlist`}.
+                {event.id && `to the watchlist`}
               </span>
               {!event.id && (
                 <span style={{ color: "#667d93" }}>{event.content}</span>
