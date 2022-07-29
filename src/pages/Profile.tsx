@@ -12,6 +12,8 @@ export const Profile = () => {
 
   const [state, setState] = useState<string>("feed");
 
+  data && console.log(data);
+
   return (
     <div className="profile-container">
       <Container
