@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
 
 export const useFetch = (param: string) => {
   const [data, setData] = useState<any>(null);
-  const { user } = useAuth();
 
   useEffect(() => {
     const handleData = async () => {
@@ -12,7 +10,7 @@ export const useFetch = (param: string) => {
       setData(data);
     };
     handleData();
-  }, [param, user]);
+  }, [param]);
 
   return data;
 };
