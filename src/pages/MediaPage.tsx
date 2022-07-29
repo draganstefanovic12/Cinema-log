@@ -12,11 +12,16 @@ export const MediaPage = () => {
   const params = useParams();
   const { user } = useAuth();
 
+  const userData = useFetch(`http://localhost:5000/user/${user?.username}`);
+
   const data = useFetch(
     `http://localhost:5000/imdb/${params.type}/${params.id}`
   );
 
-  const userData = useFetch(`http://localhost:5000/user/${user?.username}`);
+  const AAA = userData.data.user.movies.watchlist.find(
+    (movie: any) => movie.id === params.id
+  );
+  console.log(AAA);
 
   return (
     <Container sx={{ color: "white" }} className="cont" maxWidth="lg">
@@ -75,7 +80,7 @@ export const MediaPage = () => {
                   }
                 >
                   <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                  <Typography variant="body2"></Typography>
+                  <Typography variant="body2"> {}</Typography>
                 </ListItem>
               </Container>
             </Grid>
