@@ -120,6 +120,7 @@ body .cont .movie-info {
 }
 body .cont .movie-info img {
   margin-top: -2em;
+  margin-left: 2em;
 }
 body .cont .movie-info .movie-name {
   font-family: "Lato", sans-serif;

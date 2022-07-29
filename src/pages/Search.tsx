@@ -24,7 +24,7 @@ export const Search = () => {
       {data &&
         data.data.results
           .filter((result: Result) => {
-            return result.popularity > 25;
+            return result.popularity > 24;
           })
           .map((result: Result) => (
             <Card
