@@ -8,11 +8,10 @@ import { useFetch } from "../hooks/useFetch";
 
 export const Profile = () => {
   const params = useParams();
+
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
 
   const [state, setState] = useState<string>("feed");
-
-  data && console.log(data);
 
   return (
     <div className="profile-container">

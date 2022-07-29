@@ -15,31 +15,33 @@ export const Nav: React.FC = () => {
 
   return (
     <nav className="nav">
-      <Link style={{ marginLeft: "1em" }} to="/">
-        <MovieCreationOutlinedIcon />
-      </Link>
-      <div>
-        <Link to={`/search/${value}`}></Link>
-        {!user && (
-          <Button onClick={() => navigate("/register")}>Register</Button>
-        )}
-        {user && (
-          <Container className="avatar-container">
-            <Input
-              placeholder="Search..."
-              startAdornment={
-                <InputAdornment position="start">
-                  <SearchOutlinedIcon
-                    onClick={() => navigate(`/search/${value}`)}
-                  />
-                </InputAdornment>
-              }
-              onChange={(e) => setValue(e.target.value)}
-            />
-            <NavDropdown />
-          </Container>
-        )}
-      </div>
+      <Container className="nav-inner">
+        <Link style={{ marginLeft: "1em" }} to="/">
+          <MovieCreationOutlinedIcon />
+        </Link>
+        <div>
+          <Link to={`/search/${value}`}></Link>
+          {!user && (
+            <Button onClick={() => navigate("/register")}>Register</Button>
+          )}
+          {user && (
+            <Container className="avatar-container">
+              <Input
+                placeholder="Search..."
+                startAdornment={
+                  <InputAdornment position="start">
+                    <SearchOutlinedIcon
+                      onClick={() => navigate(`/search/${value}`)}
+                    />
+                  </InputAdornment>
+                }
+                onChange={(e) => setValue(e.target.value)}
+              />
+              <NavDropdown />
+            </Container>
+          )}
+        </div>
+      </Container>
     </nav>
   );
 };

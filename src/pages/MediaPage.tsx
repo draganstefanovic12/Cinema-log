@@ -16,6 +16,8 @@ export const MediaPage = () => {
     `http://localhost:5000/imdb/${params.type}/${params.id}`
   );
 
+  const userData = useFetch(`http://localhost:5000/user/${user?.username}`);
+
   return (
     <Container sx={{ color: "white" }} className="cont" maxWidth="lg">
       {data && (
@@ -62,14 +64,18 @@ export const MediaPage = () => {
                   button
                   onClick={() =>
                     handleWatchlist(
-                      data.data.title,
+                      data.data.title === undefined
+                        ? data.data.original_name
+                        : data.data.title,
                       data.data.poster_path,
-                      user!.username!
+                      user!.username!,
+                      data.data.id,
+                      data.data.title === undefined ? "tv" : "movie"
                     )
                   }
                 >
                   <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                  <Typography variant="body2">Add to watchlist</Typography>
+                  <Typography variant="body2"></Typography>
                 </ListItem>
               </Container>
             </Grid>
