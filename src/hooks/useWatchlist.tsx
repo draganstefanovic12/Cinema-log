@@ -4,9 +4,9 @@ export const useWatchlist = () => {
   const handleWatchlist = async (
     nm: string,
     poster: string,
-    username: string,
     id: number,
-    type: string
+    type: string,
+    username: string
   ) => {
     await axios.post(`http://localhost:5000/user/watchlist/`, {
       method: "POST",

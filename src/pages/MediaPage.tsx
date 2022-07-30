@@ -2,26 +2,48 @@ import { Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import { useWatchlist } from "../hooks/useWatchlist";
 import { useAuth } from "../context/AuthContext";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
+import { useEffect, useState } from "react";
+
+interface watchlist {
+  content: string;
+  created: number;
+  id: number;
+  feed: [];
+  movies: {
+    watchlist: [];
+  };
+}
 
 export const MediaPage = () => {
-  const { handleWatchlist } = useWatchlist();
-  const params = useParams();
   const { user } = useAuth();
-
-  const userData = useFetch(`http://localhost:5000/user/${user?.username}`);
+  const params = useParams();
+  const { handleWatchlist } = useWatchlist();
+  const [watchlist, setWatchlist] = useState<any>();
 
   const data = useFetch(
     `http://localhost:5000/imdb/${params.type}/${params.id}`
   );
 
-  const AAA = userData.data.user.movies.watchlist.find(
-    (movie: any) => movie.id === params.id
-  );
-  console.log(AAA);
+  //fetching user info
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/${user?.username}`)
+      .then((res) => res.json())
+      .then((final) => {
+        setWatchlist(
+          final.user.movies.watchlist.find((movie: any) =>
+            data.data.original_name
+              ? data.data.original_name
+              : data.data.title === movie.name
+          )
+            ? "Remove from watchlist"
+            : "Add to watchlist"
+        );
+      });
+  }, [data]);
 
   return (
     <Container sx={{ color: "white" }} className="cont" maxWidth="lg">
@@ -67,20 +89,29 @@ export const MediaPage = () => {
                 </ListItem>
                 <ListItem
                   button
-                  onClick={() =>
+                  onClick={() => {
+                    setWatchlist(
+                      watchlist === "Remove from watchlist"
+                        ? "Add to favorites"
+                        : "Remove from favorites"
+                    );
                     handleWatchlist(
                       data.data.title === undefined
                         ? data.data.original_name
                         : data.data.title,
                       data.data.poster_path,
-                      user!.username!,
                       data.data.id,
-                      data.data.title === undefined ? "tv" : "movie"
-                    )
-                  }
+                      data.data.title === undefined ? "tv" : "movie",
+                      user!.username!
+                    );
+                  }}
                 >
-                  <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                  <Typography variant="body2"> {}</Typography>
+                  {watchlist && (
+                    <>
+                      <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
+                      <Typography variant="body2">{watchlist}</Typography>
+                    </>
+                  )}
                 </ListItem>
               </Container>
             </Grid>
