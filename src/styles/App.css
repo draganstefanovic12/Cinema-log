@@ -14,50 +14,41 @@ body {
   animation: fade 500ms 1 ease-in-out forwards;
   background: #141E30;
 }
-
 body .nav {
   padding: 0.5em;
   background-color: #0f172a;
   position: relative;
   z-index: 1;
 }
-
 body .nav .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 body .nav .avatar-container {
   display: flex;
   gap: 1em;
 }
-
 body .nav img {
   height: 1.2em;
 }
-
 body .nav img:hover {
   cursor: pointer;
 }
-
 body .nav input {
   border-radius: 0.3em;
   border: none;
   height: 100%;
 }
-
 body .nav .search {
   height: 1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
-
 body .nav a {
   text-decoration: none;
   color: white;
 }
-
 body .main-container {
   display: grid;
   justify-content: space-around;
@@ -65,30 +56,24 @@ body .main-container {
   grid-template-columns: repeat(auto-fill, 50em);
   animation: fade 500ms 1 ease-in-out forwards;
 }
-
 body .main-container .movie-card {
   animation: fade 500ms 1 ease-in-out forwards;
 }
-
 body .main-container .poster {
   width: 15em;
 }
-
 body .main-container .movie-poster-link {
   text-decoration: none;
 }
-
 body .main-container .movie-cont {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 14em;
 }
-
 body .main-container .movie-cont p {
   color: white;
 }
-
 body .form-container {
   display: flex;
   justify-content: center;
@@ -96,7 +81,6 @@ body .form-container {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 body .form-container form {
   display: flex;
   justify-content: center;
@@ -111,21 +95,17 @@ body .form-container form {
   width: 25em;
   border-radius: 1em;
 }
-
 body .form-container form .inpt {
   width: 75%;
   align-self: center;
 }
-
 body .form-container form button {
   align-self: center;
   width: 5em;
 }
-
 body .form-container button {
   height: 2em;
 }
-
 body .cont .movie-main {
   display: flex;
   justify-content: center;
@@ -133,34 +113,28 @@ body .cont .movie-main {
   height: 35em;
   overflow: hidden;
 }
-
 body .cont .movie-main .backdrop {
   display: flex;
   justify-self: center;
   width: 100%;
   height: 40em;
 }
-
 body .cont .movie-info {
   display: flex;
 }
-
 body .cont .movie-info img {
   margin-top: -2em;
   margin-left: 2em;
 }
-
 body .cont .movie-info .movie-name {
   font-family: "Lato", sans-serif;
   margin-left: 1em;
   margin-top: 0.2em;
 }
-
 body .cont .movie-info .movie-overview {
   font-family: "Lato", sans-serif;
   margin-left: 2.3em;
 }
-
 body .cont .movie-info .poster-main {
   height: 20em;
 }
@@ -176,10 +150,10 @@ body .cont .movie-info .poster-main {
 .profile-container {
   margin-top: 0;
   background-size: cover;
-  padding-top: 2.5em;
+  margin-top: 1em;
   height: calc(100vh - 55px);
+  animation: fade 500ms 1 ease-in-out forwards;
 }
-
 .profile-container .user-feed-container {
   display: flex;
   flex-direction: column;
@@ -187,40 +161,43 @@ body .cont .movie-info .poster-main {
   padding-top: 2em;
   align-items: center;
   height: 100%;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
-
 .profile-container .user-feed-container .feed-cont {
   color: white;
   width: 75%;
   margin-bottom: 1em;
 }
-
 .profile-container .user-feed-container .feed-cont .profile-link {
   color: "white";
   text-decoration: none;
 }
-
 .profile-container .profile-list-cont {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #141c30;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
-
 .profile-container .profile-list-cont .movie-grid-cont {
   display: grid;
   grid-template-columns: repeat(auto-fit, 10em);
+  grid-template-rows: repeat(3, 1fr);
   padding-top: 2em;
   padding-left: 3em;
   gap: 1em;
   height: 52.5em;
+  width: 100%;
 }
-
 .profile-container .profile-list-cont .pagination {
   padding-bottom: 1em;
   justify-content: center;
 }
 
-/*# sourceMappingURL=App.css.map */
+@media (max-width: 1920px) {
+  body .cont .movie-main {
+    height: 24em;
+  }
+}
 
 /*# sourceMappingURL=App.css.map */

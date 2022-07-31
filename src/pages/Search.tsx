@@ -65,8 +65,7 @@ export const Search = () => {
                       )}
                       {result.media_type === "movie" && (
                         <>
-                          {result.title}
-                          {result.release_date.slice(0, 4)}
+                          {result.title} ({result.release_date.slice(0, 4)})
                         </>
                       )}
                     </Typography>
