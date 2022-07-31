@@ -205,15 +205,20 @@ body .cont .movie-info .poster-main {
   flex-direction: column;
   align-items: center;
   background-color: #141c30;
-  height: 52.5em;
 }
 
 .profile-container .profile-list-cont .movie-grid-cont {
   display: grid;
   grid-template-columns: repeat(auto-fit, 10em);
   padding-top: 2em;
+  padding-left: 3em;
   gap: 1em;
   height: 52.5em;
+}
+
+.profile-container .profile-list-cont .pagination {
+  padding-bottom: 1em;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=App.css.map */
