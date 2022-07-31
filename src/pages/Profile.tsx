@@ -2,7 +2,7 @@ import { Avatar, Divider, Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Movies } from "../components/Movies";
+import { MoviesOrShows } from "../components/MoviesOrShows";
 import { UserFeed } from "../components/UserFeed";
 import { useFetch } from "../hooks/useFetch";
 
@@ -88,10 +88,10 @@ export const Profile = () => {
               </ListItem>
               <Divider orientation="vertical" />
               <ListItem
-                onClick={() => setState("movies")}
+                onClick={() => setState("movie")}
                 sx={{
                   justifyContent: "center",
-                  backgroundColor: state === "movies" ? "#141c30" : "#0f172a",
+                  backgroundColor: state === "movie" ? "#141c30" : "#0f172a",
                 }}
                 button
               >
@@ -99,10 +99,10 @@ export const Profile = () => {
               </ListItem>
               <Divider orientation="vertical" />
               <ListItem
-                onClick={() => setState("shows")}
+                onClick={() => setState("tv")}
                 sx={{
                   justifyContent: "center",
-                  backgroundColor: state === "shows" ? "#141c30" : "#0f172a",
+                  backgroundColor: state === "tv" ? "#141c30" : "#0f172a",
                 }}
                 button
               >
@@ -115,10 +115,20 @@ export const Profile = () => {
       {data && (
         <>
           {state === "feed" && <UserFeed feed={data.data.user.feed} />}
-          {state === "movies" && (
-            <Movies user={params.user} movies={data.data.user.movies} />
+          {state === "movie" && (
+            <MoviesOrShows
+              type={state}
+              user={params.user}
+              movies={data.data.user.movies}
+            />
           )}
-          {state === "shows"}
+          {state === "tv" && (
+            <MoviesOrShows
+              type={state}
+              user={params.user}
+              movies={data.data.user.shows}
+            />
+          )}
         </>
       )}
     </div>

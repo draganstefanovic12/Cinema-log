@@ -58,13 +58,15 @@ export const Search = () => {
                       align="center"
                       variant="h5"
                     >
-                      {result.media_type === "tv" ? (
+                      {result.media_type === "tv" && (
                         <>
-                          {result.name} ({result.first_air_date.slice(0, 4)})
+                          {result.name} {result.first_air_date.slice(0, 4)}
                         </>
-                      ) : (
+                      )}
+                      {result.media_type === "movie" && (
                         <>
-                          {result.title} ({result.release_date.slice(0, 4)})
+                          {result.title}
+                          {result.release_date.slice(0, 4)}
                         </>
                       )}
                     </Typography>

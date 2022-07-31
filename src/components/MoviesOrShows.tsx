@@ -9,6 +9,7 @@ interface MoviesProps {
     watchlist: [];
     watched: [{ name: string; poster: string; id: number }];
   };
+  type: string | undefined;
   user: string | undefined;
 }
 
@@ -18,18 +19,18 @@ interface Movie {
   name: string;
 }
 
-export const Movies = ({ movies, user }: MoviesProps) => {
+export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
   const [offset, setOffset] = useState<number>(0);
-  const data = useFetch(`http://localhost:5000/user/movies/${user}/${offset}`);
-
-  data && console.log(data);
+  const data = useFetch(
+    `http://localhost:5000/user/${type}/${user}/${offset}/${type}`
+  );
 
   return (
     <Container className="profile-list-cont">
       {data && (
         <Container className="movie-grid-cont">
           {data.data.map((movie: Movie) => (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
+            <Link key={movie.id} to={`/${type}/${movie.id}`}>
               <Card variant="outlined">
                 <img
                   style={{ height: "15em" }}
@@ -42,14 +43,11 @@ export const Movies = ({ movies, user }: MoviesProps) => {
         </Container>
       )}
       <Pagination
+        className="pagination"
         hidePrevButton
         hideNextButton
-        onChange={(e: any) =>
-          setOffset((parseInt(e.target.textContent) - 1) * 18)
-        }
-        sx={{
-          marginTop: "1em",
-          justifyContent: "center",
+        onChange={(e: any) => {
+          setOffset((parseInt(e.target.textContent) - 1) * 18);
         }}
         count={Math.ceil(movies.watched.length / 18)}
         shape="rounded"
