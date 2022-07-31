@@ -126,10 +126,10 @@ body
 
 .profile-container
     margin-top: 0
-    // background-image: url("../assets/profile-cover.jpg")
     background-size: cover
-    padding-top: 2.5em
+    margin-top: 1em
     height: calc( 100vh - 55px )
+    animation: $fade500ms
     .user-feed-container
         display: flex
         flex-direction: column
@@ -137,6 +137,7 @@ body
         padding-top: 2em
         align-items: center
         height: 100%
+        animation: $fade500ms
         .feed-cont
             color: white
             width: 75%
@@ -149,13 +150,22 @@ body
         flex-direction: column
         align-items: center
         background-color: #141c30
+        animation: $fade500ms
         .movie-grid-cont
             display: grid
             grid-template-columns: repeat(auto-fit, 10em)
+            grid-template-rows: repeat(3, 1fr)
             padding-top: 2em
             padding-left: 3em
             gap: 1em
             height: 52.5em
+            width: 100%
         .pagination
             padding-bottom: 1em
             justify-content: center
+
+@media (max-width: 1920px)
+    body
+        .cont
+            .movie-main
+                height: 24em

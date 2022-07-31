@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { MoviesOrShows } from "../components/MoviesOrShows";
 import { UserFeed } from "../components/UserFeed";
+import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
+import { Follow } from "./Follow";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
-
+  const { user } = useAuth();
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
@@ -17,14 +19,12 @@ export const Profile = () => {
     <div className="profile-container">
       <Container
         sx={{
-          borderTopRightRadius: "1em",
-          borderTopLeftRadius: "1em",
           backgroundColor: "#0f172a",
           paddingTop: "1em",
         }}
       >
         {data && (
-          <Grid container>
+          <Grid container sx={{ width: "100%" }}>
             <Grid>
               <Avatar
                 sx={{ height: "10em", width: "10em" }}
@@ -43,9 +43,9 @@ export const Profile = () => {
               sx={{
                 height: "2em",
                 display: "flex",
-                flexDirection: "space-around",
+                flexDirection: "space-between",
               }}
-              xs={2}
+              xs={4}
             >
               <Typography
                 align="left"
@@ -63,11 +63,18 @@ export const Profile = () => {
                 <Typography>
                   Shows watched: {data.data.user.shows.watched.length}
                 </Typography>
+                <Typography>
+                  Followers: {data.data.user.followers.length}
+                </Typography>
+                <Typography>
+                  Following: {data.data.user.following.length}
+                </Typography>
               </Typography>
             </Grid>
+
             <Grid
               item
-              xs={7}
+              xs={4}
               sx={{
                 height: "2em",
                 display: "flex",
@@ -109,6 +116,13 @@ export const Profile = () => {
                 TV Shows
               </ListItem>
             </Grid>
+            {params.user !== user?.username && (
+              <Follow
+                user={user?.username}
+                followedUser={params.user}
+                followers={data.data.user.followers}
+              />
+            )}
           </Grid>
         )}
       </Container>
