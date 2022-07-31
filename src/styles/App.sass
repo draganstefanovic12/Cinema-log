@@ -128,12 +128,31 @@ body
     margin-top: 0
     // background-image: url("../assets/profile-cover.jpg")
     background-size: cover
-    padding-top: 5em
+    padding-top: 2.5em
     height: calc( 100vh - 55px )
-    .feed-cont
-        color: white
+    .user-feed-container
+        display: flex
+        flex-direction: column
         width: 75%
-        margin-bottom: 1em
-        .profile-link
-            color: "white"
-            text-decoration: none
+        padding-top: 2em
+        align-items: center
+        height: 100%
+        .feed-cont
+            color: white
+            width: 75%
+            margin-bottom: 1em
+            .profile-link
+                color: "white"
+                text-decoration: none
+    .profile-list-cont
+        display: flex
+        flex-direction: column
+        align-items: center
+        background-color: #141c30
+        height: 52.5em
+        .movie-grid-cont
+            display: grid
+            grid-template-columns: repeat(auto-fit, 10em)
+            padding-top: 2em
+            gap: 1em
+            height: 52.5em

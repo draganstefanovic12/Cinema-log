@@ -7,11 +7,11 @@ import { UserFeed } from "../components/UserFeed";
 import { useFetch } from "../hooks/useFetch";
 
 export const Profile = () => {
+  const [state, setState] = useState<string>("feed");
+
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
-
-  const [state, setState] = useState<string>("feed");
 
   return (
     <div className="profile-container">
@@ -115,7 +115,9 @@ export const Profile = () => {
       {data && (
         <>
           {state === "feed" && <UserFeed feed={data.data.user.feed} />}
-          {state === "movies" && <Movies movies={data.data.user.movies} />}
+          {state === "movies" && (
+            <Movies user={params.user} movies={data.data.user.movies} />
+          )}
           {state === "shows"}
         </>
       )}
