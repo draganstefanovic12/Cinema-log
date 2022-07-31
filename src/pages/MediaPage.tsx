@@ -1,28 +1,19 @@
-import { Grid, ListItem, Typography } from "@mui/material";
+import { useAuth } from "../context/AuthContext";
+import { useFetch } from "../hooks/useFetch";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import { useWatchlist } from "../hooks/useWatchlist";
-import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
+import { Grid, ListItem, Typography } from "@mui/material";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import { useEffect, useState } from "react";
-
-interface watchlist {
-  content: string;
-  created: number;
-  id: number;
-  feed: [];
-  movies: {
-    watchlist: [];
-  };
-}
 
 export const MediaPage = () => {
   const { user } = useAuth();
   const params = useParams();
-  const { handleWatchlist } = useWatchlist();
-  const [watchlist, setWatchlist] = useState<any>();
+  const { handleWatchlist, handleWatch } = useWatchlist();
+  const [watchlist, setWatchlist] = useState<string | null>();
+  const [watched, setWatched] = useState<string | null>();
 
   const data = useFetch(
     `http://localhost:5000/imdb/${params.type}/${params.id}`
@@ -33,12 +24,37 @@ export const MediaPage = () => {
     fetch(`http://localhost:5000/user/${user?.username}`)
       .then((res) => res.json())
       .then((final) => {
+        setWatched(
+          params.type === "movie"
+            ? final.user.movies.watched.find((movie: any) =>
+                data.data.original_name
+                  ? data.data.original_name
+                  : data.data.title === movie.name
+              )
+              ? "Watched"
+              : "Set as watched"
+            : final.user.shows.watched.find((movie: any) =>
+                data.data.original_name
+                  ? data.data.original_name
+                  : data.data.title === movie.name
+              )
+            ? "Watched"
+            : "Set as watched"
+        );
         setWatchlist(
-          final.user.movies.watchlist.find((movie: any) =>
-            data.data.original_name
-              ? data.data.original_name
-              : data.data.title === movie.name
-          )
+          params.type === "movie"
+            ? final.user.movies.watchlist.find((movie: any) =>
+                data.data.original_name
+                  ? data.data.original_name
+                  : data.data.title === movie.name
+              )
+              ? "Remove from watchlist"
+              : "Add to watchlist"
+            : final.user.shows.watchlist.find((movie: any) =>
+                data.data.original_name
+                  ? data.data.original_name
+                  : data.data.title === movie.name
+              )
             ? "Remove from watchlist"
             : "Add to watchlist"
         );
@@ -83,17 +99,36 @@ export const MediaPage = () => {
                   width: "25em",
                 }}
               >
-                <ListItem button>
-                  <LocalMoviesIcon sx={{ marginRight: "0.5em" }} />
-                  <Typography variant="body2">Watched</Typography>
-                </ListItem>
+                {watched && (
+                  <ListItem
+                    onClick={() => {
+                      setWatched(
+                        watched === "Watched" ? "Set as watched" : "Watched"
+                      );
+                      handleWatch(
+                        data.data.title === undefined
+                          ? data.data.original_name
+                          : data.data.title,
+                        data.data.poster_path,
+                        data.data.id,
+                        data.data.title === undefined ? "tv" : "movie",
+                        user!.username!
+                      );
+                    }}
+                    button
+                  >
+                    <LocalMoviesIcon sx={{ marginRight: "0.5em" }} />
+                    <Typography variant="body2">{watched}</Typography>
+                  </ListItem>
+                )}
                 <ListItem
+                  disabled={watched === "Watched" ? true : false}
                   button
                   onClick={() => {
                     setWatchlist(
                       watchlist === "Remove from watchlist"
-                        ? "Add to favorites"
-                        : "Remove from favorites"
+                        ? "Add to watchlist"
+                        : "Remove from watchlist"
                     );
                     handleWatchlist(
                       data.data.title === undefined
@@ -109,7 +144,9 @@ export const MediaPage = () => {
                   {watchlist && (
                     <>
                       <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                      <Typography variant="body2">{watchlist}</Typography>
+                      <Typography variant="body2">
+                        {watched === "Watched" ? "Already watched" : watchlist}
+                      </Typography>
                     </>
                   )}
                 </ListItem>
