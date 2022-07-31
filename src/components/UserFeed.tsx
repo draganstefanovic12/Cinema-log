@@ -20,8 +20,9 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
   return (
     <Container sx={{ backgroundColor: "#141c30", height: "52.5em" }}>
       <Container className="user-feed-container">
-        {feed.map((event) => (
+        {feed.slice(0, 18).map((event) => (
           <div
+            key={event.id}
             style={{
               display: "flex",
               width: "100%",
@@ -49,7 +50,20 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
                     {event.name}
                   </Link>
                 )}{" "}
-                {event.content3 && event.content3}
+                {event.content3 &&
+                  (event.content3 !== "to the watchlist" ? (
+                    <Link
+                      style={{
+                        color: "white",
+                        textDecoration: "none",
+                      }}
+                      to={`/user/${event.content3}`}
+                    >
+                      {event.content3}
+                    </Link>
+                  ) : (
+                    event.content3
+                  ))}
               </span>
               {!event.id && (
                 <span style={{ color: "#667d93" }}> {event.content}</span>
