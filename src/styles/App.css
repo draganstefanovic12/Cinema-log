@@ -20,6 +20,9 @@ body .nav {
   position: relative;
   z-index: 1;
 }
+body .nav .home-link:active {
+  height: 1.5em;
+}
 body .nav .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -28,8 +31,8 @@ body .nav .nav-inner {
 body .nav .nav-inner .notification-icon {
   fill: white;
 }
-body .nav .nav-inner .notification-icon:hover {
-  animation: notification 500ms 1 ease-in-out forwards;
+body .nav .nav-inner .notification-icon:active {
+  transform: translateY(5%);
 }
 body .nav .avatar-container {
   display: flex;
@@ -115,6 +118,9 @@ body .form-container form button {
 body .form-container button {
   height: 2em;
 }
+body .cont {
+  color: white;
+}
 body .cont .movie-main {
   display: flex;
   justify-content: center;
@@ -122,7 +128,26 @@ body .cont .movie-main {
   height: 35em;
   overflow: hidden;
 }
-body .cont .movie-main .backdrop {
+body .cont .movie-main-information {
+  display: flex;
+  width: 250em;
+  flex-direction: column;
+}
+body .cont .movie-main-information .genres {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  width: 7.3em;
+  height: 2em;
+  white-space: nowrap;
+}
+body .cont .movie-main-information .genres .genre {
+  margin-bottom: 0.2em;
+  padding-bottom: 0.5em;
+  background-color: #0f172a;
+  justify-content: center;
+}
+body .cont .backdrop {
   display: flex;
   justify-self: center;
   width: 100%;
@@ -147,18 +172,12 @@ body .cont .movie-info .movie-overview {
 body .cont .movie-info .poster-main {
   height: 20em;
 }
-
-@keyframes notification {
-  0% {
-    transform: translateY(-5%);
-  }
-  50% {
-    transform: translateY(5%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
+body .cont .movie-info .watched-watchlist {
+  width: 25em;
+  display: flex;
+  margin-left: 0.9em;
 }
+
 @keyframes fade {
   0% {
     opacity: 0;
