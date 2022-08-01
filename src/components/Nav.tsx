@@ -20,6 +20,7 @@ export const Nav: React.FC = () => {
     <nav className="nav">
       <Container className="nav-inner">
         <Link
+          className="home-link"
           onMouseLeave={() => setHover(false)}
           onMouseEnter={() => setHover(true)}
           style={{ marginLeft: "1em" }}

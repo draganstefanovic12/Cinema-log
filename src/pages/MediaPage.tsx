@@ -58,10 +58,10 @@ export const MediaPage = () => {
             : "Add to watchlist"
         );
       });
-  }, [data]);
+  }, [data, params.type, user?.username]);
 
   return (
-    <Container sx={{ color: "white" }} className="cont" maxWidth="lg">
+    <Container className="cont" maxWidth="lg">
       {data && (
         <>
           <Grid className="movie-main">
@@ -77,13 +77,7 @@ export const MediaPage = () => {
               className="poster-main"
               src={`https://image.tmdb.org/t/p/w500/${data.data.poster_path}`}
             />
-            <Grid
-              sx={{
-                display: "flex",
-                width: "250em",
-                flexDirection: "column",
-              }}
-            >
+            <Grid className="movie-main-information">
               <div>
                 <Typography className="movie-name" variant="h4">
                   {params.type === "tv"
@@ -100,15 +94,10 @@ export const MediaPage = () => {
                   {data.data.overview}
                 </Typography>
               </div>
-              <Container
-                style={{
-                  display: "flex",
-                  marginLeft: "0.9em",
-                  width: "25em",
-                }}
-              >
+              <Container className="watched-watchlist">
                 {watched && (
                   <ListItem
+                    style={{ whiteSpace: "nowrap" }}
                     onClick={() => {
                       setWatched(
                         watched === "Watched" ? "Set as watched" : "Watched"
@@ -130,6 +119,7 @@ export const MediaPage = () => {
                   </ListItem>
                 )}
                 <ListItem
+                  style={{ whiteSpace: "nowrap" }}
                   disabled={watched === "Watched" ? true : false}
                   button
                   onClick={() => {
