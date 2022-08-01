@@ -27,15 +27,7 @@ export const Search = () => {
             return result.popularity > 15;
           })
           .map((result: Result) => (
-            <Card
-              className="movie-card"
-              key={result.id}
-              sx={{
-                maxWidth: "45em",
-                maxHeight: "30em",
-                marginBottom: "1em",
-              }}
-            >
+            <Card className="movie-card" key={result.id}>
               <Link
                 style={{ color: "white" }}
                 className="movie-poster-link"

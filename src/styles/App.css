@@ -28,10 +28,10 @@ body .nav .nav-inner {
   justify-content: space-between;
   align-items: center;
 }
-body .nav .nav-inner .notification-icon {
+body .nav .notification-icon {
   fill: white;
 }
-body .nav .nav-inner .notification-icon:active {
+body .nav .notification-icon:active {
   transform: translateY(5%);
 }
 body .nav .avatar-container {
@@ -69,6 +69,9 @@ body .main-container {
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-container .movie-card {
+  max-width: 45em;
+  max-height: 30em;
+  margin-bottom: 1em;
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-container .poster {
