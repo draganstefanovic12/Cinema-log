@@ -1,36 +1,28 @@
 import { Button, ClickAwayListener, Grow, Paper, Popper } from "@mui/material";
-import { useRef, useState } from "react";
+import { usePopper } from "../hooks/usePopper";
 
 interface NavPopperProps {
   button: any;
   children: JSX.Element;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavPopper = ({ children, button }: NavPopperProps) => {
-  const anchorRef = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
-    setOpen(false);
-  };
+export const NavPopper = ({
+  children,
+  button,
+  open,
+  setOpen,
+}: NavPopperProps) => {
+  const { anchorRef } = usePopper();
 
   return (
     <div>
       <Button
+        onClick={() => setOpen(true)}
         style={{ backgroundColor: open ? "#141c30" : "#0f172a" }}
         ref={anchorRef}
         id="composition-button"
-        onClick={handleToggle}
       >
         {button}
       </Button>
@@ -50,7 +42,7 @@ export const NavPopper = ({ children, button }: NavPopperProps) => {
             }}
           >
             <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
+              <ClickAwayListener onClickAway={() => setOpen(!open)}>
                 {children}
               </ClickAwayListener>
             </Paper>
