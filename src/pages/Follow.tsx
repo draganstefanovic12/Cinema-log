@@ -17,7 +17,7 @@ export const Follow = ({ user, followedUser, followers }: FollowProps) => {
       (users: { name: string }) => users.name === user
     );
     checkFollow.length === 0 ? setFollow("Follow") : setFollow("Unfollow");
-  }, []);
+  }, [followers, user]);
 
   const handleClick = async () => {
     await axios.post(
