@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
 import { NavPopper } from "./NavPopper";
 import { usePopper } from "../hooks/usePopper";
 import { ListItem, MenuList } from "@mui/material";
 import { formatDistanceToNow } from "date-fns";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import axios from "axios";
 
 interface NotificationProps {
   notifications: [];
@@ -17,26 +21,45 @@ interface Notification {
 }
 
 export const NavNotifications = ({ notifications }: NotificationProps) => {
+  const [read, setRead] = useState<boolean>(true);
   const { setOpen, open } = usePopper();
+  const { userStats } = useAuth();
+
+  const handleClick = async () => {
+    setRead(true);
+    await axios.post(
+      `http://localhost:5000/user/notifications/${userStats?.data.user.username}`
+    );
+  };
+
+  useEffect(() => {
+    notifications.map(
+      (notification: Notification) =>
+        notification.read === false && read === true && setRead(false)
+    );
+  }, []);
 
   return (
     <NavPopper
       setOpen={setOpen}
       open={open}
-      button={<NotificationsNoneOutlinedIcon className="notification-icon" />}
+      button={
+        read ? (
+          <NotificationsNoneOutlinedIcon className="notification-icon" />
+        ) : (
+          <NotificationsIcon
+            onClick={handleClick}
+            className="notification-icon"
+          />
+        )
+      }
     >
-      <MenuList
-        className="menu-list"
-        sx={{
-          color: "rgb(102, 125, 147)",
-          backgroundColor: "#141c30",
-        }}
-      >
+      <MenuList className="menu-list">
         {notifications.length > 0 ? (
           notifications.map((notification: Notification) => (
             <ListItem style={{ whiteSpace: "nowrap" }}>
               <Link
-                style={{ marginRight: "0.2em" }}
+                style={{ marginRight: "0.2em", display: "block" }}
                 to={`/user/${notification.user}`}
                 onClick={() => setOpen(false)}
               >

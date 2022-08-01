@@ -34,6 +34,10 @@ body .nav .notification-icon {
 body .nav .notification-icon:active {
   transform: translateY(5%);
 }
+body .nav .menu-list {
+  color: rgb(102, 125, 147);
+  background-color: #141c30;
+}
 body .nav .avatar-container {
   display: flex;
   gap: 1em;
