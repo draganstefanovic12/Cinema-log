@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { NavPopper } from "./NavPopper";
+import { usePopper } from "../hooks/usePopper";
 import { ListItem, MenuList } from "@mui/material";
 import { formatDistanceToNow } from "date-fns";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import { usePopper } from "../hooks/usePopper";
 
 interface NotificationProps {
   notifications: [];
@@ -23,7 +23,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
     <NavPopper
       setOpen={setOpen}
       open={open}
-      button={<NotificationsNoneOutlinedIcon />}
+      button={<NotificationsNoneOutlinedIcon className="notification-icon" />}
     >
       <MenuList
         className="menu-list"
