@@ -35,13 +35,14 @@ body
             display: flex
             justify-content: space-between
             align-items: center
-            .notification-icon
-                fill: white
-                &:active
-                    transform: translateY(5%)
+        .notification-icon
+            fill: white
+            &:active
+                transform: translateY(5%)
         .avatar-container
             display: flex
             gap: 1em
+
         img
             height: 1.2em
             &:hover
@@ -67,6 +68,9 @@ body
         grid-template-columns: repeat(auto-fill, 50em)
         animation: $fade500ms
         .movie-card
+            max-width: 45em
+            max-height: 30em
+            margin-bottom: 1em
             animation: $fade500ms
         .poster
             width: 15em
