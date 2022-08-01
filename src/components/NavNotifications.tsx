@@ -59,7 +59,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
           notifications.map((notification: Notification) => (
             <ListItem style={{ whiteSpace: "nowrap" }}>
               <Link
-                style={{ marginRight: "0.2em", display: "block" }}
+                style={{ marginRight: "0.2em", display: "" }}
                 to={`/user/${notification.user}`}
                 onClick={() => setOpen(false)}
               >
