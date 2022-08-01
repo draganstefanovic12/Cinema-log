@@ -15,15 +15,28 @@ body {
   background: #141E30;
 }
 body .nav {
-  padding: 0.5em;
+  padding: 0.2em;
   background-color: #0f172a;
   position: relative;
   z-index: 1;
+}
+body .nav .home-link:active {
+  height: 1.5em;
 }
 body .nav .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+body .nav .notification-icon {
+  fill: white;
+}
+body .nav .notification-icon:active {
+  transform: translateY(5%);
+}
+body .nav .menu-list {
+  color: rgb(102, 125, 147);
+  background-color: #141c30;
 }
 body .nav .avatar-container {
   display: flex;
@@ -33,6 +46,9 @@ body .nav img {
   height: 1.2em;
 }
 body .nav img:hover {
+  cursor: pointer;
+}
+body .nav svg:hover {
   cursor: pointer;
 }
 body .nav input {
@@ -57,6 +73,9 @@ body .main-container {
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-container .movie-card {
+  max-width: 45em;
+  max-height: 30em;
+  margin-bottom: 1em;
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-container .poster {
@@ -106,6 +125,9 @@ body .form-container form button {
 body .form-container button {
   height: 2em;
 }
+body .cont {
+  color: white;
+}
 body .cont .movie-main {
   display: flex;
   justify-content: center;
@@ -113,7 +135,26 @@ body .cont .movie-main {
   height: 35em;
   overflow: hidden;
 }
-body .cont .movie-main .backdrop {
+body .cont .movie-main-information {
+  display: flex;
+  width: 250em;
+  flex-direction: column;
+}
+body .cont .movie-main-information .genres {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  width: 7.3em;
+  height: 2em;
+  white-space: nowrap;
+}
+body .cont .movie-main-information .genres .genre {
+  margin-bottom: 0.2em;
+  padding-bottom: 0.5em;
+  background-color: #0f172a;
+  justify-content: center;
+}
+body .cont .backdrop {
   display: flex;
   justify-self: center;
   width: 100%;
@@ -138,6 +179,11 @@ body .cont .movie-info .movie-overview {
 body .cont .movie-info .poster-main {
   height: 20em;
 }
+body .cont .movie-info .watched-watchlist {
+  width: 25em;
+  display: flex;
+  margin-left: 0.9em;
+}
 
 @keyframes fade {
   0% {
@@ -150,17 +196,54 @@ body .cont .movie-info .poster-main {
 .profile-container {
   margin-top: 0;
   background-size: cover;
-  padding-top: 5em;
+  margin-top: 1em;
   height: calc(100vh - 55px);
+  animation: fade 500ms 1 ease-in-out forwards;
 }
-.profile-container .feed-cont {
+.profile-container .user-feed-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  padding-top: 2em;
+  align-items: center;
+  height: 100%;
+  animation: fade 500ms 1 ease-in-out forwards;
+}
+.profile-container .user-feed-container .feed-cont {
   color: white;
   width: 75%;
-  margin-bottom: 1em;
+  height: 2.5em;
 }
-.profile-container .feed-cont .profile-link {
+.profile-container .user-feed-container .feed-cont .profile-link {
   color: "white";
   text-decoration: none;
+}
+.profile-container .profile-list-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #141c30;
+  animation: fade 500ms 1 ease-in-out forwards;
+}
+.profile-container .profile-list-cont .movie-grid-cont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10em);
+  grid-template-rows: repeat(3, 1fr);
+  padding-top: 2em;
+  padding-left: 3em;
+  gap: 1em;
+  height: 52.5em;
+  width: 100%;
+}
+.profile-container .profile-list-cont .pagination {
+  padding-bottom: 1em;
+  justify-content: center;
+}
+
+@media (max-width: 1920px) {
+  body .cont .movie-main {
+    height: 24em;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

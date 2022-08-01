@@ -1,9 +1,11 @@
+import axios, { AxiosResponse } from "axios";
 import {
   createContext,
   useReducer,
   useEffect,
   ReactNode,
   useContext,
+  useState,
 } from "react";
 
 interface AuthContextProps {
@@ -12,6 +14,7 @@ interface AuthContextProps {
     token?: string;
   } | null;
   dispatch: React.Dispatch<any>;
+  userStats: AxiosResponse<any, any> | undefined;
 }
 
 interface AuthContextProviderProps {
@@ -36,6 +39,7 @@ export const authReducer = (state: any, action: any) => {
 };
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
+  const [userStats, setUserStats] = useState<AxiosResponse<any, any>>();
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
   });
@@ -44,11 +48,14 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     const user = JSON.parse(localStorage.getItem("user")!);
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
+      axios
+        .get(`http://localhost:5000/user/${user.username}`)
+        .then((result: AxiosResponse<any, any>) => setUserStats(result));
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, userStats }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,39 +2,35 @@ import { Avatar, Divider, Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Movies } from "../components/Movies";
+import { MoviesOrShows } from "../components/MoviesOrShows";
 import { UserFeed } from "../components/UserFeed";
+import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
+import { Follow } from "./Follow";
 
 export const Profile = () => {
+  const [state, setState] = useState<string>("feed");
+  const { user } = useAuth();
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
-
-  const [state, setState] = useState<string>("feed");
 
   return (
     <div className="profile-container">
       <Container
         sx={{
-          borderTopRightRadius: "1em",
-          borderTopLeftRadius: "1em",
           backgroundColor: "#0f172a",
           paddingTop: "1em",
         }}
       >
         {data && (
-          <Grid container>
+          <Grid container sx={{ width: "100%" }}>
             <Grid>
               <Avatar
-                sx={{ height: "10em", width: "10em" }}
+                sx={{ height: "7.5em", width: "7.5em" }}
                 variant="square"
               ></Avatar>
-              <Typography
-                sx={{ marginTop: "1em" }}
-                align="center"
-                color="white"
-              >
+              <Typography align="center" color="white">
                 Joined: {data.data.user.createdAt.slice(0, 4)}
               </Typography>
             </Grid>
@@ -43,9 +39,9 @@ export const Profile = () => {
               sx={{
                 height: "2em",
                 display: "flex",
-                flexDirection: "space-around",
+                flexDirection: "space-between",
               }}
-              xs={2}
+              xs={4}
             >
               <Typography
                 align="left"
@@ -63,11 +59,18 @@ export const Profile = () => {
                 <Typography>
                   Shows watched: {data.data.user.shows.watched.length}
                 </Typography>
+                <Typography>
+                  Followers: {data.data.user.followers.length}
+                </Typography>
+                <Typography>
+                  Following: {data.data.user.following.length}
+                </Typography>
               </Typography>
             </Grid>
+
             <Grid
               item
-              xs={7}
+              xs={4}
               sx={{
                 height: "2em",
                 display: "flex",
@@ -88,10 +91,10 @@ export const Profile = () => {
               </ListItem>
               <Divider orientation="vertical" />
               <ListItem
-                onClick={() => setState("movies")}
+                onClick={() => setState("movie")}
                 sx={{
                   justifyContent: "center",
-                  backgroundColor: state === "movies" ? "#141c30" : "#0f172a",
+                  backgroundColor: state === "movie" ? "#141c30" : "#0f172a",
                 }}
                 button
               >
@@ -99,24 +102,43 @@ export const Profile = () => {
               </ListItem>
               <Divider orientation="vertical" />
               <ListItem
-                onClick={() => setState("shows")}
+                onClick={() => setState("tv")}
                 sx={{
                   justifyContent: "center",
-                  backgroundColor: state === "shows" ? "#141c30" : "#0f172a",
+                  backgroundColor: state === "tv" ? "#141c30" : "#0f172a",
                 }}
                 button
               >
                 TV Shows
               </ListItem>
             </Grid>
+            {params.user !== user?.username && (
+              <Follow
+                user={user?.username}
+                followedUser={params.user}
+                followers={data.data.user.followers}
+              />
+            )}
           </Grid>
         )}
       </Container>
       {data && (
         <>
           {state === "feed" && <UserFeed feed={data.data.user.feed} />}
-          {state === "movies" && <Movies movies={data.data.user.movies} />}
-          {state === "shows"}
+          {state === "movie" && (
+            <MoviesOrShows
+              type={state}
+              user={params.user}
+              movies={data.data.user.movies}
+            />
+          )}
+          {state === "tv" && (
+            <MoviesOrShows
+              type={state}
+              user={params.user}
+              movies={data.data.user.shows}
+            />
+          )}
         </>
       )}
     </div>
