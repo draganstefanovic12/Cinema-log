@@ -34,23 +34,12 @@ export const NavDropdown = () => {
     setOpen(false);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  }
-
   return (
     <div>
       <Button
+        style={{ backgroundColor: open ? "#141c30" : "#0f172a" }}
         ref={anchorRef}
         id="composition-button"
-        aria-controls={open ? "composition-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
-        aria-haspopup="true"
         onClick={handleToggle}
       >
         {user!.username}
@@ -76,8 +65,10 @@ export const NavDropdown = () => {
                 <MenuList
                   autoFocusItem={open}
                   id="composition-menu"
+                  sx={{
+                    backgroundColor: "#141c30",
+                  }}
                   aria-labelledby="composition-button"
-                  onKeyDown={handleListKeyDown}
                 >
                   <MenuItem
                     onClick={(e) => {

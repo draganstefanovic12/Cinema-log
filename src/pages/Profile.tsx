@@ -27,14 +27,10 @@ export const Profile = () => {
           <Grid container sx={{ width: "100%" }}>
             <Grid>
               <Avatar
-                sx={{ height: "10em", width: "10em" }}
+                sx={{ height: "7.5em", width: "7.5em" }}
                 variant="square"
               ></Avatar>
-              <Typography
-                sx={{ marginTop: "1em" }}
-                align="center"
-                color="white"
-              >
+              <Typography align="center" color="white">
                 Joined: {data.data.user.createdAt.slice(0, 4)}
               </Typography>
             </Grid>
