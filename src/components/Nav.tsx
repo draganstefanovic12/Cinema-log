@@ -1,13 +1,13 @@
-import { Button, Input, InputAdornment } from "@mui/material";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
+import { Container } from "@mui/system";
+import { NavDropdown } from "./NavDropdown";
+import { NavNotifications } from "./NavNotifications";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Input, InputAdornment } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
-import { Container } from "@mui/system";
-import { NavDropdown } from "./NavDropdown";
-import { Notifications } from "./Notifications";
 
 export const Nav: React.FC = () => {
   const [hover, setHover] = useState<boolean>(false);
@@ -48,7 +48,7 @@ export const Nav: React.FC = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
               {userStats && (
-                <Notifications
+                <NavNotifications
                   notifications={userStats?.data.user.notifications}
                 />
               )}
