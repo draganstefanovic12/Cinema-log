@@ -27,15 +27,7 @@ export const Search = () => {
             return result.popularity > 15;
           })
           .map((result: Result) => (
-            <Card
-              className="movie-card"
-              key={result.id}
-              sx={{
-                maxWidth: "45em",
-                maxHeight: "30em",
-                marginBottom: "1em",
-              }}
-            >
+            <Card className="movie-card" key={result.id}>
               <Link
                 style={{ color: "white" }}
                 className="movie-poster-link"
@@ -58,11 +50,12 @@ export const Search = () => {
                       align="center"
                       variant="h5"
                     >
-                      {result.media_type === "tv" ? (
+                      {result.media_type === "tv" && (
                         <>
-                          {result.name} ({result.first_air_date.slice(0, 4)})
+                          {result.name} {result.first_air_date.slice(0, 4)}
                         </>
-                      ) : (
+                      )}
+                      {result.media_type === "movie" && (
                         <>
                           {result.title} ({result.release_date.slice(0, 4)})
                         </>

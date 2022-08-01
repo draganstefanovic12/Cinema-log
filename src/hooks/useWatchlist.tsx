@@ -4,12 +4,14 @@ export const useWatchlist = () => {
   const handleWatchlist = async (
     nm: string,
     poster: string,
-    username: string,
     id: number,
-    type: string
+    type: string,
+    username: string
   ) => {
     await axios.post(`http://localhost:5000/user/watchlist/`, {
-      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: {
         name: nm,
         id: id,
@@ -20,5 +22,23 @@ export const useWatchlist = () => {
     });
   };
 
-  return { handleWatchlist };
+  const handleWatch = async (
+    nm: string,
+    poster: string,
+    id: number,
+    type: string,
+    username: string
+  ) => {
+    await axios.post("http://localhost:5000/user/watch", {
+      body: {
+        name: nm,
+        id: id,
+        type: type,
+        poster: poster,
+        username: username,
+      },
+    });
+  };
+
+  return { handleWatchlist, handleWatch };
 };

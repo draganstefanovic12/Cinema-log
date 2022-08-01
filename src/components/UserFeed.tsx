@@ -11,23 +11,18 @@ interface UserFeedProps {
       id?: number;
       name?: string;
       type?: string;
+      content2?: string;
+      content3: string;
     }
   ];
 }
 export const UserFeed = ({ feed }: UserFeedProps) => {
   return (
-    <Container sx={{ backgroundColor: "#141c30", height: "60vh" }}>
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "75%",
-          paddingTop: "2em",
-          alignItems: "center",
-        }}
-      >
-        {feed.map((event) => (
+    <Container sx={{ backgroundColor: "#141c30", height: "52.5em" }}>
+      <Container className="user-feed-container">
+        {feed.slice(0, 18).map((event) => (
           <div
+            key={event.id}
             style={{
               display: "flex",
               width: "100%",
@@ -42,7 +37,7 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
                 {event.user}
               </Link>{" "}
               <span style={{ color: "#667d93" }}>
-                {event.id && `has added`}{" "}
+                {event.content2}
                 {event.id && (
                   <Link
                     style={{
@@ -51,13 +46,27 @@ export const UserFeed = ({ feed }: UserFeedProps) => {
                     }}
                     to={`/${event.type}/${event.id}`}
                   >
+                    {" "}
                     {event.name}
                   </Link>
                 )}{" "}
-                {event.id && `to the watchlist`}
+                {event.content3 &&
+                  (event.content3 !== "to the watchlist" ? (
+                    <Link
+                      style={{
+                        color: "white",
+                        textDecoration: "none",
+                      }}
+                      to={`/user/${event.content3}`}
+                    >
+                      {event.content3}
+                    </Link>
+                  ) : (
+                    event.content3
+                  ))}
               </span>
               {!event.id && (
-                <span style={{ color: "#667d93" }}>{event.content}</span>
+                <span style={{ color: "#667d93" }}> {event.content}</span>
               )}
             </Typography>
             <Typography>
