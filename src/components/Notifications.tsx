@@ -1,7 +1,6 @@
 import {
   Button,
   ClickAwayListener,
-  Divider,
   Grow,
   ListItem,
   MenuList,
@@ -22,6 +21,7 @@ interface Notification {
   content: string | undefined;
   createdAt: string | number | Date;
   user: string | undefined;
+  read: boolean;
 }
 
 export const Notifications = ({ notifications }: NotificationProps) => {

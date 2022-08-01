@@ -28,14 +28,17 @@ body
         background-color: #0f172a
         position: relative
         z-index: 1
+        .home-link
+            &:active
+                height: 1.5em
         .nav-inner
             display: flex
             justify-content: space-between
             align-items: center
             .notification-icon
                 fill: white
-                &:hover
-                    animation: $notification
+                &:active
+                    transform: translateY(5%)
         .avatar-container
             display: flex
             gap: 1em
@@ -101,16 +104,33 @@ body
         button
             height: 2em
     .cont
+        color: white
         .movie-main
             @include flex
             justify-content: center
             height: 35em
             overflow: hidden
-            .backdrop
+        .movie-main-information
+            display: flex
+            width: 250em
+            flex-direction: column
+            .genres
+                margin-top: 0.5em
                 display: flex
-                justify-self: center
-                width: 100%
-                height: 40em
+                gap: 1em
+                width: 7.3em
+                height: 2em
+                white-space: nowrap
+                .genre
+                    margin-bottom: 0.2em
+                    padding-bottom: 0.5em
+                    background-color: #0f172a
+                    justify-content: center
+        .backdrop
+            display: flex
+            justify-self: center
+            width: 100%
+            height: 40em
         .movie-info
             display: flex
             img
@@ -125,14 +145,10 @@ body
                 margin-left: 2.3em
             .poster-main
                 height: 20em
-
-@keyframes notification
-    0%
-        transform: translateY(-5%)
-    50%
-        transform: translateY(5%)
-    100%
-        transform: translateY(0%)
+            .watched-watchlist
+                width: 25em
+                display: flex
+                margin-left: 0.9em
 
 @keyframes fade
     0%
