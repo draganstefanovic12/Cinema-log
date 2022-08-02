@@ -29,7 +29,6 @@ export const Nav: React.FC = () => {
           {hover ? <MovieCreationRoundedIcon /> : <MovieCreationOutlinedIcon />}
         </Link>
         <div>
-          <Link to={`/search/${value}`}></Link>
           {!user && (
             <Button onClick={() => navigate("/register")}>Register</Button>
           )}
@@ -44,7 +43,7 @@ export const Nav: React.FC = () => {
                 startAdornment={
                   <InputAdornment position="start">
                     <SearchOutlinedIcon
-                      onClick={() => navigate(`/search/${value}`)}
+                      onClick={() => navigate(`/search/${value}/multi`)}
                     />
                   </InputAdornment>
                 }

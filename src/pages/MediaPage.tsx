@@ -88,7 +88,7 @@ export const MediaPage = () => {
                     ? data.data.first_air_date.slice(0, 4)
                     : data.data.release_date.slice(0, 4)}
                   )
-                  <Genre data={data.data} />
+                  <Genre type={params.type} data={data.data} />
                 </Typography>
                 <Typography variant="subtitle1" className="movie-overview">
                   {data.data.overview}
