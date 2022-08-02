@@ -1,5 +1,5 @@
 import { ListItem, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface GenreMapped {
   name: string;
@@ -10,13 +10,19 @@ interface GenreProps {
   data: {
     genres: GenreMapped[];
   };
+  type: string | undefined;
 }
 
-export const Genre = ({ data }: GenreProps) => {
+export const Genre = ({ data, type }: GenreProps) => {
+  const navigate = useNavigate();
   return (
     <Typography className="genres">
       {data.genres.map((genre: GenreMapped) => (
-        <ListItem className="genre" key={genre.id}>
+        <ListItem
+          onClick={() => navigate(`/search/${genre.id}/${type}`)}
+          className="genre"
+          key={genre.id}
+        >
           {genre.name}
         </ListItem>
       ))}

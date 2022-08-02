@@ -29,7 +29,7 @@ const App = () => {
             element={user ? <Homepage /> : <Navigate to="/login" />}
           ></Route>
           <Route path="/user/:user" element={<Profile />}></Route>
-          <Route path="/search/:query" element={<Search />}></Route>
+          <Route path="/search/:query/:type" element={<Search />}></Route>
           <Route path="/:type/:id/" element={<MediaPage />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route

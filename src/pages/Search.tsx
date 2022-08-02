@@ -16,8 +16,12 @@ export interface Result {
 
 export const Search = () => {
   const query = useParams();
-
-  const data = useFetch(`http://localhost:5000/imdb/${query.query}`);
+  const data = useFetch(
+    query.type === "multi"
+      ? `http://localhost:5000/imdb/${query.query}`
+      : `http://localhost:5000/imdb/discover/${query.query}/${query.type}`
+  );
+  data && console.log(data);
   return (
     <div className="main-container">
       {data &&
@@ -30,7 +34,7 @@ export const Search = () => {
               <Link
                 style={{ color: "white" }}
                 className="movie-poster-link"
-                to={`/${result.media_type}/${result.id}`}
+                to={`/${result.first_air_date ? "tv" : "movie"}/${result.id}`}
               >
                 <Grid container>
                   <Grid>
@@ -46,12 +50,11 @@ export const Search = () => {
                       align="center"
                       variant="h5"
                     >
-                      {result.media_type === "tv" && (
+                      {result.first_air_date ? (
                         <>
-                          {result.name} {result.first_air_date.slice(0, 4)}
+                          {result.name} ({result.first_air_date.slice(0, 4)})
                         </>
-                      )}
-                      {result.media_type === "movie" && (
+                      ) : (
                         <>
                           {result.title} ({result.release_date.slice(0, 4)})
                         </>
