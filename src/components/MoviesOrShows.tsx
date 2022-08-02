@@ -1,4 +1,4 @@
-import { Card, Pagination } from "@mui/material";
+import { Card, CardMedia, Pagination } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -31,11 +31,11 @@ export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
         <Container className="movie-grid-cont">
           {data.data.map((movie: Movie) => (
             <Link key={movie.id} to={`/${type}/${movie.id}`}>
-              <Card variant="outlined">
-                <img
-                  style={{ height: "15em" }}
+              <Card className="movie-card-link" variant="outlined">
+                <CardMedia
+                  component="img"
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster}`}
-                  alt="poster"
+                  height="250"
                 />
               </Card>
             </Link>

@@ -34,15 +34,13 @@ export const Search = () => {
                 to={`/${result.media_type}/${result.id}`}
               >
                 <Grid container>
-                  <CardMedia>
-                    <Grid>
-                      <img
-                        alt="poster"
-                        className="poster"
-                        src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-                      />
-                    </Grid>
-                  </CardMedia>
+                  <Grid>
+                    <CardMedia
+                      component="img"
+                      height="350"
+                      src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                    ></CardMedia>
+                  </Grid>
                   <Grid item xs={8}>
                     <Typography
                       marginTop="1em"

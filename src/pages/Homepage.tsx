@@ -18,9 +18,5 @@ export const Homepage = () => {
     };
   }, [user]);
 
-  return (
-    <section>
-      <h1>EYYY!</h1>
-    </section>
-  );
+  return <section></section>;
 };
