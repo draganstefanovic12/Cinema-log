@@ -17,8 +17,11 @@ export interface Result {
 export const Search = () => {
   const query = useParams();
 
-  const data = useFetch(`http://localhost:5000/imdb/${query.query}`);
-
+  const data = useFetch(
+    query.type === undefined
+      ? `http://localhost:5000/imdb/${query.query}`
+      : `http://localhost:5000/imdb/genre/${query.query}/${query.type}`
+  );
   return (
     <div className="main-container">
       {data &&
