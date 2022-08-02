@@ -32,6 +32,7 @@ export const Follow = ({ user, followedUser, followers }: FollowProps) => {
         color: "#CCCCCC",
         height: "2em",
         marginLeft: "2.5em",
+        marginTop: "0.5em",
       }}
     >
       <ListItem
