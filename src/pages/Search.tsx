@@ -41,10 +41,9 @@ export const Search = () => {
                       src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                     ></CardMedia>
                   </Grid>
-                  <Grid item xs={8}>
+                  <Grid className="card-grid" item xs={8}>
                     <Typography
-                      marginTop="1em"
-                      marginBottom="1em"
+                      className="movie-card-name"
                       align="center"
                       variant="h5"
                     >
@@ -59,7 +58,7 @@ export const Search = () => {
                         </>
                       )}
                     </Typography>
-                    <Typography padding="1em" align="center" variant="body2">
+                    <Typography className="search-overview" variant="subtitle2">
                       {result.overview}
                     </Typography>
                   </Grid>

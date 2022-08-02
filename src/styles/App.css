@@ -84,6 +84,15 @@ body .main-container .poster {
 body .main-container .movie-poster-link {
   text-decoration: none;
 }
+body .main-container .movie-poster-link .movie-card-name {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+body .main-container .movie-poster-link .card-grid .search-overview {
+  padding: 1em;
+  justify-content: center;
+  color: #CCCCCC;
+}
 body .main-container .movie-cont {
   display: flex;
   justify-content: center;
