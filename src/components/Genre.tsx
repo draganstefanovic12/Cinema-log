@@ -1,4 +1,5 @@
 import { ListItem, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface GenreMapped {
   name: string;
