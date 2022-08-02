@@ -29,13 +29,13 @@ export const Follow = ({ user, followedUser, followers }: FollowProps) => {
       sx={{
         display: "flex",
         width: "9em",
-        color: "white",
+        color: "#CCCCCC",
         height: "2em",
         marginLeft: "2.5em",
       }}
     >
       <ListItem
-        sx={{ justifyContent: "center" }}
+        sx={{ justifyContent: "center", backgroundColor: "#283038" }}
         onClick={() => {
           handleClick();
           setFollow(follow === "Follow" ? "Unfollow" : "Follow");

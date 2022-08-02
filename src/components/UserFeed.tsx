@@ -18,11 +18,11 @@ interface UserFeedProps {
 }
 export const UserFeed = ({ feed }: UserFeedProps) => {
   return (
-    <Container sx={{ backgroundColor: "#141c30", height: "52.5em" }}>
+    <Container sx={{ backgroundColor: "#181e26", height: "52.5em" }}>
       <Container className="user-feed-container">
         {feed.slice(0, 18).map((event) => (
           <div
-            key={event.id}
+            key={event.created}
             style={{
               display: "flex",
               width: "100%",

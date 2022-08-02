@@ -1,14 +1,14 @@
+import { Genre } from "../components/Genre";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
+import { MediaDetails } from "../components/MediaDetails";
 import { useWatchlist } from "../hooks/useWatchlist";
 import { useEffect, useState } from "react";
 import { Grid, ListItem, Typography } from "@mui/material";
-import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import { Genre } from "../components/Genre";
-import { MediaDetails } from "../components/MediaDetails";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 
 interface Movie {
   original_name: string;
@@ -115,11 +115,14 @@ export const MediaPage = () => {
                     button
                   >
                     <LocalMoviesIcon sx={{ marginRight: "0.5em" }} />
-                    <Typography variant="body2">{watched}</Typography>
+                    <Typography variant="subtitle1">{watched}</Typography>
                   </ListItem>
                 )}
                 <ListItem
-                  style={{ whiteSpace: "nowrap" }}
+                  style={{
+                    whiteSpace: "nowrap",
+                    display: watchlist ? "flex" : "none",
+                  }}
                   disabled={watched === "Watched" ? true : false}
                   button
                   onClick={() => {
@@ -142,7 +145,7 @@ export const MediaPage = () => {
                   {watchlist && (
                     <>
                       <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                      <Typography variant="body2">
+                      <Typography variant="subtitle1">
                         {watched === "Watched" ? "Already watched" : watchlist}
                       </Typography>
                     </>
@@ -150,8 +153,8 @@ export const MediaPage = () => {
                 </ListItem>
               </Container>
             </Grid>
-            <MediaDetails type={params.type} id={params.id} />
           </Grid>
+          <MediaDetails type={params.type} id={params.id} />
         </>
       )}
     </Container>

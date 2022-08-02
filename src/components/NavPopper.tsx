@@ -20,7 +20,7 @@ export const NavPopper = ({
     <div>
       <Button
         onClick={() => setOpen(true)}
-        style={{ backgroundColor: open ? "#141c30" : "#0f172a" }}
+        style={{ backgroundColor: open ? "#161b22" : "#161b22" }}
         ref={anchorRef}
         id="composition-button"
       >

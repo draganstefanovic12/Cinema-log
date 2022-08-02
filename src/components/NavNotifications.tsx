@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useEffect, useState } from "react";
 import { NavPopper } from "./NavPopper";
 import { usePopper } from "../hooks/usePopper";
 import { ListItem, MenuList } from "@mui/material";
+import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
+import axios from "axios";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import axios from "axios";
 
 interface NotificationProps {
   notifications: [];
@@ -18,6 +18,7 @@ interface Notification {
   createdAt: string | number | Date;
   user: string | undefined;
   read: boolean;
+  _id: number;
 }
 
 export const NavNotifications = ({ notifications }: NotificationProps) => {
@@ -56,8 +57,8 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
     >
       <MenuList className="menu-list">
         {notifications.length > 0 ? (
-          notifications.map((notification: Notification) => (
-            <ListItem style={{ whiteSpace: "nowrap" }}>
+          notifications.slice(0, 10).map((notification: Notification) => (
+            <ListItem key={notification._id} style={{ whiteSpace: "nowrap" }}>
               <Link
                 style={{ marginRight: "0.2em", display: "" }}
                 to={`/user/${notification.user}`}

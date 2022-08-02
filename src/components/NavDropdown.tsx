@@ -18,7 +18,7 @@ export const NavDropdown = () => {
         autoFocusItem={open}
         id="composition-menu"
         sx={{
-          backgroundColor: "#141c30",
+          backgroundColor: "#161b22",
         }}
         aria-labelledby="composition-button"
       >
