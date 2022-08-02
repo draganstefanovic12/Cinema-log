@@ -11,7 +11,6 @@
 body {
   margin: 0;
   min-height: 100vh;
-  animation: fade 500ms 1 ease-in-out forwards;
   background: #14181c;
 }
 body .nav {
@@ -40,6 +39,7 @@ body .nav .menu-list {
 }
 body .nav .avatar-container {
   display: flex;
+  align-items: center;
   gap: 1em;
 }
 body .nav img {
@@ -136,15 +136,33 @@ body .form-container button {
 }
 body .cont {
   color: #efefef;
-  background-color: #14181c;
+  background-color: #181e26;
   padding: 0;
+}
+body .cont .cast-crew-cont {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+body .cont .crew-cont {
+  display: grid;
+  grid-template-columns: repeat(2, 20em);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  margin-top: 1em;
+}
+body .cont .crew-cont .crew {
+  display: flex;
+  margin-bottom: 1em;
+}
+body .cont .crew-cont .crew-avatar {
+  height: 2.5em;
+  width: 2.5em;
 }
 body .cont .actors {
   display: grid;
   justify-content: flex-start;
   margin-top: 1em;
   width: 100%;
-  grid-template-columns: repeat(2, 25em);
+  grid-template-columns: repeat(2, 20em);
   grid-template-rows: repeat(auto-fit, 1fr);
 }
 body .cont .actors .actor-cont {
@@ -180,6 +198,9 @@ body .cont .movie-main-information .genres .genre {
   padding-bottom: 0.5em;
   background-color: #283038;
   justify-content: center;
+}
+body .cont .movie-main-information .genres .genre:hover {
+  cursor: pointer;
 }
 body .cont .backdrop {
   display: flex;
@@ -264,7 +285,6 @@ body .cont .movie-info .watched-watchlist {
   grid-template-columns: repeat(auto-fit, 10em);
   grid-template-rows: repeat(3, 1fr);
   padding-top: 2em;
-  padding-left: 3em;
   gap: 1em;
   height: 52.5em;
   width: 100%;
