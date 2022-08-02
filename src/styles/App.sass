@@ -21,7 +21,6 @@ $notification: notification 500ms 1 ease-in-out forwards
 body
     margin: 0
     min-height: 100vh
-    animation: $fade500ms
     @include gradient
     .nav
         padding: 0.2em
@@ -44,6 +43,7 @@ body
             background-color: #161b22
         .avatar-container
             display: flex
+            align-items: center
             gap: 1em
 
         img
@@ -121,14 +121,28 @@ body
             height: 2em
     .cont
         color: #efefef
-        background-color: #14181c
+        background-color: #181e26
         padding: 0
+        .cast-crew-cont
+            display: grid
+            grid-template-columns: repeat(2, 50%)
+        .crew-cont
+            display: grid
+            grid-template-columns: repeat(2, 20em)
+            grid-template-rows: repeat(auto-fit, 1fr)
+            margin-top: 1em
+            .crew
+                display: flex
+                margin-bottom: 1em
+            .crew-avatar
+                height: 2.5em
+                width: 2.5em
         .actors
             display: grid
             justify-content: flex-start
             margin-top: 1em
             width: 100%
-            grid-template-columns: repeat(2, 25em)
+            grid-template-columns: repeat(2, 20em)
             grid-template-rows: repeat(auto-fit, 1fr)
             .actor-cont
                 display: flex
@@ -152,11 +166,14 @@ body
                 width: 7.3em
                 height: 2em
                 white-space: nowrap
+
                 .genre
                     margin-bottom: 0.2em
                     padding-bottom: 0.5em
                     background-color: #283038
                     justify-content: center
+                    &:hover
+                        cursor: pointer
         .backdrop
             display: flex
             justify-self: center
@@ -225,7 +242,6 @@ body
             grid-template-columns: repeat(auto-fit, 10em)
             grid-template-rows: repeat(3, 1fr)
             padding-top: 2em
-            padding-left: 3em
             gap: 1em
             height: 52.5em
             width: 100%

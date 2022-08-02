@@ -36,7 +36,10 @@ export const Nav: React.FC = () => {
           {user && (
             <Container className="avatar-container">
               <Input
-                sx={{ marginRight: "0.5em" }}
+                sx={{
+                  marginRight: "0.5em",
+                  alignSelf: "  ",
+                }}
                 placeholder="Search..."
                 startAdornment={
                   <InputAdornment position="start">

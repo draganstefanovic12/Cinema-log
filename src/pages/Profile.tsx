@@ -24,7 +24,13 @@ export const Profile = () => {
         }}
       >
         {data && (
-          <Grid container sx={{ width: "100%", height: "10.5em" }}>
+          <Grid
+            container
+            sx={{
+              width: "100%",
+              height: "10.5em",
+            }}
+          >
             <Grid>
               <Avatar
                 sx={{ height: "7.5em", width: "7.5em" }}
