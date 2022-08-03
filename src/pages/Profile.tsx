@@ -3,7 +3,7 @@ import { Container } from "@mui/system";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { MoviesOrShows } from "../components/MoviesOrShows";
-import { UserFeed } from "../components/UserFeed";
+import { ProfileInfo } from "../components/ProfileInfo";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { Follow } from "../components/Follow";
@@ -129,7 +129,12 @@ export const Profile = () => {
       </Container>
       {data && (
         <>
-          {state === "feed" && <UserFeed feed={data.data.user.feed} />}
+          {state === "feed" && (
+            <ProfileInfo
+              movies={data.data.user.favoriteMovies}
+              feed={data.data.user.feed}
+            />
+          )}
           {state === "movie" && (
             <MoviesOrShows
               type={state}

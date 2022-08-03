@@ -1,22 +1,9 @@
-import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { AddFavoriteMedia } from "../components/AddFavoriteMedia";
 
 export const Homepage = () => {
-  const { user } = useAuth();
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await fetch("http://localhost:5000/imdb", {
-        headers: { Authorization: `Bearer ${user!.token}` },
-      });
-      const json = await response.json();
-      console.log(json);
-
-      if (user) {
-        fetchMovies();
-      }
-    };
-  }, [user]);
-
-  return <section></section>;
+  return (
+    <section>
+      <AddFavoriteMedia />
+    </section>
+  );
 };
