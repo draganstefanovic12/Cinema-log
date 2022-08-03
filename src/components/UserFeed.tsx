@@ -1,8 +1,8 @@
-import { Container, Typography } from "@mui/material";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { Card, CardContent, Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
 
-interface UserFeedProps {
+interface Feed {
   feed: [
     {
       content: string;
@@ -16,67 +16,52 @@ interface UserFeedProps {
     }
   ];
 }
-export const UserFeed = ({ feed }: UserFeedProps) => {
+
+export const UserFeed = ({ feed }: Feed) => {
   return (
-    <Container sx={{ backgroundColor: "#181e26", height: "52.5em" }}>
-      <Container className="user-feed-container">
-        {feed.slice(0, 18).map((event) => (
-          <div
-            key={event.created}
-            style={{
-              display: "flex",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography key={event.created} className="feed-cont">
-              <Link
-                style={{ color: "white", textDecoration: "none" }}
-                to={`/user/${event.user}`}
-              >
-                {event.user}
-              </Link>{" "}
-              <span style={{ color: "#667d93" }}>
-                {event.content2}
-                {event.id && (
-                  <Link
-                    style={{
-                      color: "white",
-                      textDecoration: "none",
-                    }}
-                    to={`/${event.type}/${event.id}`}
-                  >
-                    {" "}
-                    {event.name}
-                  </Link>
-                )}{" "}
-                {event.content3 &&
-                  (event.content3 !== "to the watchlist" ? (
-                    <Link
-                      style={{
-                        color: "white",
-                        textDecoration: "none",
-                      }}
-                      to={`/user/${event.content3}`}
-                    >
-                      {event.content3}
-                    </Link>
-                  ) : (
-                    event.content3
-                  ))}
-              </span>
-              {!event.id && (
-                <span style={{ color: "#667d93" }}> {event.content}</span>
-              )}
-            </Typography>
-            <Typography>
-              <span style={{ color: "#667d93", marginLeft: "1em" }}>
-                {formatDistanceToNow(new Date(event.created))} ago.
-              </span>
-            </Typography>
-          </div>
-        ))}
-      </Container>
+    <Container className="user-feed-container">
+      <Typography variant="h5" className="user-feed">
+        User Feed
+      </Typography>
+      <Card className="user-feed-div">
+        <CardContent style={{ backgroundColor: "#161b22", width: "100%" }}>
+          {feed.slice(0, 18).map((event) => (
+            <div style={{ display: "flex" }} key={event.created}>
+              <Typography key={event.created} className="feed-cont">
+                <Link to={`/user/${event.user}`}>{event.user}</Link>{" "}
+                <span style={{ color: "#667d93" }}>
+                  {event.content2}
+                  {event.id && (
+                    <Link to={`/${event.type}/${event.id}`}> {event.name}</Link>
+                  )}{" "}
+                  {event.content3 &&
+                    (event.content3 !== "to the watchlist" ? (
+                      <Link to={`/user/${event.content3}`}>
+                        {event.content3}
+                      </Link>
+                    ) : (
+                      event.content3
+                    ))}
+                </span>
+                {!event.id && (
+                  <span style={{ color: "#667d93" }}> {event.content}</span>
+                )}
+              </Typography>
+              <Typography>
+                <span
+                  style={{
+                    color: "#667d93",
+                    marginLeft: "1em",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {formatDistanceToNow(new Date(event.created))} ago.
+                </span>
+              </Typography>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </Container>
   );
 };

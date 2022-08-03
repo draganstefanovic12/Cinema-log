@@ -21,7 +21,6 @@ export const Search = () => {
       ? `http://localhost:5000/imdb/${query.query}`
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}`
   );
-  data && console.log(data);
   return (
     <div className="main-container">
       {data &&
@@ -40,6 +39,7 @@ export const Search = () => {
                   <Grid>
                     <CardMedia
                       component="img"
+                      style={{ width: "15em" }}
                       height="350"
                       src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                     ></CardMedia>

@@ -15,6 +15,10 @@ $notification: notification 500ms 1 ease-in-out forwards
     box-sizing: border-box
     font-family: $main
 
+a
+    color: #fff
+    text-decoration: none
+
 #root
     min-height: 100vh
 
@@ -216,21 +220,43 @@ body
     margin-top: 1em
     height: calc( 100vh - 55px )
     animation: $fade500ms
+    .profile-info-container
+        display: grid
+        grid-template-columns: 60% 40%
+        height: 52.5em
+        background-color: #181e26
+    .favorite-container
+        width: 25em
+        .favorite-movies
+            margin-top: 1.5em
+            padding-bottom: 0.4em
+            color: #cccccc
+        .favorite-container-card
+            display: grid
+            grid-template-columns: repeat(auto-fill, 50%)
+            grid-template-rows: repeat(auto-fill, 50%)
     .user-feed-container
         display: flex
         flex-direction: column
-        width: 75%
+        width: 100%
         padding-top: 2em
-        align-items: center
         height: 100%
-        animation: $fade500ms
-        .feed-cont
-            color: #efefef
-            width: 75%
-            height: 2.5em
-            .profile-link
-                color: #efefef
+        .user-feed
+            color: #cccccc
+            padding-bottom: 0.5em
+        .user-feed-div
+            display: flex
+            width: 100%
+            .user-feed-link
+                color: #fff
                 text-decoration: none
+            .feed-cont
+                color: #efefef
+                width: 100%
+                height: 2.5em
+                .profile-link
+                    color: #efefef
+                    text-decoration: none
     .profile-list-cont
         display: flex
         flex-direction: column

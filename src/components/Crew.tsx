@@ -21,31 +21,32 @@ export const Crew = ({ data }: Data) => {
         Crew
       </Typography>
       <div className="crew-cont">
-        {data &&
-          data.data.crew
-            .filter(
-              (director: Crew) =>
-                director.known_for_department === "Directing" ||
-                director.known_for_department === "Writing"
-            )
-            .slice(0, 3)
-            .map((director: Crew) => (
-              <Container className="crew">
-                <Avatar
-                  variant="square"
-                  className="crew-avatar"
-                  src={`https://image.tmdb.org/t/p/w500/${director.profile_path}`}
-                />
-                <Container>
-                  <Typography sx={{ color: "#fff" }} noWrap>
-                    {director.name}
-                  </Typography>
-                  <Typography variant="subtitle1" sx={{ color: "#cccccc" }}>
-                    {director.known_for_department}
-                  </Typography>
-                </Container>
-              </Container>
-            ))}
+        <Container className="crew">
+          {data &&
+            data.data.crew
+              .filter(
+                (director: Crew) =>
+                  director.known_for_department === "Directing"
+              )
+              .slice(0, 1)
+              .map((crew: Crew) => (
+                <>
+                  <Avatar
+                    variant="square"
+                    className="crew-avatar"
+                    src={`https://image.tmdb.org/t/p/w500/${crew.profile_path}`}
+                  />
+                  <Container>
+                    <Typography sx={{ color: "#fff" }} noWrap>
+                      {crew.name}
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ color: "#cccccc" }}>
+                      Director
+                    </Typography>
+                  </Container>
+                </>
+              ))}
+        </Container>
       </div>
     </Container>
   );
