@@ -25,7 +25,17 @@ interface Media {
   id: string;
 }
 
-export const AddFavoriteMedia = () => {
+interface AddFavoriteMediaProps {
+  setInput: React.Dispatch<React.SetStateAction<boolean>>;
+  setFavMovies: any;
+  setRemove: any;
+}
+
+export const AddFavoriteMedia = ({
+  setInput,
+  setFavMovies,
+  setRemove,
+}: AddFavoriteMediaProps) => {
   const [searchValue, setSearchValue] = useState<any>();
   const [hidden, setHidden] = useState<boolean>(false);
   const [result, setResult] = useState<any>();
@@ -55,7 +65,7 @@ export const AddFavoriteMedia = () => {
   }, [debounce]);
 
   return (
-    <ClickAwayListener onClickAway={() => setHidden(true)}>
+    <ClickAwayListener onClickAway={() => setInput(false)}>
       <Container>
         <Input
           onClick={() => setHidden(false)}
@@ -80,6 +90,18 @@ export const AddFavoriteMedia = () => {
                     onClick={() => {
                       handleClick(movie.title, movie.id, movie.poster_path);
                       setHidden(true);
+                      setInput(false);
+                      setRemove(
+                        `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      );
+                      setFavMovies((currMovies: any) => [
+                        ...currMovies,
+                        {
+                          title: movie.title,
+                          id: movie.id,
+                          poster_path: movie.poster_path,
+                        },
+                      ]);
                     }}
                   >
                     <CardMedia
