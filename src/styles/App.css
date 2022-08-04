@@ -269,15 +269,56 @@ body .cont .movie-info .watched-watchlist {
 .profile-container .favorite-container {
   width: 27em;
 }
-.profile-container .favorite-container .favorite-movies {
+.profile-container .favorite-container .fav-text-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-container .favorite-container .fav-text-cont .favorite-movies {
   margin-top: 1.5em;
   padding-bottom: 0.4em;
   color: #cccccc;
+}
+.profile-container .favorite-container .fav-text-cont .fav-edit {
+  padding-top: 0.9em;
+  align-self: center;
+}
+.profile-container .favorite-container .fav-text-cont .fav-edit:hover {
+  cursor: pointer;
 }
 .profile-container .favorite-container .favorite-container-card {
   display: grid;
   grid-template-columns: repeat(auto-fill, 50%);
   grid-template-rows: repeat(auto-fill, 50%);
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont {
+  margin-bottom: 1em;
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav {
+  position: absolute;
+  transform: translate(-1em);
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon {
+  position: absolute;
+  transform: translateX(6.3em);
+  color: #fff;
+  z-index: 1;
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon:hover {
+  cursor: pointer;
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-edit-card {
+  width: 11em;
+}
+.profile-container .favorite-container .favorite-container-card .fav-add-icon {
+  position: absolute;
+  transform: translate(2.7em, -7em);
+  color: #fff;
+  width: 2em;
+  height: 3em;
+}
+.profile-container .favorite-container .favorite-container-card .fav-add-icon:hover {
+  cursor: pointer;
 }
 .profile-container .user-feed-container {
   display: flex;
