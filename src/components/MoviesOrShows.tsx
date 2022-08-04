@@ -23,12 +23,12 @@ export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [watchType, setWatchType] = useState<string>("watched");
   const data = useFetch(
-    `http://localhost:5000/user/${type}/${user}/${offset}/${type}`
+    `http://localhost:5000/user/${type}/${watchType}/${user}/${offset}/${type}`
   );
 
   return (
     <Container className="profile-list-cont">
-      <div style={{ display: "flex" }}>
+      <div className="watched-watchlist-cont">
         <ListItem
           style={{ color: watchType === "watched" ? "#fff" : "#cccccc" }}
           onClick={() => setWatchType("watched")}

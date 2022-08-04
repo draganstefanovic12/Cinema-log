@@ -26,7 +26,7 @@ export const Search = () => {
       {data &&
         data.data.results
           .filter((result: Result) => {
-            return result.popularity > 15;
+            return result.popularity > 6.5;
           })
           .map((result: Result) => (
             <Card className="movie-card" key={result.id}>
