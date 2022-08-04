@@ -1,24 +1,25 @@
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
+import { Link, useParams } from "react-router-dom";
 import { AddFavoriteMedia } from "./AddFavoriteMedia";
 import { useEffect, useState } from "react";
 import { CardMedia, Typography } from "@mui/material";
+import favBg from "../assets/fav-movie-bg.png";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
-import favBg from "../assets/fav-movie-bg.png";
-import { useAuth } from "../context/AuthContext";
 
 interface Movies {
   poster_path: string;
   title: string;
   id: string;
+  createdAt: string;
 }
 
 export const FavoriteMovies = () => {
-  const [favMovies, setFavMovies] = useState<any>();
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
+  const [favMovies, setFavMovies] = useState<any>();
   const params = useParams();
   const { user } = useAuth();
 
@@ -31,8 +32,8 @@ export const FavoriteMovies = () => {
     setFavMovies(data.data.user.favoriteMovies);
   };
 
-  const handleRemove = async (mov: string) => {
-    setFavMovies(favMovies.filter((movie: Movies) => movie.title !== mov));
+  const handleRemove = async (mov: string, date: string) => {
+    setFavMovies(favMovies.filter((movie: Movies) => movie.createdAt !== date));
     await axios.delete(
       `http://localhost:5000/user/removefavorite/${params.user}`,
       {
@@ -70,25 +71,25 @@ export const FavoriteMovies = () => {
       <div className="favorite-container-card">
         {edit ? (
           <>
-            <HoverRemove
+            <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
               movie={favMovies[0] ? favMovies[0] : favMovies}
               setFavMovies={setFavMovies}
             />
-            <HoverRemove
+            <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
               movie={favMovies[1] ? favMovies[1] : favMovies}
               setFavMovies={setFavMovies}
             />
-            <HoverRemove
+            <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
               movie={favMovies[2] ? favMovies[2] : favMovies}
               setFavMovies={setFavMovies}
             />
-            <HoverRemove
+            <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
               movie={favMovies[3] ? favMovies[3] : favMovies}
@@ -98,7 +99,7 @@ export const FavoriteMovies = () => {
         ) : (
           favMovies &&
           favMovies.map((movie: Movies) => (
-            <HoverRemove
+            <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
               movie={movie}
@@ -110,7 +111,7 @@ export const FavoriteMovies = () => {
   );
 };
 
-export const HoverRemove = ({
+export const FavoriteCard = ({
   movie,
   handleRemove,
   edit,
@@ -130,7 +131,7 @@ export const HoverRemove = ({
             {hover && movie.poster_path && (
               <HighlightOffOutlinedIcon
                 onClick={() => {
-                  handleRemove(movie.title);
+                  handleRemove(movie.title, movie.createdAt);
                 }}
                 className="fav-remove-icon"
               />

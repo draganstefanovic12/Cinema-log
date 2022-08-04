@@ -1,4 +1,4 @@
-import { Card, CardMedia, Pagination } from "@mui/material";
+import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,12 +21,31 @@ interface Movie {
 
 export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
   const [offset, setOffset] = useState<number>(0);
+  const [watchType, setWatchType] = useState<string>("watched");
   const data = useFetch(
     `http://localhost:5000/user/${type}/${user}/${offset}/${type}`
   );
 
   return (
     <Container className="profile-list-cont">
+      <div style={{ display: "flex" }}>
+        <ListItem
+          style={{ color: watchType === "watched" ? "#fff" : "#cccccc" }}
+          onClick={() => setWatchType("watched")}
+          sx={{ width: "6em" }}
+          button
+        >
+          Watched
+        </ListItem>
+        <ListItem
+          style={{ color: watchType === "watchlist" ? "#fff" : "#cccccc" }}
+          onClick={() => setWatchType("watchlist")}
+          sx={{ width: "6em" }}
+          button
+        >
+          Watchlist
+        </ListItem>
+      </div>
       {data && (
         <Container className="movie-grid-cont">
           {data.data.map((movie: Movie) => (
