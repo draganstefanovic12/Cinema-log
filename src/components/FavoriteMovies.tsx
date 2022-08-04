@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
 import { AddFavoriteMedia } from "./AddFavoriteMedia";
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import { CardMedia, Typography } from "@mui/material";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 import favBg from "../assets/fav-movie-bg.png";
+import { useAuth } from "../context/AuthContext";
 
 interface Movies {
   poster_path: string;
@@ -15,23 +15,32 @@ interface Movies {
   id: string;
 }
 
-export const FavoriteMovies = ({ movies }: any) => {
-  const [favMovies, setFavMovies] = useState(movies);
+export const FavoriteMovies = () => {
+  const [favMovies, setFavMovies] = useState<any>();
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
-  const { user } = useParams();
+  const params = useParams();
+  const { user } = useAuth();
 
   useEffect(() => {
-    setFavMovies(movies);
-  }, [movies]);
+    updateMovies();
+  }, [edit, params.user]);
+
+  const updateMovies = async () => {
+    const data = await axios.get(`http://localhost:5000/user/${params.user}`);
+    setFavMovies(data.data.user.favoriteMovies);
+  };
 
   const handleRemove = async (mov: string) => {
     setFavMovies(favMovies.filter((movie: Movies) => movie.title !== mov));
-    await axios.delete(`http://localhost:5000/user/removefavorite/${user}`, {
-      data: {
-        content: mov,
-      },
-    });
+    await axios.delete(
+      `http://localhost:5000/user/removefavorite/${params.user}`,
+      {
+        data: {
+          content: mov,
+        },
+      }
+    );
   };
 
   return (
@@ -44,20 +53,14 @@ export const FavoriteMovies = ({ movies }: any) => {
       }}
       className="favorite-container"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <div className="fav-text-cont">
         <Typography className="favorite-movies" variant="h5">
           Favorite Movies
         </Typography>
-        {hover && (
+        {user?.username && user.username === params.user && hover && (
           <Typography
             variant="subtitle1"
-            className="favorite-movies"
+            className="favorite-movies fav-edit"
             onClick={() => setEdit(!edit)}
           >
             {edit ? "Finish editing" : "Edit"}
@@ -70,29 +73,30 @@ export const FavoriteMovies = ({ movies }: any) => {
             <HoverRemove
               edit={edit}
               handleRemove={handleRemove}
-              movie={movies[0] ? movies[0] : movies}
+              movie={favMovies[0] ? favMovies[0] : favMovies}
               setFavMovies={setFavMovies}
             />
             <HoverRemove
               edit={edit}
               handleRemove={handleRemove}
-              movie={movies[1] ? movies[1] : movies}
+              movie={favMovies[1] ? favMovies[1] : favMovies}
               setFavMovies={setFavMovies}
             />
             <HoverRemove
               edit={edit}
               handleRemove={handleRemove}
-              movie={movies[2] ? movies[2] : movies}
+              movie={favMovies[2] ? favMovies[2] : favMovies}
               setFavMovies={setFavMovies}
             />
             <HoverRemove
               edit={edit}
               handleRemove={handleRemove}
-              movie={movies[3] ? movies[3] : movies}
+              movie={favMovies[3] ? favMovies[3] : favMovies}
               setFavMovies={setFavMovies}
             />
           </>
         ) : (
+          favMovies &&
           favMovies.map((movie: Movies) => (
             <HoverRemove
               edit={edit}
@@ -114,11 +118,11 @@ export const HoverRemove = ({
 }: any) => {
   const [input, setInput] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
-  const [remove, setRemove] = useState<any>();
   return (
     <>
       {edit ? (
         <div
+          className="fav-edit-cont"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -127,50 +131,29 @@ export const HoverRemove = ({
               <HighlightOffOutlinedIcon
                 onClick={() => {
                   handleRemove(movie.title);
-                  setRemove(true);
                 }}
-                style={{
-                  position: "absolute",
-                  transform: "translateX(6.3em)",
-                  color: "#fff",
-                  zIndex: "1",
-                }}
+                className="fav-remove-icon"
               />
             )}
             <CardMedia
               src={
-                remove
-                  ? remove
-                  : movie.poster_path
+                movie.poster_path
                   ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
                   : favBg
               }
+              className="fav-edit-card"
               component="img"
-              height="270"
-              style={{
-                width: "11.2em",
-                paddingBottom: "1em",
-              }}
+              height="250"
             />
             {!movie.poster_path && hover && (
               <ControlPointOutlinedIcon
                 onClick={() => setInput(true)}
-                style={{
-                  position: "absolute",
-                  transform: "translate(2.7em, -7.3em)",
-                  color: "#fff",
-                  width: "2em",
-                  height: "3em",
-                }}
+                className="fav-add-icon"
               />
             )}
           </>
           {input && (
-            <AddFavoriteMedia
-              setRemove={setRemove}
-              setInput={setInput}
-              setFavMovies={setFavMovies}
-            />
+            <AddFavoriteMedia setInput={setInput} setFavMovies={setFavMovies} />
           )}
         </div>
       ) : (

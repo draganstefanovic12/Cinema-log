@@ -28,13 +28,11 @@ interface Media {
 interface AddFavoriteMediaProps {
   setInput: React.Dispatch<React.SetStateAction<boolean>>;
   setFavMovies: any;
-  setRemove: any;
 }
 
 export const AddFavoriteMedia = ({
   setInput,
   setFavMovies,
-  setRemove,
 }: AddFavoriteMediaProps) => {
   const [searchValue, setSearchValue] = useState<any>();
   const [hidden, setHidden] = useState<boolean>(false);
@@ -66,7 +64,7 @@ export const AddFavoriteMedia = ({
 
   return (
     <ClickAwayListener onClickAway={() => setInput(false)}>
-      <Container>
+      <Container className="search-fav">
         <Input
           onClick={() => setHidden(false)}
           placeholder="Search movies..."
@@ -91,9 +89,6 @@ export const AddFavoriteMedia = ({
                       handleClick(movie.title, movie.id, movie.poster_path);
                       setHidden(true);
                       setInput(false);
-                      setRemove(
-                        `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                      );
                       setFavMovies((currMovies: any) => [
                         ...currMovies,
                         {

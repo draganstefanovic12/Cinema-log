@@ -227,14 +227,46 @@ body
         background-color: #181e26
     .favorite-container
         width: 27em
-        .favorite-movies
-            margin-top: 1.5em
-            padding-bottom: 0.4em
-            color: #cccccc
+        .fav-text-cont
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .favorite-movies
+                margin-top: 1.5em
+                padding-bottom: 0.4em
+                color: #cccccc
+            .fav-edit
+                padding-top: 0.9em
+                align-self: center
+                &:hover
+                    cursor: pointer
+
         .favorite-container-card
             display: grid
             grid-template-columns: repeat(auto-fill, 50%)
             grid-template-rows: repeat(auto-fill, 50%)
+            .fav-edit-cont
+                margin-bottom: 1em
+                .search-fav
+                    position: absolute
+                    transform: translate(-1em)
+                .fav-remove-icon
+                    position: absolute
+                    transform: translateX(6.3em)
+                    color: #fff
+                    z-index: 1
+                    &:hover
+                        cursor: pointer
+                .fav-edit-card
+                    width: 11em
+            .fav-add-icon
+                position: absolute
+                transform: translate(2.7em, -7em)
+                color: #fff
+                width: 2em
+                height: 3em
+                &:hover
+                    cursor: pointer
     .user-feed-container
         display: flex
         flex-direction: column

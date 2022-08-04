@@ -15,20 +15,13 @@ interface ProfileProps {
       content3: string;
     }
   ];
-  movies: [FavMovies];
 }
 
-interface FavMovies {
-  poster_path: string;
-  name: string;
-  id: string;
-}
-
-export const ProfileInfo = ({ feed, movies }: ProfileProps) => {
+export const ProfileInfo = ({ feed }: ProfileProps) => {
   return (
     <Container className="profile-info-container">
       <UserFeed feed={feed} />
-      <FavoriteMovies movies={movies} />
+      <FavoriteMovies />
     </Container>
   );
 };

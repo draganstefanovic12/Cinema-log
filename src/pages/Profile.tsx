@@ -56,16 +56,16 @@ export const Profile = () => {
                 {data.data.user.bio && (
                   <Typography>{data.data.user.bio}</Typography>
                 )}
-                <Typography sx={{ color: "#CCCCCC" }} variant="subtitle1">
+                <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
                   Movies watched: {data.data.user.movies.watched.length}
                 </Typography>
-                <Typography sx={{ color: "#CCCCCC" }} variant="subtitle1">
+                <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
                   TV Shows watched: {data.data.user.shows.watched.length}
                 </Typography>
-                <Typography sx={{ color: "#CCCCCC" }} variant="subtitle1">
+                <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
                   Followers: {data.data.user.followers.length}
                 </Typography>
-                <Typography sx={{ color: "#CCCCCC" }} variant="subtitle1">
+                <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
                   Following: {data.data.user.following.length}
                 </Typography>
               </Typography>
@@ -90,7 +90,7 @@ export const Profile = () => {
                 }}
                 button
               >
-                User Feed
+                Profile
               </ListItem>
               <Divider orientation="vertical" />
               <ListItem
@@ -129,12 +129,7 @@ export const Profile = () => {
       </Container>
       {data && (
         <>
-          {state === "feed" && (
-            <ProfileInfo
-              movies={data.data.user.favoriteMovies}
-              feed={data.data.user.feed}
-            />
-          )}
+          {state === "feed" && <ProfileInfo feed={data.data.user.feed} />}
           {state === "movie" && (
             <MoviesOrShows
               type={state}
