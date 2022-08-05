@@ -19,7 +19,7 @@ export const Genre = ({ data, type }: GenreProps) => {
     <Typography className="genres">
       {data.genres.map((genre: GenreMapped) => (
         <ListItem
-          onClick={() => navigate(`/search/${genre.id}/${type}`)}
+          onClick={() => navigate(`/search/${genre.id}/${type}/`)}
           className="genre"
           key={genre.id}
         >
