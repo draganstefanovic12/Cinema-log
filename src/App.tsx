@@ -9,6 +9,7 @@ import { Homepage } from "./pages/Homepage";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
+import { List } from "./pages/List";
 
 const App = () => {
   const { user } = useAuth();
@@ -24,6 +25,7 @@ const App = () => {
       <ThemeProvider theme={darkTheme}>
         <Nav />
         <Routes>
+          <Route path="/list/:name" element={<List />}></Route>
           <Route
             path="/"
             element={user ? <Homepage /> : <Navigate to="/login" />}

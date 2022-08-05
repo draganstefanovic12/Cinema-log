@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { FavoriteMovies } from "./FavoriteMovies";
+import { Favorites } from "./Favorites";
 import { UserFeed } from "./UserFeed";
 
 interface ProfileProps {
@@ -21,7 +21,7 @@ export const ProfileInfo = ({ feed }: ProfileProps) => {
   return (
     <Container className="profile-info-container">
       <UserFeed feed={feed} />
-      <FavoriteMovies />
+      <Favorites />
     </Container>
   );
 };

@@ -18,6 +18,21 @@ body {
   min-height: 100vh;
   background: #14181c;
 }
+body .list-main-cont {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5em;
+  height: 50em;
+  color: #cccccc;
+}
+body .list-main-cont .list-grid-cont {
+  display: grid;
+  margin-top: 2em;
+  background-color: #161b22;
+  min-height: 50em;
+  padding: 1em;
+  grid-template-columns: repeat(auto-fill, 9em);
+}
 body .nav {
   padding: 0.2em;
   background-color: #161b22;
@@ -292,7 +307,7 @@ body .cont .movie-info .watched-watchlist {
 .profile-container .favorite-container .favorite-container-card {
   display: grid;
   grid-template-columns: repeat(auto-fill, 50%);
-  grid-template-rows: repeat(auto-fill, 50%);
+  grid-template-rows: repeat(auto-fill, 16.7em);
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont {
   margin-bottom: 1em;
@@ -361,6 +376,15 @@ body .cont .movie-info .watched-watchlist {
   background-color: #181e26;
   animation: fade 500ms 1 ease-in-out forwards;
 }
+.profile-container .profile-list-cont .btn-new-list {
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-top: 1em;
+  height: 2em;
+}
+.profile-container .profile-list-cont .no-lists {
+  color: #cccccc;
+}
 .profile-container .profile-list-cont .watched-watchlist-cont {
   display: flex;
   align-self: flex-end;
@@ -380,7 +404,19 @@ body .cont .movie-info .watched-watchlist {
   outline: 0.1em solid #6d6d6d;
   border-radius: 0.1em;
 }
-.profile-container .profile-list-cont .pagination {
+.profile-container .profiles-lists {
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  grid-template-rows: repeat(auto-fill, 10em);
+  gap: 5em;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.profile-container .profiles-lists .list-img {
+  width: 8.5em;
+}
+.profile-container .profiles-lists .pagination {
   padding-bottom: 1em;
   justify-content: center;
 }

@@ -7,6 +7,7 @@ import { ProfileInfo } from "../components/ProfileInfo";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { Follow } from "../components/Follow";
+import { Lists } from "../components/Lists";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
@@ -73,7 +74,7 @@ export const Profile = () => {
 
             <Grid
               item
-              xs={4}
+              xs={5}
               sx={{
                 display: "flex",
                 width: "100%",
@@ -116,6 +117,17 @@ export const Profile = () => {
               >
                 TV Shows
               </ListItem>
+              <ListItem
+                onClick={() => setState("lists")}
+                sx={{
+                  justifyContent: "center",
+                  color: state === "lists" ? "#fff" : "#CCCCCC",
+                  backgroundColor: state === "lists" ? "#181e26" : "#161b22",
+                }}
+                button
+              >
+                Lists
+              </ListItem>
             </Grid>
             {user && params.user !== user?.username && (
               <Follow
@@ -144,6 +156,7 @@ export const Profile = () => {
               movies={data.data.user.shows}
             />
           )}
+          {state === "lists" && <Lists user={params.user} />}
         </>
       )}
     </div>

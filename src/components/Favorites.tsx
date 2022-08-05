@@ -9,17 +9,17 @@ import favBg from "../assets/fav-movie-bg.png";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 
-interface Movies {
+interface Media {
   poster_path: string;
   title: string;
   id: string;
   createdAt: string;
 }
 
-export const FavoriteMovies = () => {
+export const Favorites = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
-  const [favMovies, setFavMovies] = useState<any>();
+  const [favMedia, setFavMedia] = useState<any>();
   const params = useParams();
   const { user } = useAuth();
 
@@ -29,11 +29,11 @@ export const FavoriteMovies = () => {
 
   const updateMovies = async () => {
     const data = await axios.get(`http://localhost:5000/user/${params.user}`);
-    setFavMovies(data.data.user.favoriteMovies);
+    setFavMedia(data.data.user.favorites);
   };
 
   const handleRemove = async (mov: string, date: string) => {
-    setFavMovies(favMovies.filter((movie: Movies) => movie.createdAt !== date));
+    setFavMedia(favMedia.filter((media: Media) => media.createdAt !== date));
     await axios.delete(
       `http://localhost:5000/user/removefavorite/${params.user}`,
       {
@@ -56,7 +56,7 @@ export const FavoriteMovies = () => {
     >
       <div className="fav-text-cont">
         <Typography className="favorite-movies" variant="h5">
-          Favorite Movies
+          Favorites
         </Typography>
         {user?.username && user.username === params.user && hover && (
           <Typography
@@ -74,35 +74,47 @@ export const FavoriteMovies = () => {
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              movie={favMovies[0] ? favMovies[0] : favMovies}
-              setFavMovies={setFavMovies}
+              media={favMedia[0] ? favMedia[0] : favMedia}
+              setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              movie={favMovies[1] ? favMovies[1] : favMovies}
-              setFavMovies={setFavMovies}
+              media={favMedia[1] ? favMedia[1] : favMedia}
+              setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              movie={favMovies[2] ? favMovies[2] : favMovies}
-              setFavMovies={setFavMovies}
+              media={favMedia[2] ? favMedia[2] : favMedia}
+              setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              movie={favMovies[3] ? favMovies[3] : favMovies}
-              setFavMovies={setFavMovies}
+              media={favMedia[3] ? favMedia[3] : favMedia}
+              setFavMovies={setFavMedia}
+            />
+            <FavoriteCard
+              edit={edit}
+              handleRemove={handleRemove}
+              media={favMedia[4] ? favMedia[4] : favMedia}
+              setFavMovies={setFavMedia}
+            />
+            <FavoriteCard
+              edit={edit}
+              handleRemove={handleRemove}
+              media={favMedia[5] ? favMedia[5] : favMedia}
+              setFavMovies={setFavMedia}
             />
           </>
         ) : (
-          favMovies &&
-          favMovies.map((movie: Movies) => (
+          favMedia &&
+          favMedia.map((media: Media) => (
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              movie={movie}
+              media={media}
             />
           ))
         )}
@@ -112,7 +124,7 @@ export const FavoriteMovies = () => {
 };
 
 export const FavoriteCard = ({
-  movie,
+  media,
   handleRemove,
   edit,
   setFavMovies,
@@ -128,25 +140,25 @@ export const FavoriteCard = ({
           onMouseLeave={() => setHover(false)}
         >
           <>
-            {hover && movie.poster_path && (
+            {hover && media.poster_path && (
               <HighlightOffOutlinedIcon
                 onClick={() => {
-                  handleRemove(movie.title, movie.createdAt);
+                  handleRemove(media.title, media.createdAt);
                 }}
                 className="fav-remove-icon"
               />
             )}
             <CardMedia
               src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                media.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${media.poster_path}`
                   : favBg
               }
               className="fav-edit-card"
               component="img"
               height="250"
             />
-            {!movie.poster_path && hover && (
+            {!media.poster_path && hover && (
               <ControlPointOutlinedIcon
                 onClick={() => setInput(true)}
                 className="fav-add-icon"
@@ -158,7 +170,7 @@ export const FavoriteCard = ({
           )}
         </div>
       ) : (
-        <Link to={`/movie/${movie.id}`}>
+        <Link to={`/${media.type}/${media.id}`}>
           <CardMedia
             component="img"
             height="270"
@@ -166,7 +178,7 @@ export const FavoriteCard = ({
               width: "11em",
               paddingBottom: "1em",
             }}
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
           />
         </Link>
       )}

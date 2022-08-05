@@ -21,6 +21,7 @@ export const Search = () => {
       ? `http://localhost:5000/imdb/${query.query}`
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}`
   );
+
   return (
     <div className="main-container">
       {data &&
