@@ -38,6 +38,14 @@ export const List = () => {
               <Typography sx={{ color: "#A7A7A7" }}>
                 {data.data.description}
               </Typography>
+              <div style={{ display: "flex" }}>
+                <Typography>Created by:</Typography>
+                <Link to={`/user/${data.data.username}`}>
+                  {data.data.username}
+                </Link>
+              </div>
+            </div>
+            <div style={{ display: "flex" }}>
               <ListItem
                 onClick={handleClick}
                 button
@@ -45,12 +53,6 @@ export const List = () => {
               >
                 Like the list? Tell {data.data.username} about it.
               </ListItem>
-            </div>
-            <div style={{ display: "flex" }}>
-              <Typography>Created by:</Typography>
-              <Link to={`/user/${data.data.username}`}>
-                {data.data.username}
-              </Link>
             </div>
           </Container>
           <Container className="list-grid-cont">
