@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
 import { List } from "./pages/List";
+import { MyAccount } from "./pages/MyAccount";
 
 const App = () => {
   const { user } = useAuth();
@@ -38,6 +39,7 @@ const App = () => {
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}
           ></Route>
+          <Route path="/account/" element={<MyAccount />}></Route>
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

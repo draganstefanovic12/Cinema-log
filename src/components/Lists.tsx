@@ -18,7 +18,7 @@ interface List {
 }
 
 export const Lists = ({ user }: ListsProps) => {
-  const [lists, setLists] = useState<any>();
+  const [lists, setLists] = useState<[List]>();
   const [add, setAdd] = useState<boolean>(false);
 
   const handleLists = async () => {
@@ -28,7 +28,7 @@ export const Lists = ({ user }: ListsProps) => {
 
   useEffect(() => {
     handleLists();
-  }, [setAdd]);
+  }, []);
 
   return (
     <Container className="profile-list-cont">
@@ -47,14 +47,16 @@ export const Lists = ({ user }: ListsProps) => {
                   {list.name}
                 </Typography>
                 <div style={{ display: "flex", width: "20em" }}>
-                  {list.content.slice(0, 4).map((movImg: any) => (
-                    <CardMedia
-                      className="list-img"
-                      component="img"
-                      height="200"
-                      src={`https://image.tmdb.org/t/p/w500/${movImg.poster_path}`}
-                    />
-                  ))}
+                  {list.content
+                    .slice(0, 4)
+                    .map((movImg: { poster_path: string }) => (
+                      <CardMedia
+                        className="list-img"
+                        component="img"
+                        height="200"
+                        src={`https://image.tmdb.org/t/p/w500/${movImg.poster_path}`}
+                      />
+                    ))}
                 </div>
               </Link>
             </>
@@ -65,7 +67,7 @@ export const Lists = ({ user }: ListsProps) => {
             No lists...
           </Typography>
         )}
-        {add && <NewList setAdd={setAdd} user={user} />}
+        {add && <NewList setLists={setLists} setAdd={setAdd} user={user} />}
       </Container>
     </Container>
   );

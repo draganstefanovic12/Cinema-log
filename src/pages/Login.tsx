@@ -1,7 +1,8 @@
-import { Button, FormLabel, Input } from "@mui/material";
+import { Button, FormLabel, Input, Typography } from "@mui/material";
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import loginBg from "../assets/login-bg.jpg";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [username, setUsername] = useState<string>("");
@@ -14,10 +15,20 @@ export const Login = () => {
   };
 
   return (
-    <div
-      style={{ backgroundImage: `url(${loginBg})` }}
-      className="form-container"
-    >
+    <div className="form-container">
+      <div className="landing-font">
+        <Typography className="big-login-text" variant="h2">
+          Welcome back
+        </Typography>
+        <div style={{ display: "flex" }}>
+          <Typography className="welcome-back" variant="subtitle1">
+            Don't have an account?
+          </Typography>
+          <Link className="link" to="/register">
+            Sign Up
+          </Link>
+        </div>
+      </div>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <FormLabel>Username</FormLabel>
         <Input
@@ -28,7 +39,6 @@ export const Login = () => {
             setError(null);
           }}
         />
-
         <FormLabel>Password</FormLabel>
         <Input
           className="inpt"

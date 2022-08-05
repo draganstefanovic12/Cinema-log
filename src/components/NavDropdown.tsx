@@ -30,7 +30,14 @@ export const NavDropdown = () => {
         >
           Profile
         </MenuItem>
-        <MenuItem onClick={() => setOpen(false)}>My account</MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/account");
+            setOpen(false);
+          }}
+        >
+          My account
+        </MenuItem>
         <MenuItem
           onClick={(e) => {
             setOpen(false);

@@ -13,9 +13,15 @@ import axios from "axios";
 interface NewListProps {
   user: string | undefined;
   setAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  setLists: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export const NewList = ({ user, setAdd }: NewListProps) => {
+interface Media {
+  title: string;
+  createdAt: string;
+}
+
+export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
   const [desc, setDesc] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<any>([]);
@@ -46,7 +52,7 @@ export const NewList = ({ user, setAdd }: NewListProps) => {
     }
   };
   const handleFilter = (date: string) => {
-    setContent(content.filter((list: any) => list.createdAt !== date));
+    setContent(content.filter((list: Media) => list.createdAt !== date));
   };
 
   return (
@@ -61,7 +67,10 @@ export const NewList = ({ user, setAdd }: NewListProps) => {
         padding: "1%",
         borderRadius: "1%",
         position: "absolute",
+        left: "0",
+        right: "0",
         zIndex: "0",
+        border: "1em solid #161b22",
       }}
     >
       <Typography>List name</Typography>
@@ -79,7 +88,7 @@ export const NewList = ({ user, setAdd }: NewListProps) => {
       />
       <Typography>List content</Typography>
       <AddFavoriteMedia setContent={setContent} />
-      {content.map((media: any) => (
+      {content.map((media: Media) => (
         <Container sx={{ display: "flex", gap: "1em" }}>
           <Typography>{media.title}</Typography>
 
@@ -92,6 +101,10 @@ export const NewList = ({ user, setAdd }: NewListProps) => {
           content.length > 0 && setAdd(false);
           addList();
           addListToProfile();
+          setLists((currLists: any) => [
+            { name: name, content: content, description: desc },
+            ...currLists,
+          ]);
         }}
       >
         Submit

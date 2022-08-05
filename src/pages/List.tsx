@@ -2,6 +2,7 @@ import { CardMedia, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { RemoveList } from "../components/RemoveList";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 
@@ -46,13 +47,18 @@ export const List = () => {
               </div>
             </div>
             <div style={{ display: "flex" }}>
-              <ListItem
-                onClick={handleClick}
-                button
-                sx={{ whiteSpace: "nowrap", width: "17em", marginTop: "1em" }}
-              >
-                Like the list? Tell {data.data.username} about it.
-              </ListItem>
+              {user?.username === data.data.username && (
+                <RemoveList list={data.data} user={user?.username} />
+              )}
+              {user?.username !== data.data.username && (
+                <ListItem
+                  onClick={handleClick}
+                  button
+                  sx={{ whiteSpace: "nowrap", width: "17em", marginTop: "1em" }}
+                >
+                  Like the list? Tell {data.data.username} about it.
+                </ListItem>
+              )}
             </div>
           </Container>
           <Container className="list-grid-cont">

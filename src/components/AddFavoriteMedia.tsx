@@ -25,8 +25,8 @@ interface Media {
 
 interface AddFavoriteMediaProps {
   setInput?: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies?: any;
-  setContent?: any;
+  setFavMovies?: React.Dispatch<React.SetStateAction<object[]>>;
+  setContent?: React.Dispatch<React.SetStateAction<object[]>>;
 }
 
 export const AddFavoriteMedia = ({
@@ -98,7 +98,7 @@ export const AddFavoriteMedia = ({
                   <MenuItem
                     onClick={() => {
                       setContent
-                        ? setContent((currCont: any) => [
+                        ? setContent((currCont: object[]) => [
                             ...currCont,
                             {
                               title: movie.title
@@ -119,7 +119,7 @@ export const AddFavoriteMedia = ({
                       setHidden(true);
                       setInput && setInput!(false);
                       setFavMovies &&
-                        setFavMovies((currMovies: any) => [
+                        setFavMovies((currMovies: object[]) => [
                           ...currMovies,
                           {
                             title: movie.title
