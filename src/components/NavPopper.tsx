@@ -3,7 +3,7 @@ import { Button, ClickAwayListener, Grow, Paper, Popper } from "@mui/material";
 
 interface NavPopperProps {
   button: any;
-  children: JSX.Element;
+  children: any;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

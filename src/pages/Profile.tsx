@@ -58,18 +58,20 @@ export const Profile = () => {
                   {data.data.user.bio && (
                     <Typography>{data.data.user.bio}</Typography>
                   )}
-                  <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
-                    Movies watched: {data.data.user.movies.watched.length}
-                  </Typography>
-                  <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
-                    TV Shows watched: {data.data.user.shows.watched.length}
-                  </Typography>
-                  <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
-                    Followers: {data.data.user.followers.length}
-                  </Typography>
-                  <Typography sx={{ color: "#cccccc" }} variant="subtitle1">
-                    Following: {data.data.user.following.length}
-                  </Typography>
+                  <div className="profile-details">
+                    <Typography variant="subtitle1">
+                      Movies watched: {data.data.user.movies.watched.length}
+                    </Typography>
+                    <Typography variant="subtitle1">
+                      TV Shows watched: {data.data.user.shows.watched.length}
+                    </Typography>
+                    <Typography variant="subtitle1">
+                      Followers: {data.data.user.followers.length}
+                    </Typography>
+                    <Typography variant="subtitle1">
+                      Following: {data.data.user.following.length}
+                    </Typography>
+                  </div>
                 </div>
               </Typography>
             </Grid>
