@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
 import { Link, useParams } from "react-router-dom";
 import { AddFavoriteMedia } from "./AddFavoriteMedia";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { CardMedia, Typography } from "@mui/material";
 import favBg from "../assets/fav-movie-bg.png";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
@@ -111,11 +111,13 @@ export const Favorites = () => {
         ) : (
           favMedia &&
           favMedia.map((media: Media) => (
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={media}
-            />
+            <Fragment key={media.createdAt}>
+              <FavoriteCard
+                edit={edit}
+                handleRemove={handleRemove}
+                media={media}
+              />
+            </Fragment>
           ))
         )}
       </div>
