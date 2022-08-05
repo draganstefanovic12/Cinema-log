@@ -13,26 +13,26 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import { useAuth } from "../context/AuthContext";
 
-interface FilterContent {
-  media_type: string;
-}
-
 interface Media {
   original_name: string;
   title: string;
   poster_path: string;
   release_date: string;
   id: string;
+  first_air_date: string;
+  media_type: string;
 }
 
 interface AddFavoriteMediaProps {
-  setInput: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies: any;
+  setInput?: React.Dispatch<React.SetStateAction<boolean>>;
+  setFavMovies?: any;
+  setContent?: any;
 }
 
 export const AddFavoriteMedia = ({
   setInput,
   setFavMovies,
+  setContent,
 }: AddFavoriteMediaProps) => {
   const [searchValue, setSearchValue] = useState<any>();
   const [hidden, setHidden] = useState<boolean>(false);
@@ -47,13 +47,19 @@ export const AddFavoriteMedia = ({
     setResult(data);
   };
 
-  const handleClick = async (name: string, id: string, poster: string) => {
+  const handleClick = async (
+    name: string,
+    id: string,
+    poster: string,
+    type: string
+  ) => {
     await axios.post(
       `http://localhost:5000/user/addfavorite/${user?.username}/`,
       {
         title: name,
         id: id,
         poster: poster,
+        type: type,
       }
     );
   };
@@ -63,17 +69,22 @@ export const AddFavoriteMedia = ({
   }, [debounce]);
 
   return (
-    <ClickAwayListener onClickAway={() => setInput(false)}>
+    <ClickAwayListener
+      onClickAway={() => (setInput ? setInput(false) : setHidden(true))}
+    >
       <Container className="search-fav">
         <Input
           onClick={() => setHidden(false)}
-          placeholder="Search movies..."
+          placeholder="Search..."
           onChange={(e) => setSearchValue(e.target.value)}
         />
         {debounce &&
           result &&
           result.data.results
-            .filter((type: FilterContent) => type.media_type === "movie")
+            .filter(
+              (media: Media) =>
+                media.media_type === "tv" || media.media_type === "movie"
+            )
             .slice(0, 10)
             .map((movie: Media) => (
               <Paper
@@ -86,17 +97,38 @@ export const AddFavoriteMedia = ({
                 <MenuList>
                   <MenuItem
                     onClick={() => {
-                      handleClick(movie.title, movie.id, movie.poster_path);
+                      setContent
+                        ? setContent((currCont: any) => [
+                            ...currCont,
+                            {
+                              title: movie.title
+                                ? movie.title
+                                : movie.original_name,
+                              id: movie.id,
+                              poster_path: movie.poster_path,
+                              type: movie.media_type,
+                              createdAt: new Date(),
+                            },
+                          ])
+                        : handleClick(
+                            movie.title ? movie.title : movie.original_name,
+                            movie.id,
+                            movie.poster_path,
+                            movie.media_type
+                          );
                       setHidden(true);
-                      setInput(false);
-                      setFavMovies((currMovies: any) => [
-                        ...currMovies,
-                        {
-                          title: movie.title,
-                          id: movie.id,
-                          poster_path: movie.poster_path,
-                        },
-                      ]);
+                      setInput && setInput!(false);
+                      setFavMovies &&
+                        setFavMovies((currMovies: any) => [
+                          ...currMovies,
+                          {
+                            title: movie.title
+                              ? movie.title
+                              : movie.original_name,
+                            id: movie.id,
+                            poster_path: movie.poster_path,
+                          },
+                        ]);
                     }}
                   >
                     <CardMedia
@@ -106,7 +138,11 @@ export const AddFavoriteMedia = ({
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     />
                     <ListItemText style={{ marginLeft: "1em" }}>
-                      {movie.title} ({movie.release_date.slice(0, 4)})
+                      {movie.title ? movie.title : movie.original_name} (
+                      {movie.first_air_date
+                        ? movie.first_air_date.slice(0, 4)
+                        : movie.release_date.slice(0, 4)}
+                      )
                     </ListItemText>
                   </MenuItem>
                 </MenuList>

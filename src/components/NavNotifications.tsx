@@ -19,6 +19,8 @@ interface Notification {
   user: string | undefined;
   read: boolean;
   _id: number;
+  content2: string;
+  content3: string;
 }
 
 export const NavNotifications = ({ notifications }: NotificationProps) => {
@@ -66,7 +68,17 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
               >
                 {notification.user}{" "}
               </Link>{" "}
-              {notification.content}{" "}
+              {notification.content}
+              {notification.content2 && notification.content2}
+              {notification.content3 && (
+                <Link
+                  style={{ marginLeft: "0.3em" }}
+                  onClick={() => setOpen(false)}
+                  to={`/list/${notification.content3}`}
+                >
+                  {notification.content3}
+                </Link>
+              )}
               <span style={{ marginLeft: "0.5em" }}>
                 {formatDistanceToNow(new Date(notification.createdAt))} ago
               </span>
