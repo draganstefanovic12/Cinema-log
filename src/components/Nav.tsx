@@ -29,9 +29,6 @@ export const Nav: React.FC = () => {
           {hover ? <MovieCreationRoundedIcon /> : <MovieCreationOutlinedIcon />}
         </Link>
         <div>
-          {!user && (
-            <Button onClick={() => navigate("/register")}>Register</Button>
-          )}
           {user && (
             <Container className="avatar-container">
               <Input

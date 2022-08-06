@@ -41,7 +41,10 @@ export const List = () => {
               </Typography>
               <div style={{ display: "flex" }}>
                 <Typography>Created by:</Typography>
-                <Link to={`/user/${data.data.username}`}>
+                <Link
+                  style={{ marginTop: "0.3em", marginLeft: "0.5em" }}
+                  to={`/user/${data.data.username}`}
+                >
                   {data.data.username}
                 </Link>
               </div>

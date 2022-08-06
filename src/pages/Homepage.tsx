@@ -1,5 +1,9 @@
-import { AddFavoriteMedia } from "../components/AddFavoriteMedia";
+import { HelmetTitle } from "../components/HelmetTitle";
 
 export const Homepage = () => {
-  return <section></section>;
+  return (
+    <section>
+      <HelmetTitle title={"Home"} />
+    </section>
+  );
 };

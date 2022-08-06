@@ -19,6 +19,7 @@ export const NavDropdown = () => {
         id="composition-menu"
         sx={{
           backgroundColor: "#161b22",
+          color: "#cccccc",
         }}
         aria-labelledby="composition-button"
       >
@@ -42,6 +43,7 @@ export const NavDropdown = () => {
           onClick={(e) => {
             setOpen(false);
             logout();
+            navigate("/");
           }}
         >
           Logout
