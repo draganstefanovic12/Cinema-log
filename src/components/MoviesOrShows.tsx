@@ -63,6 +63,7 @@ export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
       )}
       <Pagination
         className="pagination"
+        sx={{ marginBottom: "1em" }}
         hidePrevButton
         hideNextButton
         onChange={(e: any) => {

@@ -30,6 +30,8 @@ export const Follow = ({ user, followedUser, followers }: FollowProps) => {
         display: "flex",
         width: "9em",
         color: "#CCCCCC",
+        position: "relative",
+        left: "4em",
         height: "2em",
         marginLeft: "2.5em",
         marginTop: "0.5em",

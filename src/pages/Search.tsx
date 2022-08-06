@@ -2,6 +2,7 @@ import { useFetch } from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
 import { Card, CardMedia, Grid, Pagination, Typography } from "@mui/material";
 import { useRef, useState } from "react";
+import { HelmetTitle } from "../components/HelmetTitle";
 
 export interface Result {
   id: string;
@@ -27,6 +28,7 @@ export const Search = () => {
 
   return (
     <div>
+      <HelmetTitle title={"Search"} />
       <div className="main-container">
         {data &&
           data.data.results

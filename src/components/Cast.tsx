@@ -37,7 +37,7 @@ export const Cast = ({ data }: Data) => {
                   sx={{ color: "#cccccc" }}
                   noWrap
                 >
-                  ({cast.character})
+                  {cast.character}
                 </Typography>
               </Container>
             </Container>

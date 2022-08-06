@@ -15,7 +15,10 @@ export const Login = () => {
   };
 
   return (
-    <div className="form-container">
+    <div
+      style={{ backgroundImage: `url(${loginBg})` }}
+      className="form-container"
+    >
       <div className="landing-font">
         <Typography className="big-login-text" variant="h2">
           Welcome back
