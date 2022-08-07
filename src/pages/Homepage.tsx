@@ -21,12 +21,13 @@ type Feed = {
   content3: string;
   created: string;
   name: string;
+  sort: any;
 };
 
 export const Homepage = () => {
   const { user, userStats } = useAuth();
-  const [userState, setUserState] = useState<User[]>([]);
-  const [userFeed, setUserFeed] = useState<User[]>([]);
+  const [userState, setUserState] = useState<any>([]);
+  const [userFeed, setUserFeed] = useState<any>([]);
   const navigate = useNavigate();
 
   const handleActivity = async () => {
@@ -43,6 +44,24 @@ export const Homepage = () => {
     handleActivity();
   }, [userStats]);
 
+  useEffect(() => {
+    const mapped = userState.map((user: User) =>
+      user.user.feed.map((feed: any) => {
+        if (
+          userState.length > 0 &&
+          userState.map((user: any) => user.created !== feed.created)
+        ) {
+          return feed;
+        } else {
+          return userFeed;
+        }
+      })
+    );
+    setUserFeed(mapped);
+  }, [userState]);
+
+  console.log(userFeed.slice(0, userStats?.data.user.following.length));
+
   return (
     <Container className="main-page-cont" sx={{ marginTop: "5em" }}>
       <HelmetTitle title={"Home"} />
@@ -52,36 +71,34 @@ export const Homepage = () => {
         </Typography>
         <TrendingMovies />
       </div>
-
       <Container className="main-page-feed-cont">
         <Typography sx={{ marginBottom: "1em" }} variant="h4">
           Friend Activity
         </Typography>
+
         <div className="main-page-user-feed">
-          {userState &&
-            userState
-              .slice(0, userStats?.data.user.following.length)
-              .map((user: User) =>
-                user.user.feed.map((feed: Feed) => (
-                  <div className="main-page-user-feed-cont">
-                    <div style={{ gridColumn: "1" }}>
-                      <span
-                        className="user"
-                        onClick={() => navigate(`/user/${feed.user}`)}
-                      >
-                        {feed.user}
-                      </span>{" "}
-                      {feed.content} {feed.content2 && feed.content2}{" "}
-                      {feed.content3 && feed.content3} {feed.name}
-                    </div>
-                    <span
-                      style={{ color: "rgb(102, 125, 147)", gridColumn: "2" }}
-                    >
-                      {formatDistanceToNow(new Date(feed.created))} ago
+          {userFeed
+            .slice(0, userStats?.data.user.following.length)
+            .map((feed: Feed) =>
+              feed
+                .sort((a: { created: number }, b: { created: number }) => {
+                  return (
+                    Number(new Date(a.created)) + Number(new Date(b.created))
+                  );
+                })
+                .slice(0, 20)
+                .map((feed: Feed) => (
+                  <Typography>
+                    <span onClick={() => navigate(`/user/${feed.user}`)}>
+                      {feed.user}
                     </span>
-                  </div>
+                    {feed.content}
+                    {feed.content2}
+                    {feed.content3}
+                    {formatDistanceToNow(new Date(feed.created))}
+                  </Typography>
                 ))
-              )}
+            )}
         </div>
         <HomepageLists />
       </Container>

@@ -26,7 +26,6 @@ export const Search = () => {
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
-  console.log(data);
   return (
     <div>
       <HelmetTitle title={"Search"} />
