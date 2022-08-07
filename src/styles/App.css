@@ -36,11 +36,13 @@ body {
   padding: 0;
   background: #14181c;
 }
+
 body .main-page-cont {
   display: grid;
   height: 90vh;
   grid-template-columns: 70% 30%;
 }
+
 body .main-page-cont .main-page-list-container {
   display: flex;
   flex-direction: column;
@@ -48,34 +50,43 @@ body .main-page-cont .main-page-list-container {
   color: #cccccc;
   margin-bottom: 2rem;
 }
+
 body .main-page-cont .main-page-list-container .main-page-list-name:hover {
   cursor: pointer;
 }
+
 body .main-page-cont .main-page-list-container .list-created-by .list-username {
   color: #fff;
 }
+
 body .main-page-cont .main-page-list-container .list-created-by .list-username:hover {
   cursor: pointer;
 }
+
 body .main-page-cont .main-page-list-container .main-page-list-img-cont {
   display: flex;
 }
+
 body .main-page-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img {
   width: 8em;
 }
+
 body .main-page-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img:hover {
   cursor: pointer;
 }
+
 body .main-page-cont .welcome-back-main {
   color: #cccccc;
   font-family: nunito, sans-serif;
   width: 100%;
   animation: welcomeback 500ms 1 ease-in-out forwards;
 }
+
 body .main-page-cont .after-main {
   color: #cccccc;
   animation: subwelcomeback 1500ms 1 forwards;
 }
+
 body .list-main-cont {
   display: flex;
   flex-direction: column;
@@ -85,6 +96,7 @@ body .list-main-cont {
   color: #cccccc;
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 body .list-main-cont .list-grid-cont {
   display: grid;
   margin-top: 2rem;
@@ -96,6 +108,7 @@ body .list-main-cont .list-grid-cont {
   grid-template-columns: repeat(auto-fill, 8rem);
   grid-template-rows: repeat(auto-fill, 12.5rem);
 }
+
 body .nav {
   display: flex;
   align-items: center;
@@ -107,52 +120,65 @@ body .nav {
   top: 0;
   z-index: 1;
 }
+
 body .nav .home-link:active {
   height: 1.5em;
 }
+
 body .nav .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 body .nav .notification-icon {
   fill: #f7f7f7;
 }
+
 body .nav .notification-icon:active {
   transform: translateY(5%);
 }
+
 body .nav .menu-list {
   color: rgb(102, 125, 147);
   background-color: #161b22;
 }
+
 body .nav .avatar-container {
   display: flex;
   align-items: center;
   gap: 1em;
 }
+
 body .nav img {
   height: 1.2em;
 }
+
 body .nav img:hover {
   cursor: pointer;
 }
+
 body .nav svg:hover {
   cursor: pointer;
 }
+
 body .nav input {
   border-radius: 0.3em;
   border: none;
   height: 100%;
 }
+
 body .nav .search {
   height: 1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+
 body .nav a {
   text-decoration: none;
   color: #efefef;
 }
+
 body .pw-cont {
   display: flex;
   flex-direction: column;
@@ -161,10 +187,12 @@ body .pw-cont {
   margin-top: 5em;
   width: 17em;
 }
+
 body .pw-cont .change-pw-btn {
   display: flex;
   margin: 0 auto;
 }
+
 body .account-cont {
   display: flex;
   flex-direction: column;
@@ -172,6 +200,7 @@ body .account-cont {
   margin-top: 10em;
   color: #cccccc;
 }
+
 body .main-container {
   display: grid;
   justify-content: space-around;
@@ -180,36 +209,44 @@ body .main-container {
   grid-template-columns: repeat(auto-fill, 50em);
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 body .main-container .movie-card {
   max-width: 45em;
   max-height: 30em;
   margin-bottom: 1em;
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 body .main-container .poster {
   width: 15em;
 }
+
 body .main-container .movie-poster-link {
   text-decoration: none;
 }
+
 body .main-container .movie-poster-link .movie-card-name {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
 body .main-container .movie-poster-link .card-grid .search-overview {
   padding: 1em;
   justify-content: center;
   color: #CCCCCC;
 }
+
 body .main-container .movie-cont {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 14em;
 }
+
 body .main-container .movie-cont p {
   color: #efefef;
 }
+
 body .form-container {
   display: flex;
   justify-content: center;
@@ -219,18 +256,21 @@ body .form-container {
   animation: "Lato", sans-serif;
   align-items: center;
 }
+
 body .form-container .landing-font {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin-right: 5em;
 }
+
 body .form-container .landing-font .big-login-text {
   color: #cccccc;
   font-family: nunito, sans-serif;
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 body .form-container .landing-font .welcome-back {
   display: flex;
   justify-content: center;
@@ -239,6 +279,7 @@ body .form-container .landing-font .welcome-back {
   color: #cccccc;
   padding-right: 0.5em;
 }
+
 body .form-container .landing-font .link {
   display: flex;
   align-items: center;
@@ -246,6 +287,7 @@ body .form-container .landing-font .link {
   margin-top: -0.75em;
   padding-bottom: 0.3em;
 }
+
 body .form-container form {
   display: flex;
   justify-content: center;
@@ -259,40 +301,49 @@ body .form-container form {
   width: 20em;
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 body .form-container form .inpt {
   width: 75%;
   align-self: center;
 }
+
 body .form-container form button {
   align-self: center;
   width: 5em;
 }
+
 body .form-container button {
   height: 2em;
 }
+
 body .cont {
   color: #efefef;
   background-color: #181e26;
   padding: 0;
 }
+
 body .cont .cast-crew-cont {
   display: grid;
   grid-template-columns: repeat(2, 50%);
 }
+
 body .cont .crew-cont {
   display: grid;
   grid-template-columns: repeat(2, 20em);
   grid-template-rows: repeat(auto-fit, 1fr);
   margin-top: 1em;
 }
+
 body .cont .crew-cont .crew {
   display: flex;
   margin-bottom: 1em;
 }
+
 body .cont .crew-cont .crew-avatar {
   height: 2.5em;
   width: 2.5em;
 }
+
 body .cont .actors {
   display: grid;
   justify-content: flex-start;
@@ -301,14 +352,17 @@ body .cont .actors {
   grid-template-columns: repeat(2, 20em);
   grid-template-rows: repeat(auto-fit, 1fr);
 }
+
 body .cont .actors .actor-cont {
   display: flex;
   margin-bottom: 1em;
 }
+
 body .cont .actors .actor-cont .actor-avatar {
   height: 2.5em;
   width: 2.5em;
 }
+
 body .cont .movie-main {
   display: flex;
   justify-content: center;
@@ -316,11 +370,13 @@ body .cont .movie-main {
   height: 35em;
   overflow: hidden;
 }
+
 body .cont .movie-main-information {
   display: flex;
   width: 250em;
   flex-direction: column;
 }
+
 body .cont .movie-main-information .genres {
   margin-top: 0.5em;
   display: flex;
@@ -329,45 +385,55 @@ body .cont .movie-main-information .genres {
   height: 2em;
   white-space: nowrap;
 }
+
 body .cont .movie-main-information .genres .genre {
   margin-bottom: 0.2em;
   padding-bottom: 0.5em;
   background-color: #283038;
   justify-content: center;
 }
+
 body .cont .movie-main-information .genres .genre:hover {
   cursor: pointer;
 }
+
 body .cont .backdrop {
   display: flex;
   justify-self: center;
   width: 100%;
   height: 40em;
 }
+
 body .cont .movie-info {
   display: flex;
 }
+
 body .cont .movie-info .movie-main-information {
   justify-content: space-between;
 }
+
 body .cont .movie-info img {
   margin-top: -2em;
   margin-left: 1.2em;
 }
+
 body .cont .movie-info .movie-name {
   font-family: "Lato", sans-serif;
   margin-left: 1em;
   margin-top: 0.2em;
 }
+
 body .cont .movie-info .movie-overview {
   font-family: "Lato", sans-serif;
   color: #d9d9d9;
   margin-left: 2.3em;
   margin-right: 2.3em;
 }
+
 body .cont .movie-info .poster-main {
   height: 20em;
 }
+
 body .cont .movie-info .watched-watchlist {
   width: 25em;
   display: flex;
@@ -391,43 +457,53 @@ body .cont .movie-info .watched-watchlist {
   height: calc(100vh - 55px);
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 .profile-container .profile-details {
   color: #cccccc;
 }
+
 .profile-container .profile-info-container {
   display: grid;
   grid-template-columns: 60% 40%;
   height: 57.7em;
   background-color: #181e26;
 }
+
 .profile-container .favorite-container {
   width: 27em;
 }
+
 .profile-container .favorite-container .fav-text-cont {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .profile-container .favorite-container .fav-text-cont .favorite-movies {
   margin-top: 1.5em;
   padding-bottom: 0.4em;
   color: #cccccc;
 }
+
 .profile-container .favorite-container .fav-text-cont .fav-edit {
   padding-top: 0.7em;
   align-self: center;
 }
+
 .profile-container .favorite-container .fav-text-cont .fav-edit:hover {
   cursor: pointer;
 }
+
 .profile-container .favorite-container .favorite-container-card {
   display: grid;
   grid-template-columns: repeat(auto-fill, 50%);
   grid-template-rows: repeat(auto-fill, 16.7em);
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont {
   margin-bottom: 1em;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav {
   position: absolute;
   transform: translate(-1em);
@@ -435,18 +511,22 @@ body .cont .movie-info .watched-watchlist {
   width: 14em;
   padding: 0.5em;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon {
   position: absolute;
   transform: translateX(6.3em);
   color: #fff;
   z-index: 1;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon:hover {
   cursor: pointer;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-edit-card {
   width: 11em;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-add-icon {
   position: absolute;
   transform: translate(2.7em, -7em);
@@ -454,9 +534,11 @@ body .cont .movie-info .watched-watchlist {
   width: 2em;
   height: 3em;
 }
+
 .profile-container .favorite-container .favorite-container-card .fav-add-icon:hover {
   cursor: pointer;
 }
+
 .profile-container .user-feed-container {
   display: flex;
   flex-direction: column;
@@ -464,27 +546,33 @@ body .cont .movie-info .watched-watchlist {
   padding-top: 2em;
   height: 100%;
 }
+
 .profile-container .user-feed-container .user-feed {
   color: #cccccc;
   padding-bottom: 0.5em;
 }
+
 .profile-container .user-feed-container .user-feed-div {
   display: flex;
   width: 100%;
 }
+
 .profile-container .user-feed-container .user-feed-div .user-feed-link {
   color: #fff;
   text-decoration: none;
 }
+
 .profile-container .user-feed-container .user-feed-div .feed-cont {
   color: #efefef;
   width: 100%;
   height: 2.5em;
 }
+
 .profile-container .user-feed-container .user-feed-div .feed-cont .profile-link {
   color: #efefef;
   text-decoration: none;
 }
+
 .profile-container .profile-list-cont {
   display: flex;
   flex-direction: column;
@@ -492,21 +580,25 @@ body .cont .movie-info .watched-watchlist {
   background-color: #181e26;
   animation: fade 500ms 1 ease-in-out forwards;
 }
+
 .profile-container .profile-list-cont .btn-new-list {
   justify-self: flex-end;
   align-self: flex-end;
   margin-top: 1em;
   height: 2em;
 }
+
 .profile-container .profile-list-cont .no-lists {
   color: #cccccc;
 }
+
 .profile-container .profile-list-cont .watched-watchlist-cont {
   display: flex;
   align-self: flex-end;
   margin-top: 1em;
   background-color: #161b22;
 }
+
 .profile-container .profile-list-cont .movie-grid-cont {
   display: grid;
   grid-template-columns: repeat(auto-fit, 10em);
@@ -516,10 +608,12 @@ body .cont .movie-info .watched-watchlist {
   height: 52.5em;
   width: 100%;
 }
+
 .profile-container .profile-list-cont .movie-grid-cont .movie-card-link:hover {
   outline: 0.1em solid #6d6d6d;
   border-radius: 0.1em;
 }
+
 .profile-container .profiles-lists {
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -529,9 +623,11 @@ body .cont .movie-info .watched-watchlist {
   justify-content: center;
   align-items: flex-start;
 }
+
 .profile-container .profiles-lists .list-img {
   width: 8.5em;
 }
+
 .profile-container .profiles-lists .pagination {
   padding-bottom: 1em;
   justify-content: center;
@@ -542,5 +638,9 @@ body .cont .movie-info .watched-watchlist {
     height: 24em;
   }
 }
+/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=App.css.map */
 
 /*# sourceMappingURL=App.css.map */
