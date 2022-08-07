@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 import { NavDropdown } from "./NavDropdown";
 import { NavNotifications } from "./NavNotifications";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input, InputAdornment } from "@mui/material";
+import { Input, InputAdornment } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";

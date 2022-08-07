@@ -43,7 +43,9 @@ export const AddFavoriteMedia = ({
   const { debounce } = useDebounce(searchValue);
 
   const handleSearch = async () => {
-    const data = await axios.get(`http://localhost:5000/imdb/${debounce}/`);
+    const data = await axios.get(
+      `http://localhost:5000/imdb/multi/${debounce}/`
+    );
     setResult(data);
   };
 
