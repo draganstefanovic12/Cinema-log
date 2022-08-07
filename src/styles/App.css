@@ -10,29 +10,91 @@ a {
   text-decoration: none;
 }
 
-#root {
-  min-height: 100vh;
+@keyframes welcomeback {
+  0% {
+    transform: translateY(-150%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes subwelcomeback {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+html {
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
   background: #14181c;
+}
+body .main-page-cont {
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 70% 30%;
+}
+body .main-page-cont .main-page-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: #cccccc;
+  margin-bottom: 2rem;
+}
+body .main-page-cont .main-page-list-container .main-page-list-name:hover {
+  cursor: pointer;
+}
+body .main-page-cont .main-page-list-container .list-created-by .list-username {
+  color: #fff;
+}
+body .main-page-cont .main-page-list-container .list-created-by .list-username:hover {
+  cursor: pointer;
+}
+body .main-page-cont .main-page-list-container .main-page-list-img-cont {
+  display: flex;
+}
+body .main-page-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img {
+  width: 8em;
+}
+body .main-page-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img:hover {
+  cursor: pointer;
+}
+body .main-page-cont .welcome-back-main {
+  color: #cccccc;
+  font-family: nunito, sans-serif;
+  width: 100%;
+  animation: welcomeback 500ms 1 ease-in-out forwards;
+}
+body .main-page-cont .after-main {
+  color: #cccccc;
+  animation: subwelcomeback 1500ms 1 forwards;
 }
 body .list-main-cont {
   display: flex;
   flex-direction: column;
   margin-top: 5em;
   height: 50em;
+  width: 70rem;
   color: #cccccc;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
 body .list-main-cont .list-grid-cont {
   display: grid;
-  margin-top: 2em;
+  margin-top: 2rem;
+  justify-content: center;
   background-color: #161b22;
-  min-height: 50em;
-  padding: 1em;
-  grid-template-columns: repeat(auto-fill, 9em);
+  min-height: 55rem;
+  gap: 1rem;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, 8rem);
+  grid-template-rows: repeat(auto-fill, 12.5rem);
 }
 body .nav {
   display: flex;
@@ -460,9 +522,9 @@ body .cont .movie-info .watched-watchlist {
 }
 .profile-container .profiles-lists {
   display: grid;
-  grid-template-columns: repeat(2, 40%);
+  grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(auto-fill, 10em);
-  gap: 5em;
+  gap: 4rem;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;

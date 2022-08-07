@@ -1,7 +1,7 @@
 import { useFetch } from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
 import { Card, CardMedia, Grid, Pagination, Typography } from "@mui/material";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { HelmetTitle } from "../components/HelmetTitle";
 
 export interface Result {
@@ -22,10 +22,11 @@ export const Search = () => {
 
   const data = useFetch(
     query.type === "multi"
-      ? `http://localhost:5000/imdb/${query.query}`
+      ? `http://localhost:5000/imdb/multi/${query.query}/`
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
+  console.log(data);
   return (
     <div>
       <HelmetTitle title={"Search"} />
@@ -79,7 +80,7 @@ export const Search = () => {
               </Card>
             ))}
       </div>
-      {data && data.data.total_pages > 1 && (
+      {data && query.type !== "multi" && data.data.total_pages > 1 && (
         <Pagination
           className="pagination"
           sx={{
