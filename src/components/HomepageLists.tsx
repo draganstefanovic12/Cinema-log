@@ -32,7 +32,14 @@ export const HomepageLists = () => {
   const navigate = useNavigate();
 
   return (
-    <Container sx={{ color: "#cccccc", width: "35rem" }}>
+    <div
+      style={{
+        color: "#cccccc",
+        width: "35rem",
+        gridColumn: "2",
+        marginTop: "1rem",
+      }}
+    >
       <Typography sx={{ marginBottom: "1rem" }} variant="h4">
         New Lists
       </Typography>
@@ -75,6 +82,6 @@ export const HomepageLists = () => {
       <Typography sx={{ display: "flex", justifyContent: "flex-end" }}>
         See more
       </Typography>
-    </Container>
+    </div>
   );
 };
