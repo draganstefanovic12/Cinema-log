@@ -1,13 +1,7 @@
 import { Card, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-
-interface Movie {
-  id: number;
-  poster_path: string;
-  name: string;
-  media_type: string;
-}
+import { Media } from "../types/types";
 
 export const TrendingMovies = () => {
   const data = useFetch("http://localhost:5000/imdb/trending");
@@ -25,7 +19,7 @@ export const TrendingMovies = () => {
         }}
       >
         {data &&
-          data.data.results.slice(0, 10).map((movie: Movie) => (
+          data.data.results.slice(0, 10).map((movie: Media) => (
             <Link
               style={{ width: "10rem" }}
               key={movie.id}

@@ -49,6 +49,25 @@ export type NewListProps = {
   setLists: React.Dispatch<React.SetStateAction<any>>;
 };
 
+export type RemoveListProps = {
+  list: {
+    name: keyof List;
+    content: object[];
+    description: keyof List;
+  };
+  user: string | undefined;
+};
+
+export type PaginationProps = {
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
+  data?: {
+    data: {
+      total_pages: number;
+    };
+  };
+  count?: number;
+};
+
 export type Result = {
   data: {
     results: Media;
