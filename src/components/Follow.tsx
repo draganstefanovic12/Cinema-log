@@ -2,12 +2,7 @@ import { ListItem } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-interface FollowProps {
-  user: string | undefined;
-  followedUser: string | undefined;
-  followers: [];
-}
+import { FollowProps } from "../types/types";
 
 export const Follow = ({ user, followedUser, followers }: FollowProps) => {
   const [follow, setFollow] = useState<string>();

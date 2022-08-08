@@ -1,18 +1,5 @@
 import { Avatar, Container, Typography } from "@mui/material";
-
-interface Data {
-  data: {
-    data: {
-      crew: [];
-    };
-  };
-}
-
-interface Crew {
-  known_for_department: string;
-  name: string;
-  profile_path: string;
-}
+import { Data, OtherCrew } from "../types/types";
 
 export const Crew = ({ data }: Data) => {
   return (
@@ -23,13 +10,13 @@ export const Crew = ({ data }: Data) => {
       <div className="crew-cont">
         <Container className="crew">
           {data &&
-            data.data.crew
-              .filter(
-                (director: Crew) =>
+            data.data
+              .crew!.filter(
+                (director: OtherCrew) =>
                   director.known_for_department === "Directing"
               )
               .slice(0, 1)
-              .map((crew: Crew) => (
+              .map((crew: OtherCrew) => (
                 <>
                   <Avatar
                     variant="square"

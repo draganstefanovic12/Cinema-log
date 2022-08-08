@@ -1,32 +1,18 @@
-import { Card, CardContent, Container, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
+import { ProfileFeedProps } from "../types/types";
 
-interface Feed {
-  feed: [
-    {
-      content: string;
-      created: string;
-      user: string;
-      id?: number;
-      name?: string;
-      type?: string;
-      content2?: string;
-      content3: string;
-    }
-  ];
-}
-
-export const UserFeed = ({ feed }: Feed) => {
+export const UserFeed = ({ feed }: ProfileFeedProps) => {
   return (
-    <Container className="user-feed-container">
+    <div className="user-feed-container">
       <Typography variant="h5" className="user-feed">
         User Feed
       </Typography>
       <Card className="user-feed-div">
-        <CardContent style={{ backgroundColor: "#161b22", width: "100%" }}>
+        <CardContent className="user-feed-grid">
           {feed.slice(0, 18).map((event) => (
-            <div style={{ display: "flex" }} key={event.created}>
+            <div className="user-feed-mapped-grid" key={event.created}>
               <Typography key={event.created} className="feed-cont">
                 <Link to={`/user/${event.user}`}>{event.user}</Link>{" "}
                 <span style={{ color: "#667d93" }}>
@@ -62,6 +48,6 @@ export const UserFeed = ({ feed }: Feed) => {
           ))}
         </CardContent>
       </Card>
-    </Container>
+    </div>
   );
 };
