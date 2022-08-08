@@ -5,8 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import { RemoveList } from "../components/RemoveList";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
+import { List } from "../types/types";
 
-export const List = () => {
+export const PageList = () => {
   const { name } = useParams();
   const { user } = useAuth();
 
@@ -66,13 +67,13 @@ export const List = () => {
           </Container>
           <Container className="list-grid-cont">
             {data &&
-              parsed.map((list: any) => (
-                <Link to={`/${list.type}/${list.id}`}>
+              parsed.map((list: List) => (
+                <Link to={`/${list.type!}/${list.id!}`}>
                   <CardMedia
                     sx={{ width: "8em" }}
                     component="img"
                     height="200"
-                    src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${list.poster_path!}`}
                   />
                 </Link>
               ))}

@@ -5,23 +5,10 @@ import { usePopper } from "../hooks/usePopper";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
+import { Notification, NotificationProps } from "../types/types";
 import axios from "axios";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-
-interface NotificationProps {
-  notifications: [];
-}
-
-interface Notification {
-  content: string | undefined;
-  createdAt: string | number | Date;
-  user: string | undefined;
-  read: boolean;
-  _id: number;
-  content2: string;
-  content3: string;
-}
 
 export const NavNotifications = ({ notifications }: NotificationProps) => {
   const [read, setRead] = useState<boolean>(true);
