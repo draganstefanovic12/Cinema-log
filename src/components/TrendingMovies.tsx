@@ -1,5 +1,4 @@
-import { Card, CardMedia, Container, Typography } from "@mui/material";
-import { useAuth } from "../context/AuthContext";
+import { Card, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
@@ -12,12 +11,10 @@ interface Movie {
 
 export const TrendingMovies = () => {
   const data = useFetch("http://localhost:5000/imdb/trending");
-  data && console.log(data);
-  const { user } = useAuth();
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
-      <Typography variant="h5" sx={{ color: "#cccccc" }}>
+      <Typography variant="h5" sx={{ color: "#cccccc", marginBottom: "1em" }}>
         Trending Movies
       </Typography>
       <div

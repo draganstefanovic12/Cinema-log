@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import { HelmetTitle } from "../components/HelmetTitle";
 
 interface Movie {
   original_name: string;
@@ -65,13 +64,6 @@ export const MediaPage = () => {
     <Container className="cont" maxWidth="lg">
       {data && (
         <>
-          <HelmetTitle
-            title={
-              data.data.original_name
-                ? data.data.original_name
-                : data.data.title
-            }
-          />
           <Grid className="movie-main">
             <img
               className="backdrop"

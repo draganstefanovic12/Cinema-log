@@ -1,4 +1,5 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Label } from "@mui/icons-material";
+import { Button, InputLabel, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -7,7 +8,8 @@ import { useDebounce } from "../hooks/useDebounce";
 
 export const ChangeUsername = () => {
   const [error, setError] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>();
+  const [username, setUsername] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { debounce } = useDebounce(username);
   const { user } = useAuth();
 
@@ -33,6 +35,7 @@ export const ChangeUsername = () => {
   return (
     <Container className="account-cont">
       <Typography sx={{ marginBottom: "1em" }}>Change username:</Typography>
+
       <TextField
         size="small"
         error={error}
@@ -40,10 +43,17 @@ export const ChangeUsername = () => {
         onChange={(e) => {
           setError(false);
           setUsername(e.target.value);
+          setErrorMessage("");
         }}
       />
+      <InputLabel sx={{ color: "red" }}>{errorMessage}</InputLabel>
       <Button
         onClick={() => {
+          if (username.length === 0) {
+            setError(true);
+            setErrorMessage("username can't be empty");
+            return;
+          }
           handleSubmit();
           window.location.reload();
         }}

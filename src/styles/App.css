@@ -40,7 +40,8 @@ body {
 body .main-page-cont {
   display: grid;
   height: 90vh;
-  grid-template-columns: 70% 30%;
+  justify-content: center;
+  grid-template-columns: 40% 20% 40%;
   grid-template-rows: repeat(auto-fill, 1fr);
   color: #cccccc;
   animation: fade 500ms 1 ease-in-out forwards;
@@ -48,15 +49,15 @@ body .main-page-cont {
 
 body .main-page-cont .main-page-feed-cont {
   grid-row: 1;
-  grid-column: 2;
+  grid-column: 3;
 }
 
 body .main-page-cont .main-page-feed-cont .main-page-user-feed {
-  grid-column: 2/3;
+  grid-column: 1/2;
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #161b22;
-  width: 32rem;
+  width: 35rem;
   white-space: nowrap;
 }
 
@@ -80,6 +81,9 @@ body .main-page-cont .main-page-list-container {
   flex-direction: column;
   gap: 0.3rem;
   color: #cccccc;
+  background-color: #161b22;
+  padding: 1rem;
+  border-radius: 1em;
   margin-bottom: 2rem;
 }
 
@@ -111,7 +115,9 @@ body .main-page-cont .welcome-back-main {
   color: #cccccc;
   font-family: nunito, sans-serif;
   width: 100%;
-  animation: welcomeback 500ms 1 ease-in-out forwards;
+  grid-row: 1;
+  grid-column: 1/3;
+  animation: welcomeback 750ms 1 ease-in-out forwards;
 }
 
 body .main-page-cont .after-main {
@@ -352,6 +358,7 @@ body .cont {
   color: #efefef;
   background-color: #181e26;
   padding: 0;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
 
 body .cont .cast-crew-cont {
@@ -670,10 +677,6 @@ body .cont .movie-info .watched-watchlist {
     height: 24em;
   }
 }
-/*# sourceMappingURL=App.css.map */
-/*# sourceMappingURL=App.css.map */
-/*# sourceMappingURL=App.css.map */
-/*# sourceMappingURL=App.css.map */
 /*# sourceMappingURL=App.css.map */
 /*# sourceMappingURL=App.css.map */
 /*# sourceMappingURL=App.css.map */
