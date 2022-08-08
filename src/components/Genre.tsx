@@ -1,17 +1,6 @@
 import { ListItem, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-interface GenreMapped {
-  name: string;
-  id: number;
-}
-
-interface GenreProps {
-  data: {
-    genres: GenreMapped[];
-  };
-  type: string | undefined;
-}
+import { GenreProps, GenreMapped } from "../types/types";
 
 export const Genre = ({ data, type }: GenreProps) => {
   const navigate = useNavigate();

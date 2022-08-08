@@ -1,20 +1,9 @@
 import { useFetch } from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
-import { Card, CardMedia, Grid, Pagination, Typography } from "@mui/material";
+import { Card, CardMedia, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import { HelmetTitle } from "../components/HelmetTitle";
-
-export interface Result {
-  id: string;
-  poster_path: string;
-  title: string;
-  name: string;
-  overview: string;
-  release_date: string;
-  popularity: number;
-  media_type: string;
-  first_air_date: string;
-}
+import { SearchPagination } from "../components/SearchPagination";
+import { Media } from "../types/types";
 
 export const Search = () => {
   const query = useParams();
@@ -26,17 +15,13 @@ export const Search = () => {
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
-  console.log(data);
   return (
     <div>
-      <HelmetTitle title={"Search"} />
       <div className="main-container">
         {data &&
           data.data.results
-            .filter((result: Result) => {
-              return result.popularity > 6.5;
-            })
-            .map((result: Result) => (
+            .filter((result: Media) => result.popularity > 6.5)
+            .map((result: Media) => (
               <Card className="movie-card" key={result.id}>
                 <Link
                   style={{ color: "white" }}
@@ -81,24 +66,7 @@ export const Search = () => {
             ))}
       </div>
       {data && query.type !== "multi" && data.data.total_pages > 1 && (
-        <Pagination
-          className="pagination"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "1em",
-          }}
-          hidePrevButton
-          hideNextButton
-          count={data.data.total_pages}
-          onChange={(e: any) => {
-            setOffset(parseInt(e.target.textContent));
-            setTimeout(() => {
-              window.scrollTo(0, 0);
-            }, 200);
-          }}
-          shape="rounded"
-        />
+        <SearchPagination setOffset={setOffset} data={data} />
       )}
     </div>
   );

@@ -1,19 +1,6 @@
 import { Avatar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-
-interface Data {
-  data: {
-    data: {
-      cast: [];
-    };
-  };
-}
-
-interface Cast {
-  name: string;
-  profile_path: string;
-  character: string;
-}
+import { Data, Actors } from "../types/types";
 
 export const Cast = ({ data }: Data) => {
   return (
@@ -23,7 +10,7 @@ export const Cast = ({ data }: Data) => {
       </Typography>
       <div className="actors">
         {data &&
-          data.data.cast.slice(0, 10).map((cast: Cast) => (
+          data.data.cast!.slice(0, 10).map((cast: Actors) => (
             <Container className="actor-cont">
               <Avatar
                 variant="square"

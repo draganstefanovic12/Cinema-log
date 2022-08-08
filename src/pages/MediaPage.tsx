@@ -9,17 +9,11 @@ import { useEffect, useState } from "react";
 import { Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import { HelmetTitle } from "../components/HelmetTitle";
-
-interface Movie {
-  original_name: string;
-  name: string;
-}
 
 export const MediaPage = () => {
   const { user } = useAuth();
   const params = useParams();
-  const { handleWatchlist, handleWatch } = useWatchlist();
+  const { handleWatch } = useWatchlist();
   const [watchlist, setWatchlist] = useState<string | null>();
   const [watched, setWatched] = useState<string | null>();
 
@@ -35,12 +29,14 @@ export const MediaPage = () => {
         setWatched(
           params.type === "movie"
             ? final.user.movies.watched.find(
-                (movie: Movie) => data.data.title === movie.name
+                (movie: { title: string; name: string }) =>
+                  data.data.title === movie.name
               )
               ? "Watched"
               : "Set as watched"
             : final.user.shows.watched.find(
-                (movie: Movie) => data.data.original_name === movie.name
+                (movie: { title: string; name: string }) =>
+                  data.data.original_name === movie.name
               )
             ? "Watched"
             : "Set as watched"
@@ -48,12 +44,14 @@ export const MediaPage = () => {
         setWatchlist(
           params.type === "movie"
             ? final.user.movies.watchlist.find(
-                (movie: Movie) => data.data.title === movie.name
+                (movie: { title: string; name: string }) =>
+                  data.data.title === movie.name
               )
               ? "Remove from watchlist"
               : "Add to watchlist"
             : final.user.shows.watchlist.find(
-                (movie: Movie) => data.data.original_name === movie.name
+                (movie: { title: string; name: string }) =>
+                  data.data.original_name === movie.name
               )
             ? "Remove from watchlist"
             : "Add to watchlist"
@@ -65,13 +63,6 @@ export const MediaPage = () => {
     <Container className="cont" maxWidth="lg">
       {data && (
         <>
-          <HelmetTitle
-            title={
-              data.data.original_name
-                ? data.data.original_name
-                : data.data.title
-            }
-          />
           <Grid className="movie-main">
             <img
               className="backdrop"
@@ -111,13 +102,9 @@ export const MediaPage = () => {
                         watched === "Watched" ? "Set as watched" : "Watched"
                       );
                       handleWatch(
-                        data.data.title === undefined
-                          ? data.data.original_name
-                          : data.data.title,
-                        data.data.poster_path,
-                        data.data.id,
-                        data.data.title === undefined ? "tv" : "movie",
-                        user!.username!
+                        JSON.stringify(data.data),
+                        user!.username!,
+                        "watch"
                       );
                     }}
                     button
@@ -139,14 +126,10 @@ export const MediaPage = () => {
                         ? "Add to watchlist"
                         : "Remove from watchlist"
                     );
-                    handleWatchlist(
-                      data.data.title === undefined
-                        ? data.data.original_name
-                        : data.data.title,
-                      data.data.poster_path,
-                      data.data.id,
-                      data.data.title === undefined ? "tv" : "movie",
-                      user!.username!
+                    handleWatch(
+                      JSON.stringify(data.data),
+                      user!.username!,
+                      "watchlist"
                     );
                   }}
                 >
@@ -162,7 +145,7 @@ export const MediaPage = () => {
               </Container>
             </Grid>
           </Grid>
-          <MediaDetails type={params.type} id={params.id} />
+          <MediaDetails media_type={params.type} id={params.id} />
         </>
       )}
     </Container>

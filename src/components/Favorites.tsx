@@ -8,13 +8,7 @@ import { CardMedia, Typography } from "@mui/material";
 import favBg from "../assets/fav-movie-bg.png";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
-
-interface Media {
-  poster_path: string;
-  title: string;
-  id: string;
-  createdAt: string;
-}
+import { Media } from "../types/types";
 
 export const Favorites = () => {
   const [edit, setEdit] = useState<boolean>(false);
@@ -111,7 +105,7 @@ export const Favorites = () => {
         ) : (
           favMedia &&
           favMedia.map((media: Media) => (
-            <Fragment key={media.createdAt}>
+            <Fragment key={media.createdAt!}>
               <FavoriteCard
                 edit={edit}
                 handleRemove={handleRemove}

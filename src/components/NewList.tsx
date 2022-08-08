@@ -5,21 +5,11 @@ import {
   TextareaAutosize,
   Typography,
 } from "@mui/material";
-import { AddFavoriteMedia } from "./AddFavoriteMedia";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
+import { AddFavoriteMedia } from "./AddFavoriteMedia";
+import { MediaStringUndefined, NewListProps, List } from "../types/types";
 import axios from "axios";
-
-interface NewListProps {
-  user: string | undefined;
-  setAdd: React.Dispatch<React.SetStateAction<boolean>>;
-  setLists: React.Dispatch<React.SetStateAction<any>>;
-}
-
-interface Media {
-  title: string;
-  createdAt: string;
-}
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
   const [desc, setDesc] = useState<string>("");
@@ -37,7 +27,7 @@ export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
       });
     } else {
       setError(
-        "List can't be empty and name must be longer than 5 characters."
+        "List can't be empty and list name must be longer than 5 characters."
       );
     }
   };
@@ -51,28 +41,15 @@ export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
       });
     }
   };
+
   const handleFilter = (date: string) => {
-    setContent(content.filter((list: Media) => list.createdAt !== date));
+    setContent(
+      content.filter((list: MediaStringUndefined) => list.createdAt !== date)
+    );
   };
 
   return (
-    <Container
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        width: "25em",
-        gap: "1em",
-        backgroundColor: "#14181c",
-        padding: "1%",
-        borderRadius: "1%",
-        position: "absolute",
-        left: "0",
-        right: "0",
-        zIndex: "0",
-        border: "1em solid #161b22",
-      }}
-    >
+    <Container className="new-list-cont">
       <Typography>List name</Typography>
       <Input
         onChange={(e) => {
@@ -88,11 +65,11 @@ export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
       />
       <Typography>List content</Typography>
       <AddFavoriteMedia setContent={setContent} />
-      {content.map((media: Media) => (
+      {content.map((media: MediaStringUndefined) => (
         <Container sx={{ display: "flex", gap: "1em" }}>
           <Typography>{media.title}</Typography>
 
-          <DeleteIcon onClick={() => handleFilter(media.createdAt)} />
+          <DeleteIcon onClick={() => handleFilter(media.createdAt!)} />
         </Container>
       ))}
       <Button
@@ -101,7 +78,7 @@ export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
           content.length > 0 && setAdd(false);
           addList();
           addListToProfile();
-          setLists((currLists: any) => [
+          setLists((currLists: List[]) => [
             { name: name, content: content, description: desc },
             ...currLists,
           ]);
