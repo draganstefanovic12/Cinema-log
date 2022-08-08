@@ -50,7 +50,6 @@ export const AddFavoriteMedia = ({
       }
     );
   };
-  console.log(result);
 
   useEffect(() => {
     debounce && handleSearch();

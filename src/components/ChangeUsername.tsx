@@ -21,7 +21,7 @@ export const ChangeUsername = () => {
           setError(true);
         }
       });
-  }, [debounce, username]);
+  }, [debounce]);
 
   const handleSubmit = async () => {
     localStorage.setItem("user", JSON.stringify({ username: username }));
