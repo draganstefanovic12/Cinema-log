@@ -8,12 +8,6 @@ import { TrendingMovies } from "../components/TrendingMovies";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 
-interface Movie {
-  name: string;
-  vote_average: number;
-  id: number;
-}
-
 export const Homepage = () => {
   return (
     <Container
@@ -22,10 +16,10 @@ export const Homepage = () => {
       sx={{ marginTop: "5em" }}
     >
       <div>
-        <Container>
+        {/* <Container>
           <Typography>Recommended based on the things you watched</Typography>
-        </Container>
-        {/* <TrendingMovies /> */}
+        </Container> */}
+        <TrendingMovies />
       </div>
       <Container className="main-page-feed-cont">
         <Typography sx={{ marginBottom: "1em" }} variant="h5">

@@ -1,25 +1,12 @@
-import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
+import { Card, CardMedia, ListItem } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
+import { SearchPagination } from "./SearchPagination";
+import { Media, MediaProps } from "../types/types";
 
-interface MoviesProps {
-  movies: {
-    watchlist: [];
-    watched: [{ name: string; poster: string; id: number }];
-  };
-  type: string | undefined;
-  user: string | undefined;
-}
-
-interface Movie {
-  id: number;
-  poster: string;
-  name: string;
-}
-
-export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
+export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [watchType, setWatchType] = useState<string>("watched");
   const data = useFetch(
@@ -48,12 +35,12 @@ export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
       </div>
       {data && (
         <Container className="movie-grid-cont">
-          {data.data.map((movie: Movie) => (
+          {data.data.map((movie: Media) => (
             <Link key={movie.id} to={`/${type}/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
                   component="img"
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster}`}
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster!}`}
                   height="250"
                 />
               </Card>
@@ -61,16 +48,9 @@ export const MoviesOrShows = ({ movies, type, user }: MoviesProps) => {
           ))}
         </Container>
       )}
-      <Pagination
-        className="pagination"
-        sx={{ marginBottom: "1em" }}
-        hidePrevButton
-        hideNextButton
-        onChange={(e: any) => {
-          setOffset((parseInt(e.target.textContent) - 1) * 18);
-        }}
+      <SearchPagination
+        setOffset={setOffset}
         count={Math.ceil(movies.watched.length / 18)}
-        shape="rounded"
       />
     </Container>
   );

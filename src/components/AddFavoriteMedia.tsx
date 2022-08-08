@@ -12,31 +12,16 @@ import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import { useAuth } from "../context/AuthContext";
-
-interface Media {
-  original_name: string;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  id: string;
-  first_air_date: string;
-  media_type: string;
-}
-
-interface AddFavoriteMediaProps {
-  setInput?: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies?: React.Dispatch<React.SetStateAction<object[]>>;
-  setContent?: React.Dispatch<React.SetStateAction<object[]>>;
-}
+import { Media, AddFavoriteMediaProps, Result } from "../types/types";
 
 export const AddFavoriteMedia = ({
   setInput,
   setFavMovies,
   setContent,
 }: AddFavoriteMediaProps) => {
-  const [searchValue, setSearchValue] = useState<any>();
+  const [searchValue, setSearchValue] = useState<string>();
   const [hidden, setHidden] = useState<boolean>(false);
-  const [result, setResult] = useState<any>();
+  const [result, setResult] = useState<Result>();
   const { user } = useAuth();
 
   //setting search value when typing and 0.5sec later searching for results
@@ -65,6 +50,7 @@ export const AddFavoriteMedia = ({
       }
     );
   };
+  console.log(result);
 
   useEffect(() => {
     debounce && handleSearch();
@@ -140,11 +126,11 @@ export const AddFavoriteMedia = ({
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     />
                     <ListItemText style={{ marginLeft: "1em" }}>
-                      {movie.title ? movie.title : movie.original_name} (
-                      {movie.first_air_date
-                        ? movie.first_air_date.slice(0, 4)
-                        : movie.release_date.slice(0, 4)}
-                      )
+                      {movie.title ? movie.title : movie.original_name}
+                      {movie.first_air_date &&
+                        `(${movie.first_air_date.slice(0, 4)})`}
+                      {movie.release_date &&
+                        `(${movie.release_date.slice(0, 4)})`}
                     </ListItemText>
                   </MenuItem>
                 </MenuList>

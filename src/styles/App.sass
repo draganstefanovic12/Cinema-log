@@ -412,28 +412,6 @@ body
                 height: 3em
                 &:hover
                     cursor: pointer
-    .user-feed-container
-        display: flex
-        flex-direction: column
-        width: 100%
-        padding-top: 2em
-        height: 100%
-        .user-feed
-            color: #cccccc
-            padding-bottom: 0.5em
-        .user-feed-div
-            display: flex
-            width: 100%
-            .user-feed-link
-                color: #fff
-                text-decoration: none
-            .feed-cont
-                color: #efefef
-                width: 100%
-                height: 2.5em
-                .profile-link
-                    color: #efefef
-                    text-decoration: none
 
     .profile-list-cont
         display: flex
@@ -473,6 +451,18 @@ body
         flex-direction: row
         justify-content: center
         align-items: flex-start
+        .new-list-cont
+            display: flex
+            justify-content: center
+            flex-direction: column
+            width: 25em
+            gap: 1em
+            background-color: #14181c
+            padding: 1%
+            position: absolute
+            left: 0
+            right: 0
+            z-index: 0
         .list-img
             width: 8.5em
         .pagination
@@ -484,3 +474,33 @@ body
         .cont
             .movie-main
                 height: 24em
+
+.user-feed-container
+    display: flex
+    flex-direction: column
+    width: 100%
+    padding-top: 2em
+    .user-feed
+        color: #cccccc
+        padding-bottom: 0.5em
+    .user-feed-div
+        background-color: #161b22
+        width: 100%
+        .user-feed-grid
+            background-color: #161b22
+            width: 100%
+            .user-feed-mapped-grid
+                display: grid
+                grid-template-columns: 70% 30%
+                margin-bottom: 0.5rem
+        .user-feed-link
+            color: #fff
+            text-decoration: none
+            .feed-cont
+                grid-column: 1
+                color: #efefef
+                width: 100%
+                height: 2.5em
+                .profile-link
+                    color: #efefef
+                    text-decoration: none

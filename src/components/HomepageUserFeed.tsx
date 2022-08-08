@@ -1,32 +1,12 @@
-import { Typography } from "@mui/material";
-import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
-type User = {
-  user: {
-    feed: [];
-  };
-};
-
-type Feed = {
-  user: string;
-  content: string;
-  content2: string;
-  content3: string;
-  created: string;
-  name: string;
-  sort: any;
-  id: string;
-  type: string;
-};
+import { UserFeed } from "./UserFeed";
+import { User, Feed } from "../types/types";
 
 export const HomepageUserFeed = () => {
   const { userStats } = useAuth();
   const [userState, setUserState] = useState<any>([]);
   const [userFeed, setUserFeed] = useState<any>([]);
-  const navigate = useNavigate();
 
   const handleActivity = async () => {
     userStats?.data.user.following.map(async (user: { name: string }) => {
@@ -66,41 +46,5 @@ export const HomepageUserFeed = () => {
       Number(new Date(b.created)) - Number(new Date(a.created))
   );
 
-  return (
-    <div className="main-page-user-feed">
-      {sorted.map((feed: Feed) => (
-        <Typography key={feed.created} component={"span"}>
-          <div className="main-page-user-feed-cont">
-            <div style={{ gridColumn: "1" }}>
-              <span
-                className="user"
-                onClick={() => navigate(`/user/${feed.user}`)}
-              >
-                {feed.user}{" "}
-              </span>
-              {feed.content} {feed.content2 && feed.content2}{" "}
-              {feed.type ? (
-                <span
-                  style={{ color: "#fff" }}
-                  onClick={() => navigate(`/${feed.type}/${feed.id}`)}
-                >
-                  {feed.name}
-                </span>
-              ) : (
-                <span
-                  style={{ color: "#fff" }}
-                  onClick={() => navigate(`/user/${feed.content3}`)}
-                >
-                  {feed.content3}
-                </span>
-              )}
-            </div>
-            <span style={{ color: "rgb(102, 125, 147)", gridColumn: "2" }}>
-              {formatDistanceToNow(new Date(feed.created))} ago
-            </span>
-          </div>
-        </Typography>
-      ))}
-    </div>
-  );
+  return <UserFeed feed={sorted} />;
 };

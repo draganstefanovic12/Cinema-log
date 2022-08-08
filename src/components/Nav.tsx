@@ -9,7 +9,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
 
-export const Nav: React.FC = () => {
+export const Nav = () => {
   const [hover, setHover] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 

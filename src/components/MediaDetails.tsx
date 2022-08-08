@@ -1,14 +1,10 @@
 import { useFetch } from "../hooks/useFetch";
 import { Cast } from "./Cast";
 import { Crew } from "./Crew";
+import { MediaStringUndefined } from "../types/types";
 
-interface MovieDetailsProps {
-  type: string | undefined;
-  id: string | undefined;
-}
-
-export const MediaDetails = ({ type, id }: MovieDetailsProps) => {
-  const data = useFetch(`http://localhost:5000/imdb/cast/${type}/${id}/`);
+export const MediaDetails = ({ media_type, id }: MediaStringUndefined) => {
+  const data = useFetch(`http://localhost:5000/imdb/cast/${media_type}/${id}/`);
 
   return (
     <div className="cast-crew-cont">

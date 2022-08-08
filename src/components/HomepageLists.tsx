@@ -2,22 +2,7 @@ import { CardMedia, Container, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-
-type List = {
-  name: string;
-  content: string;
-  description: string;
-  username: string;
-  _id: number;
-};
-
-type Content = {
-  title: string;
-  id: number;
-  poster_path: string;
-  type: string;
-  createdAt: string;
-};
+import { Media, ListToParse } from "../types/types";
 
 export const HomepageLists = () => {
   const data = useFetch("http://localhost:5000/lists/main");
@@ -37,7 +22,7 @@ export const HomepageLists = () => {
       </Typography>
       <div className="main-page-list-container">
         {data &&
-          data.data.map((list: List) => (
+          data.data.map((list: ListToParse) => (
             <div key={list.name}>
               <Typography
                 className="main-page-list-name"
@@ -58,7 +43,7 @@ export const HomepageLists = () => {
               <div className="main-page-list-img-cont">
                 {JSON.parse(list.content)
                   .slice(0, 4)
-                  .map((media: Content) => (
+                  .map((media: Media) => (
                     <Fragment key={media.id}>
                       <CardMedia
                         key={media.id}
