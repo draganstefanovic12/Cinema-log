@@ -9,7 +9,6 @@ interface MovieDetailsProps {
 
 export const MediaDetails = ({ type, id }: MovieDetailsProps) => {
   const data = useFetch(`http://localhost:5000/imdb/cast/${type}/${id}/`);
-  data && console.log(data);
 
   return (
     <div className="cast-crew-cont">

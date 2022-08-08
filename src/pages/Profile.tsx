@@ -8,7 +8,6 @@ import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { Follow } from "../components/Follow";
 import { Lists } from "../components/Lists";
-import { HelmetTitle } from "../components/HelmetTitle";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
@@ -19,7 +18,6 @@ export const Profile = () => {
 
   return (
     <div className="profile-container">
-      <HelmetTitle title={params.user} />
       <Container
         sx={{
           backgroundColor: "#161b22",
