@@ -77,7 +77,6 @@ body .main-page-cont .main-page-list-container {
   background-color: #161b22;
   padding: 1rem;
   border-radius: 1em;
-  margin-bottom: 2rem;
 }
 body .main-page-cont .main-page-list-container .main-page-list-name:hover {
   cursor: pointer;

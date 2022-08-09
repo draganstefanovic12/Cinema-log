@@ -1,4 +1,5 @@
 export type Media = {
+  vote_average: number;
   original_name: string;
   name?: string;
   popularity: number;
@@ -157,6 +158,7 @@ export type Feed = {
 
 export type ProfileFeedProps = {
   feed: Feed[];
+  name: string;
 };
 
 export type NotificationProps = {

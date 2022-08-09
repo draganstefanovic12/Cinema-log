@@ -143,7 +143,9 @@ export const Profile = () => {
       </Container>
       {data && (
         <>
-          {state === "feed" && <ProfileInfo feed={data.data.user.feed} />}
+          {state === "feed" && (
+            <ProfileInfo name="User Feed" feed={data.data.user.feed} />
+          )}
           {state === "movie" && (
             <MoviesOrShows
               type={state}

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { ProfileFeedProps } from "../types/types";
 
-export const UserFeed = ({ feed }: ProfileFeedProps) => {
+export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
   return (
     <div className="user-feed-container">
       <Typography variant="h5" className="user-feed">
-        User Feed
+        {name}
       </Typography>
       <Card className="user-feed-div">
         <CardContent className="user-feed-grid">

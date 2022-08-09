@@ -8,7 +8,7 @@ export const TrendingMovies = () => {
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
-      <Typography variant="h5" sx={{ color: "#cccccc", marginBottom: "1em" }}>
+      <Typography variant="h5" sx={{ color: "#cccccc" }}>
         Trending Movies
       </Typography>
       <div
