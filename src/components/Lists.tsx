@@ -4,7 +4,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NewList } from "./NewList";
-import { List, ListsProps } from "../types/types";
+
+interface ListsProps {
+  user: string | undefined;
+}
+
+interface List {
+  name: string;
+  content: [];
+  createdAt: string;
+  updatedAt?: string;
+  description: string;
+}
 
 export const Lists = ({ user }: ListsProps) => {
   const [lists, setLists] = useState<[List]>();

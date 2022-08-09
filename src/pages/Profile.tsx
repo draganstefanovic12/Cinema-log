@@ -1,6 +1,6 @@
 import { Avatar, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MoviesOrShows } from "../components/MoviesOrShows";
 import { ProfileInfo } from "../components/ProfileInfo";
@@ -9,13 +9,26 @@ import { useFetch } from "../hooks/useFetch";
 import { Follow } from "../components/Follow";
 import { Lists } from "../components/Lists";
 import { ListItemComponent } from "../components/ListItemComponent";
+import { ImageUploadForm } from "../components/ImageUploadForm";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
+  const [imgSrc, setImgSrc] = useState<string>();
+  const [upload, setUpload] = useState<boolean>(false);
   const { user } = useAuth();
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
+
+  data && console.log(data);
+
+  const handleToggle = () => {
+    setUpload(!upload);
+  };
+
+  useEffect(() => {
+    data && setImgSrc(`http://localhost:5000${data.data.user.avatar[0]}`);
+  }, [data]);
 
   return (
     <div className="profile-container">
@@ -34,10 +47,17 @@ export const Profile = () => {
             }}
           >
             <Grid>
-              <Avatar
-                sx={{ height: "7.5em", width: "7.5em" }}
-                variant="square"
-              ></Avatar>
+              <ImageUploadForm
+                setImgSrc={setImgSrc}
+                current={
+                  <Avatar
+                    onClick={handleToggle}
+                    sx={{ height: "7.5em", width: "7.5em" }}
+                    variant="square"
+                    src={imgSrc}
+                  />
+                }
+              />
             </Grid>
             <Grid
               item
