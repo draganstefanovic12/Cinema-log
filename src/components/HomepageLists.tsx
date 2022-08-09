@@ -22,7 +22,7 @@ export const HomepageLists = () => {
             marginTop: "1rem",
           }}
         >
-          <CardContent sx={{ backgroundColor: "#161b22" }}>
+          <CardContent sx={{ backgroundColor: "#161b22", padding: "0" }}>
             <div className="main-page-list-container">
               {data &&
                 data.data.map((list: ListToParse) => (
@@ -61,17 +61,16 @@ export const HomepageLists = () => {
                     </div>
                   </div>
                 ))}
-              <Typography
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  paddingRight: "1rem",
-                  color: "#fff",
-                }}
-              >
-                See more
-              </Typography>
             </div>
+            <Typography
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                color: "#fff",
+              }}
+            >
+              See more
+            </Typography>
           </CardContent>
         </Card>
       </div>
