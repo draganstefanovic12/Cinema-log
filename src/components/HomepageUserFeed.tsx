@@ -46,5 +46,5 @@ export const HomepageUserFeed = () => {
       Number(new Date(b.created)) - Number(new Date(a.created))
   );
 
-  return <UserFeed feed={sorted} />;
+  return <UserFeed feed={sorted} name={"Friend Activity"} />;
 };

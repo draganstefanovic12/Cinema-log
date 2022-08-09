@@ -10,7 +10,7 @@ export const HomepageLists = () => {
 
   return (
     <>
-      <Typography sx={{ marginBottom: "1rem" }} variant="h5">
+      <Typography sx={{ marginBottom: "1rem", marginTop: "1em" }} variant="h5">
         New Lists
       </Typography>
       <div style={{ backgroundColor: "#161b22" }}>
@@ -62,15 +62,6 @@ export const HomepageLists = () => {
                   </div>
                 ))}
             </div>
-            <Typography
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                color: "#fff",
-              }}
-            >
-              See more
-            </Typography>
           </CardContent>
         </Card>
       </div>
