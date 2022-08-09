@@ -599,4 +599,8 @@ body .cont .movie-info .watched-watchlist {
   text-decoration: none;
 }
 
+.img-form-menu:hover {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=App.css.map */
