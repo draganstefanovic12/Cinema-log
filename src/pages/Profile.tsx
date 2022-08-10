@@ -1,4 +1,4 @@
-import { Avatar, Grid, Typography } from "@mui/material";
+import { Avatar, Grid, Skeleton, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -19,8 +19,6 @@ export const Profile = () => {
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
-
-  data && console.log(data);
 
   const handleToggle = () => {
     setUpload(!upload);
@@ -47,17 +45,25 @@ export const Profile = () => {
             }}
           >
             <Grid>
-              <ImageUploadForm
-                setImgSrc={setImgSrc}
-                current={
-                  <Avatar
-                    onClick={handleToggle}
-                    sx={{ height: "7.5em", width: "7.5em" }}
-                    variant="square"
-                    src={imgSrc}
-                  />
-                }
-              />
+              {imgSrc ? (
+                <ImageUploadForm
+                  setImgSrc={setImgSrc}
+                  current={
+                    <Avatar
+                      onClick={handleToggle}
+                      sx={{ height: "7.5em", width: "7.5em" }}
+                      variant="square"
+                      src={imgSrc}
+                    />
+                  }
+                />
+              ) : (
+                <Skeleton
+                  variant="rectangular"
+                  width="7.5rem"
+                  height="7.5rem"
+                />
+              )}
             </Grid>
             <Grid
               item
@@ -87,7 +93,7 @@ export const Profile = () => {
                       TV Shows watched: {data.data.user.shows.watched.length}
                     </Typography>
                     <Typography variant="subtitle1">
-                      Followers: {data.data.user.followers.length}
+                      Followers: <span>{data.data.user.followers.length}</span>
                     </Typography>
                     <Typography variant="subtitle1">
                       Following: {data.data.user.following.length}

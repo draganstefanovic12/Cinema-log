@@ -8,7 +8,10 @@ export const TrendingMovies = () => {
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
-      <Typography variant="h5" sx={{ color: "#cccccc" }}>
+      <Typography
+        variant="h5"
+        sx={{ color: "#cccccc", marginBottom: "0.5rem", paddingTop: "1rem" }}
+      >
         Trending Movies
       </Typography>
       <div
@@ -27,8 +30,9 @@ export const TrendingMovies = () => {
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
+                  className="movie-card-link-img"
                   component="img"
-                  sx={{ width: "10rem" }}
+                  sx={{ width: "10rem", backgroundColor: "#161b22" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   height="250"
                 />

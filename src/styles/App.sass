@@ -74,7 +74,9 @@ body
             gap: 0.3rem
             color: #cccccc
             background-color: #161b22
-            padding: 1rem
+            padding-top: 1rem
+            padding-left: 1rem
+            padding-right: 1rem
             border-radius: 1em
             .main-page-list-name
                 &:hover
@@ -366,6 +368,7 @@ body
         grid-template-columns: 60% 40%
         height: 57.7em
         background-color: #181e26
+        padding-top: 1.5rem
     .favorite-container
         width: 27em
         .fav-text-cont
@@ -373,11 +376,9 @@ body
             justify-content: space-between
             align-items: center
             .favorite-movies
-                margin-top: 1.5em
-                padding-bottom: 0.4em
+                padding-bottom: 0.5em
                 color: #cccccc
             .fav-edit
-                padding-top: 0.7em
                 align-self: center
                 &:hover
                     cursor: pointer
@@ -438,10 +439,13 @@ body
             gap: 1em
             height: 52.5em
             width: 100%
+            animation: $fade500ms
             .movie-card-link
+                animation: $fade500ms
                 &:hover
                     outline: 0.1em solid #6d6d6d
                     border-radius: 0.1em
+
     .profiles-lists
         display: grid
         grid-template-columns: repeat(2, 50%)
@@ -478,7 +482,6 @@ body
     display: flex
     flex-direction: column
     width: 100%
-    padding-top: 2em
     .user-feed
         color: #cccccc
         padding-bottom: 0.5em
@@ -507,3 +510,6 @@ body
 .img-form-menu
     &:hover
         cursor: pointer
+
+.movie-card-link-img
+    animation: $fade500ms

@@ -30,53 +30,61 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
   }, []);
 
   return (
-    <NavPopper
-      setOpen={setOpen}
-      open={open}
-      button={
-        read ? (
-          <NotificationsNoneOutlinedIcon className="notification-icon" />
-        ) : (
-          <NotificationsIcon
-            onClick={handleClick}
-            className="notification-icon"
-          />
-        )
-      }
-    >
-      <MenuList className="menu-list">
-        {notifications.length > 0 ? (
-          notifications.slice(0, 10).map((notification: Notification) => (
-            <ListItem key={notification._id} style={{ whiteSpace: "nowrap" }}>
-              <Link
-                style={{ marginRight: "0.2em", display: "" }}
-                to={`/user/${notification.user}`}
-                onClick={() => setOpen(false)}
-              >
-                {notification.user}{" "}
-              </Link>{" "}
-              {notification.content}
-              {notification.content2 && notification.content2}
-              {notification.content3 && (
+    <div onClick={handleClick}>
+      <NavPopper
+        setOpen={setOpen}
+        open={open}
+        button={
+          read ? (
+            <NotificationsNoneOutlinedIcon className="notification-icon" />
+          ) : (
+            <NotificationsIcon className="notification-icon" />
+          )
+        }
+      >
+        <MenuList className="menu-list">
+          {notifications.length > 0 ? (
+            notifications.slice(0, 10).map((notification: Notification) => (
+              <ListItem key={notification._id} style={{ whiteSpace: "nowrap" }}>
                 <Link
-                  style={{ marginLeft: "0.3em" }}
+                  style={{ marginRight: "0.2em", display: "" }}
+                  to={`/user/${notification.user}`}
                   onClick={() => setOpen(false)}
-                  to={`/list/${notification.content3}`}
                 >
-                  {notification.content3}
-                </Link>
-              )}
-              <span style={{ marginLeft: "0.5em" }}>
-                {formatDistanceToNow(new Date(notification.createdAt))} ago
-              </span>
+                  {notification.user}{" "}
+                </Link>{" "}
+                {notification.content}
+                {notification.content2 && notification.content2}
+                {notification.content4 && (
+                  <Link
+                    style={{ marginLeft: "0.3em" }}
+                    onClick={() => setOpen(false)}
+                    to={`/${notification.type}/${notification.id}`}
+                  >
+                    {notification.content4}
+                  </Link>
+                )}
+                {notification.content3 && (
+                  <Link
+                    style={{ marginLeft: "0.3em" }}
+                    onClick={() => setOpen(false)}
+                    to={`/list/${notification.content3}`}
+                  >
+                    {notification.content3}
+                  </Link>
+                )}
+                <span style={{ marginLeft: "0.5em" }}>
+                  {formatDistanceToNow(new Date(notification.createdAt))} ago
+                </span>
+              </ListItem>
+            ))
+          ) : (
+            <ListItem style={{ color: "white" }}>
+              No new notifications...
             </ListItem>
-          ))
-        ) : (
-          <ListItem style={{ color: "white" }}>
-            No new notifications...
-          </ListItem>
-        )}
-      </MenuList>
-    </NavPopper>
+          )}
+        </MenuList>
+      </NavPopper>
+    </div>
   );
 };
