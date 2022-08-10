@@ -355,6 +355,12 @@ body
     100%
         opacity: 1
 
+@keyframes faster
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
 .profile-container
     margin-top: 0
     background-size: cover
@@ -512,4 +518,4 @@ body
         cursor: pointer
 
 .movie-card-link-img
-    animation: $fade500ms
+    animation: faster 250ms 1 ease-in-out forwards

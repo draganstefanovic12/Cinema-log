@@ -4,10 +4,11 @@ import { Container } from "@mui/system";
 import { NavDropdown } from "./NavDropdown";
 import { NavNotifications } from "./NavNotifications";
 import { Link, useNavigate } from "react-router-dom";
-import { Input, InputAdornment } from "@mui/material";
+import { Input, InputAdornment, Skeleton } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
+import NotificationsNoneOutlined from "@mui/icons-material/NotificationsNoneOutlined";
 
 export const Nav = () => {
   const [hover, setHover] = useState<boolean>(false);
@@ -52,9 +53,14 @@ export const Nav = () => {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={(e) => handleClick(e)}
               />
-              {userStats && (
+              {userStats ? (
                 <NavNotifications
                   notifications={userStats?.data.user.notifications}
+                />
+              ) : (
+                <NotificationsNoneOutlined
+                  sx={{ width: "65px" }}
+                  className="notification-icon"
                 />
               )}
               <NavDropdown />
