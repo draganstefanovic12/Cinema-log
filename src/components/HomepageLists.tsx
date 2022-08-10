@@ -22,7 +22,10 @@ export const HomepageLists = () => {
             marginTop: "1rem",
           }}
         >
-          <CardContent sx={{ backgroundColor: "#161b22", padding: "0" }}>
+          <CardContent
+            component="div"
+            sx={{ backgroundColor: "#161b22", padding: "0" }}
+          >
             <div className="main-page-list-container">
               {data &&
                 data.data.map((list: ListToParse) => (

@@ -1,4 +1,4 @@
-import { Card, CardMedia, Typography } from "@mui/material";
+import { Card, CardMedia, Skeleton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -9,7 +9,6 @@ export const SimilarMovies = () => {
   const { userStats } = useAuth();
 
   const handleSimilar = async () => {
-    const currMovies = userStats?.data.user.movies.watched;
     const movies = userStats?.data.user.movies.watched.slice(0, 5);
     const arr: Media[] = [];
     for (let movie in movies) {
@@ -31,7 +30,7 @@ export const SimilarMovies = () => {
 
   return (
     <>
-      <Typography variant="h5">
+      <Typography sx={{ marginBottom: "0.5rem" }} variant="h5">
         Recommendations based on what you already watched
       </Typography>
       <div
@@ -41,7 +40,7 @@ export const SimilarMovies = () => {
           gridTemplateColumns: "repeat(5, 10em)",
         }}
       >
-        {similar &&
+        {similar ? (
           similar.slice(0, 10).map((movie: Media) => (
             <Link
               style={{ width: "10rem" }}
@@ -50,6 +49,7 @@ export const SimilarMovies = () => {
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
+                  className="movie-card-link-img"
                   component="img"
                   sx={{ width: "10rem" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -57,7 +57,16 @@ export const SimilarMovies = () => {
                 />
               </Card>
             </Link>
-          ))}
+          ))
+        ) : (
+          <Skeleton
+            sx={{ bgcolor: "#161b22" }}
+            animation="wave"
+            variant="rectangular"
+            height="30rem"
+            width="50rem"
+          />
+        )}
       </div>
     </>
   );

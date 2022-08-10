@@ -26,10 +26,9 @@ export const NavDropdown = () => {
         <MenuItem
           onClick={(e) => {
             setOpen(false);
-            navigate(`/user/${user?.username}`);
           }}
         >
-          Profile
+          <a href={`/user/${user?.username}`}>Profile</a>
         </MenuItem>
         <MenuItem
           onClick={() => {

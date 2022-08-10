@@ -1,5 +1,11 @@
 import "./styles/App.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import { Nav } from "./components/Nav";
 import { Search } from "./pages/Search";
@@ -11,6 +17,7 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
 import { PageList } from "./pages/List";
 import { MyAccount } from "./pages/MyAccount";
+import { Person } from "@mui/icons-material";
 
 const App = () => {
   const { user } = useAuth();
@@ -31,6 +38,7 @@ const App = () => {
             path="/"
             element={user ? <Homepage /> : <Navigate to="/login" />}
           ></Route>
+          <Route path="/person/:person" element={<Person />}></Route>
           <Route path="/user/:user" element={<Profile />}></Route>
           <Route path="/search/:query/:type" element={<Search />}></Route>
           <Route path="/:type/:id/" element={<MediaPage />}></Route>

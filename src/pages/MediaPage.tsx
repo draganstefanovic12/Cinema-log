@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import { MediaPageRecommend } from "../components/MediaPageRecommend";
 
 export const MediaPage = () => {
   const { user } = useAuth();
@@ -142,6 +143,7 @@ export const MediaPage = () => {
                     </>
                   )}
                 </ListItem>
+                <MediaPageRecommend params={params.type} media={data.data} />
               </Container>
             </Grid>
           </Grid>

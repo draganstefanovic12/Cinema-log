@@ -16,35 +16,41 @@ export const Nav = () => {
   const { user, userStats } = useAuth();
   const navigate = useNavigate();
 
+  const handleClick = (e: any) => {
+    e.key === "Enter" && value && navigate(`/search/${value}/multi`);
+  };
+
   return (
     <nav className="nav">
       <Container className="nav-inner">
-        <Link
+        <a
           className="home-link"
           onMouseLeave={() => setHover(false)}
           onMouseEnter={() => setHover(true)}
           style={{ marginLeft: "1em" }}
-          to="/"
+          href="/"
         >
           {hover ? <MovieCreationRoundedIcon /> : <MovieCreationOutlinedIcon />}
-        </Link>
+        </a>
         <div>
           {user && (
             <Container className="avatar-container">
               <Input
                 sx={{
                   marginRight: "0.5em",
-                  alignSelf: "  ",
                 }}
                 placeholder="Search..."
                 startAdornment={
                   <InputAdornment position="start">
                     <SearchOutlinedIcon
-                      onClick={() => navigate(`/search/${value}/multi`)}
+                      onClick={() =>
+                        value && navigate(`/search/${value}/multi`)
+                      }
                     />
                   </InputAdornment>
                 }
                 onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => handleClick(e)}
               />
               {userStats && (
                 <NavNotifications
