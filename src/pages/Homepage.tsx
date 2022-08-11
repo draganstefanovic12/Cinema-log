@@ -2,7 +2,7 @@ import { Container } from "@mui/system";
 import { HomepageLists } from "../components/HomepageLists";
 import { HomepageUserFeed } from "../components/HomepageUserFeed";
 import { SimilarMovies } from "../components/SimilarMovies";
-import { TrendingMovies } from "../components/TrendingMovies";
+import { HomepageMovieCards } from "../components/HomepageMovieCards";
 
 export const Homepage = () => {
   return (
@@ -13,7 +13,14 @@ export const Homepage = () => {
     >
       <div>
         <SimilarMovies />
-        <TrendingMovies />
+        <HomepageMovieCards
+          query={`http://localhost:5000/imdb/toprated`}
+          name={"Top Rated"}
+        />
+        <HomepageMovieCards
+          query={`http://localhost:5000/imdb/trending`}
+          name={"Trending Movies"}
+        />
       </div>
       <Container className="main-page-feed-cont">
         <HomepageUserFeed />

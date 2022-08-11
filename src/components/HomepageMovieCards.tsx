@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { Media } from "../types/types";
 
-export const TrendingMovies = () => {
-  const data = useFetch("http://localhost:5000/imdb/trending");
+export const HomepageMovieCards = ({ query, name }: any) => {
+  const data = useFetch(query);
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
@@ -12,7 +12,7 @@ export const TrendingMovies = () => {
         variant="h5"
         sx={{ color: "#cccccc", marginBottom: "0.5rem", paddingTop: "1rem" }}
       >
-        Trending Movies
+        {name}
       </Typography>
       <div
         style={{
@@ -26,7 +26,7 @@ export const TrendingMovies = () => {
             <Link
               style={{ width: "10rem" }}
               key={movie.id}
-              to={`/${movie.media_type}/${movie.id}`}
+              to={`/movie/${movie.id}`}
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
