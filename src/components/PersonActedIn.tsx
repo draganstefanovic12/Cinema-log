@@ -30,7 +30,7 @@ export const PersonActedIn = ({ data }: any) => {
             sx={{
               marginLeft: "1.7rem",
               backgroundColor:
-                type === data.data.combined_credits.cast
+                type !== null && data.data.combined_credits.cast
                   ? "#161b22"
                   : "#181e26",
             }}
