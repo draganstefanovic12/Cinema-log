@@ -1,7 +1,9 @@
 import { Avatar, Container, Typography } from "@mui/material";
-import { Data, OtherCrew } from "../types/types";
+import { useNavigate } from "react-router-dom";
+import { CrewArr, OtherCrew } from "../types/types";
 
-export const Crew = ({ data }: Data) => {
+export const Crew = ({ crew }: CrewArr) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Typography variant="h5" sx={{ marginLeft: "1em", paddingTop: "0.5em" }}>
@@ -9,9 +11,9 @@ export const Crew = ({ data }: Data) => {
       </Typography>
       <div className="crew-cont">
         <Container className="crew">
-          {data &&
-            data.data
-              .crew!.filter(
+          {crew &&
+            crew!
+              .filter(
                 (director: OtherCrew) =>
                   director.known_for_department === "Directing"
               )
@@ -19,12 +21,17 @@ export const Crew = ({ data }: Data) => {
               .map((crew: OtherCrew) => (
                 <>
                   <Avatar
+                    onClick={() => navigate(`/person/${crew.id}`)}
                     variant="square"
                     className="crew-avatar"
                     src={`https://image.tmdb.org/t/p/w500/${crew.profile_path}`}
                   />
                   <Container>
-                    <Typography sx={{ color: "#fff" }} noWrap>
+                    <Typography
+                      onClick={() => navigate(`/person/${crew.id}`)}
+                      sx={{ color: "#fff" }}
+                      noWrap
+                    >
                       {crew.name}
                     </Typography>
                     <Typography variant="subtitle1" sx={{ color: "#cccccc" }}>

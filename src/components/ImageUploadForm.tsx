@@ -1,7 +1,6 @@
 import { Input, MenuList } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { NavPopper } from "./NavPopper";
 
@@ -13,7 +12,6 @@ type Curr = {
 export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const [open, setOpen] = useState<boolean>(false);
   const { userStats } = useAuth();
-  const navigate = useNavigate();
 
   const handleClick = () => {
     document.getElementById("hidden")?.click();

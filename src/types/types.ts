@@ -13,6 +13,8 @@ export type Media = {
   media_type: string;
   filter: any;
   createdAt?: string;
+  character: string;
+  job: string;
 };
 
 export type MediaProps = {
@@ -75,25 +77,35 @@ export type Result = {
   };
 };
 
-export type Data = {
-  data: {
-    data: {
-      crew?: [];
-      cast?: [];
-    };
+export type Credits = {
+  credits: {
+    crew: OtherCrew[];
+    cast: Actors[];
   };
 };
 
 export type Actors = {
+  combined_credits: any;
   name: string;
   profile_path: string;
   character: string;
+  id: number;
+  slice: any;
+};
+
+export type CastArr = {
+  cast: Actors[];
+};
+
+export type CrewArr = {
+  crew: OtherCrew[];
 };
 
 export type OtherCrew = {
   known_for_department: string;
   name: string;
   profile_path: string;
+  id: number;
 };
 
 export type FollowProps = {

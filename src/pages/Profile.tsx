@@ -45,25 +45,17 @@ export const Profile = () => {
             }}
           >
             <Grid>
-              {imgSrc ? (
-                <ImageUploadForm
-                  setImgSrc={setImgSrc}
-                  current={
-                    <Avatar
-                      onClick={handleToggle}
-                      sx={{ height: "7.5em", width: "7.5em" }}
-                      variant="square"
-                      src={imgSrc}
-                    />
-                  }
-                />
-              ) : (
-                <Skeleton
-                  variant="rectangular"
-                  width="7.5rem"
-                  height="7.5rem"
-                />
-              )}
+              <ImageUploadForm
+                setImgSrc={setImgSrc}
+                current={
+                  <Avatar
+                    onClick={handleToggle}
+                    sx={{ height: "7.5em", width: "7.5em" }}
+                    variant="square"
+                    src={imgSrc}
+                  />
+                }
+              />
             </Grid>
             <Grid
               item

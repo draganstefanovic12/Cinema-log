@@ -15,7 +15,6 @@ export const Search = () => {
       ? `http://localhost:5000/imdb/multi/${query.query}/`
       : `http://localhost:5000/imdb/discover/${query.query}/${query.type}/${offset}`
   );
-  data && console.log(data);
 
   return (
     <div>

@@ -7,7 +7,7 @@ export const SearchMediaTypePerson = ({ result }: any) => {
       <Link
         style={{ color: "white" }}
         className="movie-poster-link"
-        to={`/person/${result.name}`}
+        to={`/person/${result.id}`}
       >
         <Grid container>
           <Grid>

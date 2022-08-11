@@ -1,4 +1,4 @@
-import { Card, CardMedia, ListItem } from "@mui/material";
+import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -48,9 +48,20 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
           ))}
         </Container>
       )}
-      <SearchPagination
-        setOffset={setOffset}
+      <Pagination
+        className="pagination"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "1em",
+        }}
+        hidePrevButton
+        hideNextButton
+        onChange={(e: any) => {
+          setOffset((parseInt(e.target.textContent) - 1) * 18);
+        }}
         count={Math.ceil(movies.watched.length / 18)}
+        shape="rounded"
       />
     </Container>
   );
