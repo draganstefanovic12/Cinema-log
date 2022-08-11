@@ -17,7 +17,7 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
 import { PageList } from "./pages/List";
 import { MyAccount } from "./pages/MyAccount";
-import { Person } from "@mui/icons-material";
+import { Person } from "./pages/Person";
 
 const App = () => {
   const { user } = useAuth();
@@ -38,7 +38,7 @@ const App = () => {
             path="/"
             element={user ? <Homepage /> : <Navigate to="/login" />}
           ></Route>
-          <Route path="/person/:person" element={<Person />}></Route>
+          <Route path="/person/:id/" element={<Person />}></Route>
           <Route path="/user/:user" element={<Profile />}></Route>
           <Route path="/search/:query/:type" element={<Search />}></Route>
           <Route path="/:type/:id/" element={<MediaPage />}></Route>

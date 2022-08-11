@@ -147,7 +147,7 @@ export const MediaPage = () => {
               </Container>
             </Grid>
           </Grid>
-          <MediaDetails media_type={params.type} id={params.id} />
+          {data && <MediaDetails credits={data.data.credits} />}
         </>
       )}
     </Container>
