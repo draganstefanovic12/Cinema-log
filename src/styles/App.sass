@@ -226,6 +226,7 @@ body
             flex-direction: column
             align-items: flex-end
             margin-right: 5em
+            animation: $fade500ms
             .big-login-text
                 color: #cccccc
                 font-family: $Nunito
@@ -519,3 +520,25 @@ body
 
 .movie-card-link-img
     animation: faster 250ms 1 ease-in-out forwards
+
+.register-page
+    display: flex
+    background-size: cover
+    justify-content: center
+    height: 100vh
+    color: #cccccc
+    .form-container
+        width: 63%
+        background-color: black
+        margin-right: 4.5rem
+        height: 32rem
+        margin-top: 2rem
+        .registration-cont
+            display: flex
+            gap: 2rem
+            justify-content: center
+            align-items: center
+            .landing-form > *
+                font-family: $Nunito
+                width: 20rem
+                animation: $fade500ms
