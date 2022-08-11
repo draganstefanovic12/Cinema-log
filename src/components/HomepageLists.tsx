@@ -67,6 +67,10 @@ export const HomepageLists = () => {
             </div>
           </CardContent>
         </Card>
+        <Typography>
+          Browse <a href="/#/search/alllists/multi">all lists</a> and discover
+          new media to watch.
+        </Typography>
       </div>
     </>
   );

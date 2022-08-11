@@ -10,8 +10,17 @@ import RecommendIcon from "@mui/icons-material/Recommend";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import { Media, User } from "../types/types";
 
-export const MediaPageRecommend = ({ media, params }: any) => {
+type MediaPageRecommendProps = {
+  media: Media;
+  params: any;
+};
+
+export const MediaPageRecommend = ({
+  media,
+  params,
+}: MediaPageRecommendProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const { userStats } = useAuth();
 
@@ -29,7 +38,6 @@ export const MediaPageRecommend = ({ media, params }: any) => {
       movie: JSON.stringify(media),
     });
   };
-  console.log(media);
 
   return (
     <>
@@ -60,8 +68,9 @@ export const MediaPageRecommend = ({ media, params }: any) => {
           >
             {"Recommend the movie to..."}
           </DialogTitle>
-          {userStats?.data.user.following.map((User: any) => (
+          {userStats?.data.user.following.map((User: User) => (
             <MenuItem
+              key={User.name}
               onClick={() => {
                 handleRecommend(User.name);
                 handleClose();

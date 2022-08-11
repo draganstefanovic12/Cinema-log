@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export const useRegister = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean | null>();
   const { dispatch } = useAuth();
-  const navigate = useNavigate();
 
   const register = async (username: string, password: string) => {
     setIsLoading(true);
@@ -23,7 +21,7 @@ export const useRegister = () => {
     if (!json.error) {
       localStorage.setItem("user", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
-      navigate("/");
+      window.location.reload();
     } else {
       setError(json.error);
       setIsLoading(false);

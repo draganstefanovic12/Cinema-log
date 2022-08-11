@@ -287,7 +287,7 @@ body .form-container form {
   height: 25em;
   gap: 1em;
   color: #efefef;
-  background-color: #14181c;
+  background-color: #08090a;
   align-items: center;
   flex-direction: column;
   border-radius: 1em;
@@ -325,9 +325,15 @@ body .cont .crew-cont .crew {
   display: flex;
   margin-bottom: 1em;
 }
+body .cont .crew-cont .crew-name:hover {
+  cursor: pointer;
+}
 body .cont .crew-cont .crew-avatar {
   height: 2.5em;
   width: 2.5em;
+}
+body .cont .crew-cont .crew-avatar:hover {
+  cursor: pointer;
 }
 body .cont .actors {
   display: grid;
@@ -341,9 +347,15 @@ body .cont .actors .actor-cont {
   display: flex;
   margin-bottom: 1em;
 }
+body .cont .actors .actor-cont .actor-name:hover {
+  cursor: pointer;
+}
 body .cont .actors .actor-cont .actor-avatar {
   height: 2.5em;
   width: 2.5em;
+}
+body .cont .actors .actor-cont .actor-avatar:hover {
+  cursor: pointer;
 }
 body .cont .movie-main {
   display: flex;
@@ -643,6 +655,10 @@ body .cont .movie-info .watched-watchlist {
   font-family: nunito, sans-serif;
   width: 20rem;
   animation: fade 500ms 1 ease-in-out forwards;
+}
+
+.svg:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=App.css.map */

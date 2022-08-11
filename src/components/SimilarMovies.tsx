@@ -26,7 +26,7 @@ export const SimilarMovies = () => {
 
   useEffect(() => {
     userStats && handleSimilar();
-  }, [userStats]);
+  }, [userStats?.data.user.movies.watched]);
 
   return (
     <>

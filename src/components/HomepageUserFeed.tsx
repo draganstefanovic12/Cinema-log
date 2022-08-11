@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { UserFeed } from "./UserFeed";
 import { User, Feed } from "../types/types";
+import { Typography } from "@mui/material";
 
 export const HomepageUserFeed = () => {
   const { userStats } = useAuth();
@@ -46,5 +47,17 @@ export const HomepageUserFeed = () => {
       Number(new Date(b.created)) - Number(new Date(a.created))
   );
 
-  return <UserFeed feed={sorted} name={"Friend Activity"} />;
+  return (
+    <>
+      {userFeed.length === 0 ? (
+        <Typography>
+          You're not following anyone yet. Browse{" "}
+          <a href="/#/search/allusers/multi">users</a> and find someone who
+          shares the same interests as you.
+        </Typography>
+      ) : (
+        <UserFeed feed={sorted} name={"Friend Activity"} />
+      )}
+    </>
+  );
 };

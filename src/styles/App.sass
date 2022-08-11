@@ -250,7 +250,7 @@ body
             height: 25em
             gap: 1em
             color: #efefef
-            background-color: #14181c
+            background-color: #08090a
             align-items: center
             flex-direction: column
             border-radius: 1em
@@ -280,9 +280,14 @@ body
             .crew
                 display: flex
                 margin-bottom: 1em
+            .crew-name
+                &:hover
+                    cursor: pointer
             .crew-avatar
                 height: 2.5em
                 width: 2.5em
+                &:hover
+                    cursor: pointer
         .actors
             display: grid
             justify-content: flex-start
@@ -293,9 +298,14 @@ body
             .actor-cont
                 display: flex
                 margin-bottom: 1em
+                .actor-name
+                    &:hover
+                        cursor: pointer
                 .actor-avatar
                     height: 2.5em
                     width: 2.5em
+                    &:hover
+                        cursor: pointer
         .movie-main
             @include flex
             justify-content: center
@@ -542,3 +552,7 @@ body
                 font-family: $Nunito
                 width: 20rem
                 animation: $fade500ms
+
+.svg
+    &:hover
+        cursor: pointer

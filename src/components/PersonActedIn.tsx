@@ -69,11 +69,13 @@ export const PersonActedIn = ({ data }: any) => {
                 ? !acted.character.includes("Self") &&
                   !acted.character.includes("Himself") &&
                   !acted.character.includes("archive") &&
+                  acted.popularity > 10 &&
                   acted.poster_path !== null &&
                   acted.character !== ""
                 : acted.poster_path !== null && acted.job === "Director"
             )
             .sort((a: Media, b: Media) => b.popularity - a.popularity)
+            .slice(0, 40)
             .map((acted: Media) => (
               <Link
                 style={{

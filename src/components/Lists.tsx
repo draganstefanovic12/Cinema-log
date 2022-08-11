@@ -1,7 +1,7 @@
 import { Button, CardMedia, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NewList } from "./NewList";
 
@@ -41,8 +41,8 @@ export const Lists = ({ user }: ListsProps) => {
       >
         {lists &&
           lists.map((list: List) => (
-            <>
-              <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
+            <Fragment key={list.name}>
+              <Link style={{ width: "25em" }} to={`/#/list/${list.name}`}>
                 <Typography variant="h5" sx={{ display: "flex" }}>
                   {list.name}
                 </Typography>
@@ -51,6 +51,7 @@ export const Lists = ({ user }: ListsProps) => {
                     .slice(0, 4)
                     .map((movImg: { poster_path: string }) => (
                       <CardMedia
+                        key={movImg.poster_path}
                         className="list-img"
                         component="img"
                         height="200"
@@ -59,9 +60,8 @@ export const Lists = ({ user }: ListsProps) => {
                     ))}
                 </div>
               </Link>
-            </>
+            </Fragment>
           ))}
-
         {lists === undefined && (
           <Typography className="no-lists" variant="h4">
             No lists...
