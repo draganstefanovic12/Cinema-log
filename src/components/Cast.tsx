@@ -13,7 +13,7 @@ export const Cast = ({ cast }: CastArr) => {
       </Typography>
       <div className="actors">
         {cast.slice(0, 10).map((cast: Actors) => (
-          <Container className="actor-cont">
+          <Container key={cast.id} className="actor-cont">
             <Avatar
               onClick={() => navigate(`/person/${cast.id}`)}
               variant="square"
@@ -21,7 +21,10 @@ export const Cast = ({ cast }: CastArr) => {
               src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
             />
             <Container>
-              <Typography onClick={() => navigate(`/person/${cast.id}`)}>
+              <Typography
+                className="actor-name"
+                onClick={() => navigate(`/person/${cast.id}`)}
+              >
                 {cast.name}
               </Typography>
               <Typography variant="subtitle1" sx={{ color: "#cccccc" }} noWrap>

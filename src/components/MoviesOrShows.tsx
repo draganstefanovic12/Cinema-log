@@ -3,7 +3,6 @@ import { Container } from "@mui/system";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import { SearchPagination } from "./SearchPagination";
 import { Media, MediaProps } from "../types/types";
 
 export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {

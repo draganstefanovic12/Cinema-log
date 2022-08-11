@@ -29,7 +29,7 @@ const App = () => {
   });
 
   return (
-    <BrowserRouter>
+    <HashRouter basename="/">
       <ThemeProvider theme={darkTheme}>
         <Nav />
         <Routes>
@@ -42,7 +42,10 @@ const App = () => {
           <Route path="/user/:user" element={<Profile />}></Route>
           <Route path="/search/:query/:type" element={<Search />}></Route>
           <Route path="/:type/:id/" element={<MediaPage />}></Route>
-          <Route path="/register" element={<Register />}></Route>
+          <Route
+            path="/register"
+            element={!user ? <Register /> : <Navigate to="/" />}
+          ></Route>
           <Route
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}
@@ -50,7 +53,7 @@ const App = () => {
           <Route path="/account/" element={<MyAccount />}></Route>
         </Routes>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

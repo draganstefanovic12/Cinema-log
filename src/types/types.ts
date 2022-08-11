@@ -15,6 +15,7 @@ export type Media = {
   createdAt?: string;
   character: string;
   job: string;
+  profile_path: string;
 };
 
 export type MediaProps = {
@@ -151,6 +152,7 @@ export type ListToParse = {
 };
 
 export type User = {
+  name: any;
   user: {
     feed: [];
   };
@@ -166,6 +168,25 @@ export type Feed = {
   sort: any;
   id: string;
   type: string;
+};
+
+export type query = {
+  query: string | undefined;
+};
+
+export type UserMedia = {
+  watchlist: Media[];
+  watched: Media[];
+};
+
+export type UserModel = {
+  _id: number;
+  username: string;
+  avatar: string;
+  movies: UserMedia;
+  shows: UserMedia;
+  followers: [];
+  following: [];
 };
 
 export type ProfileFeedProps = {

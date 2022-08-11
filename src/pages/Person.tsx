@@ -20,7 +20,7 @@ export const Person = () => {
     >
       {data && (
         <>
-          <Grid sx={{ display: "flex" }} xs={2}>
+          <Grid sx={{ display: "flex" }}>
             <CardMedia
               sx={{ width: "10rem", marginRight: "1rem" }}
               component="img"

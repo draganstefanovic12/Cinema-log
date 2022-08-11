@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRegister } from "../hooks/useRegister";
 import bg from "../assets/registration.jpg";
 import { Container } from "@mui/system";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export const Register = () => {
   const [username, setUsername] = useState<string>("");
@@ -32,6 +33,18 @@ export const Register = () => {
             <Typography variant="h6">
               Register now and recommend media to other users, create custom
               lists, follow other users, add media to watchlist and much more...
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{ marginTop: "1rem", display: "flex" }}
+            >
+              Created by Dragan Stefanovic
+              <GitHubIcon
+                className="svg"
+                onClick={() =>
+                  window.open("https://github.com/draganstefanovic12")
+                }
+              />
             </Typography>
           </div>
           <form method="POST" onSubmit={(e) => handleSubmit(e)}>

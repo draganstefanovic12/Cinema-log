@@ -1,4 +1,5 @@
 import { Avatar, Container, Typography } from "@mui/material";
+import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { CrewArr, OtherCrew } from "../types/types";
 
@@ -19,7 +20,7 @@ export const Crew = ({ crew }: CrewArr) => {
               )
               .slice(0, 1)
               .map((crew: OtherCrew) => (
-                <>
+                <Fragment key={crew.id}>
                   <Avatar
                     onClick={() => navigate(`/person/${crew.id}`)}
                     variant="square"
@@ -28,6 +29,7 @@ export const Crew = ({ crew }: CrewArr) => {
                   />
                   <Container>
                     <Typography
+                      className="crew-name"
                       onClick={() => navigate(`/person/${crew.id}`)}
                       sx={{ color: "#fff" }}
                       noWrap
@@ -38,7 +40,7 @@ export const Crew = ({ crew }: CrewArr) => {
                       Director
                     </Typography>
                   </Container>
-                </>
+                </Fragment>
               ))}
         </Container>
       </div>
