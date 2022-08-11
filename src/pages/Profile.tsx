@@ -10,6 +10,7 @@ import { Follow } from "../components/Follow";
 import { Lists } from "../components/Lists";
 import { ListItemComponent } from "../components/ListItemComponent";
 import { ImageUploadForm } from "../components/ImageUploadForm";
+import { ProfileFollowersFollowing } from "../components/ProfileFollowersFollowing";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
@@ -95,6 +96,7 @@ export const Profile = () => {
                     <Typography variant="subtitle1">
                       Followers: <span>{data.data.user.followers.length}</span>
                     </Typography>
+
                     <Typography variant="subtitle1">
                       Following: {data.data.user.following.length}
                     </Typography>

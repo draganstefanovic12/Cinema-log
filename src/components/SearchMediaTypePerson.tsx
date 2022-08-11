@@ -10,7 +10,7 @@ export const SearchMediaTypePerson = ({ result }: any) => {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, 20rem)",
           gap: "1rem",
-          padding: "8rem",
+          padding: "2rem",
         }}
       >
         {result.results

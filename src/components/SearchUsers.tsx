@@ -16,7 +16,6 @@ export const SearchUsers = ({ query }: query) => {
           display: "grid",
           gap: "1rem",
           gridTemplateColumns: "repeat(auto-fill, 12rem)",
-          justifyContent: "center",
           padding: "2rem",
         }}
       >
