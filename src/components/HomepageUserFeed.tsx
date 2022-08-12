@@ -13,7 +13,7 @@ export const HomepageUserFeed = () => {
     userStats?.data.user.following.map(async (usr: { name: string }) => {
       const data = await fetch(`http://localhost:5000/user/${usr.name}`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
       });
       const response = await data.json();

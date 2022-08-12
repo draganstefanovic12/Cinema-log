@@ -32,7 +32,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
       `http://localhost:5000/image/delete/${userStats?.data.user._id}`,
       {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
       }
     );

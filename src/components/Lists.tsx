@@ -23,7 +23,7 @@ export const Lists = ({ usr }: ListsProps) => {
   const handleLists = async () => {
     const data = await axios.get(`http://localhost:5000/user/lists/${usr}`, {
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
     });
     setLists(data.data);

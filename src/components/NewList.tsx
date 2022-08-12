@@ -38,7 +38,7 @@ export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
     if (content.length > 0 && name.length > 3) {
       await axios.post(`http://localhost:5000/user/newlist/${usr}`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
         name: name,
         content: JSON.stringify(content),

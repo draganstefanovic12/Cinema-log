@@ -32,7 +32,7 @@ export const AddFavoriteMedia = ({
       `http://localhost:5000/imdb/multi/${debounce}/`,
       {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
       }
     );
@@ -48,7 +48,7 @@ export const AddFavoriteMedia = ({
     await axios(`http://localhost:5000/user/addfavorite/${user?.username}/`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
       data: {
         title: name,

@@ -51,7 +51,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       axios
         .get(`http://localhost:5000/user/${user.username}`, {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `${user?.username} ${user?.token}`,
           },
         })
         .then((result: AxiosResponse<any, any>) => setUserStats(result));

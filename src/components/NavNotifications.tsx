@@ -22,7 +22,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
       }
     );

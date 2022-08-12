@@ -24,7 +24,7 @@ export const Favorites = () => {
   const updateMovies = async () => {
     const data = await axios.get(`http://localhost:5000/user/${params.user}`, {
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
     });
     setFavMedia(data.data.user.favorites);
@@ -36,7 +36,7 @@ export const Favorites = () => {
       `http://localhost:5000/user/removefavorite/${params.user}`,
       {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
         data: {
           content: mov,
