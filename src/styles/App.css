@@ -582,11 +582,6 @@ body .cont .movie-info .watched-watchlist {
   justify-content: center;
 }
 
-@media (max-width: 1920px) {
-  body .cont .movie-main {
-    height: 24em;
-  }
-}
 .user-feed-container {
   display: flex;
   flex-direction: column;
@@ -660,6 +655,37 @@ body .cont .movie-info .watched-watchlist {
 
 .svg:hover {
   cursor: pointer;
+}
+
+@media (max-width: 1920px) {
+  body .cont .movie-main {
+    height: 24em;
+  }
+}
+.register-page {
+  display: flex;
+  background-size: cover;
+  justify-content: center;
+  height: 100vh;
+  color: #cccccc;
+}
+.register-page .form-container {
+  width: 64%;
+  background-color: black;
+  margin-right: 4.5rem;
+  height: 40rem;
+  margin-top: 2rem;
+}
+.register-page .form-container .registration-cont {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.register-page .form-container .registration-cont .landing-form > * {
+  font-family: nunito, sans-serif;
+  width: 20rem;
+  animation: fade 500ms 1 ease-in-out forwards;
 }
 
 /*# sourceMappingURL=App.css.map */

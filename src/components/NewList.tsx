@@ -1,5 +1,6 @@
 import {
   Button,
+  ClickAwayListener,
   Container,
   Input,
   TextareaAutosize,
@@ -36,13 +37,16 @@ export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
 
   const addListToProfile = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios.post(`http://localhost:5000/user/newlist/${usr}`, {
+      await axios(`http://localhost:5000/user/newlist/${usr}`, {
+        method: "POST",
         headers: {
           Authorization: `${user?.username} ${user?.token}`,
         },
-        name: name,
-        content: JSON.stringify(content),
-        description: desc,
+        data: {
+          name: name,
+          content: JSON.stringify(content),
+          description: desc,
+        },
       });
     }
   };
@@ -54,44 +58,49 @@ export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
   };
 
   return (
-    <Container className="new-list-cont">
-      <Typography>List name</Typography>
-      <Input
-        onChange={(e) => {
-          setName(e.target.value);
-          setError("");
-        }}
-      />
-      <Typography>Description</Typography>
-      <TextareaAutosize
-        style={{ backgroundColor: "#14181c", color: "#cccccc" }}
-        minRows={3}
-        onChange={(e) => setDesc(e.target.value)}
-      />
-      <Typography>List content</Typography>
-      <AddFavoriteMedia setContent={setContent} />
-      {content.map((media: MediaStringUndefined) => (
-        <Container sx={{ display: "flex", gap: "1em" }}>
-          <Typography>{media.title}</Typography>
+    <ClickAwayListener onClickAway={() => setAdd(false)}>
+      <Container className="new-list-cont">
+        <Typography>List name</Typography>
+        <Input
+          onChange={(e) => {
+            setName(e.target.value);
+            setError("");
+          }}
+        />
+        <Typography>Description</Typography>
+        <TextareaAutosize
+          style={{ backgroundColor: "#14181c", color: "#cccccc" }}
+          minRows={3}
+          onChange={(e) => setDesc(e.target.value)}
+        />
+        <Typography>List content</Typography>
+        <AddFavoriteMedia setContent={setContent} />
+        {content.map((media: MediaStringUndefined) => (
+          <Container sx={{ display: "flex", gap: "1em" }}>
+            <Typography>{media.title}</Typography>
 
-          <DeleteIcon onClick={() => handleFilter(media.createdAt!)} />
-        </Container>
-      ))}
-      <Button
-        sx={{ width: "10em", margin: "0 auto" }}
-        onClick={() => {
-          content.length > 0 && setAdd(false);
-          addList();
-          addListToProfile();
-          setLists((currLists: List[]) => [
-            { name: name, content: content, description: desc },
-            ...currLists,
-          ]);
-        }}
-      >
-        Submit
-      </Button>
-      {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
-    </Container>
+            <DeleteIcon
+              onClick={() => handleFilter(media.createdAt!)}
+              className="svg"
+            />
+          </Container>
+        ))}
+        <Button
+          sx={{ width: "10em", margin: "0 auto" }}
+          onClick={() => {
+            content.length > 0 && setAdd(false);
+            addList();
+            addListToProfile();
+            setLists((currLists: List[]) => [
+              { name: name, content: content, description: desc },
+              ...currLists,
+            ]);
+          }}
+        >
+          Submit
+        </Button>
+        {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
+      </Container>
+    </ClickAwayListener>
   );
 };

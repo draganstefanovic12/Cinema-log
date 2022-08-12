@@ -1,4 +1,9 @@
-import { Button, CardMedia, Typography } from "@mui/material";
+import {
+  Button,
+  CardMedia,
+  ClickAwayListener,
+  Typography,
+} from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
@@ -35,9 +40,11 @@ export const Lists = ({ usr }: ListsProps) => {
 
   return (
     <Container className="profile-list-cont">
-      <Button onClick={() => setAdd(!add)} className="btn-new-list">
-        New List
-      </Button>
+      {usr === user?.username && (
+        <Button onClick={() => setAdd(!add)} className="btn-new-list">
+          New List
+        </Button>
+      )}
       <Container
         sx={{ height: "52em", color: "#cccccc" }}
         className="profiles-lists"
