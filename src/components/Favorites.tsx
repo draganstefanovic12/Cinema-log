@@ -10,7 +10,7 @@ import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 import { Media } from "../types/types";
 
-export const Favorites = () => {
+export const Favorites = ({ favorites }: any) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
   const [favMedia, setFavMedia] = useState<any>();
@@ -19,21 +19,16 @@ export const Favorites = () => {
 
   useEffect(() => {
     updateMovies();
-  }, [edit, params.user]);
+  }, [params.user]);
 
   const updateMovies = async () => {
-    const data = await axios.get(`http://localhost:5000/user/${params.user}`, {
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-    });
-    setFavMedia(data.data.user.favorites);
+    setFavMedia(favorites);
   };
 
   const handleRemove = async (mov: string, date: string) => {
     setFavMedia(favMedia.filter((media: Media) => media.createdAt !== date));
     await axios.delete(
-      `http://localhost:5000/user/removefavorite/${params.user}`,
+      `https://media-log.herokuapp.com/user/removefavorite/${params.user}`,
       {
         headers: {
           Authorization: `${user?.username} ${user?.token}`,

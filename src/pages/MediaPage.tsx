@@ -12,57 +12,51 @@ import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 
 export const MediaPage = () => {
-  const { user } = useAuth();
+  const { user, userStats } = useAuth();
   const params = useParams();
   const { handleWatch } = useWatchlist();
   const [watchlist, setWatchlist] = useState<string | null>();
   const [watched, setWatched] = useState<string | null>();
 
   const data = useFetch(
-    `http://localhost:5000/imdb/${params.type}/${params.id}`
+    `https://media-log.herokuapp.com/imdb/${params.type}/${params.id}`
   );
 
   //fetching user info
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.username}`, {
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((final) => {
-        setWatched(
-          params.type === "movie"
-            ? final.user.movies.watched.find(
-                (movie: { title: string; name: string }) =>
-                  data.data.title === movie.name
-              )
-              ? "Watched"
-              : "Set as watched"
-            : final.user.shows.watched.find(
-                (movie: { title: string; name: string }) =>
-                  data.data.original_name === movie.name
-              )
+    data &&
+      setWatched(
+        data && params.type === "movie"
+          ? userStats!.data.user.movies.watched.find(
+              (movie: { title: string; name: string }) =>
+                data.data.title === movie.name
+            )
             ? "Watched"
             : "Set as watched"
-        );
-        setWatchlist(
-          params.type === "movie"
-            ? final.user.movies.watchlist.find(
-                (movie: { title: string; name: string }) =>
-                  data.data.title === movie.name
-              )
-              ? "Remove from watchlist"
-              : "Add to watchlist"
-            : final.user.shows.watchlist.find(
-                (movie: { title: string; name: string }) =>
-                  data.data.original_name === movie.name
-              )
+          : userStats!.data.user.shows.watched.find(
+              (movie: { title: string; name: string }) =>
+                data.data.original_name === movie.name
+            )
+          ? "Watched"
+          : "Set as watched"
+      );
+    data &&
+      setWatchlist(
+        params.type === "movie"
+          ? userStats!.data.user.movies.watchlist.find(
+              (movie: { title: string; name: string }) =>
+                data.data.title === movie.name
+            )
             ? "Remove from watchlist"
             : "Add to watchlist"
-        );
-      });
-  }, [data, params.type, user?.username]);
+          : userStats!.data.user.shows.watchlist.find(
+              (movie: { title: string; name: string }) =>
+                data.data.original_name === movie.name
+            )
+          ? "Remove from watchlist"
+          : "Add to watchlist"
+      );
+  }, [userStats, data, params]);
 
   return (
     <Container className="cont" maxWidth="lg">

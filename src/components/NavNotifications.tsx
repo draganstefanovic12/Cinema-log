@@ -18,7 +18,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
   const handleClick = async () => {
     setRead(true);
     await axios(
-      `http://localhost:5000/user/notifications/${userStats?.data.user.username}`,
+      `https://media-log.herokuapp.com/user/notifications/${userStats?.data.user.username}`,
       {
         method: "POST",
         headers: {

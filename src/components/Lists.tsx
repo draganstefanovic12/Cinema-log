@@ -20,23 +20,9 @@ interface List {
   description: string;
 }
 
-export const Lists = ({ usr }: ListsProps) => {
-  const [lists, setLists] = useState<[List]>();
+export const Lists = ({ list, usr, setLists }: any) => {
   const [add, setAdd] = useState<boolean>(false);
   const { user } = useAuth();
-
-  const handleLists = async () => {
-    const data = await axios.get(`http://localhost:5000/user/lists/${usr}`, {
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-    });
-    setLists(data.data);
-  };
-
-  useEffect(() => {
-    handleLists();
-  }, []);
 
   return (
     <Container className="profile-list-cont">
@@ -49,8 +35,8 @@ export const Lists = ({ usr }: ListsProps) => {
         sx={{ height: "52em", color: "#cccccc" }}
         className="profiles-lists"
       >
-        {lists &&
-          lists.map((list: List) => (
+        {list &&
+          list.map((list: List) => (
             <Fragment key={list.name}>
               <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
                 <Typography variant="h5" sx={{ display: "flex" }}>
@@ -72,11 +58,6 @@ export const Lists = ({ usr }: ListsProps) => {
               </Link>
             </Fragment>
           ))}
-        {lists === undefined && (
-          <Typography className="no-lists" variant="h4">
-            No lists...
-          </Typography>
-        )}
         {add && <NewList setLists={setLists} setAdd={setAdd} usr={usr} />}
       </Container>
     </Container>

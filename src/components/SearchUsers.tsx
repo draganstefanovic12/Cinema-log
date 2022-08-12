@@ -1,13 +1,14 @@
-import { Avatar, Card, Container, Grid, Typography } from "@mui/material";
+import { Avatar, Card, Grid, Typography } from "@mui/material";
 import { useFetch } from "../hooks/useFetch";
 import { query, UserModel } from "../types/types";
 
 export const SearchUsers = ({ query }: query) => {
   const users = useFetch(
     query === "allusers"
-      ? `http://localhost:5000/user/all/allusers/`
-      : `http://localhost:5000/user/user/${query}`
+      ? `https://media-log.herokuapp.com/user/all/allusers/`
+      : `https://media-log.herokuapp.com/user/user/${query}`
   );
+  console.log(query);
 
   return (
     <>

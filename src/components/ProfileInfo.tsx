@@ -3,11 +3,11 @@ import { Favorites } from "./Favorites";
 import { UserFeed } from "./UserFeed";
 import { ProfileFeedProps } from "../types/types";
 
-export const ProfileInfo = ({ feed }: ProfileFeedProps) => {
+export const ProfileInfo = ({ feed, favorites }: ProfileFeedProps) => {
   return (
     <Container className="profile-info-container">
       <UserFeed name="User Feed" feed={feed} />
-      <Favorites />
+      <Favorites favorites={favorites} />
     </Container>
   );
 };

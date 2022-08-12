@@ -7,7 +7,7 @@ import { useFetch } from "../hooks/useFetch";
 export const Person = () => {
   const { id } = useParams();
 
-  const data = useFetch(`http://localhost:5000/imdb/person/${id}`);
+  const data = useFetch(`https://media-log.herokuapp.com/imdb/person/${id}`);
 
   return (
     <Container

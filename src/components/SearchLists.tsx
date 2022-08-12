@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import { ListToParse, Media } from "../types/types";
 
 export const SearchLists = () => {
-  const data = useFetch(`http://localhost:5000/lists/all`);
+  const data = useFetch(`https://media-log.herokuapp.com/lists/all`);
 
   return (
     <Container>

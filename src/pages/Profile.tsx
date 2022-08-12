@@ -17,16 +17,19 @@ export const Profile = () => {
   const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
   const { user, userStats } = useAuth();
+  const [list, setLists] = useState();
   const params = useParams();
 
-  const data = useFetch(`http://localhost:5000/user/${params.user}`);
+  const data = useFetch(`https://media-log.herokuapp.com/user/${params.user}`);
 
   const handleToggle = () => {
     setUpload(!upload);
   };
 
   useEffect(() => {
-    data && setImgSrc(`http://localhost:5000${data.data.user.avatar[0]}`);
+    data &&
+      setImgSrc(`https://media-log.herokuapp.com${data.data.user.avatar[0]}`);
+    setLists(userStats?.data.user.lists);
   }, [data]);
 
   return (
@@ -160,7 +163,11 @@ export const Profile = () => {
       {data && (
         <>
           {state === "feed" && (
-            <ProfileInfo name="User Feed" feed={data.data.user.feed} />
+            <ProfileInfo
+              name="User Feed"
+              favorites={data.data.user.favorites}
+              feed={data.data.user.feed}
+            />
           )}
           {state === "movie" && (
             <MoviesOrShows
@@ -176,7 +183,9 @@ export const Profile = () => {
               movies={data.data.user.shows}
             />
           )}
-          {state === "lists" && <Lists usr={params.user} />}
+          {state === "lists" && (
+            <Lists list={list} usr={params.user} setLists={setLists} />
+          )}
         </>
       )}
     </div>

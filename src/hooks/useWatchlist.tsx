@@ -6,7 +6,7 @@ export const useWatchlist = () => {
 
   const handleWatch = async (data: any, username: string, type: string) => {
     const parsed = JSON.parse(data);
-    await axios(`http://localhost:5000/user/${type}/`, {
+    await axios(`https://media-log.herokuapp.com/user/${type}/`, {
       method: "POST",
       data: {
         name: parsed.title === undefined ? parsed.original_name : parsed.title,

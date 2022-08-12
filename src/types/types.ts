@@ -200,6 +200,7 @@ export type UserModel = {
 export type ProfileFeedProps = {
   feed: Feed[];
   name: string;
+  favorites?: Media[];
 };
 
 export type NotificationProps = {

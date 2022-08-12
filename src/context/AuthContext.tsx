@@ -49,7 +49,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
       axios
-        .get(`http://localhost:5000/user/${user.username}`, {
+        .get(`https://media-log.herokuapp.com/user/${user.username}`, {
           headers: {
             Authorization: `${user?.username} ${user?.token}`,
           },

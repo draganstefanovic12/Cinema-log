@@ -29,7 +29,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
     setImgSrc("");
     setOpen(false);
     axios.delete(
-      `http://localhost:5000/image/delete/${userStats?.data.user._id}`,
+      `https://media-log.herokuapp.com/image/delete/${userStats?.data.user._id}`,
       {
         headers: {
           Authorization: `${user?.username} ${user?.token}`,
@@ -43,7 +43,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
       <form
         style={{ display: "hidden" }}
         method="POST"
-        action={`http://localhost:5000/image/upload/${userStats?.data.user._id}`}
+        action={`https://media-log.herokuapp.com/image/upload/${userStats?.data.user._id}`}
         encType="multipart/form-data"
       >
         <MenuList

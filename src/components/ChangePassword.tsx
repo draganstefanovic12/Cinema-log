@@ -14,7 +14,7 @@ export const ChangePassword = () => {
 
   const handleSubmit = () => {
     fetch(
-      `http://localhost:5000/user/checkpassword/${user?.username}/${debounce}/${newPassword}`,
+      `https://media-log.herokuapp.com/checkpassword/${user?.username}/${debounce}/${newPassword}`,
       {
         method: "POST",
         headers: {
