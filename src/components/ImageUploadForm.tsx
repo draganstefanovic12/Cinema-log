@@ -22,7 +22,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
     document.getElementById("submit")?.click();
     setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 1000);
   };
 
   const handleDelete = () => {
