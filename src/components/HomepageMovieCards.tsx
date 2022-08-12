@@ -2,12 +2,24 @@ import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { Card, CardMedia, Typography } from "@mui/material";
 import { HomepageMovieCardsProps, Media } from "../types/types";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const HomepageMovieCards = ({
   query,
   name,
 }: HomepageMovieCardsProps) => {
-  const data = useFetch(query);
+  const [data, setData] = useState<any>();
+
+  const handleCards = async () => {
+    const data = await fetch(query);
+    const response = await data.json();
+    setData(response);
+  };
+
+  useEffect(() => {
+    handleCards();
+  }, []);
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
@@ -25,7 +37,7 @@ export const HomepageMovieCards = ({
         }}
       >
         {data &&
-          data.data.results.slice(0, 10).map((movie: Media) => (
+          data.results.slice(0, 10).map((movie: Media) => (
             <Link
               style={{ width: "10rem" }}
               key={movie.id}
