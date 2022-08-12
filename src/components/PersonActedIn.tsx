@@ -30,7 +30,7 @@ export const PersonActedIn = ({ data }: any) => {
             sx={{
               marginLeft: "1.7rem",
               backgroundColor:
-                type !== null && data.data.combined_credits.cast
+                type !== null && type === data.data.combined_credits.cast
                   ? "#161b22"
                   : "#181e26",
             }}
@@ -42,7 +42,7 @@ export const PersonActedIn = ({ data }: any) => {
           <ListItem
             sx={{
               backgroundColor:
-                type === data.data.combined_credits.crew
+                type !== null && type === data.data.combined_credits.crew
                   ? "#161b22"
                   : "#181e26",
             }}
@@ -60,6 +60,7 @@ export const PersonActedIn = ({ data }: any) => {
           backgroundColor: "#161b22",
           justifyContent: "center",
           paddingTop: "1.5rem",
+          paddingBottom: "1.5rem",
         }}
       >
         {type ? (
