@@ -25,7 +25,10 @@ export const SearchUsers = ({ query }: query) => {
               sx={{ width: "12.5rem", marginBottom: "1rem" }}
               key={user._id}
             >
-              <a style={{ color: "white" }} href={`/#/user/${user.username}`}>
+              <a
+                style={{ color: "white" }}
+                href={`/Cinema-log/#/user/${user.username}`}
+              >
                 <Grid container>
                   <Grid>
                     <Avatar

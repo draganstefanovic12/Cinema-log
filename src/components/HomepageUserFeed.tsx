@@ -56,8 +56,8 @@ export const HomepageUserFeed = () => {
       {userFeed.length === 0 ? (
         <Typography>
           You're not following anyone yet. Browse{" "}
-          <a href="/#/search/allusers/multi">users</a> and find someone who
-          shares the same interests as you.
+          <a href="/Cinema-log/#/search/allusers/multi">users</a> and find
+          someone who shares the same interests as you.
         </Typography>
       ) : (
         <UserFeed feed={sorted} name={"Friend Activity"} />

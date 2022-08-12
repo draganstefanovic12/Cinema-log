@@ -10,7 +10,7 @@ export const SearchLists = () => {
     <Container>
       {data &&
         data.data.map((list: ListToParse) => (
-          <a href={`/#/list/${list.name}`}>
+          <a href={`/Cinema-log/#/list/${list.name}`}>
             <Card
               sx={{
                 backgroundColor: "#161b22",

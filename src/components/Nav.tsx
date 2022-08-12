@@ -29,7 +29,7 @@ export const Nav = () => {
           onMouseLeave={() => setHover(false)}
           onMouseEnter={() => setHover(true)}
           style={{ marginLeft: "1em" }}
-          href="/"
+          href="/Cinema-log/"
         >
           {hover ? <MovieCreationRoundedIcon /> : <MovieCreationOutlinedIcon />}
         </a>

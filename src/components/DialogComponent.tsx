@@ -72,7 +72,7 @@ export const DialogComponent = ({
               <a
                 onClick={handleClose}
                 style={{ display: "flex" }}
-                href={`/#/user/${user.name}`}
+                href={`/Cinema-log/#/user/${user.name}`}
               >
                 <Avatar
                   src={`http://localhost:5000${user.avatar && user.avatar[0]}`}

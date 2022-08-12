@@ -50,8 +50,8 @@ export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
       </Card>
       {name === "Friend Activity" && (
         <Typography>
-          Browse <a href="/#/search/allusers/multi">all users</a> and find
-          someone who shares the same interests as you.
+          Browse <a href="/Cinema-log/#/search/allusers/multi">all users</a> and
+          find someone who shares the same interests as you.
         </Typography>
       )}
     </div>
