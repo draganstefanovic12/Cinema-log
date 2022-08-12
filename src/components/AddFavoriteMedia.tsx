@@ -29,7 +29,7 @@ export const AddFavoriteMedia = ({
 
   const handleSearch = async () => {
     const data = await axios.get(
-      `http://localhost:5000/imdb/multi/${debounce}/`,
+      `https://media-log.herokuapp.com/imdb/multi/${debounce}/`,
       {
         headers: {
           Authorization: `${user?.username} ${user?.token}`,
@@ -45,18 +45,21 @@ export const AddFavoriteMedia = ({
     poster: string,
     type: string
   ) => {
-    await axios(`http://localhost:5000/user/addfavorite/${user?.username}/`, {
-      method: "POST",
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-      data: {
-        title: name,
-        id: id,
-        poster: poster,
-        type: type,
-      },
-    });
+    await axios(
+      `https://media-log.herokuapp.com/user/addfavorite/${user?.username}/`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `${user?.username} ${user?.token}`,
+        },
+        data: {
+          title: name,
+          id: id,
+          poster: poster,
+          type: type,
+        },
+      }
+    );
   };
 
   useEffect(() => {

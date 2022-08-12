@@ -19,12 +19,15 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
   }, [followers, user]);
 
   const handleClick = async () => {
-    await axios(`http://localhost:5000/user/follow/${usr}/${followedUser}`, {
-      method: "POST",
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-    });
+    await axios(
+      `https://media-log.herokuapp.com/user/follow/${usr}/${followedUser}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `${user?.username} ${user?.token}`,
+        },
+      }
+    );
   };
   //dragan i qqq
 

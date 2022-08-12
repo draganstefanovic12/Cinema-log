@@ -11,18 +11,23 @@ export const RemoveList = ({ usr, list }: RemoveListProps) => {
   const { user } = useAuth();
 
   const handleRemove = async () => {
-    await axios.delete(`http://localhost:5000/user/deletelist/${usr}`, {
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-      data: {
-        name: list.name,
-      },
-    });
+    await axios.delete(
+      `https://media-log.herokuapp.com/user/deletelist/${usr}`,
+      {
+        headers: {
+          Authorization: `${user?.username} ${user?.token}`,
+        },
+        data: {
+          name: list.name,
+        },
+      }
+    );
   };
 
   const handleRemoveList = async () => {
-    await axios.delete(`http://localhost:5000/lists/delete/${list.name}`);
+    await axios.delete(
+      `https://media-log.herokuapp.com/lists/delete/${list.name}`
+    );
   };
 
   const handleClickOpen = () => {

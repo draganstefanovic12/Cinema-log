@@ -14,8 +14,8 @@ export const Search = () => {
 
   const data = useFetch(
     query.type === "multi"
-      ? `http://localhost:5000/imdb/multi/${query.query}/`
-      : `http://localhost:5000/imdb/discover/${query.query}/${query.type}/${offset}`
+      ? `https://media-log.herokuapp.com/imdb/multi/${query.query}/`
+      : `https://media-log.herokuapp.com/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
   return (

@@ -13,7 +13,7 @@ export const SimilarMovies = () => {
     const arr: Media[] = [];
     for (let movie in movies) {
       const data = await fetch(
-        `http://localhost:5000/imdb/similar/${movies[movie].id}`
+        `https://media-log.herokuapp.com/imdb/similar/${movies[movie].id}`
       );
       const response = await data.json();
       const filtered = response.results.filter(

@@ -7,17 +7,15 @@ import { Media, MediaProps } from "../types/types";
 
 export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
-  const [watchType, setWatchType] = useState<string>("watched");
-  const data = useFetch(
-    `http://localhost:5000/user/${type}/${watchType}/${user}/${offset}/${type}`
-  );
+  const [watchType, setWatchType] = useState<any>(movies.watched);
+  console.log(movies, watchType);
 
   return (
     <Container className="profile-list-cont">
       <div className="watched-watchlist-cont">
         <ListItem
           style={{ color: watchType === "watched" ? "#fff" : "#cccccc" }}
-          onClick={() => setWatchType("watched")}
+          onClick={() => setWatchType(movies.watched)}
           sx={{ width: "6em" }}
           button
         >
@@ -25,16 +23,16 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
         </ListItem>
         <ListItem
           style={{ color: watchType === "watchlist" ? "#fff" : "#cccccc" }}
-          onClick={() => setWatchType("watchlist")}
+          onClick={() => setWatchType(movies.watchlist)}
           sx={{ width: "6em" }}
           button
         >
           Watchlist
         </ListItem>
       </div>
-      {data && (
+      {watchType && (
         <Container className="movie-grid-cont">
-          {data.data.map((movie: Media) => (
+          {watchType.slice(offset, offset + 18).map((movie: Media) => (
             <Link key={movie.id} to={`/${type}/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia

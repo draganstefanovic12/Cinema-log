@@ -5,7 +5,7 @@ import { useFetch } from "../hooks/useFetch";
 import { Media, ListToParse } from "../types/types";
 
 export const HomepageLists = () => {
-  const data = useFetch("http://localhost:5000/lists/main");
+  const data = useFetch("https://media-log.herokuapp.com/lists/main");
   const navigate = useNavigate();
 
   return (

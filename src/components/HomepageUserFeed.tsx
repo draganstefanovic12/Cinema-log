@@ -11,11 +11,14 @@ export const HomepageUserFeed = () => {
 
   const handleActivity = async () => {
     userStats?.data.user.following.map(async (usr: { name: string }) => {
-      const data = await fetch(`http://localhost:5000/user/${usr.name}`, {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      });
+      const data = await fetch(
+        `https://media-log.herokuapp.com/user/${usr.name}`,
+        {
+          headers: {
+            Authorization: `${user?.username} ${user?.token}`,
+          },
+        }
+      );
       const response = await data.json();
       userState
         ? setUserState((currState: User[]) => [...currState, response])

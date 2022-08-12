@@ -13,7 +13,7 @@ export const ChangeUsername = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${username}`)
+    fetch(`https://media-log.herokuapp.com/user/${username}`)
       .then((res) => res.json())
       .then((final) => {
         if (final.user !== null) {
@@ -25,7 +25,7 @@ export const ChangeUsername = () => {
   const handleSubmit = async () => {
     localStorage.setItem("user", JSON.stringify({ username: username }));
     await axios.post(
-      `http://localhost:5000/user/changeusername/${user?.username}`,
+      `https://media-log.herokuapp.com/user/changeusername/${user?.username}`,
       {
         newUsername: username,
       }
