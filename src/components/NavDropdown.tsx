@@ -28,7 +28,7 @@ export const NavDropdown = () => {
             setOpen(false);
           }}
         >
-          <a href={`/#/user/${user?.username}`}>Profile</a>
+          <a href={`/Cinema-log/#/user/${user?.username}`}>Profile</a>
         </MenuItem>
         <MenuItem
           onClick={() => {
