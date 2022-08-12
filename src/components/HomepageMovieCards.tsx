@@ -1,25 +1,10 @@
 import { Link } from "react-router-dom";
+import { Media } from "../types/types";
 import { useFetch } from "../hooks/useFetch";
 import { Card, CardMedia, Typography } from "@mui/material";
-import { HomepageMovieCardsProps, Media } from "../types/types";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-export const HomepageMovieCards = ({
-  query,
-  name,
-}: HomepageMovieCardsProps) => {
-  const [data, setData] = useState<any>();
-
-  const handleCards = async () => {
-    const data = await fetch(query);
-    const response = await data.json();
-    setData(response);
-  };
-
-  useEffect(() => {
-    handleCards();
-  }, []);
+export const HomepageMovieCards = ({ query, name }: any) => {
+  const data = useFetch(query);
 
   return (
     <div style={{ gridRow: "2", gridColumn: "1" }}>
@@ -37,7 +22,7 @@ export const HomepageMovieCards = ({
         }}
       >
         {data &&
-          data.results.slice(0, 10).map((movie: Media) => (
+          data.data.results.slice(0, 10).map((movie: Media) => (
             <Link
               style={{ width: "10rem" }}
               key={movie.id}

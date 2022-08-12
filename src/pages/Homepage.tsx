@@ -17,11 +17,11 @@ export const Homepage = () => {
       <div>
         {userStats?.data.user.movies.watched.length !== 0 && <SimilarMovies />}
         <HomepageMovieCards
-          query={`http://localhost:5000/imdb/toprated`}
+          query={`https://media-log.herokuapp.com/imdb/toprated`}
           name={"Top Rated"}
         />
         <HomepageMovieCards
-          query={`http://localhost:5000/imdb/trending`}
+          query={`https://media-log.herokuapp.com/imdb/trending`}
           name={"Trending Movies"}
         />
       </div>
