@@ -1,7 +1,7 @@
-import { Card, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import { Media } from "../types/types";
+import { useFetch } from "../hooks/useFetch";
+import { Card, CardMedia, Typography } from "@mui/material";
 
 export const HomepageMovieCards = ({ query, name }: any) => {
   const data = useFetch(query);

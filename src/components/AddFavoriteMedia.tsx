@@ -29,7 +29,12 @@ export const AddFavoriteMedia = ({
 
   const handleSearch = async () => {
     const data = await axios.get(
-      `http://localhost:5000/imdb/multi/${debounce}/`
+      `http://localhost:5000/imdb/multi/${debounce}/`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
     );
     setResult(data);
   };
@@ -43,6 +48,9 @@ export const AddFavoriteMedia = ({
     await axios.post(
       `http://localhost:5000/user/addfavorite/${user?.username}/`,
       {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
         title: name,
         id: id,
         poster: poster,

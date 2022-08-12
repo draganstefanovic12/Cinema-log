@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { UserFeed } from "./UserFeed";
 import { User, Feed } from "../types/types";
 import { Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export const HomepageUserFeed = () => {
   const { userStats } = useAuth();

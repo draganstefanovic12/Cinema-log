@@ -1,5 +1,5 @@
-import { ListItem, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { ListItem, Typography } from "@mui/material";
 import { GenreProps, GenreMapped } from "../types/types";
 
 export const Genre = ({ data, type }: GenreProps) => {

@@ -14,7 +14,11 @@ export const NavPopper = ({
     <div>
       <Button
         onClick={() => setOpen(true)}
-        style={{ backgroundColor: open ? "#161b22" : "#161b22" }}
+        sx={{
+          backgroundColor: open ? "#161b22" : "#161b22",
+          color: "#cccccc",
+          textTransform: "none",
+        }}
         ref={anchorRef}
         id="composition-button"
       >

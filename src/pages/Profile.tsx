@@ -10,13 +10,13 @@ import { Follow } from "../components/Follow";
 import { Lists } from "../components/Lists";
 import { ListItemComponent } from "../components/ListItemComponent";
 import { ImageUploadForm } from "../components/ImageUploadForm";
-import { ProfileFollowersFollowing } from "../components/ProfileFollowersFollowing";
+import { DialogComponent } from "../components/DialogComponent";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
   const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
-  const { user } = useAuth();
+  const { user, userStats } = useAuth();
   const params = useParams();
 
   const data = useFetch(`http://localhost:5000/user/${params.user}`);
@@ -24,6 +24,8 @@ export const Profile = () => {
   const handleToggle = () => {
     setUpload(!upload);
   };
+
+  console.log(userStats?.data.user);
 
   useEffect(() => {
     data && setImgSrc(`http://localhost:5000${data.data.user.avatar[0]}`);
@@ -93,13 +95,20 @@ export const Profile = () => {
                     <Typography variant="subtitle1">
                       TV Shows watched: {data.data.user.shows.watched.length}
                     </Typography>
-                    <Typography variant="subtitle1">
-                      Followers: <span>{data.data.user.followers.length}</span>
-                    </Typography>
-
-                    <Typography variant="subtitle1">
-                      Following: {data.data.user.following.length}
-                    </Typography>
+                    <DialogComponent
+                      followComparison={userStats?.data.user.following}
+                      children={data.data.user.followers}
+                      name={"Followers"}
+                      number={data.data.user.followers.length}
+                      currUser={userStats?.data.user.username}
+                    />
+                    <DialogComponent
+                      followComparison={userStats?.data.user.following}
+                      children={data.data.user.following}
+                      name={"Following"}
+                      number={data.data.user.following.length}
+                      currUser={userStats?.data.user.username}
+                    />
                   </div>
                 </div>
               </Typography>
@@ -141,7 +150,8 @@ export const Profile = () => {
             </Grid>
             {user && params.user !== user?.username && (
               <Follow
-                user={user?.username}
+                typ={"profile"}
+                usr={user?.username}
                 followedUser={params.user}
                 followers={data.data.user.followers}
               />

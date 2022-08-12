@@ -110,9 +110,11 @@ export type OtherCrew = {
 };
 
 export type FollowProps = {
-  user: string | undefined;
+  usr: string | undefined;
   followedUser: string | undefined;
   followers: [];
+  typ?: string;
+  //typ serves for profile followers/following, it only works if i reverse the comparison
 };
 
 export type GenreMapped = {
@@ -185,6 +187,7 @@ export type UserModel = {
   avatar: string;
   movies: UserMedia;
   shows: UserMedia;
+  name: string;
   followers: [];
   following: [];
 };
@@ -216,4 +219,12 @@ export type NavPopperProps = {
   children: any;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type DialogComponentProps = {
+  children: [];
+  name: string;
+  currUser: string;
+  followComparison: [];
+  number: number;
 };
