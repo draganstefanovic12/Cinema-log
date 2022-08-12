@@ -45,18 +45,18 @@ export const AddFavoriteMedia = ({
     poster: string,
     type: string
   ) => {
-    await axios.post(
-      `http://localhost:5000/user/addfavorite/${user?.username}/`,
-      {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+    await axios(`http://localhost:5000/user/addfavorite/${user?.username}/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+      data: {
         title: name,
         id: id,
         poster: poster,
         type: type,
-      }
-    );
+      },
+    });
   };
 
   useEffect(() => {

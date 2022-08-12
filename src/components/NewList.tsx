@@ -10,20 +10,22 @@ import { AddFavoriteMedia } from "./AddFavoriteMedia";
 import { MediaStringUndefined, NewListProps, List } from "../types/types";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useAuth } from "../context/AuthContext";
 
-export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
+export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
   const [desc, setDesc] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<any>([]);
   const [error, setError] = useState<string>("");
+  const { user } = useAuth();
 
   const addList = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios.post(`http://localhost:5000/lists/new/${user}`, {
+      await axios.post(`http://localhost:5000/lists/new/${usr}`, {
         name: name,
         content: JSON.stringify(content),
         description: desc,
-        username: user,
+        username: usr,
       });
     } else {
       setError(
@@ -34,7 +36,10 @@ export const NewList = ({ user, setAdd, setLists }: NewListProps) => {
 
   const addListToProfile = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios.post(`http://localhost:5000/user/newlist/${user}`, {
+      await axios.post(`http://localhost:5000/user/newlist/${usr}`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
         name: name,
         content: JSON.stringify(content),
         description: desc,

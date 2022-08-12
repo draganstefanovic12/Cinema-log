@@ -11,7 +11,7 @@ type Curr = {
 
 export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { userStats } = useAuth();
+  const { user, userStats } = useAuth();
 
   const handleClick = () => {
     document.getElementById("hidden")?.click();
@@ -29,7 +29,12 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
     setImgSrc("");
     setOpen(false);
     axios.delete(
-      `http://localhost:5000/image/delete/${userStats?.data.user._id}`
+      `http://localhost:5000/image/delete/${userStats?.data.user._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
     );
   };
 

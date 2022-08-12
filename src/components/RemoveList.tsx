@@ -2,14 +2,19 @@ import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { RemoveListProps } from "../types/types";
 
-export const RemoveList = ({ user, list }: RemoveListProps) => {
+export const RemoveList = ({ usr, list }: RemoveListProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleRemove = async () => {
-    await axios.delete(`http://localhost:5000/user/deletelist/${user}`, {
+    await axios.delete(`http://localhost:5000/user/deletelist/${usr}`, {
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
       data: {
         name: list.name,
       },
@@ -46,7 +51,7 @@ export const RemoveList = ({ user, list }: RemoveListProps) => {
         <DialogActions sx={{ backgroundColor: "#14181c" }}>
           <Button
             onClick={() => {
-              navigate(`/user/${user}`);
+              navigate(`/user/${usr}`);
               handleRemove();
               handleRemoveList();
             }}

@@ -18,6 +18,9 @@ export const PageList = () => {
     await axios.post(
       `http://localhost:5000/user/likelist/${data.data.username}`,
       {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
         userThatLiked: user?.username,
         list: data.data.name,
       }
@@ -52,7 +55,7 @@ export const PageList = () => {
             </div>
             <div style={{ display: "flex" }}>
               {user?.username === data.data.username && (
-                <RemoveList list={data.data} user={user?.username} />
+                <RemoveList list={data.data} usr={user?.username} />
               )}
               {user?.username !== data.data.username && (
                 <ListItem

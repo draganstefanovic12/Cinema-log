@@ -25,8 +25,6 @@ export const Profile = () => {
     setUpload(!upload);
   };
 
-  console.log(userStats?.data.user);
-
   useEffect(() => {
     data && setImgSrc(`http://localhost:5000${data.data.user.avatar[0]}`);
   }, [data]);
@@ -178,7 +176,7 @@ export const Profile = () => {
               movies={data.data.user.shows}
             />
           )}
-          {state === "lists" && <Lists user={params.user} />}
+          {state === "lists" && <Lists usr={params.user} />}
         </>
       )}
     </div>

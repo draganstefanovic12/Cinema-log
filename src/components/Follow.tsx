@@ -18,14 +18,12 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
   }, [followers, user]);
 
   const handleClick = async () => {
-    await axios.post(
-      `http://localhost:5000/user/follow/${usr}/${followedUser}`,
-      {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      }
-    );
+    await axios(`http://localhost:5000/user/follow/${usr}/${followedUser}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+    });
   };
   //dragan i qqq
 

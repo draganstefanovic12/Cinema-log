@@ -13,12 +13,18 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 export const NavNotifications = ({ notifications }: NotificationProps) => {
   const [read, setRead] = useState<boolean>(true);
   const { setOpen, open } = usePopper();
-  const { userStats } = useAuth();
+  const { user, userStats } = useAuth();
 
   const handleClick = async () => {
     setRead(true);
-    await axios.post(
-      `http://localhost:5000/user/notifications/${userStats?.data.user.username}`
+    await axios(
+      `http://localhost:5000/user/notifications/${userStats?.data.user.username}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
     );
   };
 

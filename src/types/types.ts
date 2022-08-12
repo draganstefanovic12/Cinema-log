@@ -48,7 +48,7 @@ export type ListItemComponentProps = {
 };
 
 export type NewListProps = {
-  user: string | undefined;
+  usr: string | undefined;
   setAdd: React.Dispatch<React.SetStateAction<boolean>>;
   setLists: React.Dispatch<React.SetStateAction<any>>;
 };
@@ -59,7 +59,7 @@ export type RemoveListProps = {
     content: object[];
     description: keyof List;
   };
-  user: string | undefined;
+  usr: string | undefined;
 };
 
 export type PaginationProps = {
@@ -142,7 +142,7 @@ export type List = {
 };
 
 export type ListsProps = {
-  user: string | undefined;
+  usr: string | undefined;
 };
 
 export type ListToParse = {

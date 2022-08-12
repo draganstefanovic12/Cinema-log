@@ -24,7 +24,11 @@ export const MediaPage = () => {
 
   //fetching user info
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.username}`)
+    fetch(`http://localhost:5000/user/${user?.username}`, {
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+    })
       .then((res) => res.json())
       .then((final) => {
         setWatched(
