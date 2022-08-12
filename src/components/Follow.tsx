@@ -1,24 +1,34 @@
 import { ListItem } from "@mui/material";
 import { Container } from "@mui/system";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { FollowProps } from "../types/types";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
-export const Follow = ({ user, followedUser, followers }: FollowProps) => {
+export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
   const [follow, setFollow] = useState<string>();
+  const { user } = useAuth();
 
   useEffect(() => {
+    //need to replace checkFollow user with Followeduser
     const checkFollow = followers.filter(
-      (users: { name: string }) => users.name === user
+      (users: { name: string }) => users.name === followedUser
     );
     checkFollow.length === 0 ? setFollow("Follow") : setFollow("Unfollow");
   }, [followers, user]);
 
   const handleClick = async () => {
     await axios.post(
-      `http://localhost:5000/user/follow/${user}/${followedUser}`
+      `http://localhost:5000/user/follow/${usr}/${followedUser}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
     );
   };
+  //dragan i qqq
+
   return (
     <Container
       sx={{
@@ -26,10 +36,8 @@ export const Follow = ({ user, followedUser, followers }: FollowProps) => {
         width: "9em",
         color: "#CCCCCC",
         position: "relative",
-        left: "4em",
         height: "2em",
-        marginLeft: "2.5em",
-        marginTop: "0.5em",
+        margin: "0",
       }}
     >
       <ListItem

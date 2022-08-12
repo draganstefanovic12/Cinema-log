@@ -42,7 +42,7 @@ export const Lists = ({ user }: ListsProps) => {
         {lists &&
           lists.map((list: List) => (
             <Fragment key={list.name}>
-              <Link style={{ width: "25em" }} to={`/#/list/${list.name}`}>
+              <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
                 <Typography variant="h5" sx={{ display: "flex" }}>
                   {list.name}
                 </Typography>

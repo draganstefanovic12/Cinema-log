@@ -4,7 +4,6 @@ import { formatDistanceToNow } from "date-fns";
 import { ProfileFeedProps } from "../types/types";
 
 export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
-  console.log(name);
   return (
     <div className="user-feed-container">
       <Typography variant="h5" className="user-feed">
