@@ -8,7 +8,6 @@ import { Media, MediaProps } from "../types/types";
 export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [watchType, setWatchType] = useState<any>(movies.watched);
-  console.log(movies, watchType);
 
   return (
     <Container className="profile-list-cont">
