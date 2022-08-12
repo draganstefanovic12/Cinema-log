@@ -10,7 +10,7 @@ export const useFetch = (param: string) => {
     const handleData = async () => {
       const data = await axios.get(param, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
       });
       setData(data);

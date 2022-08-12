@@ -1,5 +1,4 @@
 import { Avatar, Card, Container, Grid, Typography } from "@mui/material";
-import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { query, UserModel } from "../types/types";
 

@@ -62,6 +62,11 @@ export type RemoveListProps = {
   usr: string | undefined;
 };
 
+export type HomepageMovieCardsProps = {
+  query: string;
+  name: string;
+};
+
 export type PaginationProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
   data?: {

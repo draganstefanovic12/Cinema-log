@@ -16,7 +16,7 @@ export const useWatchlist = () => {
         username: username,
       },
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
         "content-type": "application/json",
       },
     });

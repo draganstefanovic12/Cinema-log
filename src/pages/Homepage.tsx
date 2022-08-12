@@ -3,8 +3,11 @@ import { HomepageLists } from "../components/HomepageLists";
 import { HomepageUserFeed } from "../components/HomepageUserFeed";
 import { SimilarMovies } from "../components/SimilarMovies";
 import { HomepageMovieCards } from "../components/HomepageMovieCards";
+import { useAuth } from "../context/AuthContext";
 
 export const Homepage = () => {
+  const { userStats } = useAuth();
+
   return (
     <Container
       maxWidth="xl"
@@ -12,7 +15,7 @@ export const Homepage = () => {
       sx={{ marginTop: "5em" }}
     >
       <div>
-        <SimilarMovies />
+        {userStats?.data.user.movies.watched.length !== 0 && <SimilarMovies />}
         <HomepageMovieCards
           query={`http://localhost:5000/imdb/toprated`}
           name={"Top Rated"}

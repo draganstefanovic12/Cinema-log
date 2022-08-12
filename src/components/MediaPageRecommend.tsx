@@ -36,7 +36,7 @@ export const MediaPageRecommend = ({
     await axios(`http://localhost:5000/user/recommendation/${usr}/`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
       data: {
         recUser: userStats?.data.user.username,

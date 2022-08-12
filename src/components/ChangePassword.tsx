@@ -17,6 +17,9 @@ export const ChangePassword = () => {
       `http://localhost:5000/user/checkpassword/${user?.username}/${debounce}/${newPassword}`,
       {
         method: "POST",
+        headers: {
+          Authorization: `${user?.username} ${user?.token}`,
+        },
       }
     ).then((res) => {
       if (res.status === 400) {

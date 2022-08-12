@@ -1,20 +1,11 @@
 import { useFetch } from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
-import {
-  Avatar,
-  Card,
-  CardMedia,
-  Grid,
-  ListItem,
-  MenuList,
-  Typography,
-} from "@mui/material";
+import { Card, CardMedia, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { SearchPagination } from "../components/SearchPagination";
 import { Media } from "../types/types";
 import { SearchMediaTypePerson } from "../components/SearchMediaTypePerson";
 import { SearchUsers } from "../components/SearchUsers";
-import { Container } from "@mui/system";
 import { SearchLists } from "../components/SearchLists";
 
 export const Search = () => {

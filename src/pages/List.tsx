@@ -19,7 +19,7 @@ export const PageList = () => {
       `http://localhost:5000/user/likelist/${data.data.username}`,
       {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `${user?.username} ${user?.token}`,
         },
         userThatLiked: user?.username,
         list: data.data.name,

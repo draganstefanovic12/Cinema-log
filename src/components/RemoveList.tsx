@@ -13,7 +13,7 @@ export const RemoveList = ({ usr, list }: RemoveListProps) => {
   const handleRemove = async () => {
     await axios.delete(`http://localhost:5000/user/deletelist/${usr}`, {
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
       data: {
         name: list.name,

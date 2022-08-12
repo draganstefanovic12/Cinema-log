@@ -21,7 +21,7 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
     await axios(`http://localhost:5000/user/follow/${usr}/${followedUser}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
     });
   };

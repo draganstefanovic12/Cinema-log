@@ -5,11 +5,11 @@ import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { MediaDetails } from "../components/MediaDetails";
 import { useWatchlist } from "../hooks/useWatchlist";
+import { MediaPageRecommend } from "../components/MediaPageRecommend";
 import { useEffect, useState } from "react";
 import { Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import { MediaPageRecommend } from "../components/MediaPageRecommend";
 
 export const MediaPage = () => {
   const { user } = useAuth();
@@ -26,7 +26,7 @@ export const MediaPage = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/user/${user?.username}`, {
       headers: {
-        Authorization: `Bearer ${user?.token}`,
+        Authorization: `${user?.username} ${user?.token}`,
       },
     })
       .then((res) => res.json())
