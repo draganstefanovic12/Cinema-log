@@ -22,7 +22,7 @@ export const MediaPageRecommend = ({
   params,
 }: MediaPageRecommendProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { userStats } = useAuth();
+  const { user, userStats } = useAuth();
 
   const handleClose = () => {
     setOpen(false);
@@ -32,10 +32,16 @@ export const MediaPageRecommend = ({
     setOpen(true);
   };
 
-  const handleRecommend = async (user: string) => {
-    await axios.post(`http://localhost:5000/user/recommendation/${user}/`, {
-      recUser: userStats?.data.user.username,
-      movie: JSON.stringify(media),
+  const handleRecommend = async (usr: string) => {
+    await axios(`http://localhost:5000/user/recommendation/${usr}/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+      data: {
+        recUser: userStats?.data.user.username,
+        movie: JSON.stringify(media),
+      },
     });
   };
 

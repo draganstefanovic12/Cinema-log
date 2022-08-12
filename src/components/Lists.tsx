@@ -3,11 +3,9 @@ import { Container } from "@mui/system";
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { NewList } from "./NewList";
-
-interface ListsProps {
-  user: string | undefined;
-}
+import { ListsProps } from "../types/types";
 
 interface List {
   name: string;
@@ -17,12 +15,17 @@ interface List {
   description: string;
 }
 
-export const Lists = ({ user }: ListsProps) => {
+export const Lists = ({ usr }: ListsProps) => {
   const [lists, setLists] = useState<[List]>();
   const [add, setAdd] = useState<boolean>(false);
+  const { user } = useAuth();
 
   const handleLists = async () => {
-    const data = await axios.get(`http://localhost:5000/user/lists/${user}`);
+    const data = await axios.get(`http://localhost:5000/user/lists/${usr}`, {
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+    });
     setLists(data.data);
   };
 
@@ -67,7 +70,7 @@ export const Lists = ({ user }: ListsProps) => {
             No lists...
           </Typography>
         )}
-        {add && <NewList setLists={setLists} setAdd={setAdd} user={user} />}
+        {add && <NewList setLists={setLists} setAdd={setAdd} usr={usr} />}
       </Container>
     </Container>
   );

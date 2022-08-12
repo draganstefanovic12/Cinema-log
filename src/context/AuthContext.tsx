@@ -49,7 +49,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
       axios
-        .get(`http://localhost:5000/user/${user.username}`)
+        .get(`http://localhost:5000/user/${user.username}`, {
+          headers: {
+            Authorization: `Bearer ${user?.token}`,
+          },
+        })
         .then((result: AxiosResponse<any, any>) => setUserStats(result));
     }
   }, []);

@@ -5,13 +5,17 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export const HomepageUserFeed = () => {
-  const { userStats } = useAuth();
+  const { user, userStats } = useAuth();
   const [userState, setUserState] = useState<any>([]);
   const [userFeed, setUserFeed] = useState<any>([]);
 
   const handleActivity = async () => {
-    userStats?.data.user.following.map(async (user: { name: string }) => {
-      const data = await fetch(`http://localhost:5000/user/${user.name}`);
+    userStats?.data.user.following.map(async (usr: { name: string }) => {
+      const data = await fetch(`http://localhost:5000/user/${usr.name}`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
       const response = await data.json();
       userState
         ? setUserState((currState: User[]) => [...currState, response])
