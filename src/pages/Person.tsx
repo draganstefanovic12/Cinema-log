@@ -1,8 +1,8 @@
-import { CardMedia, CircularProgress, Grid, Typography } from "@mui/material";
+import { useFetch } from "../hooks/useFetch";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { PersonActedIn } from "../components/PersonActedIn";
-import { useFetch } from "../hooks/useFetch";
+import { CardMedia, CircularProgress, Grid, Typography } from "@mui/material";
 
 export const Person = () => {
   const { id } = useParams();

@@ -8,10 +8,10 @@ import {
   MenuList,
   Paper,
 } from "@mui/material";
-import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
-import { useDebounce } from "../hooks/useDebounce";
 import { useAuth } from "../context/AuthContext";
+import { Container } from "@mui/system";
+import { useDebounce } from "../hooks/useDebounce";
+import { useEffect, useState } from "react";
 import { Media, AddFavoriteMediaProps, Result } from "../types/types";
 
 export const AddFavoriteMedia = ({
@@ -117,7 +117,7 @@ export const AddFavoriteMedia = ({
                       setHidden(true);
                       setInput && setInput!(false);
                       setFavMovies &&
-                        setFavMovies((currMovies: object[]) => [
+                        setFavMovies((currMovies: any) => [
                           ...currMovies,
                           {
                             title: movie.title
