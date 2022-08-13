@@ -18,7 +18,11 @@ export const PersonActedIn = ({ data }: any) => {
     data.data.known_for_department === "Acting"
       ? setType(data.data.combined_credits.cast)
       : setType(data.data.combined_credits.crew);
-  }, []);
+  }, [
+    data.data.combined_credits.cast,
+    data.data.combined_credits.crew,
+    data.data.known_for_department,
+  ]);
 
   return (
     <>
@@ -63,7 +67,7 @@ export const PersonActedIn = ({ data }: any) => {
           paddingBottom: "1.5rem",
         }}
       >
-        {type ? (
+        {type &&
           type
             .filter((acted: Media) =>
               acted.character
@@ -101,15 +105,7 @@ export const PersonActedIn = ({ data }: any) => {
                   {acted.character}
                 </Typography>
               </Link>
-            ))
-        ) : (
-          <Skeleton
-            variant="rectangular"
-            height={1500}
-            width={1000}
-            sx={{ bgcolor: "#181e26" }}
-          />
-        )}
+            ))}
       </Container>
     </>
   );

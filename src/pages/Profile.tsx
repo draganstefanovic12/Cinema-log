@@ -30,6 +30,7 @@ export const Profile = () => {
     data &&
       setImgSrc(`https://media-log.herokuapp.com${data.data.user.avatar[0]}`);
     setLists(userStats?.data.user.lists);
+    setState("feed");
   }, [data]);
 
   return (

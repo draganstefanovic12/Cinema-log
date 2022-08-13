@@ -39,7 +39,10 @@ export const Lists = ({ list, usr, setLists }: any) => {
           list.map((list: List) => (
             <Fragment key={list.name}>
               <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
-                <Typography variant="h5" sx={{ display: "flex" }}>
+                <Typography
+                  variant="h5"
+                  sx={{ display: "flex", color: "#cccccc" }}
+                >
                   {list.name}
                 </Typography>
                 <div style={{ display: "flex", width: "20em" }}>

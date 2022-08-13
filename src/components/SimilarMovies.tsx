@@ -18,7 +18,7 @@ export const SimilarMovies = () => {
         );
         const response = await data.json();
         const filtered = response.results.filter(
-          (movie: Media) => movie.vote_average > 7.5
+          (movie: Media) => movie.vote_average > 6.9
         );
         arr.push(...filtered);
       }

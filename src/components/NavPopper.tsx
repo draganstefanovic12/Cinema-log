@@ -11,7 +11,7 @@ export const NavPopper = ({
   const { anchorRef } = usePopper();
 
   return (
-    <div>
+    <div style={{ position: "relative", zIndex: "1" }}>
       <Button
         onClick={() => setOpen(true)}
         sx={{

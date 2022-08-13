@@ -1,4 +1,4 @@
-import { CardMedia, Grid, Typography } from "@mui/material";
+import { CardMedia, CircularProgress, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { PersonActedIn } from "../components/PersonActedIn";
@@ -10,16 +10,16 @@ export const Person = () => {
   const data = useFetch(`https://media-log.herokuapp.com/imdb/person/${id}`);
 
   return (
-    <Container
-      sx={{
-        marginTop: "5rem",
-        color: "#cccccc",
-        backgroundColor: "#181e26",
-        padding: "1rem",
-      }}
-    >
-      {data && (
-        <>
+    <>
+      {data ? (
+        <Container
+          sx={{
+            marginTop: "5rem",
+            color: "#cccccc",
+            backgroundColor: "#181e26",
+            padding: "1rem",
+          }}
+        >
           <Grid sx={{ display: "flex" }}>
             <CardMedia
               sx={{ width: "10rem", marginRight: "1rem" }}
@@ -35,8 +35,17 @@ export const Person = () => {
             </Grid>
           </Grid>
           <PersonActedIn data={data} />
-        </>
+        </Container>
+      ) : (
+        <CircularProgress
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
       )}
-    </Container>
+    </>
   );
 };

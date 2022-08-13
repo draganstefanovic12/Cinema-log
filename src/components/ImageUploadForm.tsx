@@ -48,7 +48,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
       >
         <MenuList
           className="img-form-menu"
-          sx={{ padding: "0.5em" }}
+          sx={{ padding: "0.5em", color: "#cccccc" }}
           onClick={handleClick}
         >
           Upload file
@@ -70,7 +70,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
         />
         <MenuList
           className="img-form-menu"
-          sx={{ padding: "0.5em" }}
+          sx={{ padding: "0.5em", color: "#cccccc" }}
           onClick={handleDelete}
         >
           Remove
