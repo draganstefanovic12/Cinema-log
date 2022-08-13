@@ -212,22 +212,27 @@ body .main-container {
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-container .movie-card {
+  padding: 0;
+  margin-bottom: 1rem;
+  height: 21.9rem;
+}
+body .main-container .movie-card .movie-card-content {
   max-width: 45em;
   max-height: 30em;
   margin-bottom: 1em;
   animation: fade 500ms 1 ease-in-out forwards;
 }
-body .main-container .poster {
+body .main-container .movie-card .poster {
   width: 15em;
 }
-body .main-container .movie-poster-link {
+body .main-container .movie-card .movie-poster-link {
   text-decoration: none;
 }
-body .main-container .movie-poster-link .movie-card-name {
+body .main-container .movie-card .movie-poster-link .movie-card-name {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-body .main-container .movie-poster-link .card-grid .search-overview {
+body .main-container .movie-card .movie-poster-link .card-grid .search-overview {
   padding: 1em;
   justify-content: center;
   color: #CCCCCC;
@@ -612,6 +617,7 @@ body .cont .movie-info .watched-watchlist {
 
 .img-form-menu:hover {
   cursor: pointer;
+  background-color: #3a3a3a;
 }
 
 .movie-card-link-img {

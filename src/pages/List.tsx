@@ -71,7 +71,10 @@ export const PageList = () => {
           <Container className="list-grid-cont">
             {data &&
               parsed.map((list: List) => (
-                <Link to={`/${list.type!}/${list.id!}`}>
+                <Link
+                  className="movie-card-link"
+                  to={`/${list.type!}/${list.id!}`}
+                >
                   <CardMedia
                     sx={{ width: "8em" }}
                     component="img"

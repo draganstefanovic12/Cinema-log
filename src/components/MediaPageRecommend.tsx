@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Dialog,
   DialogActions,
   DialogTitle,
@@ -48,7 +49,7 @@ export const MediaPageRecommend = ({
   return (
     <>
       <ListItem onClick={handleOpen} button sx={{ whiteSpace: "nowrap" }}>
-        <RecommendIcon sx={{ marginRight: "0.5rem" }} />
+        <RecommendIcon />
         <Typography>
           Recommend this {params.type === "tv" ? "show" : "movie"} to someone
         </Typography>
@@ -63,6 +64,7 @@ export const MediaPageRecommend = ({
           sx={{
             display: "flex",
             flexDirection: "column",
+            alignItems: "flex-start",
             backgroundColor: "#14181c",
           }}
         >
@@ -76,12 +78,20 @@ export const MediaPageRecommend = ({
           </DialogTitle>
           {userStats?.data.user.following.map((User: User) => (
             <MenuItem
+              dense
+              sx={{ display: "flex" }}
               key={User.name}
               onClick={() => {
                 handleRecommend(User.name);
                 handleClose();
               }}
             >
+              <Avatar
+                sx={{ marginRight: "1rem" }}
+                src={
+                  User.avatar && `https://media-log.herokuapp.com${User.avatar}`
+                }
+              />
               {User.name}
             </MenuItem>
           ))}

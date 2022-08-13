@@ -188,22 +188,26 @@ body
         grid-template-columns: repeat(auto-fill, 50em)
         animation: $fade500ms
         .movie-card
-            max-width: 45em
-            max-height: 30em
-            margin-bottom: 1em
-            animation: $fade500ms
-        .poster
-            width: 15em
-        .movie-poster-link
-            text-decoration: none
-            .movie-card-name
-                margin-top: 1em
+            padding: 0
+            margin-bottom: 1rem
+            height: 21.9rem
+            .movie-card-content
+                max-width: 45em
+                max-height: 30em
                 margin-bottom: 1em
-            .card-grid
-                .search-overview
-                    padding: 1em
-                    justify-content: center
-                    color: #CCCCCC
+                animation: $fade500ms
+            .poster
+                width: 15em
+            .movie-poster-link
+                text-decoration: none
+                .movie-card-name
+                    margin-top: 1em
+                    margin-bottom: 1em
+                .card-grid
+                    .search-overview
+                        padding: 1em
+                        justify-content: center
+                        color: #CCCCCC
 
         .movie-cont
             @include flex
@@ -514,6 +518,7 @@ body
 .img-form-menu
     &:hover
         cursor: pointer
+        background-color: #3a3a3a
 
 .movie-card-link-img
     animation: faster 250ms 1 ease-in-out forwards

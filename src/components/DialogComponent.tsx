@@ -27,8 +27,6 @@ export const DialogComponent = ({
     setOpen(true);
   };
 
-  console.log(children);
-
   return (
     <>
       <Typography>

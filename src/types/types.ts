@@ -159,6 +159,7 @@ export type ListToParse = {
 };
 
 export type User = {
+  avatar: string[];
   name: any;
   user: {
     feed: [];

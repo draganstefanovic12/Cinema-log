@@ -44,6 +44,7 @@ export const Nav = () => {
                 startAdornment={
                   <InputAdornment position="start">
                     <SearchOutlinedIcon
+                      className="svg"
                       onClick={() =>
                         value && navigate(`/search/${value}/multi`)
                       }

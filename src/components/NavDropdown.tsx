@@ -29,7 +29,12 @@ export const NavDropdown = () => {
             setOpen(false);
           }}
         >
-          <a href={`/Cinema-log/#/user/${user?.username}`}>Profile</a>
+          <a
+            style={{ color: "#cccccc" }}
+            href={`/Cinema-log/#/user/${user?.username}`}
+          >
+            Profile
+          </a>
         </MenuItem>
         <MenuItem
           onClick={() => {
