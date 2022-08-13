@@ -149,14 +149,16 @@ export const Profile = () => {
                 Lists
               </ListItemComponent>
             </Grid>
-            {user && params.user !== user?.username && (
-              <Follow
-                typ={"profile"}
-                usr={user?.username}
-                followedUser={params.user}
-                followers={data.data.user.followers}
-              />
-            )}
+            <Grid sx={{ marginLeft: "5.5rem" }}>
+              {user && params.user !== user?.username && (
+                <Follow
+                  typ={"profile"}
+                  usr={user?.username}
+                  followedUser={params.user}
+                  followers={data.data.user.followers}
+                />
+              )}
+            </Grid>
           </Grid>
         )}
       </Container>

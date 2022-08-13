@@ -27,6 +27,8 @@ export const DialogComponent = ({
     setOpen(true);
   };
 
+  console.log(children);
+
   return (
     <>
       <Typography>
@@ -66,16 +68,20 @@ export const DialogComponent = ({
                 display: "flex",
                 margin: "0",
                 justifyContent: "space-between",
+                alignItems: "center",
                 width: "27.5rem",
               }}
             >
               <a
                 onClick={handleClose}
-                style={{ display: "flex" }}
+                style={{ display: "flex", marginLeft: "1rem" }}
                 href={`/Cinema-log/#/user/${user.name}`}
               >
                 <Avatar
-                  src={`http://localhost:5000${user.avatar && user.avatar[0]}`}
+                  src={
+                    user.avatar &&
+                    `https://media-log.herokuapp.com${user.avatar}`
+                  }
                 />
                 <ListItem>{user.name}</ListItem>
               </a>

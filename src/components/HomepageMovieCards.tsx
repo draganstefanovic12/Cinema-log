@@ -15,10 +15,11 @@ export const HomepageMovieCards = ({ query, name }: any) => {
         {name}
       </Typography>
       <div
+        className="main-page-cards-div"
         style={{
           display: "grid",
-          flexDirection: "row",
-          gridTemplateColumns: "repeat(5, 10em)",
+          gridTemplateColumns: "repeat(auto-fit, 10rem)",
+          gridTemplateRows: "repeat(auto-fill, 15.9rem)",
         }}
       >
         {data &&

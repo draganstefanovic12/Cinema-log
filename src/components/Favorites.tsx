@@ -16,14 +16,14 @@ export const Favorites = ({ favorites }: any) => {
   const [favMedia, setFavMedia] = useState<any>();
   const params = useParams();
   const { user } = useAuth();
+  console.log(favMedia);
 
   useEffect(() => {
+    const updateMovies = async () => {
+      setFavMedia(favorites);
+    };
     updateMovies();
-  }, [params.user]);
-
-  const updateMovies = async () => {
-    setFavMedia(favorites);
-  };
+  }, [favorites, params]);
 
   const handleRemove = async (mov: string, date: string) => {
     setFavMedia(favMedia.filter((media: Media) => media.createdAt !== date));

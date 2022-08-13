@@ -8,7 +8,6 @@ export const SearchUsers = ({ query }: query) => {
       ? `https://media-log.herokuapp.com/user/all/allusers/`
       : `https://media-log.herokuapp.com/user/user/${query}`
   );
-  console.log(query);
 
   return (
     <>
@@ -35,7 +34,7 @@ export const SearchUsers = ({ query }: query) => {
                     <Avatar
                       sx={{ height: "10em", width: "10em" }}
                       variant="square"
-                      src={`http://localhost:5000${user.avatar}`}
+                      src={`https://media-log.herokuapp.com${user.avatar}`}
                     />
                   </Grid>
                   <Grid

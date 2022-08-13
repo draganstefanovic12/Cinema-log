@@ -1,9 +1,9 @@
-import { MenuItem, MenuList } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLogout } from "../hooks/useLogout";
 import { usePopper } from "../hooks/usePopper";
 import { NavPopper } from "./NavPopper";
+import { useNavigate } from "react-router-dom";
+import { MenuItem, MenuList } from "@mui/material";
 
 export const NavDropdown = () => {
   const { open, setOpen } = usePopper();
@@ -25,6 +25,7 @@ export const NavDropdown = () => {
       >
         <MenuItem
           onClick={(e) => {
+            navigate(`/user/${user?.username}`);
             setOpen(false);
           }}
         >
