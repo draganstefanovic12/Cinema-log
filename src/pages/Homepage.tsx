@@ -1,9 +1,9 @@
+import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
+import { SimilarMovies } from "../components/SimilarMovies";
 import { HomepageLists } from "../components/HomepageLists";
 import { HomepageUserFeed } from "../components/HomepageUserFeed";
-import { SimilarMovies } from "../components/SimilarMovies";
 import { HomepageMovieCards } from "../components/HomepageMovieCards";
-import { useAuth } from "../context/AuthContext";
 
 export const Homepage = () => {
   const { userStats } = useAuth();

@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardMedia,
-  Grid,
-  ListItem,
-  Skeleton,
-  Typography,
-} from "@mui/material";
+import { Card, CardMedia, Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

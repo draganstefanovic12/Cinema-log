@@ -1,22 +1,16 @@
-import {
-  Avatar,
-  CircularProgress,
-  Grid,
-  Skeleton,
-  Typography,
-} from "@mui/material";
-import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { MoviesOrShows } from "../components/MoviesOrShows";
-import { ProfileInfo } from "../components/ProfileInfo";
+import { Lists } from "../components/Lists";
+import { Follow } from "../components/Follow";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
-import { Follow } from "../components/Follow";
-import { Lists } from "../components/Lists";
-import { ListItemComponent } from "../components/ListItemComponent";
+import { useParams } from "react-router-dom";
+import { Container } from "@mui/system";
+import { ProfileInfo } from "../components/ProfileInfo";
+import { MoviesOrShows } from "../components/MoviesOrShows";
 import { ImageUploadForm } from "../components/ImageUploadForm";
 import { DialogComponent } from "../components/DialogComponent";
+import { ListItemComponent } from "../components/ListItemComponent";
+import { useEffect, useState } from "react";
+import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");

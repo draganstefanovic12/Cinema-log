@@ -1,9 +1,9 @@
-import { Button, Input, InputLabel, Typography } from "@mui/material";
-import { useState } from "react";
-import { useRegister } from "../hooks/useRegister";
 import bg from "../assets/registration.jpg";
-import { Container } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { useState } from "react";
+import { Container } from "@mui/system";
+import { useRegister } from "../hooks/useRegister";
+import { Button, Input, InputLabel, Typography } from "@mui/material";
 
 export const Register = () => {
   const [username, setUsername] = useState<string>("");
