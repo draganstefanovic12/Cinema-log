@@ -35,15 +35,15 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
     <Container
       sx={{
         display: "flex",
-        width: "9em",
+        width: "8em",
+        height: "1.5rem",
+        justifyContent: "center",
         color: "#CCCCCC",
-        position: "relative",
-        height: "2em",
         margin: "0",
       }}
     >
       <ListItem
-        sx={{ justifyContent: "center", backgroundColor: "#283038" }}
+        sx={{ justifyContent: "center", backgroundColor: "#181e26" }}
         onClick={() => {
           handleClick();
           setFollow(follow === "Follow" ? "Unfollow" : "Follow");

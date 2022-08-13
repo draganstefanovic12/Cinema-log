@@ -8,25 +8,25 @@ export const SimilarMovies = () => {
   const [similar, setSimilar] = useState<Media[]>();
   const { userStats } = useAuth();
 
-  const handleSimilar = async () => {
-    const movies = userStats?.data.user.movies.watched.slice(0, 5);
-    const arr: Media[] = [];
-    for (let movie in movies) {
-      const data = await fetch(
-        `https://media-log.herokuapp.com/imdb/similar/${movies[movie].id}`
-      );
-      const response = await data.json();
-      const filtered = response.results.filter(
-        (movie: Media) => movie.vote_average > 7.5
-      );
-      arr.push(...filtered);
-    }
-    setSimilar(arr);
-  };
-
   useEffect(() => {
+    const handleSimilar = async () => {
+      const movies = userStats?.data.user.movies.watched.slice(0, 5);
+      const arr: Media[] = [];
+      for (let movie in movies) {
+        const data = await fetch(
+          `https://media-log.herokuapp.com/imdb/similar/${movies[movie].id}`
+        );
+        const response = await data.json();
+        const filtered = response.results.filter(
+          (movie: Media) => movie.vote_average > 7.5
+        );
+        arr.push(...filtered);
+      }
+      setSimilar(arr);
+    };
+
     userStats && handleSimilar();
-  }, [userStats?.data.user.movies.watched]);
+  }, [userStats, userStats?.data.user.movies.watched]);
 
   return (
     <>
@@ -37,7 +37,8 @@ export const SimilarMovies = () => {
         style={{
           display: "grid",
           flexDirection: "row",
-          gridTemplateColumns: "repeat(5, 10em)",
+          gridTemplateColumns: "repeat(auto-fill, 10em)",
+          gridTemplateRows: "repeat(auto-fill, 15.9em)",
         }}
       >
         {similar ? (
@@ -49,7 +50,7 @@ export const SimilarMovies = () => {
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
-                  className="movie-card-link-img"
+                  className="movie-card-link-img movie-card-link"
                   component="img"
                   sx={{ width: "10rem" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -63,7 +64,7 @@ export const SimilarMovies = () => {
             sx={{ bgcolor: "#161b22" }}
             animation="wave"
             variant="rectangular"
-            height="30rem"
+            height="10rem"
             width="50rem"
           />
         )}

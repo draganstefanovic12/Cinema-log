@@ -16,6 +16,7 @@ export const NavPopper = ({
         onClick={() => setOpen(true)}
         sx={{
           backgroundColor: open ? "#161b22" : "#161b22",
+          padding: "0",
           color: "#cccccc",
           textTransform: "none",
         }}

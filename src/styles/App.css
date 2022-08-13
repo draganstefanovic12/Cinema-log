@@ -40,14 +40,14 @@ body .main-page-cont {
   display: grid;
   height: 90vh;
   justify-content: center;
-  grid-template-columns: 40% 20% 40%;
+  grid-template-columns: 60% 40%;
   grid-template-rows: repeat(auto-fill, 1fr);
   color: #cccccc;
   animation: fade 500ms 1 ease-in-out forwards;
 }
 body .main-page-cont .main-page-feed-cont {
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 2;
 }
 body .main-page-cont .main-page-feed-cont .main-page-user-feed {
   grid-column: 1/2;
@@ -168,9 +168,6 @@ body .nav img {
   height: 1.2em;
 }
 body .nav img:hover {
-  cursor: pointer;
-}
-body .nav svg:hover {
   cursor: pointer;
 }
 body .nav input {
@@ -374,16 +371,17 @@ body .cont .movie-main-information .genres {
   display: flex;
   gap: 1em;
   width: 10.3em;
-  height: 2em;
+  height: 2.2em;
   white-space: nowrap;
 }
 body .cont .movie-main-information .genres .genre {
   margin-bottom: 0.2em;
   padding-bottom: 0.5em;
-  background-color: #283038;
+  background-color: #14181c;
   justify-content: center;
 }
 body .cont .movie-main-information .genres .genre:hover {
+  background-color: #171b20;
   cursor: pointer;
 }
 body .cont .backdrop {
@@ -544,13 +542,6 @@ body .cont .movie-info .watched-watchlist {
   width: 100%;
   animation: fade 500ms 1 ease-in-out forwards;
 }
-.profile-container .profile-list-cont .movie-grid-cont .movie-card-link {
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-.profile-container .profile-list-cont .movie-grid-cont .movie-card-link:hover {
-  outline: 0.1em solid #6d6d6d;
-  border-radius: 0.1em;
-}
 .profile-container .profiles-lists {
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -653,6 +644,14 @@ body .cont .movie-info .watched-watchlist {
   animation: fade 500ms 1 ease-in-out forwards;
 }
 
+.movie-card-link {
+  animation: fade 500ms 1 ease-in-out forwards;
+}
+.movie-card-link:hover {
+  outline: 0.1em solid #6d6d6d;
+  border-radius: 0.1em;
+}
+
 .svg:hover {
   cursor: pointer;
 }
@@ -662,30 +661,15 @@ body .cont .movie-info .watched-watchlist {
     height: 24em;
   }
 }
-.register-page {
-  display: flex;
-  background-size: cover;
-  justify-content: center;
-  height: 100vh;
-  color: #cccccc;
+@media (max-width: 2550px) {
+  .form-container {
+    height: 40rem;
+  }
 }
-.register-page .form-container {
-  width: 64%;
-  background-color: black;
-  margin-right: 4.5rem;
-  height: 40rem;
-  margin-top: 2rem;
-}
-.register-page .form-container .registration-cont {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-.register-page .form-container .registration-cont .landing-form > * {
-  font-family: nunito, sans-serif;
-  width: 20rem;
-  animation: fade 500ms 1 ease-in-out forwards;
+@media (max-width: 1130px) {
+  .cont .movie-main img {
+    width: auto;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

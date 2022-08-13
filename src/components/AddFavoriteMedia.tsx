@@ -125,6 +125,7 @@ export const AddFavoriteMedia = ({
                               : movie.original_name,
                             id: movie.id,
                             poster_path: movie.poster_path,
+                            createdAt: new Date(),
                           },
                         ]);
                     }}

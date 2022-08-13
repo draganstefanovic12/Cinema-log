@@ -45,13 +45,13 @@ body
         display: grid
         height: 90vh
         justify-content: center
-        grid-template-columns: 40% 20% 40%
+        grid-template-columns: 60% 40%
         grid-template-rows: repeat(auto-fill, 1fr)
         color: #cccccc
         animation: $fade500ms
         .main-page-feed-cont
             grid-row: 1
-            grid-column: 3
+            grid-column: 2
             .main-page-user-feed
                 grid-column: 1 / 2
                 padding: 1rem
@@ -151,9 +151,6 @@ body
 
         img
             height: 1.2em
-            &:hover
-                cursor: pointer
-        svg
             &:hover
                 cursor: pointer
         input
@@ -320,15 +317,15 @@ body
                 display: flex
                 gap: 1em
                 width: 10.3em
-                height: 2em
+                height: 2.2em
                 white-space: nowrap
-
                 .genre
                     margin-bottom: 0.2em
                     padding-bottom: 0.5em
-                    background-color: #283038
+                    background-color: #14181c
                     justify-content: center
                     &:hover
+                        background-color: #171b20
                         cursor: pointer
         .backdrop
             display: flex
@@ -457,11 +454,6 @@ body
             height: 52.5em
             width: 100%
             animation: $fade500ms
-            .movie-card-link
-                animation: $fade500ms
-                &:hover
-                    outline: 0.1em solid #6d6d6d
-                    border-radius: 0.1em
 
     .profiles-lists
         display: grid
@@ -548,6 +540,12 @@ body
                 width: 20rem
                 animation: $fade500ms
 
+.movie-card-link
+    animation: $fade500ms
+    &:hover
+        outline: 0.1em solid #6d6d6d
+        border-radius: 0.1em
+
 .svg
     &:hover
         cursor: pointer
@@ -559,24 +557,11 @@ body
                 height: 24em
 
 @media (max-width: 2550px)
-.register-page
-    display: flex
-    background-size: cover
-    justify-content: center
-    height: 100vh
-    color: #cccccc
     .form-container
-        width: 64%
-        background-color: black
-        margin-right: 4.5rem
         height: 40rem
-        margin-top: 2rem
-        .registration-cont
-            display: flex
-            gap: 2rem
-            justify-content: center
-            align-items: center
-            .landing-form > *
-                font-family: $Nunito
-                width: 20rem
-                animation: $fade500ms
+
+@media(max-width: 1130px)
+    .cont
+        .movie-main
+            img
+                width: auto

@@ -28,7 +28,7 @@ export const HomepageLists = () => {
           >
             <div className="main-page-list-container">
               {data &&
-                data.data.map((list: ListToParse) => (
+                data.data.slice(0, 3).map((list: ListToParse) => (
                   <div key={list.name}>
                     <Typography
                       className="main-page-list-name"

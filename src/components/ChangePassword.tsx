@@ -8,13 +8,14 @@ export const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [checkNewPassword, setCheckNewPassword] = useState<string>("");
+  const [change, setChange] = useState<string | null>(null);
   const [passwordMatch, setPasswordMatch] = useState<boolean>(false);
   const { debounce } = useDebounce(oldPassword);
   const { user } = useAuth();
 
   const handleSubmit = () => {
     fetch(
-      `https://media-log.herokuapp.com/checkpassword/${user?.username}/${debounce}/${newPassword}`,
+      `https://media-log.herokuapp.com/user/checkpassword/${user?.username}/${debounce}/${newPassword}`,
       {
         method: "POST",
         headers: {
@@ -22,8 +23,11 @@ export const ChangePassword = () => {
         },
       }
     ).then((res) => {
+      console.log(res);
       if (res.status === 400) {
         setError(true);
+      } else {
+        setChange("done");
       }
     });
   };
@@ -65,6 +69,7 @@ export const ChangePassword = () => {
       />
       <TextField
         type="password"
+        error={passwordMatch}
         onChange={(e) => {
           setCheckNewPassword(e.target.value);
         }}
@@ -73,12 +78,18 @@ export const ChangePassword = () => {
         sx={{ width: "15em", marginBottom: "1em" }}
       />
       <Button
+        color={change ? "success" : "primary"}
         disabled={passwordMatch}
         className="change-pw-btn"
         onClick={handleSubmit}
       >
         Submit
       </Button>
+      {change === "done" && (
+        <Typography sx={{ whiteSpace: "nowrap" }}>
+          Password succesfully changed.
+        </Typography>
+      )}
     </Container>
   );
 };

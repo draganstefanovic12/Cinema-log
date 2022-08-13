@@ -25,6 +25,7 @@ export const MediaPage = () => {
   //fetching user info
   useEffect(() => {
     data &&
+      userStats &&
       setWatched(
         data && params.type === "movie"
           ? userStats!.data.user.movies.watched.find(
@@ -41,6 +42,7 @@ export const MediaPage = () => {
           : "Set as watched"
       );
     data &&
+      userStats &&
       setWatchlist(
         params.type === "movie"
           ? userStats!.data.user.movies.watchlist.find(
@@ -56,19 +58,19 @@ export const MediaPage = () => {
           ? "Remove from watchlist"
           : "Add to watchlist"
       );
-  }, [userStats, data, params]);
+  }, [params.type, data]);
 
   return (
     <Container className="cont" maxWidth="lg">
       {data && (
         <>
-          <Grid className="movie-main">
+          <div className="movie-main">
             <img
               className="backdrop"
               alt="backdrop"
               src={`https://image.tmdb.org/t/p/original/${data.data.backdrop_path}`}
             />
-          </Grid>
+          </div>
           <Grid className="movie-info">
             <img
               alt="poster"
