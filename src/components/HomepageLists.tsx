@@ -67,11 +67,11 @@ export const HomepageLists = () => {
             </div>
           </CardContent>
         </Card>
-        <Typography>
-          Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and
-          discover new media to watch.
-        </Typography>
       </div>
+      <Typography>
+        Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and
+        discover new media to watch.
+      </Typography>
     </>
   );
 };

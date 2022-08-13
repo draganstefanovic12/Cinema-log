@@ -10,23 +10,22 @@ export const SimilarMovies = () => {
 
   useEffect(() => {
     const handleSimilar = async () => {
-      const movies = userStats?.data.user.movies.watched.slice(0, 5);
-      const arr: Media[] = [];
-      for (let movie in movies) {
-        const data = await fetch(
-          `https://media-log.herokuapp.com/imdb/similar/${movies[movie].id}`
-        );
-        const response = await data.json();
-        const filtered = response.results.filter(
-          (movie: Media) => movie.vote_average > 6.9
-        );
-        arr.push(...filtered);
-      }
-      setSimilar(arr);
+      const movies = userStats?.data.user.movies.watched;
+
+      const data = await fetch(
+        `https://media-log.herokuapp.com/imdb/similar/${
+          movies[Math.floor(Math.random() * movies.length)].id
+        }`
+      );
+      const response = await data.json();
+      const filtered = response.results.filter(
+        (movie: Media) => movie.vote_average > 6.9
+      );
+      setSimilar(filtered);
     };
 
     userStats && handleSimilar();
-  }, [userStats, userStats?.data.user.movies.watched]);
+  }, [userStats]);
 
   return (
     <>
