@@ -10,13 +10,16 @@ import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 import { Media } from "../types/types";
 
-export const Favorites = ({ favorites }: any) => {
+export type FavoritesProps = {
+  favorites: Media[];
+};
+
+export const Favorites = ({ favorites }: FavoritesProps) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
-  const [favMedia, setFavMedia] = useState<any>();
+  const [favMedia, setFavMedia] = useState<Media[]>();
   const params = useParams();
   const { user } = useAuth();
-  console.log(favMedia);
 
   useEffect(() => {
     const updateMovies = async () => {
@@ -26,7 +29,7 @@ export const Favorites = ({ favorites }: any) => {
   }, [favorites, params]);
 
   const handleRemove = async (mov: string, date: string) => {
-    setFavMedia(favMedia.filter((media: Media) => media.createdAt !== date));
+    setFavMedia(favMedia!.filter((media: Media) => media.createdAt !== date));
     await axios.delete(
       `https://media-log.herokuapp.com/user/removefavorite/${params.user}`,
       {
@@ -70,37 +73,37 @@ export const Favorites = ({ favorites }: any) => {
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[0] ? favMedia[0] : favMedia}
+              media={favMedia![0] ? favMedia![0] : favMedia}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[1] ? favMedia[1] : favMedia}
+              media={favMedia![1] ? favMedia![1] : favMedia}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[2] ? favMedia[2] : favMedia}
+              media={favMedia![2] ? favMedia![2] : favMedia}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[3] ? favMedia[3] : favMedia}
+              media={favMedia![3] ? favMedia![3] : favMedia}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[4] ? favMedia[4] : favMedia}
+              media={favMedia![4] ? favMedia![4] : favMedia}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia[5] ? favMedia[5] : favMedia}
+              media={favMedia![5] ? favMedia![5] : favMedia}
               setFavMovies={setFavMedia}
             />
           </>
@@ -121,12 +124,19 @@ export const Favorites = ({ favorites }: any) => {
   );
 };
 
+type FavoriteCardsProps = {
+  media: any;
+  handleRemove: (mov: string, date: string) => Promise<void>;
+  edit: boolean;
+  setFavMovies?: any;
+};
+
 export const FavoriteCard = ({
   media,
   handleRemove,
   edit,
   setFavMovies,
-}: any) => {
+}: FavoriteCardsProps) => {
   const [input, setInput] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   return (
@@ -141,7 +151,7 @@ export const FavoriteCard = ({
             {hover && media.poster_path && (
               <HighlightOffOutlinedIcon
                 onClick={() => {
-                  handleRemove(media.title, media.createdAt);
+                  handleRemove(media.title, media.createdAt!);
                 }}
                 className="fav-remove-icon"
               />

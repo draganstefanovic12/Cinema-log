@@ -16,6 +16,7 @@ export type Media = {
   character: string;
   job: string;
   profile_path: string;
+  type: string;
 };
 
 export type MediaProps = {
@@ -36,7 +37,7 @@ export type MediaStringUndefined = {
 
 export type AddFavoriteMediaProps = {
   setInput?: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies?: React.Dispatch<React.SetStateAction<object[]>>;
+  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
   setContent?: React.Dispatch<React.SetStateAction<object[]>>;
 };
 
