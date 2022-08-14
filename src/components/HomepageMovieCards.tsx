@@ -32,10 +32,10 @@ export const HomepageMovieCards = ({
       >
         {data &&
           data.data.results.slice(0, 10).map((movie: Media) => (
-            <Link
+            <a
               style={{ width: "10rem" }}
               key={movie.id}
-              to={`/movie/${movie.id}`}
+              href={`/Cinema-log/#/movie/${movie.id}`}
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
@@ -46,7 +46,7 @@ export const HomepageMovieCards = ({
                   height="250"
                 />
               </Card>
-            </Link>
+            </a>
           ))}
       </div>
     </div>

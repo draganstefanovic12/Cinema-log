@@ -1,0 +1,226 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap)
+@import url("https://use.typekit.net/yno2wnn.css")
+
+$main: "Lato", sans-serif
+$Nunito: nunito, sans-serif
+$fade500ms: fade 500ms 1 ease-in-out forwards
+$notification: notification 1000ms 1 ease-in-out forwards
+
+@media (max-width: 768px)
+    html
+        overflow-x: hidden
+    body
+        flex-direction: column
+        overflow-y: visible
+        overflow-x: hidden
+        height: 100vh
+        .main-page-cont
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+            margin: 0
+            margin-top: 3rem
+            width: 100%
+            .similar
+                justify-content: center
+            .homepage-list-cont
+                display: none
+        .user-search
+            display: flex
+            .user-search-card
+                .user-search-card-content
+                    .user-grid-text
+                        margin-left: 1rem
+                    .user-grid-text > *
+                        padding: 0
+                        .user-text
+                            display: none
+
+        .nav
+            width: 100%
+        .cont
+            height: 83rem
+            .movie-main
+                .backdrop
+                    width: auto
+            .movie-info
+                .poster-main
+                    width: 6.7rem
+                    margin-left: 0.5rem
+                    height: 10rem
+                    margin-bottom: 0.5rem
+            .movie-main-information
+                width: 100%
+                .movie-name
+                    font-size: 1.3rem
+                    font-weight: 700
+                    .genres
+                        display: grid
+                        grid-template-rows: repeat(2, 1.5rem)
+                        grid-template-columns: repeat(2, 6.5rem)
+                        transform: translateY(0.5rem)
+                        font-size: 14px
+                .movie-overview
+                    width: 135%
+                    transform: translate(-9rem, 3.5rem)
+                .watched-watchlist
+                    width: 13rem
+                    transform: translate(-8rem, 4rem)
+                .ww-li
+                    padding: 0
+                    display: none
+            .cast-crew-cont
+                position: relative
+                width: 85%
+                transform: translateY(4rem)
+                .crew-actors
+                    font-size: 16px
+                    font-weight: 700
+                .actors
+                    display: inline-block
+                    .actor-cont
+                        height: 2rem
+                        .actor-avatar
+                            height: 2.5rem
+                            width: 2.5rem
+                        .actor-name
+                            font-size: 14px
+                            white-space: nowrap
+                        .actor-movie-name
+                            font-size: 14px
+        .main-container
+            display: grid
+            grid-template-columns: repeat(auto-fill, 10.5rem)
+            .movie-card
+                width: 10rem
+                height: 15rem
+            .movie-poster-link
+                .search-img
+                    height: 15rem
+                    width: 10rem
+        .person-cont
+            display: block
+            margin-top: 2.3rem
+            .person-cont-grid
+                float: left
+            .person-cards
+                grid-template-columns: repeat(auto-fill, 10rem)
+        .profile-container
+            margin-top: 2.3rem
+            .profile-info-container
+                height: auto
+            .profile-list-cont
+                .movie-grid-cont
+                    height: 40rem
+                    margin-bottom: 0.5rem
+                    grid-template-columns: repeat(auto-fill, 4rem)
+                    grid-template-rows: repeat(auto-fill, 7rem)
+                .movie-card-link
+                    height: 7rem
+                    .movie-card-img
+                        height: 7rem
+        .profile-name
+            font-size: 16px
+            font-weight: 700
+        .profile-details
+            width: 10rem
+        .profile-details > *
+            font-size: 14px
+        .profile-avatar
+            height: 5rem
+            width: 5rem
+        .list-item-comp
+            transform: translate(-10rem, 2.5rem)
+            position: relative
+            font-size: 14px
+            margin-left: 0.5rem
+        .list-item-comp > *
+            width: 3rem
+            white-space: nowrap
+        .user-feed-container
+            .user-feed-div
+                .user-feed-grid
+                    .user-feed-mapped-grid
+                        display: flex
+                        flex-direction: column
+                        .minutes-ago
+                            display: none
+                    .user-feed-mapped-grid > *
+                        font-size: 12px
+            .user-feed
+                font-size: 16px
+                font-weight: 700
+                font-family: $Nunito
+        .favorite-container
+            .fav-text-cont
+                width: 7rem
+            .favorite-movies
+                font-size: 16px
+                font-weight: 700
+            .fav-edit
+                font-size: 12px
+                font-weight: 400
+        .favorite-container-card
+            width: 9rem
+            .profile-fav-link
+                height: 6.5rem
+                margin-right: 1rem
+                .profile-fav-img
+                    height: 7rem !important
+                    width: 3.5rem !important
+            .fav-edit-cont
+                .fav-add-icon
+                    height: 1rem !important
+                    width: 1rem !important
+                    transform: translate(1.5rem, -4rem) !important
+                .fav-remove-icon
+                    height: 1rem
+                    width: 1rem
+                    transform: translate(2.6rem, 0.2rem) !important
+                .fav-edit-card
+                    width: 4rem !important
+                    height: 6.5rem !important
+                    margin-right: 1rem !important
+        .watched-watchlist-cont
+            width: 9rem
+            .watched
+                font-size: 12px
+                width: 4rem
+            .watchlist
+                font-size: 12px
+                width: 4rem
+        .profile-foll-cont
+            width: 16rem !important
+        .follow-button
+            position: absolute
+            transform: translate(9rem, -3rem)
+        .profile-list-cont
+            width: 100%
+            .profiles-lists
+                display: grid
+                grid-template-columns: 10rem
+                width: 10rem
+                .list-img
+                    width: 5.5rem
+        .list-main-cont
+            width: auto
+            .list-grid-cont
+                display: grid
+                grid-template-columns: repeat(auto-fill, 1fr)
+        .search-person
+            display: none
+            .movie-poster-link
+                height: 5rem
+    .form-container
+        display: flex
+        flex-direction: column
+        .landing-font
+            margin-right: 1rem
+            margin-bottom: 1rem
+            .big-login-text
+                font-size: 42px
+        .registration-cont
+            margin-top: 20rem
+            margin-left: 2em
+            display: flex
+            flex-direction: column

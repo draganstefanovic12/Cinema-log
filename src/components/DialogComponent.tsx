@@ -62,6 +62,7 @@ export const DialogComponent = ({
           </DialogTitle>
           {children.map((user: UserModel) => (
             <div
+              className="profile-foll-cont"
               style={{
                 display: "flex",
                 margin: "0",

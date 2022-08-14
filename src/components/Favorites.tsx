@@ -164,7 +164,6 @@ export const FavoriteCard = ({
               }
               className="fav-edit-card"
               component="img"
-              height="250"
             />
             {!media.poster_path && hover && (
               <ControlPointOutlinedIcon
@@ -178,17 +177,17 @@ export const FavoriteCard = ({
           )}
         </div>
       ) : (
-        <Link to={`/${media.type}/${media.id}`}>
+        <a
+          className="profile-fav-link"
+          href={`Cinema-log/#/${media.type}/${media.id}`}
+        >
           <CardMedia
             component="img"
-            height="270"
-            style={{
-              width: "11em",
-              paddingBottom: "1em",
-            }}
+            height="350"
+            className="profile-fav-img"
             src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
           />
-        </Link>
+        </a>
       )}
     </>
   );

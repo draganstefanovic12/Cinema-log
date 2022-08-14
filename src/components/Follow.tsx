@@ -33,6 +33,7 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
 
   return (
     <Container
+      className="follow-button"
       sx={{
         display: "flex",
         width: "8em",

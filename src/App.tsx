@@ -1,4 +1,5 @@
 import "./styles/App.css";
+import "./styles/MobileApp.css";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import { Nav } from "./components/Nav";

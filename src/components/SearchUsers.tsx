@@ -13,6 +13,7 @@ export const SearchUsers = ({ query }: query) => {
   return (
     <>
       <Container
+        className="user-search"
         style={{
           display: "grid",
           gap: "1rem",
@@ -22,10 +23,14 @@ export const SearchUsers = ({ query }: query) => {
         {users &&
           users.data.map((user: UserModel) => (
             <Card
+              className="user-search-card"
               sx={{ width: "40.5rem", marginBottom: "1rem" }}
               key={user._id}
             >
-              <CardContent sx={{ backgroundColor: "#14181c" }}>
+              <CardContent
+                className="user-search-card-content"
+                sx={{ backgroundColor: "#14181c" }}
+              >
                 <a href={`/Cinema-log/#/user/${user.username}`}>
                   <Grid sx={{ display: "flex" }} container>
                     <Grid>
@@ -36,6 +41,7 @@ export const SearchUsers = ({ query }: query) => {
                       />
                     </Grid>
                     <Grid
+                      className="user-grid-text"
                       sx={{
                         width: "10rem",
                         color: "#cccccc",
@@ -52,6 +58,7 @@ export const SearchUsers = ({ query }: query) => {
                         }}
                       >
                         <div
+                          className="user-text"
                           style={{ marginRight: "1rem", paddingLeft: "1rem" }}
                         >
                           <Typography>

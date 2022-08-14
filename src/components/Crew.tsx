@@ -7,11 +7,15 @@ export const Crew = ({ crew }: CrewArr) => {
   const navigate = useNavigate();
   return (
     <Container>
-      <Typography variant="h5" sx={{ marginLeft: "1em", paddingTop: "0.5em" }}>
+      <Typography
+        className="crew-actors"
+        variant="h5"
+        sx={{ marginLeft: "1em", paddingTop: "0.5em" }}
+      >
         Crew
       </Typography>
-      <div className="crew-cont">
-        <Container className="crew">
+      <div className="crew-cont actors">
+        <Container className="crew actor-cont">
           {crew &&
             crew!
               .filter(
@@ -24,19 +28,23 @@ export const Crew = ({ crew }: CrewArr) => {
                   <Avatar
                     onClick={() => navigate(`/person/${crew.id}`)}
                     variant="square"
-                    className="crew-avatar"
+                    className="crew-avatar actor-avatar"
                     src={`https://image.tmdb.org/t/p/w500/${crew.profile_path}`}
                   />
                   <Container>
                     <Typography
-                      className="crew-name"
+                      className="crew-name actor-name actor-movie-name"
                       onClick={() => navigate(`/person/${crew.id}`)}
                       sx={{ color: "#fff" }}
                       noWrap
                     >
                       {crew.name}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: "#cccccc" }}>
+                    <Typography
+                      className="actor-movie-name"
+                      variant="subtitle1"
+                      sx={{ color: "#cccccc" }}
+                    >
                       Director
                     </Typography>
                   </Container>

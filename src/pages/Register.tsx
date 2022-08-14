@@ -28,7 +28,7 @@ export const Register = () => {
           <div className="landing-form">
             <Typography variant="h5">Welcome to</Typography>
             <Typography className="site-name" variant="h2">
-              Media List
+              Cinema Log
             </Typography>
             <Typography variant="h6">
               Register now and recommend media to other users, create custom

@@ -7,7 +7,6 @@ export const useFetch = (param: string) => {
   const { user } = useAuth();
 
   useEffect(() => {
-    console.log(user?.token);
     const handleData = async () => {
       const data = await axios.get(param, {
         headers: {
