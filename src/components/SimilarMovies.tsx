@@ -33,6 +33,7 @@ export const SimilarMovies = () => {
         Recommendations based on what you already watched
       </Typography>
       <div
+        className="similar"
         style={{
           display: "grid",
           flexDirection: "row",

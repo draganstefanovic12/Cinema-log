@@ -1,11 +1,5 @@
 import "./styles/App.css";
-import {
-  BrowserRouter,
-  HashRouter,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import { Nav } from "./components/Nav";
 import { Search } from "./pages/Search";
@@ -51,6 +45,7 @@ const App = () => {
             element={!user ? <Login /> : <Navigate to="/" />}
           ></Route>
           <Route path="/account/" element={<MyAccount />}></Route>
+          <Route path="*" element={<Navigate to="/" />}></Route>
         </Routes>
       </ThemeProvider>
     </HashRouter>

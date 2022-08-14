@@ -50,7 +50,7 @@ export const MediaPageRecommend = ({
     <>
       <ListItem onClick={handleOpen} button sx={{ whiteSpace: "nowrap" }}>
         <RecommendIcon />
-        <Typography>
+        <Typography className="ww-li">
           Recommend this {params.type === "tv" ? "show" : "movie"} to someone
         </Typography>
       </ListItem>

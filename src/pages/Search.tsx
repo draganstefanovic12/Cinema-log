@@ -41,11 +41,11 @@ export const Search = () => {
                       result.id
                     }`}
                   >
-                    <Grid container>
-                      <Grid>
+                    <Grid className="search-main-grid" container>
+                      <Grid className="search-img-grid">
                         <CardMedia
+                          className="search-img"
                           component="img"
-                          style={{ width: "15em" }}
                           height="350"
                           src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                         ></CardMedia>

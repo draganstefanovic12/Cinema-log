@@ -9,7 +9,7 @@ export const HomepageLists = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="homepage-list-cont">
       <Typography sx={{ marginBottom: "1rem", marginTop: "1em" }} variant="h5">
         New Lists
       </Typography>
@@ -72,6 +72,6 @@ export const HomepageLists = () => {
         Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and
         discover new media to watch.
       </Typography>
-    </>
+    </div>
   );
 };
