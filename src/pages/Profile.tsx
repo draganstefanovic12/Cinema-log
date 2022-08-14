@@ -29,7 +29,7 @@ export const Profile = () => {
   useEffect(() => {
     data &&
       setImgSrc(`https://media-log.herokuapp.com${data.data.user.avatar[0]}`);
-    setLists(userStats?.data.user.lists);
+    data && setLists(data.data.user.lists);
     setState("feed");
   }, [data]);
 

@@ -179,7 +179,7 @@ export const FavoriteCard = ({
       ) : (
         <a
           className="profile-fav-link"
-          href={`Cinema-log/#/${media.type}/${media.id}`}
+          href={`/Cinema-log/#/${media.type}/${media.id}`}
         >
           <CardMedia
             component="img"
