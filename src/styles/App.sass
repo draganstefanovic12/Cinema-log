@@ -391,7 +391,13 @@ body
         background-color: #181e26
         padding-top: 1.5rem
     .favorite-container
-        width: 27em
+        width: 25em
+        .favorite-container-card
+            .profile-fav-link
+                .profile-fav-img
+                    height: 15.5rem
+                    width: 10rem
+                    padding-bottom: 1rem
         .fav-text-cont
             display: flex
             justify-content: space-between
@@ -407,7 +413,6 @@ body
         .favorite-container-card
             display: grid
             grid-template-columns: repeat(auto-fill, 50%)
-            grid-template-rows: repeat(auto-fill, 16.7em)
             .fav-edit-cont
                 margin-bottom: 1em
                 .search-fav
@@ -586,124 +591,3 @@ body
         .movie-main
             img
                 width: auto
-
-@media (max-width: 768px)
-    html
-        overflow-x: hidden
-    body
-        flex-direction: column
-        overflow-y: visible
-        overflow-x: hidden
-        height: 100vh
-        .main-page-cont
-            display: flex
-            flex-direction: column
-            justify-content: flex-start
-            margin: 0
-            margin-top: 3rem
-            width: 100%
-            .similar
-                justify-content: center
-            .homepage-list-cont
-                display: none
-        .nav
-            width: 100%
-        .cont
-            height: 95rem
-            .movie-main
-                .backdrop
-                    width: auto
-            .movie-info
-                .poster-main
-                    width: 6.7rem
-                    margin-left: 0.5rem
-                    height: 10rem
-                    margin-bottom: 0.5rem
-            .movie-main-information
-                width: 100%
-                .movie-name
-                    font-size: 1.3rem
-                    font-weight: 700
-                    .genres
-                        display: grid
-                        grid-template-rows: repeat(2, 1.5rem)
-                        grid-template-columns: repeat(2, 6.5rem)
-                        transform: translateY(0.5rem)
-                        font-size: 14px
-                .movie-overview
-                    width: 135%
-                    transform: translate(-9rem, 3.5rem)
-                .watched-watchlist
-                    width: 13rem
-                    transform: translate(-8rem, 4rem)
-                .ww-li
-                    padding: 0
-                    display: none
-            .cast-crew-cont
-                position: relative
-                width: 100%
-                transform: translateY(4rem)
-                .actors
-                    display: inline-block
-        .main-container
-            display: grid
-            grid-template-columns: repeat(auto-fill, 10.5rem)
-            .movie-card
-                width: 10rem
-                height: 15rem
-            .movie-poster-link
-                .search-img
-                    height: 15rem
-                    width: 10rem
-        .person-cont
-            display: block
-            margin-top: 2.3rem
-            .person-cont-grid
-                float: left
-            .person-cards
-                grid-template-columns: repeat(auto-fill, 10rem)
-        .profile-container
-            margin-top: 2.3rem
-            .profile-list-cont
-                .movie-grid-cont
-                    height: 40rem
-                    margin-bottom: 0.5rem
-                    grid-template-columns: repeat(auto-fill, 4rem)
-                    grid-template-rows: repeat(auto-fill, 7rem)
-                .movie-card-link
-                    height: 7rem
-                    .movie-card-img
-                        height: 7rem
-        .profile-name
-            font-size: 16px
-            font-weight: 700
-        .profile-details
-            width: 10rem
-        .profile-details > *
-            font-size: 14px
-        .profile-avatar
-            height: 5rem
-            width: 5rem
-        .list-item-comp
-            transform: translate(-10rem, 2.5rem)
-            position: relative
-            font-size: 14px
-            margin-left: 0.5rem
-        .list-item-comp > *
-            width: 3rem
-            white-space: nowrap
-        .user-feed-container
-            .user-feed-div
-                .user-feed-grid
-                    .user-feed-mapped-grid
-                        display: flex
-                        flex-direction: column
-                        .minutes-ago
-                            display: none
-                    .user-feed-mapped-grid > *
-                        font-size: 12px
-
-            .user-feed
-                font-size: 16px
-                font-weight: 700
-                font-family: $Nunito

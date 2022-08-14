@@ -13,6 +13,7 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
     <Container className="profile-list-cont">
       <div className="watched-watchlist-cont">
         <ListItem
+          className="watched"
           style={{ color: watchType === "watched" ? "#fff" : "#cccccc" }}
           onClick={() => setWatchType(movies.watched)}
           sx={{ width: "6em" }}
@@ -21,6 +22,7 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
           Watched
         </ListItem>
         <ListItem
+          className="watchlist"
           style={{ color: watchType === "watchlist" ? "#fff" : "#cccccc" }}
           onClick={() => setWatchType(movies.watchlist)}
           sx={{ width: "6em" }}

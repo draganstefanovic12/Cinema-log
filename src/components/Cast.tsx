@@ -8,7 +8,11 @@ export const Cast = ({ cast }: CastArr) => {
 
   return (
     <div>
-      <Typography variant="h5" sx={{ marginLeft: "1em", paddingTop: "0.5em" }}>
+      <Typography
+        className="crew-actors"
+        variant="h5"
+        sx={{ marginLeft: "1em", paddingTop: "0.5em" }}
+      >
         Actors
       </Typography>
       <div className="actors">
@@ -27,7 +31,12 @@ export const Cast = ({ cast }: CastArr) => {
               >
                 {cast.name}
               </Typography>
-              <Typography variant="subtitle1" sx={{ color: "#cccccc" }} noWrap>
+              <Typography
+                className="actor-movie-name"
+                variant="subtitle1"
+                sx={{ color: "#cccccc" }}
+                noWrap
+              >
                 {cast.character}
               </Typography>
             </Container>

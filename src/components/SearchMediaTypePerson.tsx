@@ -6,6 +6,7 @@ export const SearchMediaTypePerson = ({ result }: any) => {
   return (
     <>
       <div
+        className="search-person"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, 20rem)",
@@ -31,6 +32,7 @@ export const SearchMediaTypePerson = ({ result }: any) => {
                     <Grid container>
                       <Grid>
                         <CardMedia
+                          className="search-person-img"
                           component="img"
                           style={{ width: "15em" }}
                           height="350"
