@@ -23,7 +23,7 @@ export const HomepageMovieCards = ({
         {name}
       </Typography>
       <div
-        className="main-page-cards-div"
+        className="main-page-cards-div similar"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, 10rem)",

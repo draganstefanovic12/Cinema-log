@@ -227,6 +227,7 @@ body .main-container .movie-card .poster {
 }
 body .main-container .movie-card .movie-poster-link {
   text-decoration: none;
+  width: 15rem;
 }
 body .main-container .movie-card .movie-poster-link .movie-card-name {
   margin-top: 1em;
@@ -408,6 +409,7 @@ body .cont .movie-info img {
 body .cont .movie-info .movie-name {
   font-family: "Lato", sans-serif;
   margin-left: 1em;
+  font-weight: 700;
   margin-top: 0.2em;
 }
 body .cont .movie-info .movie-overview {
@@ -650,6 +652,21 @@ body .cont .movie-info .watched-watchlist {
   animation: fade 500ms 1 ease-in-out forwards;
 }
 
+.person-cont {
+  margin-top: 5rem;
+  color: #cccccc;
+  background-color: #181e26;
+  padding: 1rem;
+}
+.person-cont .person-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 13rem);
+  background-color: #161b22;
+  justify-content: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .movie-card-link {
   animation: fade 500ms 1 ease-in-out forwards;
 }
@@ -675,6 +692,156 @@ body .cont .movie-info .watched-watchlist {
 @media (max-width: 1130px) {
   .cont .movie-main img {
     width: auto;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    flex-direction: column;
+    overflow-y: visible;
+    overflow-x: hidden;
+    height: 100vh;
+  }
+  body .main-page-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    margin-top: 3rem;
+    width: 100%;
+  }
+  body .main-page-cont .similar {
+    justify-content: center;
+  }
+  body .main-page-cont .homepage-list-cont {
+    display: none;
+  }
+  body .nav {
+    width: 100%;
+  }
+  body .cont {
+    height: 95rem;
+  }
+  body .cont .movie-main .backdrop {
+    width: auto;
+  }
+  body .cont .movie-info .poster-main {
+    width: 6.7rem;
+    margin-left: 0.5rem;
+    height: 10rem;
+    margin-bottom: 0.5rem;
+  }
+  body .cont .movie-main-information {
+    width: 100%;
+  }
+  body .cont .movie-main-information .movie-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  body .cont .movie-main-information .movie-name .genres {
+    display: grid;
+    grid-template-rows: repeat(2, 1.5rem);
+    grid-template-columns: repeat(2, 6.5rem);
+    transform: translateY(0.5rem);
+    font-size: 14px;
+  }
+  body .cont .movie-main-information .movie-overview {
+    width: 135%;
+    transform: translate(-9rem, 3.5rem);
+  }
+  body .cont .movie-main-information .watched-watchlist {
+    width: 13rem;
+    transform: translate(-8rem, 4rem);
+  }
+  body .cont .movie-main-information .ww-li {
+    padding: 0;
+    display: none;
+  }
+  body .cont .cast-crew-cont {
+    position: relative;
+    width: 100%;
+    transform: translateY(4rem);
+  }
+  body .cont .cast-crew-cont .actors {
+    display: inline-block;
+  }
+  body .main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 10.5rem);
+  }
+  body .main-container .movie-card {
+    width: 10rem;
+    height: 15rem;
+  }
+  body .main-container .movie-poster-link .search-img {
+    height: 15rem;
+    width: 10rem;
+  }
+  body .person-cont {
+    display: block;
+    margin-top: 2.3rem;
+  }
+  body .person-cont .person-cont-grid {
+    float: left;
+  }
+  body .person-cont .person-cards {
+    grid-template-columns: repeat(auto-fill, 10rem);
+  }
+  body .profile-container {
+    margin-top: 2.3rem;
+  }
+  body .profile-container .profile-list-cont .movie-grid-cont {
+    height: 40rem;
+    margin-bottom: 0.5rem;
+    grid-template-columns: repeat(auto-fill, 4rem);
+    grid-template-rows: repeat(auto-fill, 7rem);
+  }
+  body .profile-container .profile-list-cont .movie-card-link {
+    height: 7rem;
+  }
+  body .profile-container .profile-list-cont .movie-card-link .movie-card-img {
+    height: 7rem;
+  }
+  body .profile-name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  body .profile-details {
+    width: 10rem;
+  }
+  body .profile-details > * {
+    font-size: 14px;
+  }
+  body .profile-avatar {
+    height: 5rem;
+    width: 5rem;
+  }
+  body .list-item-comp {
+    transform: translate(-10rem, 2.5rem);
+    position: relative;
+    font-size: 14px;
+    margin-left: 0.5rem;
+  }
+  body .list-item-comp > * {
+    width: 3rem;
+    white-space: nowrap;
+  }
+  body .user-feed-container .user-feed-div .user-feed-grid .user-feed-mapped-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  body .user-feed-container .user-feed-div .user-feed-grid .user-feed-mapped-grid .minutes-ago {
+    display: none;
+  }
+  body .user-feed-container .user-feed-div .user-feed-grid .user-feed-mapped-grid > * {
+    font-size: 12px;
+  }
+  body .user-feed-container .user-feed {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: nunito, sans-serif;
   }
 }
 

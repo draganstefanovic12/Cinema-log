@@ -57,6 +57,7 @@ export const Profile = () => {
                       setImgSrc={setImgSrc}
                       current={
                         <Avatar
+                          className="profile-avatar"
                           onClick={handleToggle}
                           sx={{ height: "7.5em", width: "7.5em" }}
                           variant="square"
@@ -66,6 +67,7 @@ export const Profile = () => {
                     />
                   ) : (
                     <Avatar
+                      className="profile-avatar"
                       sx={{ height: "7.5em", width: "7.5em" }}
                       variant="square"
                       src={imgSrc}
@@ -82,6 +84,7 @@ export const Profile = () => {
                   xs={3}
                 >
                   <Typography
+                    className="profile-name"
                     align="left"
                     variant="h4"
                     color="#efefef"
@@ -119,6 +122,7 @@ export const Profile = () => {
                   </Typography>
                 </Grid>
                 <Grid
+                  className="list-item-comp"
                   item
                   xs={5}
                   sx={{

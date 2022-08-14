@@ -50,16 +50,7 @@ export const PersonActedIn = ({ data }: any) => {
           </ListItem>
         )}
       </Grid>
-      <Container
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 13rem)",
-          backgroundColor: "#161b22",
-          justifyContent: "center",
-          paddingTop: "1.5rem",
-          paddingBottom: "1.5rem",
-        }}
-      >
+      <Container className="person-cards">
         {type &&
           type
             .filter((acted: Media) =>

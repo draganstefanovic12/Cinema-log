@@ -35,6 +35,7 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
             <Link key={movie.id} to={`/${type}/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
+                  className="movie-card-img"
                   component="img"
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster!}`}
                   height="250"

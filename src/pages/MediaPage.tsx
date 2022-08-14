@@ -111,7 +111,9 @@ export const MediaPage = () => {
                     button
                   >
                     <LocalMoviesIcon sx={{ marginRight: "0.5em" }} />
-                    <Typography variant="subtitle1">{watched}</Typography>
+                    <Typography className="ww-li" variant="subtitle1">
+                      {watched}
+                    </Typography>
                   </ListItem>
                 )}
                 <ListItem
@@ -137,7 +139,7 @@ export const MediaPage = () => {
                   {watchlist && (
                     <>
                       <QueryBuilderIcon sx={{ marginRight: "0.5em" }} />
-                      <Typography variant="subtitle1">
+                      <Typography className="ww-li" variant="subtitle1">
                         {watched === "Watched" ? "Already watched" : watchlist}
                       </Typography>
                     </>

@@ -12,22 +12,15 @@ export const Person = () => {
   return (
     <>
       {data ? (
-        <Container
-          sx={{
-            marginTop: "5rem",
-            color: "#cccccc",
-            backgroundColor: "#181e26",
-            padding: "1rem",
-          }}
-        >
-          <Grid sx={{ display: "flex" }}>
+        <Container className="person-cont">
+          <Grid className="person-cont-grid">
             <CardMedia
-              sx={{ width: "10rem", marginRight: "1rem" }}
+              sx={{ width: "10rem", marginRight: "1rem", float: "left" }}
               component="img"
               src={`https://image.tmdb.org/t/p/w500/${data.data.profile_path}`}
               height={200}
             />
-            <Grid>
+            <Grid className="person-cont-text">
               <Typography variant="h6" sx={{ marginBottom: "1rem" }}>
                 {data.data.name}
               </Typography>

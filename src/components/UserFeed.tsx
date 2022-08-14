@@ -12,7 +12,7 @@ export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
       <Card className="user-feed-div">
         <CardContent className="user-feed-grid">
           {feed.slice(0, 16).map((event) => (
-            <div className="user-feed-mapped-grid" key={event.created}>
+            <div className="user-feed-mapped-grid" key={feed.indexOf(event)}>
               <Typography key={event.created} className="feed-cont">
                 <a href={`/Cinema-log/#/user/${event.user}`}>{event.user}</a>{" "}
                 <span style={{ color: "#667d93" }}>
@@ -33,7 +33,7 @@ export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
                   <span style={{ color: "#667d93" }}> {event.content}</span>
                 )}
               </Typography>
-              <Typography>
+              <Typography className="minutes-ago">
                 <span
                   style={{
                     color: "#667d93",
