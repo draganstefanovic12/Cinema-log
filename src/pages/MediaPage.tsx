@@ -7,7 +7,7 @@ import { MediaDetails } from "../components/MediaDetails";
 import { useWatchlist } from "../hooks/useWatchlist";
 import { MediaPageRecommend } from "../components/MediaPageRecommend";
 import { useEffect, useState } from "react";
-import { Grid, ListItem, Typography } from "@mui/material";
+import { CircularProgress, Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 
@@ -62,7 +62,7 @@ export const MediaPage = () => {
 
   return (
     <Container className="cont" maxWidth="lg">
-      {data && (
+      {data ? (
         <>
           <div className="movie-main">
             <img
@@ -151,6 +151,15 @@ export const MediaPage = () => {
           </Grid>
           {data && <MediaDetails credits={data.data.credits} />}
         </>
+      ) : (
+        <CircularProgress
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
       )}
     </Container>
   );

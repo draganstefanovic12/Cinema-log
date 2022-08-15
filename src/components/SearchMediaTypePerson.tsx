@@ -1,15 +1,24 @@
-import { Card, CardMedia, Grid, Typography } from "@mui/material";
+import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Media } from "../types/types";
 
 export const SearchMediaTypePerson = ({ result }: any) => {
+  const checked = result.results.find(
+    (data: any) => data.media_type === "person"
+  );
+
   return (
-    <>
+    <Container>
+      {checked && (
+        <Typography variant="h5" sx={{ color: "#cccccc" }}>
+          People:
+        </Typography>
+      )}
       <div
         className="search-person"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, 20rem)",
+          gridTemplateColumns: "repeat(auto-fill, 15rem)",
           gap: "1rem",
           padding: "2rem",
         }}
@@ -20,7 +29,7 @@ export const SearchMediaTypePerson = ({ result }: any) => {
             (data: Media) =>
               data.media_type === "person" && (
                 <Card
-                  sx={{ width: "15em" }}
+                  sx={{ width: "10em" }}
                   className="movie-card"
                   key={data.id}
                 >
@@ -34,8 +43,8 @@ export const SearchMediaTypePerson = ({ result }: any) => {
                         <CardMedia
                           className="search-person-img"
                           component="img"
-                          style={{ width: "15em" }}
-                          height="350"
+                          style={{ width: "10em" }}
+                          height="250"
                           src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
                         ></CardMedia>
                       </Grid>
@@ -57,6 +66,6 @@ export const SearchMediaTypePerson = ({ result }: any) => {
               )
           )}
       </div>
-    </>
+    </Container>
   );
 };
