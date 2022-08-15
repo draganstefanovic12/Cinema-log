@@ -6,7 +6,14 @@ import { SearchLists } from "../components/SearchLists";
 import { Link, useParams } from "react-router-dom";
 import { SearchPagination } from "../components/SearchPagination";
 import { SearchMediaTypePerson } from "../components/SearchMediaTypePerson";
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 
 export const Search = () => {
   const query = useParams();
@@ -18,9 +25,24 @@ export const Search = () => {
       : `https://media-log.herokuapp.com/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
+  const checker =
+    data &&
+    data.data.results.find(
+      (result: Media) =>
+        result.media_type === "tv" || result.media_type === "movie"
+    );
+
   return (
     <div>
-      <div className="main-container">
+      <Container className="main-container">
+        {checker && (
+          <Typography
+            variant="h5"
+            sx={{ color: "#cccccc", marginBottom: "0.4rem" }}
+          >
+            Media:
+          </Typography>
+        )}
         {data &&
           data.data.results
             .filter(
@@ -46,11 +68,11 @@ export const Search = () => {
                         <CardMedia
                           className="search-img"
                           component="img"
-                          height="350"
+                          height="250"
                           src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                         ></CardMedia>
                       </Grid>
-                      <Grid className="card-grid" item xs={8.2}>
+                      <Grid className="card-grid" item xs={9.4}>
                         <Typography
                           className="movie-card-name"
                           align="center"
@@ -79,7 +101,7 @@ export const Search = () => {
                 </CardContent>
               </Card>
             ))}
-      </div>
+      </Container>
       {query.query === "alllists" && <SearchLists />}
       {data && query.type !== "multi" && data.data.total_pages > 1 && (
         <SearchPagination setOffset={setOffset} data={data} />

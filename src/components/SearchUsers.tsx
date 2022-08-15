@@ -9,19 +9,25 @@ export const SearchUsers = ({ query }: query) => {
       ? `https://media-log.herokuapp.com/user/all/allusers/`
       : `https://media-log.herokuapp.com/user/user/${query}`
   );
+  console.log(users);
 
   return (
     <>
-      <Container
-        className="user-search"
-        style={{
-          display: "grid",
-          gap: "1rem",
-          padding: "2rem",
-        }}
-      >
-        {users &&
-          users.data.map((user: UserModel) => (
+      {users && (
+        <Container
+          className="user-search"
+          style={{
+            display: "grid",
+            gap: "1rem",
+            padding: "2rem",
+          }}
+        >
+          {users.data.length > 0 && (
+            <Typography variant="h5" sx={{ color: "#cccccc" }}>
+              Users:
+            </Typography>
+          )}
+          {users.data.map((user: UserModel) => (
             <Card
               className="user-search-card"
               sx={{ width: "40.5rem", marginBottom: "1rem" }}
@@ -83,7 +89,8 @@ export const SearchUsers = ({ query }: query) => {
               </CardContent>
             </Card>
           ))}
-      </Container>
+        </Container>
+      )}
     </>
   );
 };

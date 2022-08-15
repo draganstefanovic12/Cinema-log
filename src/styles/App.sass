@@ -183,15 +183,15 @@ body
         color: #cccccc
     .main-container
         display: grid
-        justify-content: space-around
         padding: 1em
         margin-top: 4em
-        grid-template-columns: repeat(auto-fill, 50em)
+        justify-content: center
+        grid-template-columns: repeat(auto-fill, 52em)
         animation: $fade500ms
         .movie-card
             padding: 0
             margin-bottom: 1rem
-            height: 21.9rem
+            height: 15.5rem
             .movie-card-content
                 max-width: 45em
                 max-height: 30em
@@ -204,6 +204,7 @@ body
                 width: 15rem
                 .movie-card-name
                     margin-top: 1em
+                    font-weight: 400
                     margin-bottom: 1em
                 .card-grid
                     .search-overview
@@ -423,16 +424,17 @@ body
                     padding: 0.5em
                 .fav-remove-icon
                     position: absolute
-                    transform: translateX(6.3em)
+                    transform: translateX(5.5em)
                     color: #fff
                     z-index: 1
                     &:hover
                         cursor: pointer
                 .fav-edit-card
-                    width: 11em
+                    height: 14.5rem
+                    width: 10em
             .fav-add-icon
                 position: absolute
-                transform: translate(2.7em, -7em)
+                transform: translate(2.3em, -6.6em)
                 color: #fff
                 width: 2em
                 height: 3em
