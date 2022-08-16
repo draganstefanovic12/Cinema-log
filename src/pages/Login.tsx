@@ -14,6 +14,10 @@ export const Login = () => {
     await login(username, password);
   };
 
+  const handleGuest = async () => {
+    await login("guest", "1200");
+  };
+
   return (
     <div
       style={{ backgroundImage: `url(${loginBg})` }}
@@ -51,9 +55,21 @@ export const Login = () => {
             setError(null);
           }}
         />
-        <Button type="submit" disabled={isLoading!}>
-          Log in
-        </Button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            marginTop: "1rem",
+          }}
+        >
+          <Button type="submit" disabled={isLoading!}>
+            Log in
+          </Button>
+          <Button onClick={handleGuest} style={{ width: "13rem" }}>
+            Continue as guest
+          </Button>
+        </div>
         {error && <p style={{ color: "red" }}>{error}!</p>}
       </form>
     </div>

@@ -19,7 +19,7 @@ export const PersonActedIn = ({ data }: any) => {
 
   return (
     <>
-      <Grid sx={{ marginTop: "1rem", display: "flex", width: "5rem" }}>
+      <Grid sx={{ marginTop: "3rem", display: "flex", width: "5rem" }}>
         {data.data.combined_credits.cast.length > 5 && (
           <ListItem
             onClick={() => setType(data.data.combined_credits.cast)}
