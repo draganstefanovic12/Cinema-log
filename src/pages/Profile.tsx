@@ -164,6 +164,7 @@ export const Profile = () => {
                 <Grid sx={{ marginLeft: "5.5rem" }}>
                   {user && params.user !== user?.username && (
                     <Follow
+                      getClass={"follow-button"}
                       typ={"profile"}
                       usr={user?.username}
                       followedUser={params.user}

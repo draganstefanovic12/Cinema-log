@@ -6,6 +6,7 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
+import { Container } from "@mui/system";
 import { useState } from "react";
 import { UserModel, DialogComponentProps } from "../types/types";
 import { Follow } from "./Follow";
@@ -82,7 +83,7 @@ export const DialogComponent = ({
                     `https://media-log.herokuapp.com${user.avatar}`
                   }
                 />
-                <ListItem>{user.name}</ListItem>
+                <ListItem sx={{ width: "5rem" }}>{user.name}</ListItem>
               </a>
               {followComparison && currUser !== user.name && (
                 <Follow

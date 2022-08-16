@@ -279,5 +279,13 @@
     flex-direction: column;
   }
 }
+@media screen and (min-width: 560px) and (max-width: 832px) {
+  .profile-details {
+    width: 22rem;
+  }
+  body .list-item-comp {
+    transform: translate(-10rem, 0rem);
+  }
+}
 
 /*# sourceMappingURL=MobileApp.css.map */
