@@ -5,7 +5,13 @@ import { FollowProps } from "../types/types";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
+export const Follow = ({
+  usr,
+  followedUser,
+  followers,
+  typ,
+  getClass,
+}: FollowProps) => {
   const [follow, setFollow] = useState<string>();
   const { user } = useAuth();
 
@@ -33,7 +39,7 @@ export const Follow = ({ usr, followedUser, followers, typ }: FollowProps) => {
 
   return (
     <Container
-      className="follow-button"
+      className={getClass}
       sx={{
         display: "flex",
         width: "8em",

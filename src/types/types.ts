@@ -120,6 +120,7 @@ export type FollowProps = {
   followedUser: string | undefined;
   followers: [];
   typ?: string;
+  getClass?: string;
   //typ serves for profile followers/following, it only works if i reverse the comparison
 };
 

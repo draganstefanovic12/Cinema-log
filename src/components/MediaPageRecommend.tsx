@@ -12,6 +12,7 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { Media, User } from "../types/types";
+import { Container } from "@mui/system";
 
 type MediaPageRecommendProps = {
   media: Media;
@@ -49,7 +50,7 @@ export const MediaPageRecommend = ({
   return (
     <>
       <ListItem onClick={handleOpen} button sx={{ whiteSpace: "nowrap" }}>
-        <RecommendIcon />
+        <RecommendIcon sx={{ marginRight: "0.5rem" }} />
         <Typography className="ww-li">
           Recommend this {params.type === "tv" ? "show" : "movie"} to someone
         </Typography>
@@ -62,8 +63,7 @@ export const MediaPageRecommend = ({
       >
         <DialogActions
           sx={{
-            display: "flex",
-            flexDirection: "column",
+            display: "grid",
             alignItems: "flex-start",
             backgroundColor: "#14181c",
           }}
@@ -76,25 +76,28 @@ export const MediaPageRecommend = ({
           >
             {"Recommend the movie to..."}
           </DialogTitle>
-          {userStats?.data.user.following.map((User: User) => (
-            <MenuItem
-              dense
-              sx={{ display: "flex" }}
-              key={User.name}
-              onClick={() => {
-                handleRecommend(User.name);
-                handleClose();
-              }}
-            >
-              <Avatar
-                sx={{ marginRight: "1rem" }}
-                src={
-                  User.avatar && `https://media-log.herokuapp.com${User.avatar}`
-                }
-              />
-              {User.name}
-            </MenuItem>
-          ))}
+          <Container>
+            {userStats?.data.user.following.map((User: User) => (
+              <MenuItem
+                dense
+                sx={{ display: "flex" }}
+                key={User.name}
+                onClick={() => {
+                  handleRecommend(User.name);
+                  handleClose();
+                }}
+              >
+                <Avatar
+                  sx={{ marginRight: "1rem" }}
+                  src={
+                    User.avatar &&
+                    `https://media-log.herokuapp.com${User.avatar}`
+                  }
+                />
+                {User.name}
+              </MenuItem>
+            ))}
+          </Container>
         </DialogActions>
       </Dialog>
     </>

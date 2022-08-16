@@ -31,7 +31,7 @@ export const HomepageLists = () => {
                 data.data.slice(0, 3).map((list: ListToParse) => (
                   <div key={list.name}>
                     <Typography
-                      className="main-page-list-name"
+                      className="main-page-list-name svg"
                       variant="h6"
                       onClick={() => navigate(`list/${list.name}`)}
                     >
@@ -40,7 +40,7 @@ export const HomepageLists = () => {
                     <Typography className="list-created-by">
                       Created by:{" "}
                       <span
-                        className="list-username"
+                        className="list-username svg"
                         onClick={() => navigate(`/user/${list.username}`)}
                       >
                         {list.username}
@@ -56,7 +56,7 @@ export const HomepageLists = () => {
                               onClick={() => navigate(`/list/${list.name}`)}
                               component="img"
                               height="200"
-                              className="main-page-list-img"
+                              className="main-page-list-img svg"
                               src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
                             />
                           </Fragment>
