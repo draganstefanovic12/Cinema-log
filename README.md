@@ -7,3 +7,6 @@ I've set up an authorization too using JWT and I'm using bcrypt to hash and salt
 There's a lot of work left, small details and animations and I'll keep working on it until I feel it's good enough. For now, I feel it looks nice enough to publish.
 
 Come check out the site and recommend me some movies, my username is dragan
+
+
+<a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
