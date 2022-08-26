@@ -10,3 +10,5 @@ Come check out the site and recommend me some movies, my username is dragan
 <a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
 
 ![alt text](https://i.imgur.com/Doasp9H.jpeg)
+
+![alt text](https://i.imgur.com/JBxXaDL.jpeg)
