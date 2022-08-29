@@ -7,16 +7,22 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { AddFavoriteMedia } from "./AddFavoriteMedia";
-import { MediaStringUndefined, NewListProps, List } from "../types/types";
+import { MediaStringUndefined, List } from "../types/types";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAuth } from "../context/AuthContext";
+
+type NewListProps = {
+  usr: string | undefined;
+  setAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  setLists: React.Dispatch<React.SetStateAction<any>>;
+};
 
 export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
   const [desc, setDesc] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [content, setContent] = useState<any>([]);
+  const [content, setContent] = useState<MediaStringUndefined[]>([]);
   const [error, setError] = useState<string>("");
   const { user } = useAuth();
 

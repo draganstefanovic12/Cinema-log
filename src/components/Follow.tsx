@@ -1,9 +1,17 @@
 import { useAuth } from "../context/AuthContext";
 import { ListItem } from "@mui/material";
 import { Container } from "@mui/system";
-import { FollowProps } from "../types/types";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+type FollowProps = {
+  usr: string | undefined;
+  followedUser: string | undefined;
+  followers: [];
+  typ?: string;
+  getClass?: string;
+  //typ serves for profile followers/following, it only works if i reverse the comparison
+};
 
 export const Follow = ({
   usr,

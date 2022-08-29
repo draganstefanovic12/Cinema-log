@@ -1,7 +1,13 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
-import { ProfileFeedProps } from "../types/types";
+import { Feed } from "../types/types";
+
+export type ProfileFeedProps = {
+  feed: Feed[];
+  name: string;
+  favorites?: any;
+};
 
 export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
   return (

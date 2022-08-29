@@ -1,26 +1,18 @@
-import {
-  Button,
-  CardMedia,
-  ClickAwayListener,
-  Typography,
-} from "@mui/material";
+import { Button, CardMedia, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { List } from "../types/types";
 import { NewList } from "./NewList";
-import { ListsProps } from "../types/types";
 
-interface List {
-  name: string;
-  content: [];
-  createdAt: string;
-  updatedAt?: string;
-  description: string;
+interface ListProps {
+  usr: string | undefined;
+  setLists: React.Dispatch<React.SetStateAction<List[] | undefined>>;
+  list: List[] | undefined;
 }
 
-export const Lists = ({ list, usr, setLists }: any) => {
+export const Lists = ({ list, usr, setLists }: ListProps) => {
   const [add, setAdd] = useState<boolean>(false);
   const { user } = useAuth();
 

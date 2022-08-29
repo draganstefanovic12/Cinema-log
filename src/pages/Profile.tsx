@@ -11,13 +11,14 @@ import { DialogComponent } from "../components/DialogComponent";
 import { ListItemComponent } from "../components/ListItemComponent";
 import { useEffect, useState } from "react";
 import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
+import { List } from "../types/types";
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
   const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
   const { user, userStats } = useAuth();
-  const [list, setLists] = useState();
+  const [list, setLists] = useState<List[] | undefined>(undefined);
   const params = useParams();
 
   const data = useFetch(`https://media-log.herokuapp.com/user/${params.user}`);
@@ -35,7 +36,7 @@ export const Profile = () => {
 
   return (
     <>
-      {data ? (
+      {userStats && data ? (
         <div className="profile-container">
           <Container
             sx={{
@@ -104,18 +105,18 @@ export const Profile = () => {
                           {data.data.user.shows.watched.length}
                         </Typography>
                         <DialogComponent
-                          followComparison={userStats?.data.user.following}
+                          followComparison={userStats!.following}
                           children={data.data.user.followers}
                           name={"Followers"}
                           number={data.data.user.followers.length}
-                          currUser={userStats?.data.user.username}
+                          currUser={userStats!.username}
                         />
                         <DialogComponent
-                          followComparison={userStats?.data.user.following}
+                          followComparison={userStats!.following}
                           children={data.data.user.following}
                           name={"Following"}
                           number={data.data.user.following.length}
-                          currUser={userStats?.data.user.username}
+                          currUser={userStats!.username}
                         />
                       </div>
                     </div>

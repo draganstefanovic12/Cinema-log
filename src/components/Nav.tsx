@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 import { NavDropdown } from "./NavDropdown";
 import { NavNotifications } from "./NavNotifications";
 import { useNavigate } from "react-router-dom";
-import { Input, InputAdornment, Skeleton } from "@mui/material";
+import { Input, InputAdornment } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
@@ -17,8 +17,8 @@ export const Nav = () => {
   const { user, userStats } = useAuth();
   const navigate = useNavigate();
 
-  const handleClick = (e: any) => {
-    e.key === "Enter" && value && navigate(`/search/${value}/multi`);
+  const handleClick = (e: string) => {
+    e === "Enter" && value && navigate(`/search/${value}/multi`);
   };
 
   return (
@@ -52,12 +52,10 @@ export const Nav = () => {
                   </InputAdornment>
                 }
                 onChange={(e) => setValue(e.target.value)}
-                onKeyDown={(e) => handleClick(e)}
+                onKeyDown={(e) => handleClick(e.key)}
               />
               {userStats ? (
-                <NavNotifications
-                  notifications={userStats?.data.user.notifications}
-                />
+                <NavNotifications notifications={userStats.notifications} />
               ) : (
                 <NotificationsNoneOutlined
                   sx={{ width: "65px" }}

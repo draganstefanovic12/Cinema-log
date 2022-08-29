@@ -19,63 +19,12 @@ export type Media = {
   type: string;
 };
 
-export type MediaProps = {
-  movies: {
-    watchlist: [];
-    watched: Media[];
-  };
-  type: string | undefined;
-  user: string | undefined;
-};
-
 export type MediaStringUndefined = {
   title?: string;
-  media_type: string | undefined;
+  media_type?: string | undefined;
   id: string | undefined;
   createdAt?: string | undefined;
-};
-
-export type AddFavoriteMediaProps = {
-  setInput?: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
-  setContent?: React.Dispatch<React.SetStateAction<object[]>>;
-};
-
-export type ListItemComponentProps = {
-  setState: React.Dispatch<React.SetStateAction<string>>;
-  state: string;
-  name: string;
-  children: string;
-};
-
-export type NewListProps = {
-  usr: string | undefined;
-  setAdd: React.Dispatch<React.SetStateAction<boolean>>;
-  setLists: React.Dispatch<React.SetStateAction<any>>;
-};
-
-export type RemoveListProps = {
-  list: {
-    name: keyof List;
-    content: object[];
-    description: keyof List;
-  };
-  usr: string | undefined;
-};
-
-export type HomepageMovieCardsProps = {
-  query: string;
-  name: string;
-};
-
-export type PaginationProps = {
-  setOffset: React.Dispatch<React.SetStateAction<number>>;
-  data?: {
-    data: {
-      total_pages: number;
-    };
-  };
-  count?: number;
+  date?: string;
 };
 
 export type Result = {
@@ -115,25 +64,9 @@ export type OtherCrew = {
   id: number;
 };
 
-export type FollowProps = {
-  usr: string | undefined;
-  followedUser: string | undefined;
-  followers: [];
-  typ?: string;
-  getClass?: string;
-  //typ serves for profile followers/following, it only works if i reverse the comparison
-};
-
 export type GenreMapped = {
   name: string;
   id: number;
-};
-
-export type GenreProps = {
-  data: {
-    genres: GenreMapped[];
-  };
-  type: string | undefined;
 };
 
 export type List = {
@@ -148,10 +81,6 @@ export type List = {
   poster_path?: string;
 };
 
-export type ListsProps = {
-  usr: string | undefined;
-};
-
 export type ListToParse = {
   name: string;
   content: string;
@@ -161,6 +90,7 @@ export type ListToParse = {
 };
 
 export type User = {
+  created: string;
   avatar: string[];
   name: any;
   user: {
@@ -192,6 +122,7 @@ export type UserMedia = {
 export type UserModel = {
   _id: number;
   username: string;
+  notifications: [];
   avatar: string;
   movies: UserMedia;
   shows: UserMedia;
@@ -200,14 +131,8 @@ export type UserModel = {
   following: [];
 };
 
-export type ProfileFeedProps = {
-  feed: Feed[];
-  name: string;
-  favorites?: any;
-};
-
-export type NotificationProps = {
-  notifications: Notification[];
+export type UserResponse = {
+  user: UserModel;
 };
 
 export type Notification = {
@@ -221,19 +146,4 @@ export type Notification = {
   _id: number;
   content2: string;
   content3: string;
-};
-
-export type NavPopperProps = {
-  button: any;
-  children: any;
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export type DialogComponentProps = {
-  children: [];
-  name: string;
-  currUser: string;
-  followComparison: [];
-  number: number;
 };

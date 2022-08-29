@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 export const HomepageUserFeed = () => {
   const { user, userStats } = useAuth();
-  const [userState, setUserState] = useState<any>([]);
-  const [userFeed, setUserFeed] = useState<any>([]);
+  const [userState, setUserState] = useState<User[]>([]);
+  const [userFeed, setUserFeed] = useState<Feed[]>([]);
 
   const handleActivity = async () => {
-    userStats?.data.user.following.map(async (usr: { name: string }) => {
+    userStats!.following.map(async (usr: { name: string }) => {
       const data = await fetch(
         `https://media-log.herokuapp.com/user/${usr.name}`,
         {
@@ -31,21 +31,19 @@ export const HomepageUserFeed = () => {
   }, [userStats]);
 
   useEffect(() => {
-    const arr: Feed[] = [];
-    userState
-      .slice(0, userStats?.data.user.following.length)
-      .map((user: User) =>
-        user.user.feed.map((feed: Feed) => {
-          if (
-            userState.length > 0 &&
-            userState.map((user: Feed) => user.created !== feed.created)
-          ) {
-            arr.push(feed);
-          } else {
-            arr.push(userFeed);
-          }
-        })
-      );
+    const arr = [] as Feed[];
+    userState.slice(0, userStats?.following.length).map((user: User) =>
+      user.user.feed.map((feed: Feed) => {
+        if (
+          userState.length > 0 &&
+          userState.map((user: User) => user.created !== feed.created)
+        ) {
+          arr.push(feed);
+        } else {
+          arr.push(...userFeed);
+        }
+      })
+    );
     setUserFeed(arr);
   }, [userState]);
 
