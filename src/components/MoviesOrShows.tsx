@@ -1,19 +1,28 @@
-import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
-import { Container } from "@mui/system";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Media, MediaProps } from "../types/types";
+import { Media } from "../types/types";
+import { useState } from "react";
+import { Container } from "@mui/system";
+import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
 
-export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
+type MediaProps = {
+  movies: {
+    watchlist: [];
+    watched: Media[];
+  };
+  type: string | undefined;
+  user: string | undefined;
+};
+
+export const MoviesOrShows = ({ movies, type }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
-  const [watchType, setWatchType] = useState<any>(movies.watched);
+  const [watchType, setWatchType] = useState<Media[]>(movies.watched);
 
   return (
     <Container className="profile-list-cont">
       <div className="watched-watchlist-cont">
         <ListItem
           className="watched"
-          style={{ color: watchType === "watched" ? "#fff" : "#cccccc" }}
+          style={{ color: watchType === movies.watched ? "#fff" : "#cccccc" }}
           onClick={() => setWatchType(movies.watched)}
           sx={{ width: "6em" }}
           button
@@ -22,7 +31,7 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
         </ListItem>
         <ListItem
           className="watchlist"
-          style={{ color: watchType === "watchlist" ? "#fff" : "#cccccc" }}
+          style={{ color: watchType === movies.watchlist ? "#fff" : "#cccccc" }}
           onClick={() => setWatchType(movies.watchlist)}
           sx={{ width: "6em" }}
           button
@@ -55,8 +64,9 @@ export const MoviesOrShows = ({ movies, type, user }: MediaProps) => {
         }}
         hidePrevButton
         hideNextButton
-        onChange={(e: any) => {
-          setOffset((parseInt(e.target.textContent) - 1) * 18);
+        onChange={(e: React.ChangeEvent<unknown>) => {
+          const input = e.target as HTMLElement;
+          setOffset((parseInt(input.innerText) - 1) * 18);
         }}
         count={Math.ceil(movies.watched.length / 18)}
         shape="rounded"

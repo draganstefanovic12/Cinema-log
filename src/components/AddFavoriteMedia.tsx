@@ -12,7 +12,13 @@ import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
 import { useDebounce } from "../hooks/useDebounce";
 import { useEffect, useState } from "react";
-import { Media, AddFavoriteMediaProps, Result } from "../types/types";
+import { Media, MediaStringUndefined, Result } from "../types/types";
+
+type AddFavoriteMediaProps = {
+  setInput?: React.Dispatch<React.SetStateAction<boolean>>;
+  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
+  setContent?: React.Dispatch<React.SetStateAction<MediaStringUndefined[]>>;
+};
 
 export const AddFavoriteMedia = ({
   setInput,
@@ -96,7 +102,7 @@ export const AddFavoriteMedia = ({
                   <MenuItem
                     onClick={() => {
                       setContent
-                        ? setContent((currCont: object[]) => [
+                        ? setContent((currCont: any) => [
                             ...currCont,
                             {
                               title: movie.title

@@ -2,10 +2,16 @@ import { Card, CardMedia, Grid, ListItem, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Media } from "../types/types";
+import { Actors, Media, OtherCrew } from "../types/types";
 
-export const PersonActedIn = ({ data }: any) => {
-  const [type, setType] = useState<any>(null);
+type PersonActedInProps = {
+  data: {
+    data: Actors & OtherCrew;
+  };
+};
+
+export const PersonActedIn = ({ data }: PersonActedInProps) => {
+  const [type, setType] = useState<Media[] | null>(null);
 
   useEffect(() => {
     data.data.known_for_department === "Acting"

@@ -1,14 +1,14 @@
 import axios from "axios";
+import { Media } from "../types/types";
 import { useAuth } from "../context/AuthContext";
 import { Container } from "@mui/system";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AddFavoriteMedia } from "./AddFavoriteMedia";
-import { Fragment, useEffect, useState } from "react";
 import { CardMedia, Typography } from "@mui/material";
+import { Fragment, useEffect, useState } from "react";
 import favBg from "../assets/fav-movie-bg.png";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
-import { Media } from "../types/types";
 
 export type FavoritesProps = {
   favorites: Media[];
@@ -73,37 +73,37 @@ export const Favorites = ({ favorites }: FavoritesProps) => {
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![0] ? favMedia![0] : favMedia}
+              media={favMedia![0] && favMedia![0]}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![1] ? favMedia![1] : favMedia}
+              media={favMedia![1] && favMedia![1]}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![2] ? favMedia![2] : favMedia}
+              media={favMedia![2] && favMedia![2]}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![3] ? favMedia![3] : favMedia}
+              media={favMedia![3] && favMedia![3]}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![4] ? favMedia![4] : favMedia}
+              media={favMedia![4] && favMedia![4]}
               setFavMovies={setFavMedia}
             />
             <FavoriteCard
               edit={edit}
               handleRemove={handleRemove}
-              media={favMedia![5] ? favMedia![5] : favMedia}
+              media={favMedia![5] && favMedia![5]}
               setFavMovies={setFavMedia}
             />
           </>
@@ -125,10 +125,10 @@ export const Favorites = ({ favorites }: FavoritesProps) => {
 };
 
 type FavoriteCardsProps = {
-  media: any;
+  media: Media;
   handleRemove: (mov: string, date: string) => Promise<void>;
   edit: boolean;
-  setFavMovies?: any;
+  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
 };
 
 export const FavoriteCard = ({
@@ -139,6 +139,7 @@ export const FavoriteCard = ({
 }: FavoriteCardsProps) => {
   const [input, setInput] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
+
   return (
     <>
       {edit ? (
@@ -148,24 +149,24 @@ export const FavoriteCard = ({
           onMouseLeave={() => setHover(false)}
         >
           <>
-            {hover && media.poster_path && (
+            {hover && media && (
               <HighlightOffOutlinedIcon
                 onClick={() => {
-                  handleRemove(media.title, media.createdAt!);
+                  handleRemove(media!.title, media!.createdAt!);
                 }}
                 className="fav-remove-icon"
               />
             )}
             <CardMedia
               src={
-                media.poster_path
-                  ? `https://image.tmdb.org/t/p/w500/${media.poster_path}`
+                media
+                  ? `https://image.tmdb.org/t/p/w500/${media!.poster_path}`
                   : favBg
               }
               className="fav-edit-card"
               component="img"
             />
-            {!media.poster_path && hover && (
+            {!media && hover && (
               <ControlPointOutlinedIcon
                 onClick={() => setInput(true)}
                 className="fav-add-icon"
@@ -179,7 +180,7 @@ export const FavoriteCard = ({
       ) : (
         <a
           className="profile-fav-link"
-          href={`/Cinema-log/#/${media.type}/${media.id}`}
+          href={`/Cinema-log/#/${media!.type}/${media!.id}`}
         >
           <CardMedia
             component="img"

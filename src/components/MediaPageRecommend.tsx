@@ -7,16 +7,16 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import axios from "axios";
 import { Media, User } from "../types/types";
 import { Container } from "@mui/system";
 
 type MediaPageRecommendProps = {
   media: Media;
-  params: any;
+  params: string | undefined;
 };
 
 export const MediaPageRecommend = ({
@@ -41,7 +41,7 @@ export const MediaPageRecommend = ({
         Authorization: `${user?.username} ${user?.token}`,
       },
       data: {
-        recUser: userStats?.data.user.username,
+        recUser: userStats?.username,
         movie: JSON.stringify(media),
       },
     });
@@ -52,7 +52,7 @@ export const MediaPageRecommend = ({
       <ListItem onClick={handleOpen} button sx={{ whiteSpace: "nowrap" }}>
         <RecommendIcon sx={{ marginRight: "0.5rem" }} />
         <Typography className="ww-li">
-          Recommend this {params.type === "tv" ? "show" : "movie"} to someone
+          Recommend this {params === "tv" ? "show" : "movie"} to someone
         </Typography>
       </ListItem>
       <Dialog
@@ -77,7 +77,7 @@ export const MediaPageRecommend = ({
             {"Recommend the movie to..."}
           </DialogTitle>
           <Container>
-            {userStats?.data.user.following.map((User: User) => (
+            {userStats?.following.map((User: User) => (
               <MenuItem
                 dense
                 sx={{ display: "flex" }}

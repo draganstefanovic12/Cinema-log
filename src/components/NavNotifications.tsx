@@ -5,10 +5,14 @@ import { usePopper } from "../hooks/usePopper";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import { Notification, NotificationProps } from "../types/types";
+import { Notification } from "../types/types";
 import axios from "axios";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+
+type NotificationProps = {
+  notifications: Notification[];
+};
 
 export const NavNotifications = ({ notifications }: NotificationProps) => {
   const [read, setRead] = useState<boolean>(true);
@@ -18,7 +22,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
   const handleClick = async () => {
     setRead(true);
     await axios(
-      `https://media-log.herokuapp.com/user/notifications/${userStats?.data.user.username}`,
+      `https://media-log.herokuapp.com/user/notifications/${userStats?.username}`,
       {
         method: "POST",
         headers: {
@@ -28,6 +32,7 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
     );
   };
 
+  //implement notifications with socket.io
   useEffect(() => {
     notifications.map(
       (notification: Notification) =>

@@ -1,5 +1,11 @@
 import { ListItem, Divider } from "@mui/material";
-import { ListItemComponentProps } from "../types/types";
+
+type ListItemComponentProps = {
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  state: string;
+  name: string;
+  children: string;
+};
 
 export const ListItemComponent = ({
   setState,

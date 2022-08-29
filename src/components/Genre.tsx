@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { GenreMapped } from "../types/types";
 import { ListItem, Typography } from "@mui/material";
-import { GenreProps, GenreMapped } from "../types/types";
+
+type GenreProps = {
+  data: {
+    genres: GenreMapped[];
+  };
+  type: string | undefined;
+};
 
 export const Genre = ({ data, type }: GenreProps) => {
   const navigate = useNavigate();

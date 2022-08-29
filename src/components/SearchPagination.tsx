@@ -1,5 +1,14 @@
 import { Pagination } from "@mui/material";
-import { PaginationProps } from "../types/types";
+
+type PaginationProps = {
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
+  data?: {
+    data: {
+      total_pages: number;
+    };
+  };
+  count?: number;
+};
 
 export const SearchPagination = ({
   setOffset,

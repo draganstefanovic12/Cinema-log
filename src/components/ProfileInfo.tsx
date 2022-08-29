@@ -1,7 +1,6 @@
 import { Container } from "@mui/material";
 import { Favorites } from "./Favorites";
-import { UserFeed } from "./UserFeed";
-import { ProfileFeedProps } from "../types/types";
+import { ProfileFeedProps, UserFeed } from "./UserFeed";
 
 export const ProfileInfo = ({ feed, favorites }: ProfileFeedProps) => {
   return (

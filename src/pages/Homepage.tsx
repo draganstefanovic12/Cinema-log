@@ -15,7 +15,7 @@ export const Homepage = () => {
       sx={{ marginTop: "5em" }}
     >
       <div>
-        {userStats?.data.user.movies.watched.length !== 0 && <SimilarMovies />}
+        {userStats?.movies.watched.length !== 0 && <SimilarMovies />}
         <HomepageMovieCards
           query={`https://media-log.herokuapp.com/imdb/toprated`}
           name={"Top Rated"}

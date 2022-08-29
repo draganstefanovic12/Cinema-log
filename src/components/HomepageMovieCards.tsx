@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 import { Media } from "../types/types";
 import { useFetch } from "../hooks/useFetch";
 import { Card, CardMedia, Typography } from "@mui/material";
 
-export type HomepageMovieCardsProps = {
+type HomepageMovieCardsProps = {
   query: string;
   name: string;
 };

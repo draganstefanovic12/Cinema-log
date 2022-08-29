@@ -2,9 +2,15 @@ import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Media } from "../types/types";
 
-export const SearchMediaTypePerson = ({ result }: any) => {
+type SearchMediaProps = {
+  result: {
+    results: Media[];
+  };
+};
+
+export const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
   const checked = result.results.find(
-    (data: any) => data.media_type === "person"
+    (data: Media) => data.media_type === "person"
   );
 
   return (

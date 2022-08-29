@@ -6,10 +6,17 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
-import { Container } from "@mui/system";
 import { useState } from "react";
-import { UserModel, DialogComponentProps } from "../types/types";
+import { UserModel } from "../types/types";
 import { Follow } from "./Follow";
+
+type DialogComponentProps = {
+  children: [];
+  name: string;
+  currUser: string;
+  followComparison: [];
+  number: number;
+};
 
 export const DialogComponent = ({
   children,
@@ -61,8 +68,9 @@ export const DialogComponent = ({
           >
             {name}
           </DialogTitle>
-          {children.map((user: UserModel) => (
+          {children.map((user: UserModel, i: number) => (
             <div
+              key={i}
               className="profile-foll-cont"
               style={{
                 display: "flex",

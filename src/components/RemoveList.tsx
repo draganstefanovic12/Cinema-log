@@ -1,9 +1,18 @@
-import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import axios from "axios";
+import { List } from "../types/types";
+import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { RemoveListProps } from "../types/types";
+import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
+
+type RemoveListProps = {
+  list: {
+    name: keyof List;
+    content: object[];
+    description: keyof List;
+  };
+  usr: string | undefined;
+};
 
 export const RemoveList = ({ usr, list }: RemoveListProps) => {
   const [open, setOpen] = useState<boolean>(false);

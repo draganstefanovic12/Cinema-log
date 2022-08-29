@@ -1,6 +1,12 @@
 import { usePopper } from "../hooks/usePopper";
 import { Button, ClickAwayListener, Grow, Paper, Popper } from "@mui/material";
-import { NavPopperProps } from "../types/types";
+
+type NavPopperProps = {
+  button: JSX.Element | string | undefined;
+  children: any;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export const NavPopper = ({
   children,

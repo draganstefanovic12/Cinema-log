@@ -610,10 +610,10 @@ body .cont .movie-info .watched-watchlist {
 
 .movie-card-link {
   animation: fade 500ms 1 ease-in-out forwards;
+  transition: 0.25s all;
 }
 .movie-card-link:hover {
-  outline: 0.1em solid #6d6d6d;
-  border-radius: 0.1em;
+  border-color: #6d6d6d;
 }
 
 .svg:hover {

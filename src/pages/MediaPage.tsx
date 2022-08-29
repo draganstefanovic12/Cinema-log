@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { CircularProgress, Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import { Media } from "../types/types";
 
 export const MediaPage = () => {
   const { user, userStats } = useAuth();
@@ -28,15 +29,13 @@ export const MediaPage = () => {
       userStats &&
       setWatched(
         data && params.type === "movie"
-          ? userStats!.data.user.movies.watched.find(
-              (movie: { title: string; name: string }) =>
-                data.data.title === movie.name
+          ? userStats!.movies.watched.find(
+              (movie: Media) => data.data.title === movie.name
             )
             ? "Watched"
             : "Set as watched"
-          : userStats!.data.user.shows.watched.find(
-              (movie: { title: string; name: string }) =>
-                data.data.original_name === movie.name
+          : userStats!.shows.watched.find(
+              (movie: Media) => data.data.original_name === movie.name
             )
           ? "Watched"
           : "Set as watched"
@@ -45,15 +44,13 @@ export const MediaPage = () => {
       userStats &&
       setWatchlist(
         params.type === "movie"
-          ? userStats!.data.user.movies.watchlist.find(
-              (movie: { title: string; name: string }) =>
-                data.data.title === movie.name
+          ? userStats!.movies.watchlist.find(
+              (movie: Media) => data.data.title === movie.name
             )
             ? "Remove from watchlist"
             : "Add to watchlist"
-          : userStats!.data.user.shows.watchlist.find(
-              (movie: { title: string; name: string }) =>
-                data.data.original_name === movie.name
+          : userStats!.shows.watchlist.find(
+              (movie: Media) => data.data.original_name === movie.name
             )
           ? "Remove from watchlist"
           : "Add to watchlist"

@@ -10,7 +10,7 @@ export const SimilarMovies = () => {
 
   useEffect(() => {
     const handleSimilar = async () => {
-      const movies = userStats?.data.user.movies.watched;
+      const movies = userStats!.movies.watched;
 
       const data = await fetch(
         `https://media-log.herokuapp.com/imdb/similar/${
