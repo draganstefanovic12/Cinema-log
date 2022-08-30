@@ -16,7 +16,7 @@ import { Media, MediaStringUndefined, Result } from "../types/types";
 
 type AddFavoriteMediaProps = {
   setInput?: React.Dispatch<React.SetStateAction<boolean>>;
-  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
+  setFavMovies?: React.Dispatch<React.SetStateAction<Media[]>> | undefined;
   setContent?: React.Dispatch<React.SetStateAction<MediaStringUndefined[]>>;
 };
 
@@ -102,18 +102,21 @@ export const AddFavoriteMedia = ({
                   <MenuItem
                     onClick={() => {
                       setContent
-                        ? setContent((currCont: any) => [
-                            ...currCont,
-                            {
-                              title: movie.title
-                                ? movie.title
-                                : movie.original_name,
-                              id: movie.id,
-                              poster_path: movie.poster_path,
-                              type: movie.media_type,
-                              createdAt: new Date(),
-                            },
-                          ])
+                        ? setContent(
+                            (currCont) =>
+                              [
+                                ...currCont,
+                                {
+                                  title: movie.title
+                                    ? movie.title
+                                    : movie.original_name,
+                                  id: movie.id,
+                                  poster_path: movie.poster_path,
+                                  type: movie.media_type,
+                                  createdAt: new Date(),
+                                },
+                              ] as Media[]
+                          )
                         : handleClick(
                             movie.title ? movie.title : movie.original_name,
                             movie.id,
@@ -123,17 +126,20 @@ export const AddFavoriteMedia = ({
                       setHidden(true);
                       setInput && setInput!(false);
                       setFavMovies &&
-                        setFavMovies((currMovies: any) => [
-                          ...currMovies,
-                          {
-                            title: movie.title
-                              ? movie.title
-                              : movie.original_name,
-                            id: movie.id,
-                            poster_path: movie.poster_path,
-                            createdAt: new Date(),
-                          },
-                        ]);
+                        setFavMovies(
+                          (currMovies) =>
+                            [
+                              ...currMovies,
+                              {
+                                title: movie.title
+                                  ? movie.title
+                                  : movie.original_name,
+                                id: movie.id,
+                                poster_path: movie.poster_path,
+                                createdAt: new Date(),
+                              },
+                            ] as Media[]
+                        );
                     }}
                   >
                     <CardMedia

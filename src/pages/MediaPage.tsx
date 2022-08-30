@@ -1,4 +1,5 @@
 import { Genre } from "../components/Genre";
+import { Media } from "../types/types";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../hooks/useFetch";
 import { Container } from "@mui/system";
@@ -10,7 +11,6 @@ import { useEffect, useState } from "react";
 import { CircularProgress, Grid, ListItem, Typography } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import { Media } from "../types/types";
 
 export const MediaPage = () => {
   const { user, userStats } = useAuth();

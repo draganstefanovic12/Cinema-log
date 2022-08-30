@@ -1,7 +1,7 @@
-import { Button, Container, TextField, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useDebounce } from "../hooks/useDebounce";
+import { useEffect, useState } from "react";
+import { Button, Container, TextField, Typography } from "@mui/material";
 
 export const ChangePassword = () => {
   const [error, setError] = useState<boolean>(false);
@@ -23,7 +23,6 @@ export const ChangePassword = () => {
         },
       }
     ).then((res) => {
-      console.log(res);
       if (res.status === 400) {
         setError(true);
       } else {

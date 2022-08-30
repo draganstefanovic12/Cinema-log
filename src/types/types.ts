@@ -21,6 +21,9 @@ export type Media = {
 
 export type MediaStringUndefined = {
   title?: string;
+  original_name?: string;
+  poster_path?: string;
+  type?: string;
   media_type?: string | undefined;
   id: string | undefined;
   createdAt?: string | undefined;
