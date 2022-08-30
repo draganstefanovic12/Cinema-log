@@ -11,19 +11,19 @@ import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 
 export type FavoritesProps = {
-  favorites: Media[];
+  favorites: Media[] | undefined;
 };
 
 export const Favorites = ({ favorites }: FavoritesProps) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
-  const [favMedia, setFavMedia] = useState<Media[]>();
+  const [favMedia, setFavMedia] = useState<Media[]>([]);
   const params = useParams();
   const { user } = useAuth();
 
   useEffect(() => {
     const updateMovies = async () => {
-      setFavMedia(favorites);
+      setFavMedia(favorites as Media[]);
     };
     updateMovies();
   }, [favorites, params]);
@@ -128,7 +128,7 @@ type FavoriteCardsProps = {
   media: Media;
   handleRemove: (mov: string, date: string) => Promise<void>;
   edit: boolean;
-  setFavMovies?: React.Dispatch<React.SetStateAction<Media[] | undefined>>;
+  setFavMovies?: React.Dispatch<React.SetStateAction<Media[]>>;
 };
 
 export const FavoriteCard = ({

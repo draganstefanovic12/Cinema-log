@@ -1,4 +1,5 @@
 import { Pagination } from "@mui/material";
+import { ChangeEvent } from "react";
 
 type PaginationProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
@@ -26,8 +27,8 @@ export const SearchPagination = ({
       hidePrevButton
       hideNextButton
       count={data ? data!.data.total_pages : count}
-      onChange={(e: any) => {
-        setOffset(parseInt(e.target.textContent));
+      onChange={(e: React.ChangeEvent<unknown>) => {
+        setOffset(parseInt((e.target as HTMLElement).innerText));
         setTimeout(() => {
           window.scrollTo(0, 0);
         }, 200);
