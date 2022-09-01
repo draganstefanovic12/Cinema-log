@@ -9,7 +9,6 @@ export const SearchUsers = ({ query }: query) => {
       ? `https://media-log.herokuapp.com/user/all/allusers/`
       : `https://media-log.herokuapp.com/user/user/${query}`
   );
-  console.log(users);
 
   return (
     <>

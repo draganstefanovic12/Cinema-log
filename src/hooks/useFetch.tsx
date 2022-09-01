@@ -16,7 +16,7 @@ export const useFetch = (param: string) => {
       setData(data);
     };
     handleData();
-  }, [param, user?.token, user?.username]);
+  }, [param, user]);
 
   return data;
 };
