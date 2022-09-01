@@ -68,57 +68,27 @@ export const Favorites = ({ favorites }: FavoritesProps) => {
         )}
       </div>
       <div className="favorite-container-card">
-        {edit ? (
-          <>
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![0] && favMedia![0]}
-              setFavMovies={setFavMedia}
-            />
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![1] && favMedia![1]}
-              setFavMovies={setFavMedia}
-            />
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![2] && favMedia![2]}
-              setFavMovies={setFavMedia}
-            />
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![3] && favMedia![3]}
-              setFavMovies={setFavMedia}
-            />
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![4] && favMedia![4]}
-              setFavMovies={setFavMedia}
-            />
-            <FavoriteCard
-              edit={edit}
-              handleRemove={handleRemove}
-              media={favMedia![5] && favMedia![5]}
-              setFavMovies={setFavMedia}
-            />
-          </>
-        ) : (
-          favMedia &&
-          favMedia.map((media: Media) => (
-            <Fragment key={media.createdAt!}>
-              <FavoriteCard
-                edit={edit}
-                handleRemove={handleRemove}
-                media={media}
-              />
-            </Fragment>
-          ))
-        )}
+        {edit
+          ? new Array(6).fill(0).map((content, i) => (
+              <Fragment key={i}>
+                <FavoriteCard
+                  edit={edit}
+                  handleRemove={handleRemove}
+                  setFavMovies={setFavMedia}
+                  media={favMedia[i] && favMedia[i]}
+                />
+              </Fragment>
+            ))
+          : favMedia &&
+            favMedia.map((media: Media) => (
+              <Fragment key={media.createdAt!}>
+                <FavoriteCard
+                  edit={edit}
+                  handleRemove={handleRemove}
+                  media={media}
+                />
+              </Fragment>
+            ))}
       </div>
     </Container>
   );
