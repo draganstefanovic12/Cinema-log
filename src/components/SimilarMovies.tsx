@@ -37,7 +37,7 @@ export const SimilarMovies = () => {
         style={{
           display: "grid",
           flexDirection: "row",
-          gridTemplateColumns: "repeat(auto-fill, 10em)",
+          gridTemplateColumns: "repeat(auto-fill, 10.1em)",
           gridTemplateRows: "repeat(auto-fill, 15.9em)",
         }}
       >
@@ -50,7 +50,7 @@ export const SimilarMovies = () => {
             >
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
-                  className="movie-card-link-img movie-card-link"
+                  className="movie-card-link-img"
                   component="img"
                   sx={{ width: "10rem" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

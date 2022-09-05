@@ -18,14 +18,6 @@ a {
     opacity: 1;
   }
 }
-@keyframes faster {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 html {
   margin: 0;
   padding: 0;
@@ -564,10 +556,6 @@ body .cont .movie-info .watched-watchlist {
   background-color: #3a3a3a;
 }
 
-.movie-card-link-img {
-  animation: faster 250ms 1 ease-in-out forwards;
-}
-
 .register-page {
   display: flex;
   justify-content: center;
@@ -609,11 +597,12 @@ body .cont .movie-info .watched-watchlist {
   padding-bottom: 1.5rem;
 }
 
-.movie-card-link {
-  animation: fade 500ms 1 ease-in-out forwards;
-  transition: 0.25s all;
+.movie-card-link-img {
+  border: 1px solid transparent;
+  transition: 0.25s border-color;
+  user-select: none;
 }
-.movie-card-link:hover {
+.movie-card-link-img:hover {
   border-color: #6d6d6d;
 }
 

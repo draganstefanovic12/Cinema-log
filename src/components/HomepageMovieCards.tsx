@@ -25,7 +25,7 @@ export const HomepageMovieCards = ({
         className="main-page-cards-div similar"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, 10rem)",
+          gridTemplateColumns: "repeat(auto-fit, 10.2rem)",
           gridTemplateRows: "repeat(auto-fill, 15.9rem)",
         }}
       >

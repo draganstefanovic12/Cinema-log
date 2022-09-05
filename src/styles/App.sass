@@ -30,12 +30,6 @@ a
     100%
         opacity: 1
 
-@keyframes faster
-    0%
-        opacity: 0
-    100%
-        opacity: 1
-
 html
     margin: 0
     padding: 0
@@ -469,9 +463,6 @@ body
         cursor: pointer
         background-color: #3a3a3a
 
-.movie-card-link-img
-    animation: faster 250ms 1 ease-in-out forwards
-
 .register-page
     @include flex()
     background-size: cover
@@ -506,9 +497,10 @@ body
         padding-top: 1.5rem
         padding-bottom: 1.5rem
 
-.movie-card-link
-    animation: $fade500ms
-    transition: 0.25s all
+.movie-card-link-img
+    border: 1px solid transparent
+    transition: 0.25s border-color
+    user-select: none
     &:hover
         border-color: #6d6d6d
 
