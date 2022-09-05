@@ -4,7 +4,7 @@ Website I created using the MERN stack that allows users to add media (Movies/TV
 
 I've set up an authorization too using JWT and I'm using bcrypt to hash and salt the passwords. 
 
-Come check out the site and recommend me some movies, my username is dragan
+Come check out the site and recommend me some movies, my username is dragan.
 
 
 <a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
