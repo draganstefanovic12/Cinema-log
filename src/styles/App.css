@@ -123,6 +123,7 @@ body .nav {
   height: 2.3em;
   top: 0;
   z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 body .nav .home-link:active {
   height: 1.5em;
