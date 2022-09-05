@@ -13,7 +13,7 @@ export const SimilarMovies = () => {
       const movies = userStats!.movies.watched;
 
       const data = await fetch(
-        `https://media-log.herokuapp.com/imdb/similar/${
+        `https://media-log.herokuapp.com/imdb/recommendations/${
           movies[Math.floor(Math.random() * movies.length)].id
         }`
       );
