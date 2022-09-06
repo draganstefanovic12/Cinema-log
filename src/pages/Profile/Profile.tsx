@@ -1,19 +1,25 @@
-import { Lists } from "../components/Lists";
-import { Follow } from "../components/Follow";
-import { useAuth } from "../context/AuthContext";
-import { useFetch } from "../hooks/useFetch";
+import { Lists } from "../../components/Lists";
+import { Follow } from "../../components/Follow";
+import { useAuth } from "../../context/AuthContext";
+import { useFetch } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/system";
-import { ProfileInfo } from "../components/ProfileInfo";
-import { MoviesOrShows } from "../components/MoviesOrShows";
-import { ImageUploadForm } from "../components/ImageUploadForm";
-import { DialogComponent } from "../components/DialogComponent";
-import { ListItemComponent } from "../components/ListItemComponent";
+import { ProfileInfo } from "../../components/ProfileInfo";
+import { MoviesOrShows } from "../../components/MoviesOrShows";
+import { ImageUploadForm } from "../../components/ImageUploadForm";
+import { DialogComponent } from "../../components/DialogComponent";
+import { ListItemComponent } from "../../components/ListItemComponent";
 import { useEffect, useState } from "react";
 import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
-import { List } from "../types/types";
+import { List } from "../../types/types";
 
 export const Profile = () => {
+  const states = [
+    { child: "Profile", type: "feed" },
+    { child: "Movies", type: "movie" },
+    { child: "Shows", type: "tv" },
+    { child: "Lists", type: "lists" },
+  ];
   const [state, setState] = useState<string>("feed");
   const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
@@ -133,34 +139,15 @@ export const Profile = () => {
                     color: "#CCCCCC",
                   }}
                 >
-                  <ListItemComponent
-                    setState={setState}
-                    state={state}
-                    name={"feed"}
-                  >
-                    Profile
-                  </ListItemComponent>
-                  <ListItemComponent
-                    setState={setState}
-                    state={state}
-                    name={"movie"}
-                  >
-                    Movies
-                  </ListItemComponent>
-                  <ListItemComponent
-                    setState={setState}
-                    state={state}
-                    name={"tv"}
-                  >
-                    TV Shows
-                  </ListItemComponent>
-                  <ListItemComponent
-                    setState={setState}
-                    state={state}
-                    name={"lists"}
-                  >
-                    Lists
-                  </ListItemComponent>
+                  {states.map((types: any) => (
+                    <ListItemComponent
+                      setState={setState}
+                      state={state}
+                      name={types.type}
+                    >
+                      {types.child}
+                    </ListItemComponent>
+                  ))}
                 </Grid>
                 <Grid sx={{ marginLeft: "5.5rem" }}>
                   {user && params.user !== user?.username && (

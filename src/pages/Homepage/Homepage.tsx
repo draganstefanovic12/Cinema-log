@@ -8,6 +8,10 @@ import { HomepageMovieCards } from "../components/HomepageMovieCards";
 export const Homepage = () => {
   const { userStats } = useAuth();
 
+  const toprated = "https://media-log.herokuapp.com/imdb/toprated";
+
+  const trending = "https://media-log.herokuapp.com/imdb/trending";
+
   return (
     <Container
       maxWidth="xl"
@@ -16,14 +20,8 @@ export const Homepage = () => {
     >
       <div>
         {userStats?.movies.watched.length !== 0 && <SimilarMovies />}
-        <HomepageMovieCards
-          query={`https://media-log.herokuapp.com/imdb/toprated`}
-          name={"Top Rated"}
-        />
-        <HomepageMovieCards
-          query={`https://media-log.herokuapp.com/imdb/trending`}
-          name={"Trending Movies"}
-        />
+        <HomepageMovieCards query={toprated} name={"Top Rated"} />
+        <HomepageMovieCards query={trending} name={"Trending Movies"} />
       </div>
       <Container className="main-page-feed-cont">
         <HomepageUserFeed />
