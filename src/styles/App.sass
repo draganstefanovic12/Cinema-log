@@ -85,23 +85,6 @@ body
                 display: flex
                 .main-page-list-img
                     width: 8em
-    .list-main-cont
-        @include flexColumn()
-        margin-top: 5em
-        height: 50em
-        width: 70rem
-        color: #cccccc
-        animation: $fade500ms
-        .list-grid-cont
-            display: grid
-            margin-top: 2rem
-            justify-content: center
-            background-color: $secondary-color
-            min-height: 55rem
-            gap: 1rem
-            padding: 1rem
-            grid-template-columns: repeat(auto-fill, 8rem)
-            grid-template-rows: repeat(auto-fill, 12.5rem)
     .pw-cont
         @include flexColumn()
         justify-content: center
@@ -116,34 +99,6 @@ body
         width: 17em
         margin-top: 10em
         color: #cccccc
-    .main-container
-        display: grid
-        padding: 1em
-        margin-top: 4em
-        justify-content: center
-        animation: $fade500ms
-        .movie-card
-            padding: 0
-            margin-bottom: 1rem
-            height: 15.5rem
-            .movie-card-content
-                max-width: 45em
-                max-height: 30em
-                margin-bottom: 1em
-                animation: $fade500ms
-            .poster
-                width: 15em
-            .movie-poster-link
-                width: 15rem
-                .movie-card-name
-                    margin-top: 1em
-                    font-weight: 400
-                    margin-bottom: 1em
-                .card-grid
-                    .search-overview
-                        padding: 1em
-                        justify-content: center
-                        color: #CCCCCC
         .movie-cont
             @include flex
             flex-direction: column
@@ -197,95 +152,6 @@ body
         button
             height: 2em
 
-.profile-container
-    margin-top: 0
-    background-size: cover
-    margin-top: 4em
-    height: calc( 100vh - 55px )
-    animation: $fade500ms
-    .profile-details
-        color: #cccccc
-    .profile-info-container
-        display: grid
-        grid-template-columns: 60% 40%
-        height: 57.7em
-        background-color: #181e26
-        padding-top: 1.5rem
-    .favorite-container
-        width: 25em
-        .favorite-container-card
-            .profile-fav-link
-                .profile-fav-img
-                    height: 15.5rem
-                    width: 10rem
-                    padding-bottom: 1rem
-        .fav-text-cont
-            display: flex
-            justify-content: space-between
-            align-items: center
-            .favorite-movies
-                padding-bottom: 0.5em
-                color: #cccccc
-            .fav-edit
-                align-self: center
-                &:hover
-                    cursor: pointer
-        .favorite-container-card
-            display: grid
-            grid-template-columns: repeat(auto-fill, 50%)
-            .fav-edit-cont
-                margin-bottom: 1em
-                .search-fav
-                    position: absolute
-                    transform: translate(-1em)
-                    background-color: $secondary-color
-                    width: 14em
-                    padding: 0.5em
-                .fav-remove-icon
-                    position: absolute
-                    transform: translateX(5.5em)
-                    color: #fff
-                    z-index: 1
-                    &:hover
-                        cursor: pointer
-                .fav-edit-card
-                    height: 14.5rem
-                    width: 10em
-            .fav-add-icon
-                position: absolute
-                transform: translate(2.3em, -6.6em)
-                color: #fff
-                width: 2em
-                height: 3em
-                &:hover
-                    cursor: pointer
-
-    .profile-list-cont
-        @include flexColumn()
-        align-items: center
-        background-color: #181e26
-        animation: $fade500ms
-        .btn-new-list
-            justify-self: flex-end
-            align-self: flex-end
-            margin-top: 1em
-            height: 2em
-        .no-lists
-            color: #cccccc
-        .watched-watchlist-cont
-            display: flex
-            align-self: flex-end
-            margin-top: 1em
-            background-color: #161b22
-        .movie-grid-cont
-            display: grid
-            grid-template-columns: repeat(auto-fit, 10em)
-            grid-template-rows: repeat(3, 1fr)
-            padding-top: 1em
-            gap: 1em
-            height: 52.5em
-            width: 100%
-            animation: $fade500ms
 .img-form-menu
     &:hover
         cursor: pointer

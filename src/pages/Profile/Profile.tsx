@@ -1,3 +1,4 @@
+import "./styles/profile.css";
 import { List } from "../../types/types";
 import { Lists } from "../../components/Lists/Lists";
 import { Follow } from "../../components/Follow/Follow";

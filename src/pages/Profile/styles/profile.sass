@@ -1,0 +1,62 @@
+.profile-container
+    margin-top: 0
+    background-size: cover
+    margin-top: 4em
+    height: calc( 100vh - 55px )
+    animation: fade 500ms 1 ease-in-out forwards
+    .profile-details
+        color: #cccccc
+    .profile-info-container
+        display: grid
+        grid-template-columns: 60% 40%
+        height: 57.7em
+        background-color: #181e26
+        padding-top: 1.5rem
+    .favorite-container
+        width: 25em
+        .favorite-container-card
+            .profile-fav-link
+                .profile-fav-img
+                    height: 15.5rem
+                    width: 10rem
+                    padding-bottom: 1rem
+        .fav-text-cont
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .favorite-movies
+                padding-bottom: 0.5em
+                color: #cccccc
+            .fav-edit
+                align-self: center
+                &:hover
+                    cursor: pointer
+        .favorite-container-card
+            display: grid
+            grid-template-columns: repeat(auto-fill, 50%)
+            .fav-edit-cont
+                margin-bottom: 1em
+                .search-fav
+                    position: absolute
+                    transform: translate(-1em)
+                    background-color: #161b22
+                    width: 14em
+                    padding: 0.5em
+                .fav-remove-icon
+                    position: absolute
+                    transform: translateX(5.5em)
+                    color: #fff
+                    z-index: 1
+                    &:hover
+                        cursor: pointer
+                .fav-edit-card
+                    height: 14.5rem
+                    width: 10em
+            .fav-add-icon
+                position: absolute
+                transform: translate(2.3em, -6.6em)
+                color: #fff
+                width: 2em
+                height: 3em
+                &:hover
+                    cursor: pointer

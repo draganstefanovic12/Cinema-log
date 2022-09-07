@@ -86,26 +86,6 @@ body .main-page-cont .main-page-list-container .main-page-list-img-cont {
 body .main-page-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img {
   width: 8em;
 }
-body .list-main-cont {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5em;
-  height: 50em;
-  width: 70rem;
-  color: #cccccc;
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-body .list-main-cont .list-grid-cont {
-  display: grid;
-  margin-top: 2rem;
-  justify-content: center;
-  background-color: #161b22;
-  min-height: 55rem;
-  gap: 1rem;
-  padding: 1rem;
-  grid-template-columns: repeat(auto-fill, 8rem);
-  grid-template-rows: repeat(auto-fill, 12.5rem);
-}
 body .pw-cont {
   display: flex;
   flex-direction: column;
@@ -125,47 +105,13 @@ body .account-cont {
   margin-top: 10em;
   color: #cccccc;
 }
-body .main-container {
-  display: grid;
-  padding: 1em;
-  margin-top: 4em;
-  justify-content: center;
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-body .main-container .movie-card {
-  padding: 0;
-  margin-bottom: 1rem;
-  height: 15.5rem;
-}
-body .main-container .movie-card .movie-card-content {
-  max-width: 45em;
-  max-height: 30em;
-  margin-bottom: 1em;
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-body .main-container .movie-card .poster {
-  width: 15em;
-}
-body .main-container .movie-card .movie-poster-link {
-  width: 15rem;
-}
-body .main-container .movie-card .movie-poster-link .movie-card-name {
-  margin-top: 1em;
-  font-weight: 400;
-  margin-bottom: 1em;
-}
-body .main-container .movie-card .movie-poster-link .card-grid .search-overview {
-  padding: 1em;
-  justify-content: center;
-  color: #CCCCCC;
-}
-body .main-container .movie-cont {
+body .account-cont .movie-cont {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 14em;
 }
-body .main-container .movie-cont p {
+body .account-cont .movie-cont p {
   color: #efefef;
 }
 body .form-container {
@@ -226,116 +172,6 @@ body .form-container form button {
 }
 body .form-container button {
   height: 2em;
-}
-
-.profile-container {
-  margin-top: 0;
-  background-size: cover;
-  margin-top: 4em;
-  height: calc(100vh - 55px);
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-.profile-container .profile-details {
-  color: #cccccc;
-}
-.profile-container .profile-info-container {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  height: 57.7em;
-  background-color: #181e26;
-  padding-top: 1.5rem;
-}
-.profile-container .favorite-container {
-  width: 25em;
-}
-.profile-container .favorite-container .favorite-container-card .profile-fav-link .profile-fav-img {
-  height: 15.5rem;
-  width: 10rem;
-  padding-bottom: 1rem;
-}
-.profile-container .favorite-container .fav-text-cont {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.profile-container .favorite-container .fav-text-cont .favorite-movies {
-  padding-bottom: 0.5em;
-  color: #cccccc;
-}
-.profile-container .favorite-container .fav-text-cont .fav-edit {
-  align-self: center;
-}
-.profile-container .favorite-container .fav-text-cont .fav-edit:hover {
-  cursor: pointer;
-}
-.profile-container .favorite-container .favorite-container-card {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 50%);
-}
-.profile-container .favorite-container .favorite-container-card .fav-edit-cont {
-  margin-bottom: 1em;
-}
-.profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav {
-  position: absolute;
-  transform: translate(-1em);
-  background-color: #161b22;
-  width: 14em;
-  padding: 0.5em;
-}
-.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon {
-  position: absolute;
-  transform: translateX(5.5em);
-  color: #fff;
-  z-index: 1;
-}
-.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon:hover {
-  cursor: pointer;
-}
-.profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-edit-card {
-  height: 14.5rem;
-  width: 10em;
-}
-.profile-container .favorite-container .favorite-container-card .fav-add-icon {
-  position: absolute;
-  transform: translate(2.3em, -6.6em);
-  color: #fff;
-  width: 2em;
-  height: 3em;
-}
-.profile-container .favorite-container .favorite-container-card .fav-add-icon:hover {
-  cursor: pointer;
-}
-.profile-container .profile-list-cont {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #181e26;
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-.profile-container .profile-list-cont .btn-new-list {
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin-top: 1em;
-  height: 2em;
-}
-.profile-container .profile-list-cont .no-lists {
-  color: #cccccc;
-}
-.profile-container .profile-list-cont .watched-watchlist-cont {
-  display: flex;
-  align-self: flex-end;
-  margin-top: 1em;
-  background-color: #161b22;
-}
-.profile-container .profile-list-cont .movie-grid-cont {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 10em);
-  grid-template-rows: repeat(3, 1fr);
-  padding-top: 1em;
-  gap: 1em;
-  height: 52.5em;
-  width: 100%;
-  animation: fade 500ms 1 ease-in-out forwards;
 }
 
 .img-form-menu:hover {

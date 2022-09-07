@@ -1,3 +1,4 @@
+import "./styles/list.css";
 import { List } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
@@ -32,14 +33,8 @@ export const PageList = () => {
     <>
       {data && (
         <Container className="list-main-cont">
-          <Container
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-            }}
-          >
-            <div style={{ width: "70%", overflowWrap: "break-word" }}>
+          <Container className="list-wrapper">
+            <div>
               <Typography variant="h5">{data.data.name}</Typography>
               <Typography sx={{ color: "#A7A7A7" }}>
                 {data.data.description}
@@ -59,11 +54,7 @@ export const PageList = () => {
                 <RemoveList list={data.data} usr={user?.username} />
               )}
               {user?.username !== data.data.username && (
-                <ListItem
-                  onClick={handleClick}
-                  button
-                  sx={{ whiteSpace: "nowrap", width: "17em", marginTop: "1em" }}
-                >
+                <ListItem onClick={handleClick} button>
                   Like the list? Tell {data.data.username} about it.
                 </ListItem>
               )}

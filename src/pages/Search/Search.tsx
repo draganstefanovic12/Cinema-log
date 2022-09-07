@@ -1,3 +1,4 @@
+import "./styles/search.css";
 import {
   Card,
   CardContent,
@@ -19,6 +20,7 @@ export const Search = () => {
   const query = useParams();
   const [offset, setOffset] = useState<number>(1);
 
+  //if a user is searching for a specific movie/show/user its gonna be multi. otherwise by genre
   const data = useFetch(
     query.type === "multi"
       ? `https://media-log.herokuapp.com/imdb/multi/${query.query}/`
