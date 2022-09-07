@@ -1,11 +1,5 @@
-import { Media } from "../types/types";
 import { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
-import { SearchUsers } from "../components/SearchUsers";
-import { SearchLists } from "../components/SearchLists";
 import { Link, useParams } from "react-router-dom";
-import { SearchPagination } from "../components/SearchPagination";
-import { SearchMediaTypePerson } from "../components/SearchMediaTypePerson";
 import {
   Card,
   CardContent,
@@ -14,6 +8,12 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { useFetch } from "../../hooks/useFetch";
+import { SearchUsers } from "../../components/SearchUsers/SearchUsers";
+import { SearchPagination } from "../../components/SearchPagination/SearchPagination";
+import { SearchMediaTypePerson } from "../../components/SearchMediaTypePerson/SearchMediaTypePerson";
+import { SearchLists } from "../../components/SearchLists/SearchLists";
+import { Media } from "../../types/types";
 
 export const Search = () => {
   const query = useParams();

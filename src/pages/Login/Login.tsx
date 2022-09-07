@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useLogin } from "../hooks/useLogin";
+import { useLogin } from "../../hooks/useLogin";
 import { Button, FormLabel, Input, Typography } from "@mui/material";
-import loginBg from "../assets/login-bg.jpg";
+import loginBg from "../../assets/login-bg.jpg";
 
 export const Login = () => {
   const [username, setUsername] = useState<string>("");

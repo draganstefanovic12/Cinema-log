@@ -1,17 +1,18 @@
-import { Lists } from "../../components/Lists";
-import { Follow } from "../../components/Follow";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/system";
-import { ProfileInfo } from "../../components/ProfileInfo";
-import { MoviesOrShows } from "../../components/MoviesOrShows";
-import { ImageUploadForm } from "../../components/ImageUploadForm";
-import { DialogComponent } from "../../components/DialogComponent";
-import { ListItemComponent } from "../../components/ListItemComponent";
 import { useEffect, useState } from "react";
 import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
 import { List } from "../../types/types";
+import { Lists } from "../../components/Lists/Lists";
+
+import { Follow } from "../../components/Follow/Follow";
+import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
+import { ImageUploadForm } from "../../components/ImageUploadForm/ImageUploadForm";
+import { MoviesOrShows } from "../../components/MoviesOrShows/MoviesOrShows";
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent";
+import { ListItemComponent } from "../../components/ListItemComponent/ListItemComponent";
 
 export const Profile = () => {
   const states = [
