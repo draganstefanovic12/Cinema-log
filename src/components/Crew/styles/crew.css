@@ -1,0 +1,21 @@
+.cast-crew-cont {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.crew-cont, .actors {
+  display: grid;
+  grid-template-columns: repeat(2, 20em);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  margin-top: 1em;
+}
+.crew-cont .crew, .crew-cont .actor-cont, .actors .crew, .actors .actor-cont {
+  display: flex;
+  margin-bottom: 1em;
+}
+.crew-cont .crew-avatar, .crew-cont .actor-avatar, .actors .crew-avatar, .actors .actor-avatar {
+  height: 2.5em;
+  width: 2.5em;
+}
+
+/*# sourceMappingURL=crew.css.map */

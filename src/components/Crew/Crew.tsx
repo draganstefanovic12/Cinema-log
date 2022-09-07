@@ -1,3 +1,4 @@
+import "./styles/crew.css";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { CrewArr, OtherCrew } from "../../types/types";

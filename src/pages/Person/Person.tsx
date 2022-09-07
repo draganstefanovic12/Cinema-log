@@ -1,3 +1,4 @@
+import "./styles/person.css";
 import { useFetch } from "../../hooks/useFetch";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";

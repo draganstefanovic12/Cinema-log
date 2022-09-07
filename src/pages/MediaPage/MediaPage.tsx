@@ -1,3 +1,4 @@
+import "./styles/mediapage.css";
 import { Genre } from "../../components/Genre/Genre";
 import { Media } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";

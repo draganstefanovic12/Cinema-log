@@ -41,6 +41,7 @@ body
     margin: 0
     padding: 0
     background: $main-color
+    min-height: 100vh
     .main-page-cont
         display: grid
         height: 90vh
@@ -195,79 +196,6 @@ body
                 width: 5em
         button
             height: 2em
-    .cont
-        color: #efefef
-        background-color: #181e26
-        padding: 0
-        animation: $fade500ms
-        .cast-crew-cont
-            display: grid
-            grid-template-columns: repeat(2, 50%)
-        .crew-cont, .actors
-            display: grid
-            grid-template-columns: repeat(2, 20em)
-            grid-template-rows: repeat(auto-fit, 1fr)
-            margin-top: 1em
-            .crew, .actor-cont
-                display: flex
-                margin-bottom: 1em
-            .crew-avatar, .actor-avatar
-                height: 2.5em
-                width: 2.5em
-        .movie-main
-            @include flex
-            justify-content: center
-            height: 35em
-            overflow: hidden
-        .movie-main-information
-            display: flex
-            width: 250em
-            flex-direction: column
-            .genres
-                margin-top: 0.5em
-                display: flex
-                gap: 1em
-                width: 10.3em
-                height: 2.2em
-                white-space: nowrap
-                .genre
-                    margin-bottom: 0.2em
-                    padding-bottom: 0.5em
-                    background-color: $main-color
-                    justify-content: center
-                    &:hover
-                        background-color: #171b20
-                        cursor: pointer
-        .backdrop
-            display: flex
-            justify-self: center
-            width: 100%
-            height: 40em
-        .movie-info
-            display: flex
-            .movie-main-information
-                justify-content: space-between
-            img
-                margin-top: -2em
-                margin-left: 1.2em
-            .movie-name
-                font-family: $main
-                margin-left: 1em
-                font-weight: 700
-                margin-top: 0.2em
-            .movie-overview
-                font-family: $main
-                color: #d9d9d9
-                margin-left: 2.3em
-                margin-right: 2.3em
-            .poster-main
-                height: 20em
-            .watched-watchlist
-                width: 25em
-                display: flex
-                margin-left: 0.6em
-                padding-bottom: 1em
-                color: #CCCCCC
 
 .profile-container
     margin-top: 0
@@ -358,67 +286,10 @@ body
             height: 52.5em
             width: 100%
             animation: $fade500ms
-
-    .profiles-lists
-        display: grid
-        grid-template-columns: repeat(2, 50%)
-        grid-template-rows: repeat(auto-fill, 10em)
-        gap: 4rem
-        margin-left: 0.5rem,
-        flex-direction: row
-        justify-content: center
-        align-items: flex-start
-        .new-list-cont
-            display: flex
-            justify-content: center
-            flex-direction: column
-            width: 25em
-            gap: 1em
-            background-color: #14181c
-            padding: 1%
-            position: absolute
-            left: 0
-            right: 0
-            z-index: 0
-        .list-img
-            width: 8.5em
-        .pagination
-            padding-bottom: 1em
-            justify-content: center
-
-.user-feed-container
-    @include flexColumn()
-    width: 100%
-    .user-feed
-        color: #cccccc
-        padding-bottom: 0.5em
-    .user-feed-div
-        background-color: #161b22
-        width: 100%
-        .user-feed-grid
-            background-color: #161b22
-            width: 100%
-            .user-feed-mapped-grid
-                display: grid
-                grid-template-columns: 70% 30%
-                margin-bottom: 0.5rem
-        .user-feed-link
-            color: #fff
-            text-decoration: none
-            .feed-cont
-                grid-column: 1
-                color: #efefef
-                width: 100%
-                height: 2.5em
-                .profile-link
-                    color: #efefef
-                    text-decoration: none
-
 .img-form-menu
     &:hover
         cursor: pointer
         background-color: #3a3a3a
-
 .register-page
     @include flex()
     background-size: cover
@@ -439,19 +310,6 @@ body
                 font-family: $Nunito
                 width: 20rem
                 animation: $fade500ms
-
-.person-cont
-    margin-top: 5rem
-    color: #cccccc
-    background-color: #181e26
-    padding: 1rem
-    .person-cards
-        display: grid
-        grid-template-columns: repeat(5, 13rem)
-        background-color: #161b22
-        justify-content: center
-        padding-top: 1.5rem
-        padding-bottom: 1.5rem
 
 .movie-card-link-img
     border: 1px solid transparent
