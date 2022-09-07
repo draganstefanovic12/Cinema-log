@@ -1,7 +1,8 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import "./styles/userfeed.css";
 import { Link } from "react-router-dom";
-import { formatDistanceToNow } from "date-fns";
 import { Feed, Media } from "../../types/types";
+import { formatDistanceToNow } from "date-fns";
+import { Card, CardContent, Typography } from "@mui/material";
 
 export type ProfileFeedProps = {
   feed: Feed[];

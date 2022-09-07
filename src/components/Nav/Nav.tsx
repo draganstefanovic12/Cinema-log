@@ -1,3 +1,4 @@
+import "./styles/nav.css";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
@@ -11,6 +12,7 @@ import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
 import NotificationsNoneOutlined from "@mui/icons-material/NotificationsNoneOutlined";
 
 export const Nav = () => {
+  //Changing the logo to be filled on hover
   const [hover, setHover] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
@@ -37,9 +39,6 @@ export const Nav = () => {
           {user && (
             <Container className="avatar-container">
               <Input
-                sx={{
-                  marginRight: "0.5em",
-                }}
                 placeholder="Search..."
                 startAdornment={
                   <InputAdornment position="start">
@@ -57,10 +56,7 @@ export const Nav = () => {
               {userStats ? (
                 <NavNotifications notifications={userStats.notifications} />
               ) : (
-                <NotificationsNoneOutlined
-                  sx={{ width: "65px" }}
-                  className="notification-icon"
-                />
+                <NotificationsNoneOutlined className="notification-icon" />
               )}
               <NavDropdown />
             </Container>

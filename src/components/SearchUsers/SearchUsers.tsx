@@ -1,3 +1,4 @@
+import "./styles/searchusers.css";
 import { useFetch } from "../../hooks/useFetch";
 import { Container } from "@mui/system";
 import { query, UserModel } from "../../types/types";
@@ -13,31 +14,17 @@ export const SearchUsers = ({ query }: query) => {
   return (
     <>
       {users && (
-        <Container
-          className="user-search"
-          style={{
-            display: "grid",
-            gap: "1rem",
-            padding: "2rem",
-          }}
-        >
+        <Container className="user-search">
           {users.data.length > 0 && (
             <Typography variant="h5" sx={{ color: "#cccccc" }}>
               Users:
             </Typography>
           )}
           {users.data.map((user: UserModel) => (
-            <Card
-              className="user-search-card"
-              sx={{ width: "40.5rem", marginBottom: "1rem" }}
-              key={user._id}
-            >
-              <CardContent
-                className="user-search-card-content"
-                sx={{ backgroundColor: "#14181c" }}
-              >
+            <Card key={user._id}>
+              <CardContent className="user-search-card-content">
                 <a href={`/Cinema-log/#/user/${user.username}`}>
-                  <Grid sx={{ display: "flex" }} container>
+                  <Grid container>
                     <Grid>
                       <Avatar
                         sx={{ height: "5em", width: "5em" }}
@@ -45,27 +32,10 @@ export const SearchUsers = ({ query }: query) => {
                         src={`https://media-log.herokuapp.com${user.avatar}`}
                       />
                     </Grid>
-                    <Grid
-                      className="user-grid-text"
-                      sx={{
-                        width: "10rem",
-                        color: "#cccccc",
-                      }}
-                    >
-                      <Typography sx={{ paddingLeft: "1rem" }} variant="h5">
-                        {user.username}
-                      </Typography>
-                      <div
-                        style={{
-                          paddingTop: "1rem",
-                          width: "35rem",
-                          display: "flex",
-                        }}
-                      >
-                        <div
-                          className="user-text"
-                          style={{ marginRight: "1rem", paddingLeft: "1rem" }}
-                        >
+                    <Grid className="user-grid-text">
+                      <Typography variant="h5">{user.username}</Typography>
+                      <div className="div-wrapper">
+                        <div className="user-text">
                           <Typography>
                             Movies watched: {user.movies.watched.length}
                           </Typography>

@@ -1,3 +1,4 @@
+import "./styles/similarmovies.css";
 import { Link } from "react-router-dom";
 import { Media } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
@@ -12,6 +13,7 @@ export const SimilarMovies = () => {
     const handleSimilar = async () => {
       const movies = userStats!.movies.watched;
 
+      //Gets a random movies from users watched list and fetches similar movies
       const data = await fetch(
         `https://media-log.herokuapp.com/imdb/recommendations/${
           movies[Math.floor(Math.random() * movies.length)].id
@@ -32,22 +34,10 @@ export const SimilarMovies = () => {
       <Typography sx={{ marginBottom: "0.5rem" }} variant="h5">
         Recommendations based on what you already watched
       </Typography>
-      <div
-        className="similar"
-        style={{
-          display: "grid",
-          flexDirection: "row",
-          gridTemplateColumns: "repeat(auto-fill, 10.1em)",
-          gridTemplateRows: "repeat(auto-fill, 15.9em)",
-        }}
-      >
+      <div className="similar">
         {similar ? (
           similar.slice(0, 10).map((movie: Media) => (
-            <Link
-              style={{ width: "10rem" }}
-              key={movie.id}
-              to={`/movie/${movie.id}`}
-            >
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
                   className="movie-card-link-img"

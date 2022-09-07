@@ -1,26 +1,27 @@
+import { List } from "../../types/types";
+import { Lists } from "../../components/Lists/Lists";
+import { Follow } from "../../components/Follow/Follow";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
-import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
-import { List } from "../../types/types";
-import { Lists } from "../../components/Lists/Lists";
-
-import { Follow } from "../../components/Follow/Follow";
 import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
-import { ImageUploadForm } from "../../components/ImageUploadForm/ImageUploadForm";
 import { MoviesOrShows } from "../../components/MoviesOrShows/MoviesOrShows";
 import { DialogComponent } from "../../components/DialogComponent/DialogComponent";
+import { ImageUploadForm } from "../../components/ImageUploadForm/ImageUploadForm";
 import { ListItemComponent } from "../../components/ListItemComponent/ListItemComponent";
+import { useEffect, useState } from "react";
+import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
+
+//Different states on profile you can toggle through
+const states = [
+  { child: "Profile", type: "feed" },
+  { child: "Movies", type: "movie" },
+  { child: "Shows", type: "tv" },
+  { child: "Lists", type: "lists" },
+];
 
 export const Profile = () => {
-  const states = [
-    { child: "Profile", type: "feed" },
-    { child: "Movies", type: "movie" },
-    { child: "Shows", type: "tv" },
-    { child: "Lists", type: "lists" },
-  ];
   const [state, setState] = useState<string>("feed");
   const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
@@ -190,14 +191,7 @@ export const Profile = () => {
           )}
         </div>
       ) : (
-        <CircularProgress
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
+        <CircularProgress className="spinner" />
       )}
     </>
   );
