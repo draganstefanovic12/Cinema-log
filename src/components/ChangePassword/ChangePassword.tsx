@@ -1,3 +1,4 @@
+import "./styles/changepassword.css";
 import { useAuth } from "../../context/AuthContext";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useEffect, useState } from "react";
