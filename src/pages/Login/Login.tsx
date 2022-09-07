@@ -57,6 +57,7 @@ export const Login = () => {
           }}
         />
         <div
+          className="btn-container"
           style={{
             display: "flex",
             flexDirection: "column",
