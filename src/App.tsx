@@ -1,18 +1,18 @@
 import "./styles/App.css";
 import "./styles/MobileApp.css";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";
-import { createTheme, ThemeProvider } from "@mui/material";
 import { Nav } from "./components/Nav/Nav";
+import { Login } from "./pages/Login/Login";
 import { Person } from "./pages/Person/Person";
-import { MyAccount } from "./pages/MyAccount/MyAccount";
-import { PageList } from "./pages/List/List";
+import { Search } from "./pages/Search/Search";
 import { Profile } from "./pages/Profile/Profile";
+import { useAuth } from "./context/AuthContext";
 import { Register } from "./pages/Register/Register";
 import { Homepage } from "./pages/Homepage/Homepage";
-import { Login } from "./pages/Login/Login";
+import { PageList } from "./pages/List/List";
+import { MyAccount } from "./pages/MyAccount/MyAccount";
 import { MediaPage } from "./pages/MediaPage/MediaPage";
-import { Search } from "./pages/Search/Search";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const { user } = useAuth();

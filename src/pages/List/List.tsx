@@ -1,11 +1,12 @@
-import { Container } from "@mui/system";
-import { Link, useParams } from "react-router-dom";
-import { CardMedia, ListItem, Typography } from "@mui/material";
-import axios from "axios";
+import { List } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
+import { Container } from "@mui/system";
 import { RemoveList } from "../../components/RemoveList/RemoveList";
-import { List } from "../../types/types";
+import { Link, useParams } from "react-router-dom";
+import { CardMedia, ListItem, Typography } from "@mui/material";
+
+import axios from "axios";
 
 export const PageList = () => {
   const { name } = useParams();

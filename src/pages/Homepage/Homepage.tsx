@@ -2,7 +2,6 @@ import { useAuth } from "../../context/AuthContext";
 import { Container } from "@mui/system";
 import { SimilarMovies } from "../../components/SimilarMovies/SimilarMovies";
 import { HomepageLists } from "../../components/HomepageLists/HomepageLists";
-
 import { HomepageUserFeed } from "../../components/HomepageUserFeed/HomepageUserFeed";
 import { HomepageMovieCards } from "../../components/HomepageMovieCards/HomepageMovieCards";
 
@@ -10,7 +9,6 @@ export const Homepage = () => {
   const { userStats } = useAuth();
 
   const toprated = "https://media-log.herokuapp.com/imdb/toprated";
-
   const trending = "https://media-log.herokuapp.com/imdb/trending";
 
   return (
