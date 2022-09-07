@@ -14,24 +14,21 @@
   color: #cccccc;
   animation: fade 500ms 1 ease-in-out forwards;
 }
-.form-container .landing-font .big-login-text {
+.form-container .big-login-text {
   font-family: nunito, sans-serif;
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.form-container .landing-font .big-login-text .welcome-back {
-  display: flex;
-  justify-content: center;
-  font-family: nunito, sans-serif;
-  margin-top: -1em;
-  padding-right: 0.5em;
-}
-.form-container .landing-font .big-login-text .link {
+.form-container .welcome-back {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-family: nunito, sans-serif;
-  margin-top: -0.75em;
-  padding-bottom: 0.3em;
+  padding-right: 0.5em;
+}
+.form-container .link {
+  display: flex;
+  align-items: center;
 }
 .form-container form {
   display: flex;

@@ -1,3 +1,4 @@
+import "./styles/register.css";
 import bg from "../../assets/registration.jpg";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useState } from "react";
