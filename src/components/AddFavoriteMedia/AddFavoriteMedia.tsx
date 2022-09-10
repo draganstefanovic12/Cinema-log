@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import {
   CardMedia,
   ClickAwayListener,
@@ -55,9 +55,6 @@ export const AddFavoriteMedia = ({
       `https://media-log.herokuapp.com/user/addfavorite/${user?.username}/`,
       {
         method: "POST",
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
         data: {
           title: name,
           id: id,

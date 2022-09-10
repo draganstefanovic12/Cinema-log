@@ -2,7 +2,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { NavPopper } from "../NavPopper/NavPopper";
 import { Input, MenuList } from "@mui/material";
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 
 type Curr = {
   current: JSX.Element;
@@ -29,12 +29,7 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
     setImgSrc("");
     setOpen(false);
     axios.delete(
-      `https://media-log.herokuapp.com/image/delete/${userStats?._id}`,
-      {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      }
+      `https://media-log.herokuapp.com/image/delete/${userStats?._id}`
     );
   };
 

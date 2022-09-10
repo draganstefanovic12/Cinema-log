@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "../features/axios/incerceptor";
+import { AxiosResponse } from "axios";
 import {
   createContext,
   useReducer,
@@ -52,11 +53,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
       axios
-        .get(`https://media-log.herokuapp.com/user/${user.username}`, {
-          headers: {
-            Authorization: `${user?.username} ${user?.token}`,
-          },
-        })
+        .get(`https://media-log.herokuapp.com/user/${user.username}`)
         .then((result: AxiosResponse<UserResponse>) =>
           setUserStats(result.data.user)
         );

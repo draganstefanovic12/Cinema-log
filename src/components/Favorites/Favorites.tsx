@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import { Media } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { Container } from "@mui/system";
@@ -33,9 +33,6 @@ export const Favorites = ({ favorites }: FavoritesProps) => {
     await axios.delete(
       `https://media-log.herokuapp.com/user/removefavorite/${params.user}`,
       {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
         data: {
           content: mov,
         },

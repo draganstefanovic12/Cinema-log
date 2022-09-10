@@ -44,9 +44,8 @@ export const ChangePassword = () => {
   }, [newPassword, checkNewPassword]);
 
   return (
-    <Container className="pw-cont">
+    <Container className="pw-cont" sx={{ display: "flex", width: "17em" }}>
       <Typography sx={{ marginBottom: "1em" }}>Change Password:</Typography>
-
       <TextField
         type="password"
         error={error}

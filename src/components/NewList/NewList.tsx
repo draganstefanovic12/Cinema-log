@@ -9,7 +9,7 @@ import {
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { AddFavoriteMedia } from "../AddFavoriteMedia/AddFavoriteMedia";
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { List, MediaStringUndefined } from "../../types/types";
 

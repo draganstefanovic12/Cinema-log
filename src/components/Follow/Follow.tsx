@@ -2,7 +2,7 @@ import { useAuth } from "../../context/AuthContext";
 import { ListItem } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 
 type FollowProps = {
   usr: string | undefined;
@@ -33,14 +33,8 @@ export const Follow = ({
   }, [followers, user]);
 
   const handleClick = async () => {
-    await axios(
-      `https://media-log.herokuapp.com/user/follow/${usr}/${followedUser}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      }
+    await axios.post(
+      `https://media-log.herokuapp.com/user/follow/${usr}/${followedUser}`
     );
   };
   //dragan i qqq

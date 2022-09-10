@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../features/axios/incerceptor";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
@@ -8,11 +8,7 @@ export const useFetch = (param: string) => {
 
   useEffect(() => {
     const handleData = async () => {
-      const data = await axios.get(param, {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      });
+      const data = await axios.get(param);
       setData(data);
     };
     handleData();

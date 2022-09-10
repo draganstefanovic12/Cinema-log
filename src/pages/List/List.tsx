@@ -6,8 +6,7 @@ import { Container } from "@mui/system";
 import { RemoveList } from "../../components/RemoveList/RemoveList";
 import { Link, useParams } from "react-router-dom";
 import { CardMedia, ListItem, Typography } from "@mui/material";
-
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 
 export const PageList = () => {
   const { name } = useParams();
@@ -18,14 +17,7 @@ export const PageList = () => {
 
   const handleClick = async () => {
     await axios.post(
-      `https://media-log.herokuapp.com/user/likelist/${data.data.username}`,
-      {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-        userThatLiked: user?.username,
-        list: data.data.name,
-      }
+      `https://media-log.herokuapp.com/user/likelist/${data.data.username}`
     );
   };
 

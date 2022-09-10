@@ -7,7 +7,7 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
@@ -35,11 +35,8 @@ export const MediaPageRecommend = ({
   };
 
   const handleRecommend = async (usr: string) => {
-    await axios(`http://localhost:5000/user/recommendation/${usr}/`, {
+    await axios(`https://media-log.herokuapp.com/user/recommendation/${usr}/`, {
       method: "POST",
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
       data: {
         recUser: userStats?.username,
         movie: JSON.stringify(media),

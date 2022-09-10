@@ -11,6 +11,7 @@ export const HomepageUserFeed = () => {
 
   const handleActivity = async () => {
     userStats!.following.map(async (usr: { name: string }) => {
+      //rewrite all fetches to axios
       const data = await fetch(
         `https://media-log.herokuapp.com/user/${usr.name}`,
         {

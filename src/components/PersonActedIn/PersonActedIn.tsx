@@ -70,7 +70,7 @@ export const PersonActedIn = ({ data }: PersonActedInProps) => {
                 : acted.poster_path !== null && acted.job === "Director"
             )
             .sort((a: Media, b: Media) => b.popularity - a.popularity)
-            .slice(0, 40)
+            .slice(0, 20)
             .map((acted: Media) => (
               <Link
                 style={{

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import { useAuth } from "../../context/AuthContext";
@@ -21,14 +21,8 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
 
   const handleClick = async () => {
     setRead(true);
-    await axios(
-      `https://media-log.herokuapp.com/user/notifications/${userStats?.username}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      }
+    await axios.post(
+      `https://media-log.herokuapp.com/user/notifications/${userStats?.username}`
     );
   };
 

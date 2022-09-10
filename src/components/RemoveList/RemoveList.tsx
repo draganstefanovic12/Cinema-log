@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../features/axios/incerceptor";
 import { List } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
@@ -23,9 +23,6 @@ export const RemoveList = ({ usr, list }: RemoveListProps) => {
     await axios.delete(
       `https://media-log.herokuapp.com/user/deletelist/${usr}`,
       {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
         data: {
           name: list.name,
         },
