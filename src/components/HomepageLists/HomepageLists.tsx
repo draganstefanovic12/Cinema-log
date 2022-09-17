@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ListToParse, Media } from "../../types/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-export const HomepageLists = () => {
+const HomepageLists = () => {
   const data = useFetch("https://media-log.herokuapp.com/lists/main");
   const navigate = useNavigate();
 
@@ -75,3 +75,5 @@ export const HomepageLists = () => {
     </div>
   );
 };
+
+export default HomepageLists;

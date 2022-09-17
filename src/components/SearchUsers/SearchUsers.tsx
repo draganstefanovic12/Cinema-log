@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 import { query, UserModel } from "../../types/types";
 import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material";
 
-export const SearchUsers = ({ query }: query) => {
+const SearchUsers = ({ query }: query) => {
   const users = useFetch(
     query === "allusers"
       ? `https://media-log.herokuapp.com/user/all/allusers/`
@@ -63,3 +63,5 @@ export const SearchUsers = ({ query }: query) => {
     </>
   );
 };
+
+export default SearchUsers;

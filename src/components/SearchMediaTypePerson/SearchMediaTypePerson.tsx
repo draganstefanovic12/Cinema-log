@@ -8,7 +8,7 @@ type SearchMediaProps = {
   };
 };
 
-export const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
+const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
   const checked = result.results.find(
     (data: Media) => data.media_type === "person"
   );
@@ -75,3 +75,5 @@ export const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
     </Container>
   );
 };
+
+export default SearchMediaTypePerson;

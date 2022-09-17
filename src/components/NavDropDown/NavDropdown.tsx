@@ -1,11 +1,11 @@
 import { useAuth } from "../../context/AuthContext";
 import { usePopper } from "../../hooks/usePopper";
 import { useLogout } from "../../hooks/useLogout";
-import { NavPopper } from "../NavPopper/NavPopper";
+import NavPopper from "../NavPopper";
 import { useNavigate } from "react-router-dom";
 import { MenuItem, MenuList } from "@mui/material";
 
-export const NavDropdown = () => {
+const NavDropdown = () => {
   const { open, setOpen } = usePopper();
 
   const { logout } = useLogout();
@@ -57,3 +57,5 @@ export const NavDropdown = () => {
     </NavPopper>
   );
 };
+
+export default NavDropdown;

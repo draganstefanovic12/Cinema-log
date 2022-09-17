@@ -7,7 +7,7 @@ type ListItemComponentProps = {
   children: string;
 };
 
-export const ListItemComponent = ({
+const ListItemComponent = ({
   setState,
   state,
   name,
@@ -30,3 +30,5 @@ export const ListItemComponent = ({
     </>
   );
 };
+
+export default ListItemComponent;

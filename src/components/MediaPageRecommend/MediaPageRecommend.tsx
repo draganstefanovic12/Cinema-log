@@ -19,12 +19,9 @@ type MediaPageRecommendProps = {
   params: string | undefined;
 };
 
-export const MediaPageRecommend = ({
-  media,
-  params,
-}: MediaPageRecommendProps) => {
+const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { user, userStats } = useAuth();
+  const { userStats } = useAuth();
 
   const handleClose = () => {
     setOpen(false);
@@ -100,3 +97,5 @@ export const MediaPageRecommend = ({
     </>
   );
 };
+
+export default MediaPageRecommend;

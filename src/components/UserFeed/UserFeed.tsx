@@ -10,7 +10,7 @@ export type ProfileFeedProps = {
   favorites?: Media[] | undefined;
 };
 
-export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
+const UserFeed = ({ feed, name }: ProfileFeedProps) => {
   return (
     <div className="user-feed-container">
       <Typography variant="h5" className="user-feed">
@@ -64,3 +64,5 @@ export const UserFeed = ({ feed, name }: ProfileFeedProps) => {
     </div>
   );
 };
+
+export default UserFeed;

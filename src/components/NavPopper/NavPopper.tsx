@@ -8,12 +8,7 @@ type NavPopperProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const NavPopper = ({
-  children,
-  button,
-  open,
-  setOpen,
-}: NavPopperProps) => {
+const NavPopper = ({ children, button, open, setOpen }: NavPopperProps) => {
   const { anchorRef } = usePopper();
 
   return (
@@ -57,3 +52,5 @@ export const NavPopper = ({
     </div>
   );
 };
+
+export default NavPopper;

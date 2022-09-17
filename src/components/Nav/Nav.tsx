@@ -3,15 +3,15 @@ import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { NavDropdown } from "../NavDropDown/NavDropdown";
-import { NavNotifications } from "../NavNotifications/NavNotifications";
+import NavDropdown from "../NavDropdown";
+import NavNotifications from "../NavNotifications";
 import { Input, InputAdornment } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
 import NotificationsNoneOutlined from "@mui/icons-material/NotificationsNoneOutlined";
 
-export const Nav = () => {
+const Nav = () => {
   //Changing the logo to be filled on hover
   const [hover, setHover] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -66,3 +66,5 @@ export const Nav = () => {
     </nav>
   );
 };
+
+export default Nav;

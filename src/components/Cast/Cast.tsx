@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Actors, CastArr } from "../../types/types";
 import { Avatar, Typography } from "@mui/material";
 
-export const Cast = ({ cast }: CastArr) => {
+const Cast = ({ cast }: CastArr) => {
   const navigate = useNavigate();
 
   return (
@@ -46,3 +46,5 @@ export const Cast = ({ cast }: CastArr) => {
     </div>
   );
 };
+
+export default Cast;

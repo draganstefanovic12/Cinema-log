@@ -4,7 +4,7 @@ import { useDebounce } from "../../hooks/useDebounce";
 import { useEffect, useState } from "react";
 import { Button, Container, TextField, Typography } from "@mui/material";
 
-export const ChangePassword = () => {
+const ChangePassword = () => {
   const [error, setError] = useState<boolean>(false);
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
@@ -92,3 +92,5 @@ export const ChangePassword = () => {
     </Container>
   );
 };
+
+export default ChangePassword;

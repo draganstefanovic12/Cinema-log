@@ -3,7 +3,7 @@ import { Media } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import { AddFavoriteMedia } from "../AddFavoriteMedia/AddFavoriteMedia";
+import AddFavoriteMedia from "../AddFavoriteMedia";
 import { CardMedia, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import favBg from "../../assets/fav-movie-bg.png";
@@ -14,7 +14,7 @@ export type FavoritesProps = {
   favorites: Media[] | undefined;
 };
 
-export const Favorites = ({ favorites }: FavoritesProps) => {
+const Favorites = ({ favorites }: FavoritesProps) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
   const [favMedia, setFavMedia] = useState<Media[]>([]);
@@ -160,3 +160,5 @@ export const FavoriteCard = ({
     </>
   );
 };
+
+export default Favorites;

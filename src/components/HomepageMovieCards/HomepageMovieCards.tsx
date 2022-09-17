@@ -7,10 +7,7 @@ type HomepageMovieCardsProps = {
   name: string;
 };
 
-export const HomepageMovieCards = ({
-  query,
-  name,
-}: HomepageMovieCardsProps) => {
+const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
   const data = useFetch(query);
 
   return (
@@ -51,3 +48,5 @@ export const HomepageMovieCards = ({
     </div>
   );
 };
+
+export default HomepageMovieCards;

@@ -13,7 +13,7 @@ type FollowProps = {
   //typ serves for profile followers/following, it only works if i reverse the comparison
 };
 
-export const Follow = ({
+const Follow = ({
   usr,
   followedUser,
   followers,
@@ -64,3 +64,5 @@ export const Follow = ({
     </Container>
   );
 };
+
+export default Follow;

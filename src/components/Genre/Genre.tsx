@@ -10,7 +10,7 @@ type GenreProps = {
   type: string | undefined;
 };
 
-export const Genre = ({ data, type }: GenreProps) => {
+const Genre = ({ data, type }: GenreProps) => {
   const navigate = useNavigate();
   return (
     <Typography className="genres">
@@ -26,3 +26,5 @@ export const Genre = ({ data, type }: GenreProps) => {
     </Typography>
   );
 };
+
+export default Genre;

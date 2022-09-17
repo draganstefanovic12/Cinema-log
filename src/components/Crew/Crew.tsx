@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CrewArr, OtherCrew } from "../../types/types";
 import { Avatar, Container, Typography } from "@mui/material";
 
-export const Crew = ({ crew }: CrewArr) => {
+const Crew = ({ crew }: CrewArr) => {
   const navigate = useNavigate();
   return (
     <Container>
@@ -56,3 +56,5 @@ export const Crew = ({ crew }: CrewArr) => {
     </Container>
   );
 };
+
+export default Crew;

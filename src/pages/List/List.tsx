@@ -3,7 +3,7 @@ import { List } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { Container } from "@mui/system";
-import { RemoveList } from "../../components/RemoveList/RemoveList";
+import RemoveList from "../../components/RemoveList";
 import { Link, useParams } from "react-router-dom";
 import { CardMedia, ListItem, Typography } from "@mui/material";
 import axios from "../../features/axios/incerceptor";

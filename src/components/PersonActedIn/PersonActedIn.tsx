@@ -10,7 +10,7 @@ type PersonActedInProps = {
   };
 };
 
-export const PersonActedIn = ({ data }: PersonActedInProps) => {
+const PersonActedIn = ({ data }: PersonActedInProps) => {
   const [type, setType] = useState<Media[] | null>(null);
 
   useEffect(() => {
@@ -100,3 +100,5 @@ export const PersonActedIn = ({ data }: PersonActedInProps) => {
     </>
   );
 };
+
+export default PersonActedIn;

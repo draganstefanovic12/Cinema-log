@@ -14,7 +14,7 @@ type RemoveListProps = {
   usr: string | undefined;
 };
 
-export const RemoveList = ({ usr, list }: RemoveListProps) => {
+const RemoveList = ({ usr, list }: RemoveListProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -75,3 +75,5 @@ export const RemoveList = ({ usr, list }: RemoveListProps) => {
     </>
   );
 };
+
+export default RemoveList;

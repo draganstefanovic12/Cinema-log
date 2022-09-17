@@ -6,7 +6,7 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
-import { Follow } from "../Follow/Follow";
+import Follow from "../Follow";
 import { useState } from "react";
 import { UserModel } from "../../types/types";
 
@@ -18,7 +18,7 @@ type DialogComponentProps = {
   number: number;
 };
 
-export const DialogComponent = ({
+const DialogComponent = ({
   children,
   name,
   currUser,
@@ -107,3 +107,5 @@ export const DialogComponent = ({
     </>
   );
 };
+
+export default DialogComponent;

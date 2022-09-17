@@ -20,7 +20,7 @@ type AddFavoriteMediaProps = {
   setContent?: React.Dispatch<React.SetStateAction<MediaStringUndefined[]>>;
 };
 
-export const AddFavoriteMedia = ({
+const AddFavoriteMedia = ({
   setInput,
   setFavMovies,
   setContent,
@@ -160,3 +160,5 @@ export const AddFavoriteMedia = ({
     </ClickAwayListener>
   );
 };
+
+export default AddFavoriteMedia;

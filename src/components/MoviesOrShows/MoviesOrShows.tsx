@@ -14,7 +14,7 @@ type MediaProps = {
 };
 
 //Shows either movies or TV shows on profile depending on the prop
-export const MoviesOrShows = ({ movies, type }: MediaProps) => {
+const MoviesOrShows = ({ movies, type }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [watchType, setWatchType] = useState<Media[]>(movies.watched);
 
@@ -75,3 +75,5 @@ export const MoviesOrShows = ({ movies, type }: MediaProps) => {
     </Container>
   );
 };
+
+export default MoviesOrShows;

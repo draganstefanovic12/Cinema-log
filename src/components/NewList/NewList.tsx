@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
-import { AddFavoriteMedia } from "../AddFavoriteMedia/AddFavoriteMedia";
+import AddFavoriteMedia from "../AddFavoriteMedia";
 import axios from "../../features/axios/incerceptor";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { List, MediaStringUndefined } from "../../types/types";
@@ -19,7 +19,7 @@ type NewListProps = {
   setLists: React.Dispatch<React.SetStateAction<any>>;
 };
 
-export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
+const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
   const [desc, setDesc] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<MediaStringUndefined[]>([]);
@@ -110,3 +110,5 @@ export const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
     </ClickAwayListener>
   );
 };
+
+export default NewList;

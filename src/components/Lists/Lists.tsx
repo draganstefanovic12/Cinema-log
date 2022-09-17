@@ -2,7 +2,7 @@ import "./styles/lists.css";
 import { List } from "../../types/types";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { NewList } from "../NewList/NewList";
+import NewList from "../NewList";
 import { Container } from "@mui/system";
 import { Fragment, useState } from "react";
 import { Button, CardMedia, Typography } from "@mui/material";
@@ -13,7 +13,7 @@ interface ListProps {
   list: List[] | undefined;
 }
 
-export const Lists = ({ list, usr, setLists }: ListProps) => {
+const Lists = ({ list, usr, setLists }: ListProps) => {
   const [add, setAdd] = useState<boolean>(false);
   const { user } = useAuth();
 
@@ -59,3 +59,5 @@ export const Lists = ({ list, usr, setLists }: ListProps) => {
     </Container>
   );
 };
+
+export default Lists;

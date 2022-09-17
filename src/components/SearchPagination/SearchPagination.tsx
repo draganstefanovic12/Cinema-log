@@ -10,11 +10,7 @@ type PaginationProps = {
   count?: number;
 };
 
-export const SearchPagination = ({
-  setOffset,
-  data,
-  count,
-}: PaginationProps) => {
+const SearchPagination = ({ setOffset, data, count }: PaginationProps) => {
   return (
     <Pagination
       className="pagination"
@@ -36,3 +32,5 @@ export const SearchPagination = ({
     />
   );
 };
+
+export default SearchPagination;

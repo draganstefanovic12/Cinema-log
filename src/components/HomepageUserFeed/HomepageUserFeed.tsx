@@ -1,10 +1,10 @@
 import { useAuth } from "../../context/AuthContext";
-import { UserFeed } from "../UserFeed/UserFeed";
+import UserFeed from "../UserFeed";
 import { Feed, User } from "../../types/types";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export const HomepageUserFeed = () => {
+const HomepageUserFeed = () => {
   const { user, userStats } = useAuth();
   const [userState, setUserState] = useState<User[]>([]);
   const [userFeed, setUserFeed] = useState<Feed[]>([]);
@@ -67,3 +67,5 @@ export const HomepageUserFeed = () => {
     </>
   );
 };
+
+export default HomepageUserFeed;

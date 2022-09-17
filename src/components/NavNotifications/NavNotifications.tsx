@@ -6,7 +6,7 @@ import axios from "../../features/axios/incerceptor";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import { useAuth } from "../../context/AuthContext";
-import { NavPopper } from "../NavPopper/NavPopper";
+import NavPopper from "../NavPopper";
 import { usePopper } from "../../hooks/usePopper";
 import { Notification } from "../../types/types";
 
@@ -14,7 +14,7 @@ type NotificationProps = {
   notifications: Notification[];
 };
 
-export const NavNotifications = ({ notifications }: NotificationProps) => {
+const NavNotifications = ({ notifications }: NotificationProps) => {
   const [read, setRead] = useState<boolean>(true);
   const { setOpen, open } = usePopper();
   const { user, userStats } = useAuth();
@@ -93,3 +93,5 @@ export const NavNotifications = ({ notifications }: NotificationProps) => {
     </div>
   );
 };
+
+export default NavNotifications;

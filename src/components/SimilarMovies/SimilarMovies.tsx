@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { Card, CardMedia, Skeleton, Typography } from "@mui/material";
 
-export const SimilarMovies = () => {
+const SimilarMovies = () => {
   const [similar, setSimilar] = useState<Media[]>();
   const { userStats } = useAuth();
 
@@ -62,3 +62,5 @@ export const SimilarMovies = () => {
     </>
   );
 };
+
+export default SimilarMovies;

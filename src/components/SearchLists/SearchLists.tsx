@@ -3,7 +3,7 @@ import { Container } from "@mui/system";
 import { ListToParse, Media } from "../../types/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-export const SearchLists = () => {
+const SearchLists = () => {
   const data = useFetch(`https://media-log.herokuapp.com/lists/all`);
 
   return (
@@ -41,3 +41,5 @@ export const SearchLists = () => {
     </Container>
   );
 };
+
+export default SearchLists;

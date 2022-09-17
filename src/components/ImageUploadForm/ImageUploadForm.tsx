@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
-import { NavPopper } from "../NavPopper/NavPopper";
+import NavPopper from "../NavPopper";
 import { Input, MenuList } from "@mui/material";
 import axios from "../../features/axios/incerceptor";
 
@@ -9,7 +9,7 @@ type Curr = {
   setImgSrc: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
-export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
+const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const [open, setOpen] = useState<boolean>(false);
   const { user, userStats } = useAuth();
 
@@ -74,3 +74,5 @@ export const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
     </NavPopper>
   );
 };
+
+export default ImageUploadForm;
