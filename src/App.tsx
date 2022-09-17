@@ -1,6 +1,6 @@
 import "./styles/App.css";
 import "./styles/MobileApp.css";
-import { Nav } from "./components/Nav/Nav";
+import Nav from "./components/Nav";
 import { Login } from "./pages/Login/Login";
 import { Person } from "./pages/Person/Person";
 import { Search } from "./pages/Search/Search";

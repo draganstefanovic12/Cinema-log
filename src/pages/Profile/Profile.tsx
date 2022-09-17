@@ -1,16 +1,16 @@
 import "./styles/profile.css";
-import { List } from "../../types/types";
 import Lists from "../../components/Lists";
 import Follow from "../../components/Follow";
-import { useAuth } from "../../context/AuthContext";
-import { useFetch } from "../../hooks/useFetch";
-import { useParams } from "react-router-dom";
-import { Container } from "@mui/system";
 import ProfileInfo from "../../components/ProfileInfo";
 import MoviesOrShows from "../../components/MoviesOrShows";
 import DialogComponent from "../../components/DialogComponent";
 import ImageUploadForm from "../../components/ImageUploadForm";
 import ListItemComponent from "../../components/ListItemComponent";
+import { List } from "../../types/types";
+import { useAuth } from "../../context/AuthContext";
+import { useFetch } from "../../hooks/useFetch";
+import { useParams } from "react-router-dom";
+import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
 
@@ -21,6 +21,11 @@ const states = [
   { child: "Shows", type: "tv" },
   { child: "Lists", type: "lists" },
 ];
+
+type States = {
+  child: string;
+  type: string;
+};
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
@@ -142,8 +147,9 @@ export const Profile = () => {
                     color: "#CCCCCC",
                   }}
                 >
-                  {states.map((types: any) => (
+                  {states.map((types: States, i) => (
                     <ListItemComponent
+                      key={i}
                       setState={setState}
                       state={state}
                       name={types.type}

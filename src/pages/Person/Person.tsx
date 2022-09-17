@@ -1,8 +1,8 @@
 import "./styles/person.css";
+import PersonActedIn from "../../components/PersonActedIn";
 import { useFetch } from "../../hooks/useFetch";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import PersonActedIn from "../../components/PersonActedIn";
 import { CardMedia, CircularProgress, Grid, Typography } from "@mui/material";
 
 export const Person = () => {

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { usePopper } from "../../hooks/usePopper";
+import { Notification } from "../../types/types";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import axios from "../../features/axios/incerceptor";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import { useAuth } from "../../context/AuthContext";
 import NavPopper from "../NavPopper";
-import { usePopper } from "../../hooks/usePopper";
-import { Notification } from "../../types/types";
 
 type NotificationProps = {
   notifications: Notification[];

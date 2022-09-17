@@ -1,17 +1,17 @@
 import "./styles/mediapage.css";
-import { Genre } from "../../components/Genre/Genre";
+import Genre from "../../components/Genre";
+import MediaDetails from "../../components/MediaDetails";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import MediaPageRecommend from "../../components/MediaPageRecommend";
 import { Media } from "../../types/types";
 import { useAuth } from "../../context/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/system";
-import { MediaDetails } from "../../components/MediaDetails/MediaDetails";
 import { useWatchlist } from "../../hooks/useWatchlist";
-import { MediaPageRecommend } from "../../components/MediaPageRecommend/MediaPageRecommend";
 import { useEffect, useState } from "react";
 import { CircularProgress, Grid, ListItem, Typography } from "@mui/material";
-import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 
 export const MediaPage = () => {
   const { user, userStats } = useAuth();

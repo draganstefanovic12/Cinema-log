@@ -1,9 +1,9 @@
 import { useAuth } from "../../context/AuthContext";
 import { Container } from "@mui/system";
-import { SimilarMovies } from "../../components/SimilarMovies/SimilarMovies";
-import { HomepageLists } from "../../components/HomepageLists/HomepageLists";
-import { HomepageUserFeed } from "../../components/HomepageUserFeed/HomepageUserFeed";
-import { HomepageMovieCards } from "../../components/HomepageMovieCards/HomepageMovieCards";
+import SimilarMovies from "../../components/SimilarMovies";
+import HomepageLists from "../../components/HomepageLists";
+import HomepageUserFeed from "../../components/HomepageUserFeed";
+import HomepageMovieCards from "../../components/HomepageMovieCards";
 
 export const Homepage = () => {
   const { userStats } = useAuth();

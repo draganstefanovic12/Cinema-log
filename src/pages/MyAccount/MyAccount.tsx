@@ -1,4 +1,4 @@
-import { ChangePassword } from "../../components/ChangePassword/ChangePassword";
+import ChangePassword from "../../components/ChangePassword";
 
 export const MyAccount = () => {
   return <ChangePassword />;

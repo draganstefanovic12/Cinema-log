@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import NavDropdown from "../NavDropdown";
+import NavDropdown from "../NavDropDown";
 import NavNotifications from "../NavNotifications";
 import { Input, InputAdornment } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
