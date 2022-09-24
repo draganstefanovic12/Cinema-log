@@ -28,7 +28,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
 
   const addList = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios.post(`https://media-log.herokuapp.com/lists/new/${usr}`, {
+      await axios.post(`/lists/new/${usr}`, {
         name: name,
         content: JSON.stringify(content),
         description: desc,
@@ -43,7 +43,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
 
   const addListToProfile = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios(`https://media-log.herokuapp.com/user/newlist/${usr}`, {
+      await axios(`/user/newlist/${usr}`, {
         method: "POST",
         headers: {
           Authorization: `${user?.username} ${user?.token}`,

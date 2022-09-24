@@ -33,11 +33,8 @@ const Follow = ({
   }, [followers, user]);
 
   const handleClick = async () => {
-    await axios.post(
-      `https://media-log.herokuapp.com/user/follow/${usr}/${followedUser}`
-    );
+    await axios.post(`/user/follow/${usr}/${followedUser}`);
   };
-  //dragan i qqq
 
   return (
     <Container

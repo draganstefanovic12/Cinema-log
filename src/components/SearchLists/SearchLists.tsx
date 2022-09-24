@@ -4,7 +4,7 @@ import { ListToParse, Media } from "../../types/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const SearchLists = () => {
-  const data = useFetch(`https://media-log.herokuapp.com/lists/all`);
+  const data = useFetch(`/lists/all`);
 
   return (
     <Container>

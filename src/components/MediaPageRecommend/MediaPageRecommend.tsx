@@ -32,7 +32,7 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
   };
 
   const handleRecommend = async (usr: string) => {
-    await axios(`https://media-log.herokuapp.com/user/recommendation/${usr}/`, {
+    await axios(`/user/recommendation/${usr}/`, {
       method: "POST",
       data: {
         recUser: userStats?.username,
@@ -83,10 +83,7 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
               >
                 <Avatar
                   sx={{ marginRight: "1rem" }}
-                  src={
-                    User.avatar &&
-                    `https://media-log.herokuapp.com${User.avatar}`
-                  }
+                  src={User.avatar && `${User.avatar}`}
                 />
                 {User.name}
               </MenuItem>

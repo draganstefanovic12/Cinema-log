@@ -20,9 +20,7 @@ export const MediaPage = () => {
   const [watchlist, setWatchlist] = useState<string | null>();
   const [watched, setWatched] = useState<string | null>();
 
-  const data = useFetch(
-    `https://media-log.herokuapp.com/imdb/${params.type}/${params.id}`
-  );
+  const data = useFetch(`/imdb/${params.type}/${params.id}`);
 
   //fetching user info
   useEffect(() => {

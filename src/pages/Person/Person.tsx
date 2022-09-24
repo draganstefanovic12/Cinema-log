@@ -8,7 +8,7 @@ import { CardMedia, CircularProgress, Grid, Typography } from "@mui/material";
 export const Person = () => {
   const { id } = useParams();
 
-  const data = useFetch(`https://media-log.herokuapp.com/imdb/person/${id}`);
+  const data = useFetch(`/imdb/person/${id}`);
 
   return (
     <>

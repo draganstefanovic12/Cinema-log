@@ -35,15 +35,14 @@ export const Profile = () => {
   const [list, setLists] = useState<List[] | undefined>(undefined);
   const params = useParams();
 
-  const data = useFetch(`https://media-log.herokuapp.com/user/${params.user}`);
+  const data = useFetch(`/user/${params.user}`);
 
   const handleToggle = () => {
     setUpload(!upload);
   };
 
   useEffect(() => {
-    data &&
-      setImgSrc(`https://media-log.herokuapp.com${data.data.user.avatar[0]}`);
+    data && setImgSrc(`http://165.227.162.246:5001${data.data.user.avatar[0]}`);
     data && setLists(data.data.user.lists);
     setState("feed");
   }, [data]);

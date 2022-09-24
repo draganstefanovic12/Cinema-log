@@ -12,13 +12,11 @@ export const PageList = () => {
   const { name } = useParams();
   const { user } = useAuth();
 
-  const data = useFetch(`https://media-log.herokuapp.com/lists/list/${name}`);
+  const data = useFetch(`/lists/list/${name}`);
   const parsed = data && JSON.parse(data.data.content[0]);
 
   const handleClick = async () => {
-    await axios.post(
-      `https://media-log.herokuapp.com/user/likelist/${data.data.username}`
-    );
+    await axios.post(`/user/likelist/${data.data.username}`);
   };
 
   return (

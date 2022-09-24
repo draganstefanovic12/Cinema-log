@@ -6,9 +6,7 @@ import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material";
 
 const SearchUsers = ({ query }: query) => {
   const users = useFetch(
-    query === "allusers"
-      ? `https://media-log.herokuapp.com/user/all/allusers/`
-      : `https://media-log.herokuapp.com/user/user/${query}`
+    query === "allusers" ? `/user/all/allusers/` : `/user/user/${query}`
   );
 
   return (
@@ -29,7 +27,7 @@ const SearchUsers = ({ query }: query) => {
                       <Avatar
                         sx={{ height: "5em", width: "5em" }}
                         variant="square"
-                        src={`https://media-log.herokuapp.com${user.avatar}`}
+                        src={`${user.avatar}`}
                       />
                     </Grid>
                     <Grid className="user-grid-text">

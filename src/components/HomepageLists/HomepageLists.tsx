@@ -5,7 +5,7 @@ import { ListToParse, Media } from "../../types/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const HomepageLists = () => {
-  const data = useFetch("https://media-log.herokuapp.com/lists/main");
+  const data = useFetch("/lists/main");
   const navigate = useNavigate();
 
   return (

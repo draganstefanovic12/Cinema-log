@@ -23,8 +23,8 @@ export const Search = () => {
   //if a user is searching for a specific movie/show/user its gonna be multi. otherwise by genre
   const data = useFetch(
     query.type === "multi"
-      ? `https://media-log.herokuapp.com/imdb/multi/${query.query}/`
-      : `https://media-log.herokuapp.com/imdb/discover/${query.query}/${query.type}/${offset}`
+      ? `/imdb/multi/${query.query}/`
+      : `/imdb/discover/${query.query}/${query.type}/${offset}`
   );
 
   const checker =

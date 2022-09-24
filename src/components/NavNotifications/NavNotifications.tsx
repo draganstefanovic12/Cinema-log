@@ -21,9 +21,7 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
 
   const handleClick = async () => {
     setRead(true);
-    await axios.post(
-      `https://media-log.herokuapp.com/user/notifications/${userStats?.username}`
-    );
+    await axios.post(`/user/notifications/${userStats?.username}`);
   };
 
   //implement notifications with socket.io

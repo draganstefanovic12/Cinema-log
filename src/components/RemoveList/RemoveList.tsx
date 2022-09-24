@@ -20,20 +20,15 @@ const RemoveList = ({ usr, list }: RemoveListProps) => {
   const { user } = useAuth();
 
   const handleRemove = async () => {
-    await axios.delete(
-      `https://media-log.herokuapp.com/user/deletelist/${usr}`,
-      {
-        data: {
-          name: list.name,
-        },
-      }
-    );
+    await axios.delete(`/user/deletelist/${usr}`, {
+      data: {
+        name: list.name,
+      },
+    });
   };
 
   const handleRemoveList = async () => {
-    await axios.delete(
-      `https://media-log.herokuapp.com/lists/delete/${list.name}`
-    );
+    await axios.delete(`/lists/delete/${list.name}`);
   };
 
   const handleClickOpen = () => {

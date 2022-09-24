@@ -34,14 +34,11 @@ const AddFavoriteMedia = ({
   const { debounce } = useDebounce(searchValue);
 
   const handleSearch = async () => {
-    const data = await axios.get(
-      `https://media-log.herokuapp.com/imdb/multi/${debounce}/`,
-      {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      }
-    );
+    const data = await axios.get(`/imdb/multi/${debounce}/`, {
+      headers: {
+        Authorization: `${user?.username} ${user?.token}`,
+      },
+    });
     setResult(data);
   };
 
@@ -51,18 +48,15 @@ const AddFavoriteMedia = ({
     poster: string,
     type: string
   ) => {
-    await axios(
-      `https://media-log.herokuapp.com/user/addfavorite/${user?.username}/`,
-      {
-        method: "POST",
-        data: {
-          title: name,
-          id: id,
-          poster: poster,
-          type: type,
-        },
-      }
-    );
+    await axios(`/user/addfavorite/${user?.username}/`, {
+      method: "POST",
+      data: {
+        title: name,
+        id: id,
+        poster: poster,
+        type: type,
+      },
+    });
   };
 
   useEffect(() => {

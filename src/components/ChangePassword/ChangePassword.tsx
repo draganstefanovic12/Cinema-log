@@ -15,15 +15,12 @@ const ChangePassword = () => {
   const { user } = useAuth();
 
   const handleSubmit = () => {
-    fetch(
-      `https://media-log.herokuapp.com/user/checkpassword/${user?.username}/${debounce}/${newPassword}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      }
-    ).then((res) => {
+    fetch(`/user/checkpassword/${user?.username}/${debounce}/${newPassword}`, {
+      method: "POST",
+      headers: {
+        Authorization: `${user?.username} ${user?.token}`,
+      },
+    }).then((res) => {
       if (res.status === 400) {
         setError(true);
       } else {

@@ -8,8 +8,8 @@ import HomepageMovieCards from "../../components/HomepageMovieCards";
 export const Homepage = () => {
   const { userStats } = useAuth();
 
-  const toprated = "https://media-log.herokuapp.com/imdb/toprated";
-  const trending = "https://media-log.herokuapp.com/imdb/trending";
+  const toprated = "/imdb/toprated";
+  const trending = "/imdb/trending";
 
   return (
     <Container

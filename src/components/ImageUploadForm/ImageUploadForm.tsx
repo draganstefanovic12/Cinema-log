@@ -28,9 +28,7 @@ const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const handleDelete = () => {
     setImgSrc("");
     setOpen(false);
-    axios.delete(
-      `https://media-log.herokuapp.com/image/delete/${userStats?._id}`
-    );
+    axios.delete(`/image/delete/${userStats?._id}`);
   };
 
   return (
@@ -38,7 +36,7 @@ const ImageUploadForm = ({ current, setImgSrc }: Curr) => {
       <form
         style={{ display: "hidden" }}
         method="POST"
-        action={`https://media-log.herokuapp.com/image/upload/${userStats?._id}`}
+        action={`/image/upload/${userStats?._id}`}
         encType="multipart/form-data"
       >
         <MenuList

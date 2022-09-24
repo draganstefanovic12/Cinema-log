@@ -87,8 +87,7 @@ const DialogComponent = ({
               >
                 <Avatar
                   src={
-                    user.avatar &&
-                    `https://media-log.herokuapp.com${user.avatar}`
+                    user.avatar && `http://165.227.162.246:5001${user.avatar}`
                   }
                 />
                 <ListItem sx={{ width: "5rem" }}>{user.name}</ListItem>

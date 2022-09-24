@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../features/axios/incerceptor";
 import { useAuth } from "../context/AuthContext";
 
 export const useWatchlist = () => {
@@ -6,7 +6,7 @@ export const useWatchlist = () => {
 
   const handleWatch = async (data: any, username: string, type: string) => {
     const parsed = JSON.parse(data);
-    await axios(`https://media-log.herokuapp.com/user/${type}/`, {
+    await axios(`/user/${type}/`, {
       method: "POST",
       data: {
         name: parsed.title === undefined ? parsed.original_name : parsed.title,

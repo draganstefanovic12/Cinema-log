@@ -30,14 +30,11 @@ const Favorites = ({ favorites }: FavoritesProps) => {
 
   const handleRemove = async (mov: string, date: string) => {
     setFavMedia(favMedia!.filter((media: Media) => media.createdAt !== date));
-    await axios.delete(
-      `https://media-log.herokuapp.com/user/removefavorite/${params.user}`,
-      {
-        data: {
-          content: mov,
-        },
-      }
-    );
+    await axios.delete(`/user/removefavorite/${params.user}`, {
+      data: {
+        content: mov,
+      },
+    });
   };
 
   return (

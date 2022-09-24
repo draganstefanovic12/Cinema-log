@@ -12,14 +12,11 @@ const HomepageUserFeed = () => {
   const handleActivity = async () => {
     userStats!.following.map(async (usr: { name: string }) => {
       //rewrite all fetches to axios
-      const data = await fetch(
-        `https://media-log.herokuapp.com/user/${usr.name}`,
-        {
-          headers: {
-            Authorization: `${user?.username} ${user?.token}`,
-          },
-        }
-      );
+      const data = await fetch(`/user/${usr.name}`, {
+        headers: {
+          Authorization: `${user?.username} ${user?.token}`,
+        },
+      });
       const response = await data.json();
       userState
         ? setUserState((currState: User[]) => [...currState, response])

@@ -15,7 +15,7 @@ const SimilarMovies = () => {
 
       //Gets a random movies from users watched list and fetches similar movies
       const data = await fetch(
-        `https://media-log.herokuapp.com/imdb/recommendations/${
+        `http://165.227.162.246:5001/imdb/recommendations/${
           movies[Math.floor(Math.random() * movies.length)].id
         }`
       );

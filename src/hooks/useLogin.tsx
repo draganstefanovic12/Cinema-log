@@ -9,17 +9,14 @@ export const useLogin = () => {
   const login = async (username: string, password: string) => {
     setIsLoading(true);
     setError(null);
-    const response = await fetch(
-      `https://media-log.herokuapp.com/user/login/`,
-      {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    );
+    const response = await fetch(`http://165.227.162.246:5001/user/login/`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
     const json = await response.json();
     if (!json.error) {
       localStorage.setItem("user", JSON.stringify(json));
