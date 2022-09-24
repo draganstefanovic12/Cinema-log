@@ -9,17 +9,15 @@ export const useRegister = () => {
   const register = async (username: string, password: string) => {
     setIsLoading(true);
     setError(null);
-    const response = await fetch(
-      "https://media-log.herokuapp.com/user/signup",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    );
+    const link = "https://dragpersonalproj.xyz/cinema-log";
+    const response = await fetch(`${link}/user/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
     const json = await response.json();
     if (!json.error) {
       localStorage.setItem("user", JSON.stringify(json));

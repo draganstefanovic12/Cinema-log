@@ -9,7 +9,8 @@ export const useLogin = () => {
   const login = async (username: string, password: string) => {
     setIsLoading(true);
     setError(null);
-    const response = await fetch(`http://165.227.162.246:5001/user/login/`, {
+    const link = "https://dragpersonalproj.xyz/cinema-log";
+    const response = await fetch(`${link}/user/login/`, {
       method: "post",
       headers: {
         Accept: "application/json",

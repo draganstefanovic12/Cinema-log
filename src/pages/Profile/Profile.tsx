@@ -42,7 +42,8 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    data && setImgSrc(`http://165.227.162.246:5001${data.data.user.avatar[0]}`);
+    const link = "https://dragpersonalproj.xyz/cinema-log";
+    data && setImgSrc(`${link}${data.data.user.avatar[0]}`);
     data && setLists(data.data.user.lists);
     setState("feed");
   }, [data]);

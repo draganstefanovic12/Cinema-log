@@ -15,7 +15,7 @@ const SimilarMovies = () => {
 
       //Gets a random movies from users watched list and fetches similar movies
       const data = await fetch(
-        `http://165.227.162.246:5001/imdb/recommendations/${
+        `https://dragpersonalproj.xyz/cinema-log/imdb/recommendations/${
           movies[Math.floor(Math.random() * movies.length)].id
         }`
       );

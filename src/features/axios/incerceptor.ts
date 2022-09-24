@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://165.227.162.246:5001",
+  baseURL: "https://dragpersonalproj.xyz/cinema-log",
 });
 
 axios.interceptors.response.use(null!, (error) => {

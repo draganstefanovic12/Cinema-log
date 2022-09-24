@@ -87,7 +87,8 @@ const DialogComponent = ({
               >
                 <Avatar
                   src={
-                    user.avatar && `http://165.227.162.246:5001${user.avatar}`
+                    user.avatar &&
+                    `https://dragpersonalproj.xyz/cinema-log/${user.avatar}`
                   }
                 />
                 <ListItem sx={{ width: "5rem" }}>{user.name}</ListItem>
