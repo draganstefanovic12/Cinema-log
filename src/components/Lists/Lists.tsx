@@ -24,32 +24,24 @@ const Lists = ({ list, usr, setLists }: ListProps) => {
           New List
         </Button>
       )}
-      <Container
-        sx={{ height: "52em", color: "#cccccc" }}
-        className="profiles-lists"
-      >
+      <Container sx={{ height: "52em", color: "#cccccc" }} className="profiles-lists">
         {list &&
           list.map((list: List) => (
             <Fragment key={list.name}>
               <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
-                <Typography
-                  variant="h5"
-                  sx={{ display: "flex", color: "#cccccc" }}
-                >
+                <Typography variant="h5" sx={{ display: "flex", color: "#cccccc" }}>
                   {list.name}
                 </Typography>
                 <div style={{ display: "flex", width: "20em" }}>
-                  {list.content
-                    .slice(0, 4)
-                    .map((movImg: { poster_path: string }) => (
-                      <CardMedia
-                        key={movImg.poster_path}
-                        className="list-img"
-                        component="img"
-                        height="200"
-                        src={`https://image.tmdb.org/t/p/w500/${movImg.poster_path}`}
-                      />
-                    ))}
+                  {list.content.slice(0, 4).map((movImg: { poster_path: string }) => (
+                    <CardMedia
+                      key={movImg.poster_path}
+                      className="list-img"
+                      component="img"
+                      height="200"
+                      src={`https://image.tmdb.org/t/p/w500/${movImg.poster_path}`}
+                    />
+                  ))}
                 </div>
               </Link>
             </Fragment>

@@ -27,8 +27,7 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
   //implement notifications with socket.io
   useEffect(() => {
     notifications.map(
-      (notification: Notification) =>
-        notification.read === false && read === true && setRead(false)
+      (notification: Notification) => notification.read === false && read === true && setRead(false)
     );
   }, []);
 
@@ -82,9 +81,7 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
               </ListItem>
             ))
           ) : (
-            <ListItem style={{ color: "white" }}>
-              No new notifications...
-            </ListItem>
+            <ListItem style={{ color: "white" }}>No new notifications...</ListItem>
           )}
         </MenuList>
       </NavPopper>

@@ -32,10 +32,7 @@ const HomepageUserFeed = () => {
     const arr = [] as Feed[];
     userState.slice(0, userStats?.following.length).map((user: User) =>
       user.user.feed.map((feed: Feed) => {
-        if (
-          userState.length > 0 &&
-          userState.map((user: User) => user.created !== feed.created)
-        ) {
+        if (userState.length > 0 && userState.map((user: User) => user.created !== feed.created)) {
           arr.push(feed);
         } else {
           arr.push(...userFeed);
@@ -55,8 +52,8 @@ const HomepageUserFeed = () => {
       {userFeed.length === 0 ? (
         <Typography>
           You're not following anyone yet. Browse{" "}
-          <a href="/Cinema-log/#/search/allusers/multi">users</a> and find
-          someone who shares the same interests as you.
+          <a href="/Cinema-log/#/search/allusers/multi">users</a> and find someone who shares the
+          same interests as you.
         </Typography>
       ) : (
         <UserFeed feed={sorted} name={"Friend Activity"} />

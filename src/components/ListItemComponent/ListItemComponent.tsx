@@ -7,12 +7,7 @@ type ListItemComponentProps = {
   children: string;
 };
 
-const ListItemComponent = ({
-  setState,
-  state,
-  name,
-  children,
-}: ListItemComponentProps) => {
+const ListItemComponent = ({ setState, state, name, children }: ListItemComponentProps) => {
   return (
     <>
       <ListItem

@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  ListItem,
-  Typography,
-} from "@mui/material";
+import { Avatar, Dialog, DialogActions, DialogTitle, ListItem, Typography } from "@mui/material";
 import Follow from "../Follow";
 import { useState } from "react";
 import { UserModel } from "../../types/types";
@@ -86,19 +79,12 @@ const DialogComponent = ({
                 href={`/Cinema-log/#/user/${user.name}`}
               >
                 <Avatar
-                  src={
-                    user.avatar &&
-                    `https://dragpersonalproj.xyz/cinema-log/${user.avatar}`
-                  }
+                  src={user.avatar && `https://dragpersonalproj.xyz/cinema-log/${user.avatar}`}
                 />
                 <ListItem sx={{ width: "5rem" }}>{user.name}</ListItem>
               </a>
               {followComparison && currUser !== user.name && (
-                <Follow
-                  followers={followComparison}
-                  usr={currUser}
-                  followedUser={user.name}
-                />
+                <Follow followers={followComparison} usr={currUser} followedUser={user.name} />
               )}
             </div>
           ))}

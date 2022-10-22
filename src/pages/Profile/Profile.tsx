@@ -107,16 +107,13 @@ export const Profile = () => {
                   >
                     {data.data.user.username}
                     <div>
-                      {data.data.user.bio && (
-                        <Typography>{data.data.user.bio}</Typography>
-                      )}
+                      {data.data.user.bio && <Typography>{data.data.user.bio}</Typography>}
                       <div className="profile-details">
                         <Typography variant="subtitle1">
                           Movies watched: {data.data.user.movies.watched.length}
                         </Typography>
                         <Typography variant="subtitle1">
-                          TV Shows watched:{" "}
-                          {data.data.user.shows.watched.length}
+                          TV Shows watched: {data.data.user.shows.watched.length}
                         </Typography>
                         <DialogComponent
                           followComparison={userStats!.following}
@@ -148,12 +145,7 @@ export const Profile = () => {
                   }}
                 >
                   {states.map((types: States, i) => (
-                    <ListItemComponent
-                      key={i}
-                      setState={setState}
-                      state={state}
-                      name={types.type}
-                    >
+                    <ListItemComponent key={i} setState={setState} state={state} name={types.type}>
                       {types.child}
                     </ListItemComponent>
                   ))}
@@ -180,22 +172,12 @@ export const Profile = () => {
             />
           )}
           {state === "movie" && (
-            <MoviesOrShows
-              type={state}
-              user={params.user}
-              movies={data.data.user.movies}
-            />
+            <MoviesOrShows type={state} user={params.user} movies={data.data.user.movies} />
           )}
           {state === "tv" && (
-            <MoviesOrShows
-              type={state}
-              user={params.user}
-              movies={data.data.user.shows}
-            />
+            <MoviesOrShows type={state} user={params.user} movies={data.data.user.shows} />
           )}
-          {state === "lists" && (
-            <Lists list={list} usr={params.user} setLists={setLists} />
-          )}
+          {state === "lists" && <Lists list={list} usr={params.user} setLists={setLists} />}
         </div>
       ) : (
         <CircularProgress className="spinner" />

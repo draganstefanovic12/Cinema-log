@@ -25,10 +25,7 @@ const Cast = ({ cast }: CastArr) => {
               src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
             />
             <Container>
-              <Typography
-                className="actor-name svg"
-                onClick={() => navigate(`/person/${cast.id}`)}
-              >
+              <Typography className="actor-name svg" onClick={() => navigate(`/person/${cast.id}`)}>
                 {cast.name}
               </Typography>
               <Typography

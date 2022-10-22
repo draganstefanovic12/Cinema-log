@@ -13,22 +13,14 @@ type FollowProps = {
   //typ serves for profile followers/following, it only works if i reverse the comparison
 };
 
-const Follow = ({
-  usr,
-  followedUser,
-  followers,
-  typ,
-  getClass,
-}: FollowProps) => {
+const Follow = ({ usr, followedUser, followers, typ, getClass }: FollowProps) => {
   const [follow, setFollow] = useState<string>();
   const { user } = useAuth();
 
   useEffect(() => {
     //need to replace checkFollow user with Followeduser
     const checker = typ ? usr : followedUser;
-    const checkFollow = followers.filter(
-      (users: { name: string }) => users.name === checker
-    );
+    const checkFollow = followers.filter((users: { name: string }) => users.name === checker);
     checkFollow.length === 0 ? setFollow("Follow") : setFollow("Unfollow");
   }, [followers, user]);
 

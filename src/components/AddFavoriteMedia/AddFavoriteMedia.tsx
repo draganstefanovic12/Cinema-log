@@ -20,11 +20,7 @@ type AddFavoriteMediaProps = {
   setContent?: React.Dispatch<React.SetStateAction<MediaStringUndefined[]>>;
 };
 
-const AddFavoriteMedia = ({
-  setInput,
-  setFavMovies,
-  setContent,
-}: AddFavoriteMediaProps) => {
+const AddFavoriteMedia = ({ setInput, setFavMovies, setContent }: AddFavoriteMediaProps) => {
   const [searchValue, setSearchValue] = useState<string>();
   const [hidden, setHidden] = useState<boolean>(false);
   const [result, setResult] = useState<Result>();
@@ -42,12 +38,7 @@ const AddFavoriteMedia = ({
     setResult(data);
   };
 
-  const handleClick = async (
-    name: string,
-    id: string,
-    poster: string,
-    type: string
-  ) => {
+  const handleClick = async (name: string, id: string, poster: string, type: string) => {
     await axios(`/user/addfavorite/${user?.username}/`, {
       method: "POST",
       data: {
@@ -64,9 +55,7 @@ const AddFavoriteMedia = ({
   }, [debounce]);
 
   return (
-    <ClickAwayListener
-      onClickAway={() => (setInput ? setInput(false) : setHidden(true))}
-    >
+    <ClickAwayListener onClickAway={() => (setInput ? setInput(false) : setHidden(true))}>
       <Container className="search-fav">
         <Input
           onClick={() => setHidden(false)}
@@ -76,10 +65,7 @@ const AddFavoriteMedia = ({
         {debounce &&
           result &&
           result.data.results
-            .filter(
-              (media: Media) =>
-                media.media_type === "tv" || media.media_type === "movie"
-            )
+            .filter((media: Media) => media.media_type === "tv" || media.media_type === "movie")
             .slice(0, 10)
             .map((movie: Media) => (
               <Paper
@@ -98,9 +84,7 @@ const AddFavoriteMedia = ({
                               [
                                 ...currCont,
                                 {
-                                  title: movie.title
-                                    ? movie.title
-                                    : movie.original_name,
+                                  title: movie.title ? movie.title : movie.original_name,
                                   id: movie.id,
                                   poster_path: movie.poster_path,
                                   type: movie.media_type,
@@ -122,9 +106,7 @@ const AddFavoriteMedia = ({
                             [
                               ...currMovies,
                               {
-                                title: movie.title
-                                  ? movie.title
-                                  : movie.original_name,
+                                title: movie.title ? movie.title : movie.original_name,
                                 id: movie.id,
                                 poster_path: movie.poster_path,
                                 createdAt: new Date(),
@@ -141,10 +123,8 @@ const AddFavoriteMedia = ({
                     />
                     <ListItemText style={{ marginLeft: "1em" }}>
                       {movie.title ? movie.title : movie.original_name}
-                      {movie.first_air_date &&
-                        `(${movie.first_air_date.slice(0, 4)})`}
-                      {movie.release_date &&
-                        `(${movie.release_date.slice(0, 4)})`}
+                      {movie.first_air_date && `(${movie.first_air_date.slice(0, 4)})`}
+                      {movie.release_date && `(${movie.release_date.slice(0, 4)})`}
                     </ListItemText>
                   </MenuItem>
                 </MenuList>

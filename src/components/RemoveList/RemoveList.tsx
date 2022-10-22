@@ -48,10 +48,7 @@ const RemoveList = ({ usr, list }: RemoveListProps) => {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle
-          sx={{ backgroundColor: "#14181c" }}
-          id="alert-dialog-title"
-        >
+        <DialogTitle sx={{ backgroundColor: "#14181c" }} id="alert-dialog-title">
           {"Are you sure you want to delete the list?"}
         </DialogTitle>
         <DialogActions sx={{ backgroundColor: "#14181c" }}>

@@ -44,9 +44,7 @@ const Nav = () => {
                   <InputAdornment position="start">
                     <SearchOutlinedIcon
                       className="svg"
-                      onClick={() =>
-                        value && navigate(`/search/${value}/multi`)
-                      }
+                      onClick={() => value && navigate(`/search/${value}/multi`)}
                     />
                   </InputAdornment>
                 }

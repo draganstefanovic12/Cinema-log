@@ -33,9 +33,7 @@ const PersonActedIn = ({ data }: PersonActedInProps) => {
             sx={{
               marginLeft: "1.7rem",
               backgroundColor:
-                type !== null && type === data.data.combined_credits.cast
-                  ? "#161b22"
-                  : "#181e26",
+                type !== null && type === data.data.combined_credits.cast ? "#161b22" : "#181e26",
             }}
           >
             Actor
@@ -45,9 +43,7 @@ const PersonActedIn = ({ data }: PersonActedInProps) => {
           <ListItem
             sx={{
               backgroundColor:
-                type !== null && type === data.data.combined_credits.crew
-                  ? "#161b22"
-                  : "#181e26",
+                type !== null && type === data.data.combined_credits.crew ? "#161b22" : "#181e26",
             }}
             onClick={() => setType(data.data.combined_credits.crew)}
             button

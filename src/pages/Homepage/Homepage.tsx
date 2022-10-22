@@ -12,11 +12,7 @@ export const Homepage = () => {
   const trending = "/imdb/trending";
 
   return (
-    <Container
-      maxWidth="xl"
-      className="main-page-cont"
-      sx={{ marginTop: "5em" }}
-    >
+    <Container maxWidth="xl" className="main-page-cont" sx={{ marginTop: "5em" }}>
       <div>
         {userStats?.movies.watched.length !== 0 && <SimilarMovies />}
         <HomepageMovieCards query={toprated} name={"Top Rated"} />

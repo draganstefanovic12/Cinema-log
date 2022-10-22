@@ -37,14 +37,11 @@ const NavPopper = ({ children, button, open, setOpen }: NavPopperProps) => {
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin:
-                placement === "bottom-start" ? "left top" : "left bottom",
+              transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
             <Paper>
-              <ClickAwayListener onClickAway={() => setOpen(!open)}>
-                {children}
-              </ClickAwayListener>
+              <ClickAwayListener onClickAway={() => setOpen(!open)}>{children}</ClickAwayListener>
             </Paper>
           </Grow>
         )}

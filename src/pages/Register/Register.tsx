@@ -32,19 +32,14 @@ export const Register = () => {
               Cinema Log
             </Typography>
             <Typography variant="h6">
-              Register now and recommend media to other users, create custom
-              lists, follow other users, add media to watchlist and much more...
+              Register now and recommend media to other users, create custom lists, follow other
+              users, add media to watchlist and much more...
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{ marginTop: "1rem", display: "flex" }}
-            >
+            <Typography variant="h6" sx={{ marginTop: "1rem", display: "flex" }}>
               Created by Dragan Stefanovic
               <GitHubIcon
                 className="svg"
-                onClick={() =>
-                  window.open("https://github.com/draganstefanovic12")
-                }
+                onClick={() => window.open("https://github.com/draganstefanovic12")}
               />
             </Typography>
           </div>

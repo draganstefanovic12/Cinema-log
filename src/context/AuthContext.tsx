@@ -1,13 +1,6 @@
 import axios from "../features/axios/incerceptor";
 import { AxiosResponse } from "axios";
-import {
-  createContext,
-  useReducer,
-  useEffect,
-  ReactNode,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useReducer, useEffect, ReactNode, useContext, useState } from "react";
 import { User, UserModel, UserResponse } from "../types/types";
 
 interface AuthContextProps {
@@ -54,9 +47,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       dispatch({ type: "LOGIN", payload: user });
       axios
         .get(`/user/${user.username}`)
-        .then((result: AxiosResponse<UserResponse>) =>
-          setUserStats(result.data.user)
-        );
+        .then((result: AxiosResponse<UserResponse>) => setUserStats(result.data.user));
     }
   }, []);
 

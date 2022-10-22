@@ -35,9 +35,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
         username: usr,
       });
     } else {
-      setError(
-        "List can't be empty and list name must be longer than 5 characters."
-      );
+      setError("List can't be empty and list name must be longer than 5 characters.");
     }
   };
 
@@ -58,9 +56,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
   };
 
   const handleFilter = (date: string) => {
-    setContent(
-      content.filter((list: MediaStringUndefined) => list.createdAt !== date)
-    );
+    setContent(content.filter((list: MediaStringUndefined) => list.createdAt !== date));
   };
 
   return (
@@ -85,10 +81,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
           <Container sx={{ display: "flex", gap: "1em" }}>
             <Typography>{media.title}</Typography>
 
-            <DeleteIcon
-              onClick={() => handleFilter(media.createdAt!)}
-              className="svg"
-            />
+            <DeleteIcon onClick={() => handleFilter(media.createdAt!)} className="svg" />
           </Container>
         ))}
         <Button

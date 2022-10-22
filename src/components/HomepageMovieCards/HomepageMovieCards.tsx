@@ -28,11 +28,7 @@ const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
       >
         {data &&
           data.data.results.slice(0, 10).map((movie: Media) => (
-            <a
-              style={{ width: "10rem" }}
-              key={movie.id}
-              href={`/Cinema-log/#/movie/${movie.id}`}
-            >
+            <a style={{ width: "10rem" }} key={movie.id} href={`/Cinema-log/#/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
                   className="movie-card-link-img"

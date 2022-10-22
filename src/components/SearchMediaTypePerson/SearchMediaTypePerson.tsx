@@ -9,9 +9,7 @@ type SearchMediaProps = {
 };
 
 const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
-  const checked = result.results.find(
-    (data: Media) => data.media_type === "person"
-  );
+  const checked = result.results.find((data: Media) => data.media_type === "person");
 
   return (
     <Container>
@@ -34,11 +32,7 @@ const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
           .map(
             (data: Media) =>
               data.media_type === "person" && (
-                <Card
-                  sx={{ width: "10em" }}
-                  className="movie-card"
-                  key={data.id}
-                >
+                <Card sx={{ width: "10em" }} className="movie-card" key={data.id}>
                   <Link
                     style={{ color: "white" }}
                     className="movie-poster-link"
@@ -54,15 +48,8 @@ const SearchMediaTypePerson = ({ result }: SearchMediaProps) => {
                           src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
                         ></CardMedia>
                       </Grid>
-                      <Grid
-                        sx={{ width: "15rem", color: "#cccccc" }}
-                        className="card-grid"
-                      >
-                        <Typography
-                          className="movie-card-name"
-                          align="center"
-                          variant="h5"
-                        >
+                      <Grid sx={{ width: "15rem", color: "#cccccc" }} className="card-grid">
+                        <Typography className="movie-card-name" align="center" variant="h5">
                           {data.name}
                         </Typography>
                       </Grid>

@@ -81,10 +81,7 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
                   handleClose();
                 }}
               >
-                <Avatar
-                  sx={{ marginRight: "1rem" }}
-                  src={User.avatar && `${User.avatar}`}
-                />
+                <Avatar sx={{ marginRight: "1rem" }} src={User.avatar && `${User.avatar}`} />
                 {User.name}
               </MenuItem>
             ))}

@@ -24,21 +24,15 @@ const UserFeed = ({ feed, name }: ProfileFeedProps) => {
                 <a href={`/Cinema-log/#/user/${event.user}`}>{event.user}</a>{" "}
                 <span style={{ color: "#667d93" }}>
                   {event.content2}
-                  {event.id && (
-                    <Link to={`/${event.type}/${event.id}`}> {event.name}</Link>
-                  )}{" "}
+                  {event.id && <Link to={`/${event.type}/${event.id}`}> {event.name}</Link>}{" "}
                   {event.content3 &&
                     (event.content3 !== "to the watchlist" ? (
-                      <Link to={`/user/${event.content3}`}>
-                        {event.content3}
-                      </Link>
+                      <Link to={`/user/${event.content3}`}>{event.content3}</Link>
                     ) : (
                       event.content3
                     ))}
                 </span>
-                {!event.id && (
-                  <span style={{ color: "#667d93" }}> {event.content}</span>
-                )}
+                {!event.id && <span style={{ color: "#667d93" }}> {event.content}</span>}
               </Typography>
               <Typography className="minutes-ago">
                 <span
@@ -57,8 +51,8 @@ const UserFeed = ({ feed, name }: ProfileFeedProps) => {
       </Card>
       {name === "Friend Activity" && (
         <Typography>
-          Browse <a href="/Cinema-log/#/search/allusers/multi">all users</a> and
-          find someone who shares the same interests as you.
+          Browse <a href="/Cinema-log/#/search/allusers/multi">all users</a> and find someone who
+          shares the same interests as you.
         </Typography>
       )}
     </div>

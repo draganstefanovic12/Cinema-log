@@ -26,9 +26,7 @@ export const PageList = () => {
           <Container className="list-wrapper">
             <div>
               <Typography variant="h5">{data.data.name}</Typography>
-              <Typography sx={{ color: "#A7A7A7" }}>
-                {data.data.description}
-              </Typography>
+              <Typography sx={{ color: "#A7A7A7" }}>{data.data.description}</Typography>
               <div style={{ display: "flex" }}>
                 <Typography>Created by:</Typography>
                 <Link
@@ -53,10 +51,7 @@ export const PageList = () => {
           <Container className="list-grid-cont">
             {data &&
               parsed.map((list: List) => (
-                <Link
-                  className="movie-card-link"
-                  to={`/${list.type!}/${list.id!}`}
-                >
+                <Link className="movie-card-link" to={`/${list.type!}/${list.id!}`}>
                   <CardMedia
                     sx={{ width: "8em" }}
                     component="img"

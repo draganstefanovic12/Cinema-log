@@ -82,9 +82,7 @@ const ChangePassword = () => {
         Submit
       </Button>
       {change === "done" && (
-        <Typography sx={{ whiteSpace: "nowrap" }}>
-          Password succesfully changed.
-        </Typography>
+        <Typography sx={{ whiteSpace: "nowrap" }}>Password succesfully changed.</Typography>
       )}
     </Container>
   );

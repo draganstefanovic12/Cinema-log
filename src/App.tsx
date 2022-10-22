@@ -29,22 +29,13 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/list/:name" element={<PageList />}></Route>
-          <Route
-            path="/"
-            element={user ? <Homepage /> : <Navigate to="/login" />}
-          ></Route>
+          <Route path="/" element={user ? <Homepage /> : <Navigate to="/login" />}></Route>
           <Route path="/person/:id/" element={<Person />}></Route>
           <Route path="/user/:user" element={<Profile />}></Route>
           <Route path="/search/:query/:type" element={<Search />}></Route>
           <Route path="/:type/:id/" element={<MediaPage />}></Route>
-          <Route
-            path="/register"
-            element={!user ? <Register /> : <Navigate to="/" />}
-          ></Route>
-          <Route
-            path="/login"
-            element={!user ? <Login /> : <Navigate to="/" />}
-          ></Route>
+          <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />}></Route>
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />}></Route>
           <Route path="/account/" element={<MyAccount />}></Route>
           <Route path="*" element={<Navigate to="/" />}></Route>
         </Routes>

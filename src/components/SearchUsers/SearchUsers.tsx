@@ -5,9 +5,7 @@ import { query, UserModel } from "../../types/types";
 import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material";
 
 const SearchUsers = ({ query }: query) => {
-  const users = useFetch(
-    query === "allusers" ? `/user/all/allusers/` : `/user/user/${query}`
-  );
+  const users = useFetch(query === "allusers" ? `/user/all/allusers/` : `/user/user/${query}`);
 
   return (
     <>
@@ -34,20 +32,12 @@ const SearchUsers = ({ query }: query) => {
                       <Typography variant="h5">{user.username}</Typography>
                       <div className="div-wrapper">
                         <div className="user-text">
-                          <Typography>
-                            Movies watched: {user.movies.watched.length}
-                          </Typography>
-                          <Typography>
-                            TV Shows watched: {user.shows.watched.length}
-                          </Typography>
+                          <Typography>Movies watched: {user.movies.watched.length}</Typography>
+                          <Typography>TV Shows watched: {user.shows.watched.length}</Typography>
                         </div>
                         <div>
-                          <Typography>
-                            Followers: {user.followers.length}
-                          </Typography>
-                          <Typography>
-                            Following: {user.following.length}
-                          </Typography>
+                          <Typography>Followers: {user.followers.length}</Typography>
+                          <Typography>Following: {user.following.length}</Typography>
                         </div>
                       </div>
                     </Grid>

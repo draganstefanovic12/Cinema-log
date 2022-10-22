@@ -19,10 +19,7 @@ const Crew = ({ crew }: CrewArr) => {
         <Container className="crew actor-cont">
           {crew &&
             crew!
-              .filter(
-                (director: OtherCrew) =>
-                  director.known_for_department === "Directing"
-              )
+              .filter((director: OtherCrew) => director.known_for_department === "Directing")
               .slice(0, 1)
               .map((crew: OtherCrew) => (
                 <Fragment key={crew.id}>

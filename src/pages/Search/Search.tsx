@@ -1,12 +1,5 @@
 import "./styles/search.css";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { Media } from "../../types/types";
 import { useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
@@ -30,40 +23,29 @@ export const Search = () => {
   const checker =
     data &&
     data.data.results.find(
-      (result: Media) =>
-        result.media_type === "tv" || result.media_type === "movie"
+      (result: Media) => result.media_type === "tv" || result.media_type === "movie"
     );
 
   return (
     <div>
       <Container className="main-container">
         {checker && (
-          <Typography
-            variant="h5"
-            sx={{ color: "#cccccc", marginBottom: "0.4rem" }}
-          >
+          <Typography variant="h5" sx={{ color: "#cccccc", marginBottom: "0.4rem" }}>
             Media:
           </Typography>
         )}
         {data &&
           data.data.results
             .filter(
-              (result: Media) =>
-                result.popularity > 6.5 &&
-                (result.title || result.first_air_date)
+              (result: Media) => result.popularity > 6.5 && (result.title || result.first_air_date)
             )
             .map((result: Media) => (
               <Card className="movie-card" key={result.id}>
-                <CardContent
-                  sx={{ backgroundColor: "#161b22" }}
-                  className="movie-card"
-                >
+                <CardContent sx={{ backgroundColor: "#161b22" }} className="movie-card">
                   <Link
                     style={{ color: "white" }}
                     className="movie-poster-link"
-                    to={`/${result.first_air_date ? "tv" : "movie"}/${
-                      result.id
-                    }`}
+                    to={`/${result.first_air_date ? "tv" : "movie"}/${result.id}`}
                   >
                     <Grid className="search-main-grid" container>
                       <Grid className="search-img-grid">
@@ -75,15 +57,10 @@ export const Search = () => {
                         ></CardMedia>
                       </Grid>
                       <Grid className="card-grid" item xs={9.4}>
-                        <Typography
-                          className="movie-card-name"
-                          align="center"
-                          variant="h5"
-                        >
+                        <Typography className="movie-card-name" align="center" variant="h5">
                           {result.first_air_date ? (
                             <>
-                              {result.name} ({result.first_air_date.slice(0, 4)}
-                              )
+                              {result.name} ({result.first_air_date.slice(0, 4)})
                             </>
                           ) : (
                             <>
@@ -91,10 +68,7 @@ export const Search = () => {
                             </>
                           )}
                         </Typography>
-                        <Typography
-                          className="search-overview"
-                          variant="subtitle2"
-                        >
+                        <Typography className="search-overview" variant="subtitle2">
                           {result.overview}
                         </Typography>
                       </Grid>

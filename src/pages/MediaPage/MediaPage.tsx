@@ -28,14 +28,10 @@ export const MediaPage = () => {
       userStats &&
       setWatched(
         data && params.type === "movie"
-          ? userStats!.movies.watched.find(
-              (movie: Media) => data.data.title === movie.name
-            )
+          ? userStats!.movies.watched.find((movie: Media) => data.data.title === movie.name)
             ? "Watched"
             : "Set as watched"
-          : userStats!.shows.watched.find(
-              (movie: Media) => data.data.original_name === movie.name
-            )
+          : userStats!.shows.watched.find((movie: Media) => data.data.original_name === movie.name)
           ? "Watched"
           : "Set as watched"
       );
@@ -43,9 +39,7 @@ export const MediaPage = () => {
       userStats &&
       setWatchlist(
         params.type === "movie"
-          ? userStats!.movies.watchlist.find(
-              (movie: Media) => data.data.title === movie.name
-            )
+          ? userStats!.movies.watchlist.find((movie: Media) => data.data.title === movie.name)
             ? "Remove from watchlist"
             : "Add to watchlist"
           : userStats!.shows.watchlist.find(
@@ -76,10 +70,7 @@ export const MediaPage = () => {
             <Grid className="movie-main-information">
               <div>
                 <Typography className="movie-name" variant="h4">
-                  {params.type === "tv"
-                    ? data.data.original_name
-                    : data.data.title}{" "}
-                  (
+                  {params.type === "tv" ? data.data.original_name : data.data.title} (
                   {params.type === "tv"
                     ? data.data.first_air_date.slice(0, 4)
                     : data.data.release_date.slice(0, 4)}
@@ -95,14 +86,8 @@ export const MediaPage = () => {
                   <ListItem
                     style={{ whiteSpace: "nowrap" }}
                     onClick={() => {
-                      setWatched(
-                        watched === "Watched" ? "Set as watched" : "Watched"
-                      );
-                      handleWatch(
-                        JSON.stringify(data.data),
-                        user!.username!,
-                        "watch"
-                      );
+                      setWatched(watched === "Watched" ? "Set as watched" : "Watched");
+                      handleWatch(JSON.stringify(data.data), user!.username!, "watch");
                     }}
                     button
                   >
@@ -125,11 +110,7 @@ export const MediaPage = () => {
                         ? "Add to watchlist"
                         : "Remove from watchlist"
                     );
-                    handleWatch(
-                      JSON.stringify(data.data),
-                      user!.username!,
-                      "watchlist"
-                    );
+                    handleWatch(JSON.stringify(data.data), user!.username!, "watchlist");
                   }}
                 >
                   {watchlist && (

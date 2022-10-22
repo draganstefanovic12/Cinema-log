@@ -76,11 +76,7 @@ const Favorites = ({ favorites }: FavoritesProps) => {
           : favMedia &&
             favMedia.map((media: Media) => (
               <Fragment key={media.createdAt!}>
-                <FavoriteCard
-                  edit={edit}
-                  handleRemove={handleRemove}
-                  media={media}
-                />
+                <FavoriteCard edit={edit} handleRemove={handleRemove} media={media} />
               </Fragment>
             ))}
       </div>
@@ -95,12 +91,7 @@ type FavoriteCardsProps = {
   setFavMovies?: React.Dispatch<React.SetStateAction<Media[]>>;
 };
 
-export const FavoriteCard = ({
-  media,
-  handleRemove,
-  edit,
-  setFavMovies,
-}: FavoriteCardsProps) => {
+export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: FavoriteCardsProps) => {
   const [input, setInput] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
 
@@ -122,30 +113,18 @@ export const FavoriteCard = ({
               />
             )}
             <CardMedia
-              src={
-                media
-                  ? `https://image.tmdb.org/t/p/w500/${media!.poster_path}`
-                  : favBg
-              }
+              src={media ? `https://image.tmdb.org/t/p/w500/${media!.poster_path}` : favBg}
               className="fav-edit-card"
               component="img"
             />
             {!media && hover && (
-              <ControlPointOutlinedIcon
-                onClick={() => setInput(true)}
-                className="fav-add-icon"
-              />
+              <ControlPointOutlinedIcon onClick={() => setInput(true)} className="fav-add-icon" />
             )}
           </>
-          {input && (
-            <AddFavoriteMedia setInput={setInput} setFavMovies={setFavMovies} />
-          )}
+          {input && <AddFavoriteMedia setInput={setInput} setFavMovies={setFavMovies} />}
         </div>
       ) : (
-        <a
-          className="profile-fav-link"
-          href={`/Cinema-log/#/${media!.type}/${media!.id}`}
-        >
+        <a className="profile-fav-link" href={`/Cinema-log/#/${media!.type}/${media!.id}`}>
           <CardMedia
             component="img"
             height="350"

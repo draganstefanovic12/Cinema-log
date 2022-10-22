@@ -22,10 +22,7 @@ const HomepageLists = () => {
             marginTop: "1rem",
           }}
         >
-          <CardContent
-            component="div"
-            sx={{ backgroundColor: "#161b22", padding: "0" }}
-          >
+          <CardContent component="div" sx={{ backgroundColor: "#161b22", padding: "0" }}>
             <div className="main-page-list-container">
               {data &&
                 data.data.slice(0, 3).map((list: ListToParse) => (
@@ -69,8 +66,8 @@ const HomepageLists = () => {
         </Card>
       </div>
       <Typography>
-        Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and
-        discover new media to watch.
+        Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and discover new media to
+        watch.
       </Typography>
     </div>
   );
