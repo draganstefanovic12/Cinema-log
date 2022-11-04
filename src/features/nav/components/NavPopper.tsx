@@ -1,4 +1,4 @@
-import { usePopper } from "../../hooks/usePopper";
+import { usePopper } from "@/hooks/usePopper";
 import { Button, ClickAwayListener, Grow, Paper, Popper } from "@mui/material";
 
 type NavPopperProps = {

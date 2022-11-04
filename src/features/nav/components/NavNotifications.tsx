@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import { usePopper } from "../../hooks/usePopper";
-import { Notification } from "../../types/types";
+import { useAuth } from "@/context/AuthContext";
+import { usePopper } from "@/hooks/usePopper";
+import { Notification } from "@/types/types";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import axios from "../../features/axios/incerceptor";
+import axios from "@/features/axios/incerceptor";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import NavPopper from "../NavPopper";
+import NavPopper from "./NavPopper";
 
 type NotificationProps = {
   notifications: Notification[];
@@ -16,15 +16,14 @@ type NotificationProps = {
 
 const NavNotifications = ({ notifications }: NotificationProps) => {
   const [read, setRead] = useState<boolean>(true);
+  const { userStats } = useAuth();
   const { setOpen, open } = usePopper();
-  const { user, userStats } = useAuth();
 
   const handleClick = async () => {
     setRead(true);
     await axios.post(`/user/notifications/${userStats?.username}`);
   };
 
-  //implement notifications with socket.io
   useEffect(() => {
     notifications.map(
       (notification: Notification) => notification.read === false && read === true && setRead(false)

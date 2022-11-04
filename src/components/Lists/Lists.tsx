@@ -2,10 +2,10 @@ import "./styles/lists.css";
 import { List } from "../../types/types";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import NewList from "../NewList";
 import { Container } from "@mui/system";
 import { Fragment, useState } from "react";
 import { Button, CardMedia, Typography } from "@mui/material";
+import NewList from "../NewList";
 
 interface ListProps {
   usr: string | undefined;

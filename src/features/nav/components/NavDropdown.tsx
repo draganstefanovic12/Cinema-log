@@ -1,9 +1,9 @@
-import { useAuth } from "../../context/AuthContext";
-import { usePopper } from "../../hooks/usePopper";
-import { useLogout } from "../../hooks/useLogout";
-import NavPopper from "../NavPopper";
+import { useAuth } from "@/context/AuthContext";
+import { useLogout } from "@/hooks/useLogout";
+import { usePopper } from "@/hooks/usePopper";
 import { useNavigate } from "react-router-dom";
 import { MenuItem, MenuList } from "@mui/material";
+import NavPopper from "./NavPopper";
 
 const NavDropdown = () => {
   const { open, setOpen } = usePopper();

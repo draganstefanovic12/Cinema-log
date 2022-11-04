@@ -19,6 +19,7 @@ export const useLogin = () => {
       body: JSON.stringify({ username, password }),
     });
     const json = await response.json();
+
     if (!json.error) {
       localStorage.setItem("user", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
