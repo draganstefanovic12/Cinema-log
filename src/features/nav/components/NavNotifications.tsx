@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth/context/AuthContext";
 import { usePopper } from "@/hooks/usePopper";
 import { Notification } from "@/types/types";
 import { ListItem, MenuList } from "@mui/material";

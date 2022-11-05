@@ -1,5 +1,4 @@
-import "./styles/nav.css";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";

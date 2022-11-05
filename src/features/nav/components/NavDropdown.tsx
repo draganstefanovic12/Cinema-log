@@ -1,4 +1,4 @@
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/features/auth/context/AuthContext";
 import { useLogout } from "@/hooks/useLogout";
 import { usePopper } from "@/hooks/usePopper";
 import { useNavigate } from "react-router-dom";

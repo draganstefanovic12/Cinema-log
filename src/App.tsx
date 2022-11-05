@@ -1,16 +1,17 @@
 import "./styles/App.css";
 import "./styles/MobileApp.css";
-import Nav from "./components/Nav";
-import { Login } from "./pages/Login/Login";
-import { Person } from "./pages/Person/Person";
-import { Search } from "./pages/Search/Search";
-import { Profile } from "./pages/Profile/Profile";
-import { useAuth } from "./context/AuthContext";
-import { Register } from "./pages/Register/Register";
-import { Homepage } from "./pages/Homepage/Homepage";
-import { PageList } from "./pages/List/List";
-import { MyAccount } from "./pages/MyAccount/MyAccount";
-import { MediaPage } from "./pages/MediaPage/MediaPage";
+import "./styles/index.css";
+import Nav from "@/features/nav";
+import { Login } from "./pages/Login";
+import { Person } from "./pages/Person";
+import { Search } from "./pages/Search";
+import { Profile } from "./pages/Profile";
+import { useAuth } from "@/features/auth/context/AuthContext";
+import { Register } from "./pages/Register";
+import { Homepage } from "./pages/Homepage";
+import { PageList } from "./pages/List";
+import { MyAccount } from "./pages/MyAccount";
+import { MediaPage } from "./pages/MediaPage";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 

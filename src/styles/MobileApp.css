@@ -131,16 +131,16 @@
   body .profile-container .profile-info-container {
     height: auto;
   }
-  body .profile-container .profile-list-cont .movie-grid-cont {
+  body .profile-container .profile-media-cont .profile-media-watched-watchlist {
     height: 40rem;
     margin-bottom: 0.5rem;
     grid-template-columns: repeat(auto-fill, 4rem);
     grid-template-rows: repeat(auto-fill, 7rem);
   }
-  body .profile-container .profile-list-cont .movie-card-link {
+  body .profile-container .profile-media-cont .movie-card-link {
     height: 7rem;
   }
-  body .profile-container .profile-list-cont .movie-card-link .movie-card-img {
+  body .profile-container .profile-media-cont .movie-card-link .movie-card-img {
     height: 7rem;
   }
   body .profile-name {
@@ -286,6 +286,4 @@
   body .list-item-comp {
     transform: translate(-10rem, 0rem);
   }
-}
-
-/*# sourceMappingURL=MobileApp.css.map */
+}/*# sourceMappingURL=MobileApp.css.map */

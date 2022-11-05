@@ -1,10 +1,24 @@
 //reset
 
 //variables
-@import "./variables";
-
-//mixins
-@import "./_mixins";
+@import "variables";
 
 //components
-@import "./components/nav";
+@import "components/nav";
+@import "components/searchusers";
+@import "components/similarmovies";
+@import "components/mediapagegenres";
+@import "components/crew_cast";
+@import "components/changepassword";
+@import "components/userfeed";
+@import "components/profile_lists";
+@import "components/profilemedia.sass";
+
+//pages
+@import "pages/search";
+@import "pages/mediapage";
+@import "pages/profile";
+@import "pages/list";
+@import "pages/person";
+@import "pages/register";
+@import "pages/login";

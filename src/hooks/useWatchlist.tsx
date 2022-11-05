@@ -1,5 +1,5 @@
 import axios from "../features/axios/incerceptor";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/features/auth/context/AuthContext";
 
 export const useWatchlist = () => {
   const { user } = useAuth();

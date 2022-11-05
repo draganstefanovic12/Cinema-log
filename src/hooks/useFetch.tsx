@@ -1,6 +1,6 @@
 import axios from "../features/axios/incerceptor";
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/features/auth/context/AuthContext";
 
 export const useFetch = (param: string) => {
   const [data, setData] = useState<any>(null);

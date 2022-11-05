@@ -21,7 +21,6 @@
 .register-page .form-container .registration-cont .landing-form > * {
   font-family: nunito, sans-serif;
   width: 20rem;
-  animation: fade 500ms 1 ease-in-out forwards;
-}
-
-/*# sourceMappingURL=register.css.map */
+  -webkit-animation: fade 500ms 1 ease-in-out forwards;
+          animation: fade 500ms 1 ease-in-out forwards;
+}/*# sourceMappingURL=register.css.map */
