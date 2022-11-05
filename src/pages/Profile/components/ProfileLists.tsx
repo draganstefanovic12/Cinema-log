@@ -1,4 +1,4 @@
-import { List } from "@/types/types";
+import { List } from "@/pages/List/types";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";

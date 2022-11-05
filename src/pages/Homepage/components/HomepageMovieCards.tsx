@@ -1,4 +1,4 @@
-import { Media } from "@/types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { useFetch } from "@/hooks/useFetch";
 import { Card, CardMedia, Typography } from "@mui/material";
 

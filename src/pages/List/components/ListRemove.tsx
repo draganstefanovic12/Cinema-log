@@ -1,5 +1,5 @@
 import axios from "@/features/api/backendApi";
-import { List } from "@/types/types";
+import { List } from "../types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";

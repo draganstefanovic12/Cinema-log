@@ -1,7 +1,7 @@
 import { Avatar, Dialog, DialogActions, DialogTitle, ListItem, Typography } from "@mui/material";
 import Follow from "../Follow";
 import { useState } from "react";
-import { UserModel } from "../../types/types";
+import { UserModel } from "@/pages/Profile/types";
 
 type DialogComponentProps = {
   children: [];

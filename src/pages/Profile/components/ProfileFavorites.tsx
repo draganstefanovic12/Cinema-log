@@ -1,12 +1,12 @@
-import backendApi from "@/features/api/backendApi";
-import { Media } from "@/types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import AddFavoriteMedia from "@/components/AddFavoriteMedia";
 import { CardMedia, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import favBg from "@/assets/fav-movie-bg.png";
+import backendApi from "@/features/api/backendApi";
+import AddFavoriteMedia from "@/components/AddFavoriteMedia";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 

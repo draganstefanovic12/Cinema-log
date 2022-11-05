@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Media } from "@/types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { useState } from "react";
 import { Container } from "@mui/system";
 import { Card, CardMedia, ListItem, Pagination } from "@mui/material";

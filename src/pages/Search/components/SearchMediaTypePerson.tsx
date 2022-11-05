@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Media } from "@/types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 
 type SearchMediaProps = {

@@ -9,10 +9,11 @@ import {
 } from "@mui/material";
 import backendApi from "@/features/api/backendApi";
 import RecommendIcon from "@mui/icons-material/Recommend";
+import { User } from "@/pages/Profile/types";
+import { Media } from "../types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
-import { Media, User } from "@/types/types";
 
 type MediaPageRecommendProps = {
   media: Media;

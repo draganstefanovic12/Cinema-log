@@ -1,7 +1,7 @@
 import backendApi from "@/features/api/backendApi";
 import { AxiosResponse } from "axios";
+import { UserModel, User, UserResponse } from "@/pages/Profile/types";
 import { createContext, useReducer, useEffect, ReactNode, useContext, useState } from "react";
-import { User, UserModel, UserResponse } from "@/types/types";
 
 interface AuthContextProps {
   user?: {

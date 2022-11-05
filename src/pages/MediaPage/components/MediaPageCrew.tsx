@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { CrewArr, OtherCrew } from "@/types/types";
+import { CrewArr, OtherCrew } from "../types";
 import { Avatar, Container, Typography } from "@mui/material";
 
 const Crew = ({ crew }: CrewArr) => {

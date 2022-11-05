@@ -6,9 +6,10 @@ import {
   TextareaAutosize,
   Typography,
 } from "@mui/material";
+import { List } from "@/pages/List/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
-import { List, MediaStringUndefined } from "../../types/types";
+import { MediaStringUndefined } from "@/pages/MediaPage/types";
 import AddFavoriteMedia from "../AddFavoriteMedia";
 import backendApi from "../../features/api/backendApi";
 import DeleteIcon from "@mui/icons-material/Delete";

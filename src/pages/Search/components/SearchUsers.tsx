@@ -1,6 +1,7 @@
+import { query } from "../types";
 import { useFetch } from "@/hooks/useFetch";
 import { Container } from "@mui/system";
-import { query, UserModel } from "@/types/types";
+import { UserModel } from "@/pages/Profile/types";
 import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material";
 
 const SearchUsers = ({ query }: query) => {

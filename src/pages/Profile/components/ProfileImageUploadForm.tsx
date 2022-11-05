@@ -1,7 +1,7 @@
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
-import NavPopper from "@/features/nav/components/NavPopper";
 import { Input, MenuList } from "@mui/material";
+import NavPopper from "@/features/nav/components/NavPopper";
 import backendApi from "@/features/api/backendApi";
 
 type Curr = {
@@ -11,7 +11,7 @@ type Curr = {
 
 const ProfileImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { user, userStats } = useAuth();
+  const { userStats } = useAuth();
 
   const handleClick = () => {
     document.getElementById("hidden")?.click();

@@ -3,7 +3,7 @@ import MediaDetails from "./components/MediaDetails";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import MediaPageRecommend from "./components/MediaPageRecommend";
-import { Media } from "@/types/types";
+import { Media } from "./types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useFetch } from "@/hooks/useFetch";
 import { useParams } from "react-router-dom";

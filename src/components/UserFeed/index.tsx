@@ -1,15 +1,16 @@
+import { Feed } from "@/pages/Profile/types";
 import { Link } from "react-router-dom";
-import { Feed, Media } from "../../types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { formatDistanceToNow } from "date-fns";
 import { Card, CardContent, Typography } from "@mui/material";
 
-export type ProfileFeedProps = {
+export type UserFeedProps = {
   feed: Feed[];
   name: string;
   favorites?: Media[] | undefined;
 };
 
-const UserFeed = ({ feed, name }: ProfileFeedProps) => {
+const UserFeed = ({ feed, name }: UserFeedProps) => {
   return (
     <div className="user-feed-container">
       <Typography variant="h5" className="user-feed">

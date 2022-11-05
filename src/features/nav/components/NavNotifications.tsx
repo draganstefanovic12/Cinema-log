@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { usePopper } from "@/features/nav/hooks/usePopper";
-import { Notification } from "@/types/types";
+import { Notification } from "../types";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";

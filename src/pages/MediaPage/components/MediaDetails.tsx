@@ -1,6 +1,6 @@
 import Cast from "./MediaPageCast";
 import Crew from "./MediaPageCrew";
-import { Credits } from "@/types/types";
+import { Credits } from "../types";
 
 const MediaDetails = ({ credits }: Credits) => {
   return (

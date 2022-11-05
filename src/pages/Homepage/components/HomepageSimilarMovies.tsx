@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Media } from "@/types/types";
+import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useEffect, useState } from "react";
 import { Card, CardMedia, Skeleton, Typography } from "@mui/material";

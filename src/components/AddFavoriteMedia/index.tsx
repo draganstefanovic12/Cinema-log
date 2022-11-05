@@ -8,11 +8,12 @@ import {
   MenuList,
   Paper,
 } from "@mui/material";
+import { Result } from "@/pages/Search/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useEffect, useState } from "react";
-import { Media, MediaStringUndefined, Result } from "../../types/types";
+import { Media, MediaStringUndefined } from "@/pages/MediaPage/types";
 
 type AddFavoriteMediaProps = {
   setInput?: React.Dispatch<React.SetStateAction<boolean>>;

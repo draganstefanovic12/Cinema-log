@@ -1,7 +1,8 @@
+import { Media } from "@/pages/MediaPage/types";
 import { useFetch } from "@/hooks/useFetch";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { ListToParse, Media } from "@/types/types";
+import { ListToParse } from "@/pages/List/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const HomepageLists = () => {

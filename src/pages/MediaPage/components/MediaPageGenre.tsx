@@ -1,5 +1,5 @@
+import { GenreMapped } from "../types";
 import { useNavigate } from "react-router-dom";
-import { GenreMapped } from "@/types/types";
 import { ListItem, Typography } from "@mui/material";
 
 type GenreProps = {

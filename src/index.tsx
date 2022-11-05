@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { AuthContextProvider } from "@/features/auth/context/AuthContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { AuthContextProvider } from "@/features/auth/context/AuthContext";
+import BrowserRoutes from "./routes/routes";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
-        <App />
+        <BrowserRoutes />
       </AuthContextProvider>
     </QueryClientProvider>
   </React.StrictMode>

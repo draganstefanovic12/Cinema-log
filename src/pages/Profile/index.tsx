@@ -5,7 +5,7 @@ import ProfileMedia from "./components/ProfileMedia";
 import DialogComponent from "@/components/DialogComponent";
 import ListItemComponent from "./components/ProfileListItemComponent";
 import ProfileImageUploadForm from "./components/ProfileImageUploadForm";
-import { List } from "@/types/types";
+import { List } from "../List/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useFetch } from "@/hooks/useFetch";
 import { useParams } from "react-router-dom";

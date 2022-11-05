@@ -1,6 +1,6 @@
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { Feed, User } from "@/types/types";
 import { Typography } from "@mui/material";
+import { Feed, User } from "@/pages/Profile/types";
 import { useEffect, useState } from "react";
 import UserFeed from "@/components/UserFeed";
 

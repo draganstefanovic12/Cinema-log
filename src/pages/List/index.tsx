@@ -1,4 +1,4 @@
-import { List } from "@/types/types";
+import { List } from "./types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useFetch } from "@/hooks/useFetch";
 import { Container } from "@mui/system";
