@@ -1,9 +1,8 @@
-import "./styles/register.css";
 import bg from "../../assets/registration.jpg";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useState } from "react";
 import { Container } from "@mui/system";
-import { useRegister } from "../../hooks/useRegister";
+import { useRegister } from "@/features/auth/hooks/useRegister";
 import { Button, Input, InputLabel, Typography } from "@mui/material";
 
 export const Register = () => {

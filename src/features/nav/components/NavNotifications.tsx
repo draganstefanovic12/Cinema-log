@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { usePopper } from "@/hooks/usePopper";
+import { usePopper } from "@/features/nav/hooks/usePopper";
 import { Notification } from "@/types/types";
 import { ListItem, MenuList } from "@mui/material";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import NavPopper from "./NavPopper";
@@ -21,7 +21,7 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
 
   const handleClick = async () => {
     setRead(true);
-    await axios.post(`/user/notifications/${userStats?.username}`);
+    await backendApi.post(`/user/notifications/${userStats?.username}`);
   };
 
   useEffect(() => {

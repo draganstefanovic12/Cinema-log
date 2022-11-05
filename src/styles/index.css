@@ -1,3 +1,24 @@
+.svg:hover {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #14181c;
+  min-height: 100vh;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -107,6 +128,7 @@
   margin-bottom: 0.2em;
   padding-bottom: 0.5em;
   background-color: #14181c;
+  border-radius: 0.5rem;
   justify-content: center;
 }
 .genres .genre:hover {
@@ -555,4 +577,57 @@
 }
 .form-container button {
   height: 2em;
+}
+
+body .main-page-cont {
+  display: grid;
+  height: 90vh;
+  justify-content: center;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: repeat(auto-fill, 1fr);
+  color: #cccccc;
+  -webkit-animation: fade 500ms 1 ease-in-out forwards;
+          animation: fade 500ms 1 ease-in-out forwards;
+}
+body .main-page-cont .main-page-feed-cont {
+  grid-row: 1;
+  grid-column: 2;
+}
+body .main-page-cont .main-page-feed-cont .main-page-user-feed {
+  grid-column: 1/2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #161b22;
+  width: 35rem;
+  white-space: nowrap;
+}
+body .main-page-cont .main-page-feed-cont .main-page-user-feed .main-page-user-feed-cont {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin-bottom: 0.5em;
+  color: #cccccc;
+}
+body .main-page-cont .main-page-feed-cont .main-page-user-feed .main-page-user-feed-cont .user {
+  color: #fff;
+}
+body .main-page-cont .main-page-feed-cont .main-page-user-feed .main-page-user-feed-cont .user:hover {
+  cursor: pointer;
+}
+body .main-page-cont .main-page-feed-cont .main-page-list-container {
+  gap: 0.3rem;
+  color: #cccccc;
+  background-color: #161b22;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 1em;
+}
+body .main-page-cont .main-page-feed-cont .main-page-list-container .list-created-by .list-username {
+  color: #fff;
+}
+body .main-page-cont .main-page-feed-cont .main-page-list-container .main-page-list-img-cont {
+  display: flex;
+}
+body .main-page-cont .main-page-feed-cont .main-page-list-container .main-page-list-img-cont .main-page-list-img {
+  width: 8em;
 }/*# sourceMappingURL=index.css.map */

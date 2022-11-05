@@ -1,6 +1,6 @@
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch } from "@/hooks/useFetch";
 import { Container } from "@mui/system";
-import { ListToParse, Media } from "../../../types/types";
+import { ListToParse, Media } from "@/types/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const SearchLists = () => {

@@ -1,6 +1,6 @@
-import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Media } from "@/types/types";
+import { Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 
 type SearchMediaProps = {
   result: {

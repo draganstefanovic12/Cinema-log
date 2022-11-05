@@ -1,7 +1,14 @@
-//reset
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap);
+@import url(https://use.typekit.net/yno2wnn.css);
 
 //variables
 @import "variables";
+
+//reset
+@import "reset";
+
+//mixins
+@import "mixins";
 
 //components
 @import "components/nav";
@@ -22,3 +29,4 @@
 @import "pages/person";
 @import "pages/register";
 @import "pages/login";
+@import "pages/homepage";

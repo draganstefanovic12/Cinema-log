@@ -1,4 +1,4 @@
-import axios from "../../features/axios/incerceptor";
+import backendApi from "../../features/api/backendApi";
 import {
   CardMedia,
   ClickAwayListener,
@@ -30,7 +30,7 @@ const AddFavoriteMedia = ({ setInput, setFavMovies, setContent }: AddFavoriteMed
   const { debounce } = useDebounce(searchValue);
 
   const handleSearch = async () => {
-    const data = await axios.get(`/imdb/multi/${debounce}/`, {
+    const data = await backendApi.get(`/imdb/multi/${debounce}/`, {
       headers: {
         Authorization: `${user?.username} ${user?.token}`,
       },
@@ -39,7 +39,7 @@ const AddFavoriteMedia = ({ setInput, setFavMovies, setContent }: AddFavoriteMed
   };
 
   const handleClick = async (name: string, id: string, poster: string, type: string) => {
-    await axios(`/user/addfavorite/${user?.username}/`, {
+    await backendApi(`/user/addfavorite/${user?.username}/`, {
       method: "POST",
       data: {
         title: name,

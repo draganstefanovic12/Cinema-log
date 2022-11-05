@@ -1,6 +1,6 @@
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { useLogout } from "@/hooks/useLogout";
-import { usePopper } from "@/hooks/usePopper";
+import { useLogout } from "@/features/auth/hooks/useLogout";
+import { usePopper } from "@/features/nav/hooks/usePopper";
 import { useNavigate } from "react-router-dom";
 import { MenuItem, MenuList } from "@mui/material";
 import NavPopper from "./NavPopper";

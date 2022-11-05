@@ -1,6 +1,6 @@
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { Actors, CastArr } from "../../../types/types";
+import { Actors, CastArr } from "@/types/types";
 import { Avatar, Typography } from "@mui/material";
 
 const Cast = ({ cast }: CastArr) => {

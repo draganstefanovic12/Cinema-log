@@ -7,7 +7,7 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
@@ -32,7 +32,7 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
   };
 
   const handleRecommend = async (usr: string) => {
-    await axios(`/user/recommendation/${usr}/`, {
+    await backendApi(`/user/recommendation/${usr}/`, {
       method: "POST",
       data: {
         recUser: userStats?.username,

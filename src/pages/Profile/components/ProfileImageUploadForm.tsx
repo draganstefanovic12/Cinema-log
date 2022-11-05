@@ -2,7 +2,7 @@ import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
 import NavPopper from "@/features/nav/components/NavPopper";
 import { Input, MenuList } from "@mui/material";
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 
 type Curr = {
   current: JSX.Element;
@@ -28,7 +28,7 @@ const ProfileImageUploadForm = ({ current, setImgSrc }: Curr) => {
   const handleDelete = () => {
     setImgSrc("");
     setOpen(false);
-    axios.delete(`/image/delete/${userStats?._id}`);
+    backendApi.delete(`/image/delete/${userStats?._id}`);
   };
 
   return (

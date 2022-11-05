@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Actors, Media, OtherCrew } from "../../../types/types";
+import { Actors, Media, OtherCrew } from "@/types/types";
 import { Card, CardMedia, Grid, ListItem, Typography } from "@mui/material";
 
 type PersonActedInProps = {

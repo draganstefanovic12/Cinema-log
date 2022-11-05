@@ -4,7 +4,7 @@ import { useFetch } from "@/hooks/useFetch";
 import { Container } from "@mui/system";
 import { Link, useParams } from "react-router-dom";
 import { CardMedia, ListItem, Typography } from "@mui/material";
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 import ListRemove from "./components/ListRemove";
 
 export const PageList = () => {
@@ -15,7 +15,7 @@ export const PageList = () => {
   const parsed = data && JSON.parse(data.data.content[0]);
 
   const handleClick = async () => {
-    await axios.post(`/user/likelist/${data.data.username}`);
+    await backendApi.post(`/user/likelist/${data.data.username}`);
   };
 
   return (

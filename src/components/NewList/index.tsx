@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
-import AddFavoriteMedia from "../AddFavoriteMedia";
-import axios from "../../features/axios/incerceptor";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { List, MediaStringUndefined } from "../../types/types";
+import AddFavoriteMedia from "../AddFavoriteMedia";
+import backendApi from "../../features/api/backendApi";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type NewListProps = {
   usr: string | undefined;
@@ -28,7 +28,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
 
   const addList = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios.post(`/lists/new/${usr}`, {
+      await backendApi.post(`/lists/new/${usr}`, {
         name: name,
         content: JSON.stringify(content),
         description: desc,
@@ -41,7 +41,7 @@ const NewList = ({ usr, setAdd, setLists }: NewListProps) => {
 
   const addListToProfile = async () => {
     if (content.length > 0 && name.length > 3) {
-      await axios(`/user/newlist/${usr}`, {
+      await backendApi(`/user/newlist/${usr}`, {
         method: "POST",
         headers: {
           Authorization: `${user?.username} ${user?.token}`,

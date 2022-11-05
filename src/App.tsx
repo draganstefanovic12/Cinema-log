@@ -1,4 +1,3 @@
-import "./styles/App.css";
 import "./styles/MobileApp.css";
 import "./styles/index.css";
 import Nav from "@/features/nav";

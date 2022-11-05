@@ -1,7 +1,7 @@
 import { Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material";
-import { Media } from "../../types/types";
+import { Media } from "@/types/types";
 import { useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "@/hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
 import SearchLists from "./components/SearchLists";
 import SearchUsers from "./components/SearchUsers";

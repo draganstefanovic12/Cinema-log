@@ -1,4 +1,4 @@
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 import { Media } from "@/types/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";
@@ -30,7 +30,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
 
   const handleRemove = async (mov: string, date: string) => {
     setFavMedia(favMedia!.filter((media: Media) => media.createdAt !== date));
-    await axios.delete(`/user/removefavorite/${params.user}`, {
+    await backendApi.delete(`/user/removefavorite/${params.user}`, {
       data: {
         content: mov,
       },

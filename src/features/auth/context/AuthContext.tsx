@@ -1,4 +1,4 @@
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 import { AxiosResponse } from "axios";
 import { createContext, useReducer, useEffect, ReactNode, useContext, useState } from "react";
 import { User, UserModel, UserResponse } from "@/types/types";
@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     const user = JSON.parse(localStorage.getItem("user")!);
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
-      axios
+      backendApi
         .get(`/user/${user.username}`)
         .then((result: AxiosResponse<UserResponse>) => setUserStats(result.data.user));
     }

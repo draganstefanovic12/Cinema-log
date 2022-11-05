@@ -2,7 +2,7 @@ import { useAuth } from "@/features/auth/context/AuthContext";
 import { ListItem } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import axios from "@/features/axios/incerceptor";
+import backendApi from "@/features/api/backendApi";
 
 type FollowProps = {
   usr: string | undefined;
@@ -25,7 +25,7 @@ const Follow = ({ usr, followedUser, followers, typ, getClass }: FollowProps) =>
   }, [followers, user]);
 
   const handleClick = async () => {
-    await axios.post(`/user/follow/${usr}/${followedUser}`);
+    await backendApi.post(`/user/follow/${usr}/${followedUser}`);
   };
 
   return (
