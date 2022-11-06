@@ -62,7 +62,37 @@ export const getRecommendations = async (movie: string) => {
 
 //adds a new list
 export const addNewList = async (list: any) => {
-  const response = await backendApi.post(`/lists/new`, list);
+  const response = await backendApi.post("/lists/new", list);
+  return response.data;
+};
+
+//gets new lists to showcase on homepage
+export const getHomepageLists = async () => {
+  const response = await backendApi.get("/lists/homepage");
+  return response.data;
+};
+
+//fetches movies to show on homepage
+export const getTopRatedOrTrending = async (query: string) => {
+  const response = await backendApi.get(`/imdb/${query}`);
+  return response.data;
+};
+
+//fetches 1 tv show/movie
+export const getMedia = async (type: string | undefined, id: string | undefined) => {
+  const response = await backendApi.get(`/imdb/${type}/${id}`);
+  return response.data;
+};
+
+interface UpdateType {
+  update_type: "tv watchlist" | "movie watchlist" | "tv watched" | "movie watched";
+}
+
+export const updateUserList = async (media: UpdateType & any) => {
+  const poster = `https://image.tmdb.org/t/p/w500${media.poster}`;
+  const options = { name: media.name, id: media.id, type: media.update_type, poster: poster };
+
+  const response = await backendApi.post(`/user/updatelist`, options);
   return response.data;
 };
 

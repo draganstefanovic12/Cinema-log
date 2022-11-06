@@ -26,6 +26,7 @@ export type UserModel = {
   name: string;
   followers: [];
   following: [];
+  followedUsersFeed: Feed[];
 };
 
 export type UserResponse = {

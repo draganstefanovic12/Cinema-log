@@ -1,32 +1,29 @@
 import { Media } from "@/pages/MediaPage/types";
-import { useFetch } from "@/hooks/useFetch";
+import { useQuery } from "react-query";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListToParse } from "@/pages/List/types";
+import { getHomepageLists } from "@/features/api/backendApi";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const HomepageLists = () => {
-  const data = useFetch("/lists/homepage");
   const navigate = useNavigate();
+  const { data: lists } = useQuery(["lists"], getHomepageLists, {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <div className="homepage-list-cont">
-      <Typography sx={{ marginBottom: "1rem", marginTop: "1em" }} variant="h5">
+      <Typography className="homepage-list-cont-text" variant="h6">
         New Lists
       </Typography>
-      <div style={{ backgroundColor: "#161b22" }}>
-        <Card
-          sx={{
-            color: "#cccccc",
-            width: "33rem",
-            gridColumn: "2",
-            marginTop: "1rem",
-          }}
-        >
-          <CardContent component="div" sx={{ backgroundColor: "#161b22", padding: "0" }}>
+      <div className="homepage-list-cont-card-cont">
+        <Card className="card-cont-card">
+          <CardContent component="div" className="card-cont-card-content">
             <div className="main-page-list-container">
-              {data &&
-                data.data.slice(0, 3).map((list: ListToParse) => (
+              {lists &&
+                lists.slice(0, 3).map((list: ListToParse) => (
                   <div key={list.name}>
                     <Typography
                       className="main-page-list-name svg"
@@ -36,7 +33,7 @@ const HomepageLists = () => {
                       {list.name}
                     </Typography>
                     <Typography className="list-created-by">
-                      Created by:{" "}
+                      Created by:
                       <span
                         className="list-username svg"
                         onClick={() => navigate(`/user/${list.username}`)}

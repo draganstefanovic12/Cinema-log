@@ -17,14 +17,6 @@ const ListRemove = ({ usr, list }: RemoveListProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleRemove = async () => {
-    await axios.delete(`/user/deletelist/${usr}`, {
-      data: {
-        name: list.name,
-      },
-    });
-  };
-
   const handleRemoveList = async () => {
     await axios.delete(`/lists/delete/${list.name}`);
   };
@@ -53,7 +45,6 @@ const ListRemove = ({ usr, list }: RemoveListProps) => {
           <Button
             onClick={() => {
               navigate(`/user/${usr}`);
-              handleRemove();
               handleRemoveList();
             }}
           >

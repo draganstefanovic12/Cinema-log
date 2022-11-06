@@ -11,15 +11,21 @@ type NavPopperProps = {
 const NavPopper = ({ children, button, open, setOpen }: NavPopperProps) => {
   const { anchorRef } = usePopper();
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div style={{ position: "relative", zIndex: "1" }}>
+    <div className="nav-popper">
       <Button
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
+        className="nav-popper-btn"
         sx={{
           backgroundColor: open ? "#161b22" : "#161b22",
-          padding: "0",
-          color: "#cccccc",
-          textTransform: "none",
         }}
         ref={anchorRef}
         id="composition-button"
@@ -41,7 +47,7 @@ const NavPopper = ({ children, button, open, setOpen }: NavPopperProps) => {
             }}
           >
             <Paper>
-              <ClickAwayListener onClickAway={() => setOpen(!open)}>{children}</ClickAwayListener>
+              <ClickAwayListener onClickAway={handleToggle}>{children}</ClickAwayListener>
             </Paper>
           </Grow>
         )}

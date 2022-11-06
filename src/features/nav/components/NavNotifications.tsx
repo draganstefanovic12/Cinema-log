@@ -28,19 +28,15 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
     );
   }, [notifications, read]);
 
+  const button = read ? (
+    <NotificationsNoneOutlinedIcon className="notification-icon" />
+  ) : (
+    <NotificationsIcon className="notification-icon" />
+  );
+
   return (
     <div onClick={handleReadNotification}>
-      <NavPopper
-        setOpen={setOpen}
-        open={open}
-        button={
-          read ? (
-            <NotificationsNoneOutlinedIcon className="notification-icon" />
-          ) : (
-            <NotificationsIcon className="notification-icon" />
-          )
-        }
-      >
+      <NavPopper setOpen={setOpen} open={open} button={button}>
         <MenuList className="menu-list">
           {notifications && notifications.length > 0 ? (
             notifications
@@ -56,42 +52,34 @@ const NavNotifications = ({ notifications }: NotificationProps) => {
                   type,
                   createdAt,
                 }: Notification) => (
-                  <ListItem key={_id} style={{ whiteSpace: "nowrap" }}>
+                  <ListItem key={_id} className="menu-list-item">
                     <Link
-                      style={{ marginRight: "0.2em", display: "" }}
+                      className="menu-list-item-link"
                       to={`/user/${user}`}
                       onClick={() => setOpen(false)}
                     >
-                      {user}{" "}
-                    </Link>{" "}
+                      {user}
+                    </Link>
                     {content}
                     {content2 && content2}
                     {content4 && (
-                      <Link
-                        style={{ marginLeft: "0.3em" }}
-                        onClick={() => setOpen(false)}
-                        to={`/${type}/${_id}`}
-                      >
+                      <Link onClick={() => setOpen(false)} to={`/${type}/${_id}`}>
                         {content4}
                       </Link>
                     )}
                     {content3 && (
-                      <Link
-                        style={{ marginLeft: "0.3em" }}
-                        onClick={() => setOpen(false)}
-                        to={`/list/${content3}`}
-                      >
+                      <Link onClick={() => setOpen(false)} to={`/list/${content3}`}>
                         {content3}
                       </Link>
                     )}
-                    <span style={{ marginLeft: "0.5em" }}>
+                    <span className="menu-list-item-link-date">
                       {formatDistanceToNow(new Date(createdAt))} ago
                     </span>
                   </ListItem>
                 )
               )
           ) : (
-            <ListItem style={{ color: "white" }}>No new notifications...</ListItem>
+            <ListItem>No new notifications...</ListItem>
           )}
         </MenuList>
       </NavPopper>

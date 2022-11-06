@@ -3,7 +3,7 @@ import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useQuery } from "react-query";
 import { getRecommendations } from "@/features/api/backendApi";
-import { Card, CardMedia, Skeleton, Typography } from "@mui/material";
+import { Card, CardMedia, Typography } from "@mui/material";
 
 const HomepageSimilarMovies = () => {
   const { user } = useAuth();
@@ -23,7 +23,7 @@ const HomepageSimilarMovies = () => {
         Recommendations based on what you already watched
       </Typography>
       <div className="similar">
-        {data ? (
+        {data &&
           data.results.slice(0, 10).map((movie: Media) => (
             <Link style={{ width: "10.1rem" }} key={movie.id} to={`/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
@@ -36,16 +36,7 @@ const HomepageSimilarMovies = () => {
                 />
               </Card>
             </Link>
-          ))
-        ) : (
-          <Skeleton
-            sx={{ bgcolor: "#161b22" }}
-            animation="wave"
-            variant="rectangular"
-            height="10rem"
-            width="50rem"
-          />
-        )}
+          ))}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { Media } from "@/pages/MediaPage/types";
-import { useFetch } from "@/hooks/useFetch";
+import { useQuery } from "react-query";
+import { getTopRatedOrTrending } from "@/features/api/backendApi";
 import { Card, CardMedia, Typography } from "@mui/material";
 
 type HomepageMovieCardsProps = {
@@ -8,32 +9,25 @@ type HomepageMovieCardsProps = {
 };
 
 const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
-  const data = useFetch(query);
+  const { data } = useQuery(
+    ["homepage_lists"],
+    () => {
+      return getTopRatedOrTrending(query);
+    },
+    { refetchOnMount: false, refetchOnWindowFocus: false }
+  );
 
   return (
-    <div style={{ gridRow: "2", gridColumn: "1" }}>
-      <Typography
-        variant="h5"
-        sx={{ color: "#cccccc", marginBottom: "0.5rem", paddingTop: "1rem" }}
-      >
-        {name}
-      </Typography>
-      <div
-        className="main-page-cards-div similar"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, 10.2rem)",
-          gridTemplateRows: "repeat(auto-fill, 15.9rem)",
-        }}
-      >
+    <div>
+      <Typography variant="h5">{name}</Typography>
+      <div className="homepage-movie-cards-cont similar">
         {data &&
-          data.data.results.slice(0, 10).map((movie: Media) => (
-            <a style={{ width: "10.1rem" }} key={movie.id} href={`/Cinema-log/#/movie/${movie.id}`}>
+          data.results.slice(0, 10).map((movie: Media) => (
+            <a key={movie.id} href={`/Cinema-log/#/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
                   className="movie-card-link-img"
                   component="img"
-                  sx={{ width: "9.9rem", backgroundColor: "#161b22" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   height="250"
                 />

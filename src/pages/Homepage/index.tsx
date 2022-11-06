@@ -8,15 +8,12 @@ import HomepageSimilarMovies from "./components/HomepageSimilarMovies";
 export const Homepage = () => {
   const { user } = useAuth();
 
-  const toprated = "/imdb/toprated";
-  const trending = "/imdb/trending";
-
   return (
     <Container maxWidth="xl" className="main-page-cont" sx={{ marginTop: "5em" }}>
       <div>
         {user?.movies.watched.length !== 0 && <HomepageSimilarMovies />}
-        <HomepageMovieCards query={toprated} name={"Top Rated"} />
-        <HomepageMovieCards query={trending} name={"Trending Movies"} />
+        <HomepageMovieCards query={"toprated"} name={"Top Rated"} />
+        <HomepageMovieCards query={"trending"} name={"Trending Movies"} />
       </div>
       <Container className="main-page-feed-cont">
         <HomepageUserFeed />

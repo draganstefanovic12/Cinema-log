@@ -56,7 +56,7 @@ const NewList = ({ setAdd }: NewListProps) => {
         <Typography>List content</Typography>
         <DebouncedSearch handleClick={handleUpdateContent} />
         {content.map((media: MediaStringUndefined) => (
-          <Container sx={{ display: "flex", gap: "1em" }}>
+          <Container>
             <Typography>{media.title}</Typography>
             <DeleteIcon onClick={() => handleFilter(media.createdAt!)} className="svg" />
           </Container>

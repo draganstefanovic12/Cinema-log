@@ -89,6 +89,9 @@ body {
   z-index: 1;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 5px;
 }
+.nav .home-link {
+  margin-left: 1rem;
+}
 .nav .home-link:active {
   height: 1.5em;
 }
@@ -96,6 +99,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.nav .nav-inner .nav-inner-user .nav-popper {
+  position: relative;
+  z-index: 1;
+}
+.nav .nav-inner .nav-inner-user .nav-popper .nav-popper-btn {
+  padding: 0;
+  color: #cccccc;
+  text-transform: none;
 }
 .nav .notification-icon {
   fill: #f7f7f7;
@@ -107,6 +119,15 @@ body {
 .nav .menu-list {
   color: rgb(102, 125, 147);
   background-color: #161b22;
+}
+.nav .menu-list .menu-list-item {
+  white-space: nowrap;
+}
+.nav .menu-list .menu-list-item .menu-list-item-link {
+  margin-right: 0.2rem;
+}
+.nav .menu-list .menu-list-item .menu-list-item-link-date {
+  margin-left: 0.5rem;
 }
 .nav .avatar-container {
   display: flex;
@@ -266,6 +287,11 @@ body {
   grid-template-columns: 70% 30%;
   margin-bottom: 0.5rem;
 }
+.user-feed-container .user-feed-div .user-feed-grid .user-feed-mapped-grid .feed-cont-date {
+  color: #667d93;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
 .user-feed-container .user-feed-div .user-feed-link {
   color: #fff;
   text-decoration: none;
@@ -384,6 +410,32 @@ body {
 .dialog-actions .profile-foll-cont .profile-foll-link {
   display: flex;
   margin-left: 1rem;
+}
+
+.homepage-list-cont .homepage-list-cont-text {
+  margin: 1rem 0;
+}
+.homepage-list-cont .homepage-list-cont-card-cont {
+  background-color: #161b22;
+}
+.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card {
+  color: #cccccc;
+  width: 33rem;
+  grid-column: 2;
+  margin-top: 1rem;
+}
+.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card .card-cont-card-content {
+  background-color: #161b22;
+  padding: 0;
+}
+.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card .card-cont-card-content .list-created-by .list-username {
+  margin-left: 0.3rem;
+}
+
+.homepage-movie-cards-cont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10.2rem);
+  grid-template-rows: repeat(auto-fill, 15.9rem);
 }
 
 .main-container {

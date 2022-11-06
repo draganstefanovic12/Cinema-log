@@ -34,16 +34,8 @@ const UserFeed = ({ feed, name }: UserFeedProps) => {
                 </span>
                 {!event.id && <span style={{ color: "#667d93" }}> {event.content}</span>}
               </Typography>
-              <Typography className="minutes-ago">
-                <span
-                  style={{
-                    color: "#667d93",
-                    marginLeft: "1em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {formatDistanceToNow(new Date(event.created))} ago.
-                </span>
+              <Typography className="feed-cont-date">
+                {formatDistanceToNow(new Date(event.created))} ago.
               </Typography>
             </div>
           ))}

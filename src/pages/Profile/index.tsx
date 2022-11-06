@@ -35,6 +35,7 @@ export const Profile = () => {
   const { isLoading, data } = useQuery(["user", params], () => {
     return getUser(params?.user);
   });
+  console.log(data);
 
   const handleToggle = () => {
     setUpload(!upload);
