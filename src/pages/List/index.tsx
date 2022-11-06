@@ -55,7 +55,7 @@ export const PageList = () => {
                     sx={{ width: "8em" }}
                     component="img"
                     height="200"
-                    src={`https://image.tmdb.org/t/p/w500/${list.poster_path!}`}
+                    src={`https://image.tmdb.org/t/p/w500/${list.poster}`}
                   />
                 </Link>
               ))}

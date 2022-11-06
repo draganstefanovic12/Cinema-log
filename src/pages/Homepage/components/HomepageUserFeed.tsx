@@ -5,18 +5,14 @@ import { useEffect, useState } from "react";
 import UserFeed from "@/components/UserFeed";
 
 const HomepageUserFeed = () => {
-  const { user, userStats } = useAuth();
+  const { user } = useAuth();
   const [userState, setUserState] = useState<User[]>([]);
   const [userFeed, setUserFeed] = useState<Feed[]>([]);
 
   const handleActivity = async () => {
-    userStats!.following.map(async (usr: { name: string }) => {
+    user!.following.map(async (usr: { name: string }) => {
       //rewrite all fetches to axios
-      const data = await fetch(`/user/${usr.name}`, {
-        headers: {
-          Authorization: `${user?.username} ${user?.token}`,
-        },
-      });
+      const data = await fetch(`/user/${usr.name}`, {});
       const response = await data.json();
       userState
         ? setUserState((currState: User[]) => [...currState, response])
@@ -26,11 +22,11 @@ const HomepageUserFeed = () => {
 
   useEffect(() => {
     handleActivity();
-  }, [userStats]);
+  }, [user]);
 
   useEffect(() => {
     const arr = [] as Feed[];
-    userState.slice(0, userStats?.following.length).map((user: User) =>
+    userState.slice(0, user?.following.length).map((user: User) =>
       user.user.feed.map((feed: Feed) => {
         if (userState.length > 0 && userState.map((user: User) => user.created !== feed.created)) {
           arr.push(feed);

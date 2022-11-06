@@ -1,30 +1,21 @@
 import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { getRecommendations } from "@/features/api/backendApi";
 import { Card, CardMedia, Skeleton, Typography } from "@mui/material";
 
-const MediaPageSimilarMovies = () => {
-  const [similar, setSimilar] = useState<Media[]>();
-  const { userStats } = useAuth();
-
-  useEffect(() => {
-    const handleSimilar = async () => {
-      const movies = userStats!.movies.watched;
-
-      //Gets a random movies from users watched list and fetches similar movies
-      const data = await fetch(
-        `https://dragpersonalproj.xyz/cinema-log/imdb/recommendations/${
-          movies[Math.floor(Math.random() * movies.length)].id
-        }`
-      );
-      const response = await data.json();
-      const filtered = response.results.filter((movie: Media) => movie.vote_average > 6.9);
-      setSimilar(filtered);
-    };
-
-    userStats && handleSimilar();
-  }, [userStats]);
+const HomepageSimilarMovies = () => {
+  const { user } = useAuth();
+  const { data } = useQuery(
+    ["recommendations"],
+    () => {
+      const movies = user.movies.watched;
+      const randomMovie = movies[Math.floor(Math.random() * movies.length)].id;
+      return getRecommendations(randomMovie);
+    },
+    { enabled: !!user, refetchOnMount: false, refetchOnWindowFocus: false }
+  );
 
   return (
     <>
@@ -32,8 +23,8 @@ const MediaPageSimilarMovies = () => {
         Recommendations based on what you already watched
       </Typography>
       <div className="similar">
-        {similar ? (
-          similar.slice(0, 10).map((movie: Media) => (
+        {data ? (
+          data.results.slice(0, 10).map((movie: Media) => (
             <Link style={{ width: "10.1rem" }} key={movie.id} to={`/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
@@ -60,4 +51,4 @@ const MediaPageSimilarMovies = () => {
   );
 };
 
-export default MediaPageSimilarMovies;
+export default HomepageSimilarMovies;

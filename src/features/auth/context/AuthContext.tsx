@@ -1,15 +1,15 @@
-import backendApi from "@/features/api/backendApi";
-import { AxiosResponse } from "axios";
-import { UserModel, User, UserResponse } from "@/pages/Profile/types";
-import { createContext, useReducer, useEffect, ReactNode, useContext, useState } from "react";
+import { useQuery } from "react-query";
+import { getCurrentUser } from "@/features/api/backendApi";
+import { UserModel, User } from "@/pages/Profile/types";
+import { createContext, useReducer, ReactNode, useContext, useEffect } from "react";
 
 interface AuthContextProps {
-  user?: {
+  auth?: {
     username: string;
     token: string;
   };
   dispatch: React.Dispatch<ACTIONS>;
-  userStats: UserModel | undefined;
+  user: UserModel;
 }
 
 interface AuthContextProviderProps {
@@ -29,31 +29,26 @@ export const useAuth = () => {
 export const authReducer = (state: typeof initialState, action: ACTIONS) => {
   switch (action.type) {
     case "LOGIN":
-      return { user: action.payload };
+      return { auth: action.payload };
     case "LOGOUT":
-      return { user: null };
+      return { auth: null };
     default:
       return state;
   }
 };
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [userStats, setUserStats] = useState<UserModel>();
+  const { data: user } = useQuery(["currentUser"], getCurrentUser);
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")!);
-    if (user) {
-      dispatch({ type: "LOGIN", payload: user });
-      backendApi
-        .get(`/user/${user.username}`)
-        .then((result: AxiosResponse<UserResponse>) => setUserStats(result.data.user));
+    const auth = JSON.parse(localStorage.getItem("user")!);
+    if (auth) {
+      dispatch({ type: "LOGIN", payload: auth });
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch, userStats }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ ...state, dispatch, user }}>{children}</AuthContext.Provider>
   );
 };

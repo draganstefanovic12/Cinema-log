@@ -6,10 +6,9 @@ import { MenuItem, MenuList } from "@mui/material";
 import NavPopper from "./NavPopper";
 
 const NavDropdown = () => {
-  const { open, setOpen } = usePopper();
-
-  const { logout } = useLogout();
   const { user } = useAuth();
+  const { logout } = useLogout();
+  const { open, setOpen } = usePopper();
   const navigate = useNavigate();
 
   return (

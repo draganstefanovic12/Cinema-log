@@ -8,11 +8,10 @@ import NewList from "@/components/NewList";
 
 interface ListProps {
   usr: string | undefined;
-  setLists: React.Dispatch<React.SetStateAction<List[] | undefined>>;
   list: List[] | undefined;
 }
 
-const ProfileLists = ({ list, usr, setLists }: ListProps) => {
+const ProfileLists = ({ list, usr }: ListProps) => {
   const [add, setAdd] = useState<boolean>(false);
   const { user } = useAuth();
 
@@ -32,20 +31,22 @@ const ProfileLists = ({ list, usr, setLists }: ListProps) => {
                   {list.name}
                 </Typography>
                 <div style={{ display: "flex", width: "20em" }}>
-                  {list.content.slice(0, 4).map((movImg: { poster_path: string }) => (
-                    <CardMedia
-                      key={movImg.poster_path}
-                      className="list-img"
-                      component="img"
-                      height="200"
-                      src={`https://image.tmdb.org/t/p/w500/${movImg.poster_path}`}
-                    />
-                  ))}
+                  {JSON.parse(list!.content[0])
+                    .slice()
+                    .map((movImg: { poster: string }) => (
+                      <CardMedia
+                        key={movImg.poster}
+                        className="list-img"
+                        component="img"
+                        height="200"
+                        src={`https://image.tmdb.org/t/p/w500/${movImg.poster}`}
+                      />
+                    ))}
                 </div>
               </Link>
             </Fragment>
           ))}
-        {add && <NewList setLists={setLists} setAdd={setAdd} usr={usr} />}
+        {add && <NewList setAdd={setAdd} />}
       </Container>
     </Container>
   );

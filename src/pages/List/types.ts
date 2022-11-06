@@ -1,13 +1,13 @@
 export type List = {
   name: string;
-  content: [];
+  content: string;
   createdAt: string;
   description: string;
   username: string;
   _id: number;
   type?: string;
   id?: string;
-  poster_path?: string;
+  poster?: string;
 };
 
 export type ListToParse = {

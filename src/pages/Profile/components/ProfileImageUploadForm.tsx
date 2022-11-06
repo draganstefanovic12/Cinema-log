@@ -6,12 +6,11 @@ import backendApi from "@/features/api/backendApi";
 
 type Curr = {
   current: JSX.Element;
-  setImgSrc: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
-const ProfileImageUploadForm = ({ current, setImgSrc }: Curr) => {
+const ProfileImageUploadForm = ({ current }: Curr) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { userStats } = useAuth();
+  const { user } = useAuth();
 
   const handleClick = () => {
     document.getElementById("hidden")?.click();
@@ -26,9 +25,8 @@ const ProfileImageUploadForm = ({ current, setImgSrc }: Curr) => {
   };
 
   const handleDelete = () => {
-    setImgSrc("");
     setOpen(false);
-    backendApi.delete(`/image/delete/${userStats?._id}`);
+    backendApi.delete(`/image/delete/${user?._id}`);
   };
 
   return (
@@ -36,7 +34,7 @@ const ProfileImageUploadForm = ({ current, setImgSrc }: Curr) => {
       <form
         style={{ display: "hidden" }}
         method="POST"
-        action={`/image/upload/${userStats?._id}`}
+        action={`/image/upload/${user?._id}`}
         encType="multipart/form-data"
       >
         <MenuList

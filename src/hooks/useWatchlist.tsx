@@ -2,7 +2,7 @@ import axios from "../features/api/backendApi";
 import { useAuth } from "@/features/auth/context/AuthContext";
 
 export const useWatchlist = () => {
-  const { user } = useAuth();
+  const { auth, user } = useAuth();
 
   const handleWatch = async (data: any, username: string, type: string) => {
     const parsed = JSON.parse(data);
@@ -16,7 +16,7 @@ export const useWatchlist = () => {
         username: username,
       },
       headers: {
-        Authorization: `${user?.username} ${user?.token}`,
+        Authorization: `${user?.username} ${auth?.token}`,
         "content-type": "application/json",
       },
     });

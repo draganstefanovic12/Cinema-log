@@ -6,7 +6,7 @@ import { ListToParse } from "@/pages/List/types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const HomepageLists = () => {
-  const data = useFetch("/lists/main");
+  const data = useFetch("/lists/homepage");
   const navigate = useNavigate();
 
   return (
@@ -55,7 +55,7 @@ const HomepageLists = () => {
                               component="img"
                               height="200"
                               className="main-page-list-img svg"
-                              src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
+                              src={`https://image.tmdb.org/t/p/w500/${media.poster}`}
                             />
                           </Fragment>
                         ))}

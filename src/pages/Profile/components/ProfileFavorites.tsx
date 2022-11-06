@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { CardMedia, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import favBg from "@/assets/fav-movie-bg.png";
-import backendApi from "@/features/api/backendApi";
-import AddFavoriteMedia from "@/components/AddFavoriteMedia";
+import backendApi, { updateFavorites } from "@/features/api/backendApi";
+import DebouncedSearch from "@/components/DebouncedSearch";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 
@@ -37,6 +37,15 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
     });
   };
 
+  const handleUpdateFavorites = async () => {
+    setEdit(!edit);
+    await updateFavorites(favMedia);
+  };
+
+  const handleEditing = () => {
+    setEdit(true);
+  };
+
   return (
     <Container
       onMouseEnter={() => {
@@ -55,7 +64,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
           <Typography
             variant="subtitle1"
             className="favorite-movies fav-edit"
-            onClick={() => setEdit(!edit)}
+            onClick={edit ? handleUpdateFavorites : handleEditing}
           >
             {edit ? "Finish editing" : "Edit"}
           </Typography>
@@ -63,7 +72,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
       </div>
       <div className="favorite-container-card">
         {edit
-          ? new Array(6).fill(0).map((content, i) => (
+          ? [...Array(6).keys()].map((i) => (
               <Fragment key={i}>
                 <FavoriteCard
                   edit={edit}
@@ -95,6 +104,10 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
   const [input, setInput] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
 
+  const handleFavoriteMovies = (movie: Media) => {
+    setFavMovies!((currMovies) => [...currMovies, movie]);
+  };
+
   return (
     <>
       {edit ? (
@@ -113,7 +126,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
               />
             )}
             <CardMedia
-              src={media ? `https://image.tmdb.org/t/p/w500/${media!.poster_path}` : favBg}
+              src={media ? `https://image.tmdb.org/t/p/w500/${media!.poster}` : favBg}
               className="fav-edit-card"
               component="img"
             />
@@ -121,7 +134,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
               <ControlPointOutlinedIcon onClick={() => setInput(true)} className="fav-add-icon" />
             )}
           </>
-          {input && <AddFavoriteMedia setInput={setInput} setFavMovies={setFavMovies} />}
+          {input && <DebouncedSearch handleClick={handleFavoriteMovies} />}
         </div>
       ) : (
         <a className="profile-fav-link" href={`/Cinema-log/#/${media!.type}/${media!.id}`}>
@@ -129,7 +142,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
             component="img"
             height="350"
             className="profile-fav-img"
-            src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${media.poster}`}
           />
         </a>
       )}

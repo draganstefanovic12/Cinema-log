@@ -1,16 +1,16 @@
-import Lists from "./components/ProfileLists";
+import ProfileLists from "./components/ProfileLists";
 import Follow from "@/components/Follow";
 import ProfileInfo from "./components/ProfileInfo";
 import ProfileMedia from "./components/ProfileMedia";
 import DialogComponent from "@/components/DialogComponent";
 import ListItemComponent from "./components/ProfileListItemComponent";
 import ProfileImageUploadForm from "./components/ProfileImageUploadForm";
-import { List } from "../List/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { useFetch } from "@/hooks/useFetch";
-import { useParams } from "react-router-dom";
+import { getUser } from "@/features/api/backendApi";
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Avatar, CircularProgress, Grid, Typography } from "@mui/material";
 
 //Different states on profile you can toggle through
@@ -28,159 +28,91 @@ type States = {
 
 export const Profile = () => {
   const [state, setState] = useState<string>("feed");
-  const [imgSrc, setImgSrc] = useState<string>();
   const [upload, setUpload] = useState<boolean>(false);
-  const { user, userStats } = useAuth();
-  const [list, setLists] = useState<List[] | undefined>(undefined);
+  const { user } = useAuth();
   const params = useParams();
 
-  const data = useFetch(`/user/${params.user}`);
+  const { isLoading, data } = useQuery(["user", params], () => {
+    return getUser(params?.user);
+  });
 
   const handleToggle = () => {
     setUpload(!upload);
   };
 
-  useEffect(() => {
-    const link = "https://dragpersonalproj.xyz/cinema-log";
-    data && setImgSrc(`${link}${data.data.user.avatar[0]}`);
-    data && setLists(data.data.user.lists);
-    setState("feed");
-  }, [data]);
+  if (isLoading) {
+    return <CircularProgress className="spinner" />;
+  }
+
+  //destructuring user for more readability
+  const {
+    username,
+    bio,
+    movies: { watched },
+    shows: { watched: showsWatched },
+    following,
+    followers,
+    feed,
+    favorites,
+  } = data;
 
   return (
-    <>
-      {userStats && data ? (
-        <div className="profile-container">
-          <Container
-            sx={{
-              backgroundColor: "#161b22",
-              paddingTop: "1em",
-            }}
-          >
-            {data && (
-              <Grid
-                container
-                sx={{
-                  width: "100%",
-                  height: "10.5em",
-                }}
-              >
-                <Grid>
-                  {user?.username === params.user ? (
-                    <ProfileImageUploadForm
-                      setImgSrc={setImgSrc}
-                      current={
-                        <Avatar
-                          className="profile-avatar"
-                          onClick={handleToggle}
-                          sx={{ height: "7.5em", width: "7.5em" }}
-                          variant="square"
-                          src={imgSrc}
-                        />
-                      }
-                    />
-                  ) : (
-                    <Avatar
-                      className="profile-avatar"
-                      sx={{ height: "7.5em", width: "7.5em" }}
-                      variant="square"
-                      src={imgSrc}
-                    />
-                  )}
-                </Grid>
-                <Grid
-                  item
-                  sx={{
-                    height: "2em",
-                    display: "flex",
-                    flexDirection: "space-between",
-                  }}
-                  xs={3}
-                >
-                  <Typography
-                    className="profile-name"
-                    align="left"
-                    variant="h4"
-                    color="#efefef"
-                    sx={{ marginLeft: "1em" }}
-                  >
-                    {data.data.user.username}
-                    <div>
-                      {data.data.user.bio && <Typography>{data.data.user.bio}</Typography>}
-                      <div className="profile-details">
-                        <Typography variant="subtitle1">
-                          Movies watched: {data.data.user.movies.watched.length}
-                        </Typography>
-                        <Typography variant="subtitle1">
-                          TV Shows watched: {data.data.user.shows.watched.length}
-                        </Typography>
-                        <DialogComponent
-                          followComparison={userStats!.following}
-                          children={data.data.user.followers}
-                          name={"Followers"}
-                          number={data.data.user.followers.length}
-                          currUser={userStats!.username}
-                        />
-                        <DialogComponent
-                          followComparison={userStats!.following}
-                          children={data.data.user.following}
-                          name={"Following"}
-                          number={data.data.user.following.length}
-                          currUser={userStats!.username}
-                        />
-                      </div>
-                    </div>
+    <div className="profile-container">
+      <Container className="profile-container-grid">
+        <Grid container className="profile-container-grid-1">
+          <ProfileImageUploadForm
+            current={
+              <Avatar
+                className="profile-avatar"
+                onClick={user?.username === params.user ? handleToggle : () => setUpload(false)}
+                src={""}
+              />
+            }
+          />
+          <Grid className="profile-container-grid-2" item xs={3}>
+            <Typography className="profile-name" align="left" variant="h4">
+              {username}
+              <div>
+                {bio && <Typography>{bio}</Typography>}
+                <div className="profile-details">
+                  <Typography variant="subtitle1">Movies watched: {watched.length}</Typography>
+                  <Typography variant="subtitle1">
+                    TV Shows watched: {showsWatched.length}
                   </Typography>
-                </Grid>
-                <Grid
-                  className="list-item-comp"
-                  item
-                  xs={5}
-                  sx={{
-                    display: "flex",
-                    width: "100%",
-                    alignSelf: "end",
-                    color: "#CCCCCC",
-                  }}
-                >
-                  {states.map((types: States, i) => (
-                    <ListItemComponent key={i} setState={setState} state={state} name={types.type}>
-                      {types.child}
-                    </ListItemComponent>
-                  ))}
-                </Grid>
-                <Grid sx={{ marginLeft: "5.5rem" }}>
-                  {user && params.user !== user?.username && (
-                    <Follow
-                      getClass={"follow-button"}
-                      typ={"profile"}
-                      usr={user?.username}
-                      followedUser={params.user}
-                      followers={data.data.user.followers}
-                    />
-                  )}
-                </Grid>
-              </Grid>
-            )}
-          </Container>
-          {state === "feed" && (
-            <ProfileInfo
-              name="User Feed"
-              favorites={data.data.user.favorites}
-              feed={data.data.user.feed}
-            />
-          )}
-          {state === "movie" && (
-            <ProfileMedia type={state} user={params.user} media={data.data.user.movies} />
-          )}
-          {state === "tv" && (
-            <ProfileMedia type={state} user={params.user} media={data.data.user.shows} />
-          )}
-          {state === "lists" && <Lists list={list} usr={params.user} setLists={setLists} />}
-        </div>
-      ) : (
-        <CircularProgress className="spinner" />
-      )}
-    </>
+                  <DialogComponent
+                    followComparison={user && user!.following}
+                    children={followers}
+                    name={"Followers"}
+                    number={followers.length}
+                    currUser={user && user!.username}
+                  />
+                  <DialogComponent
+                    followComparison={user && user!.following}
+                    children={following}
+                    name={"Following"}
+                    number={following.length}
+                    currUser={user && user!.username}
+                  />
+                </div>
+              </div>
+            </Typography>
+          </Grid>
+          <Grid className="profile-container-grid-3" item xs={5}>
+            {states.map((types: States, i) => (
+              <ListItemComponent key={i} setState={setState} state={state} name={types.type}>
+                {types.child}
+              </ListItemComponent>
+            ))}
+          </Grid>
+          <Grid sx={{ marginLeft: "5.5rem" }}>
+            {user && params.user !== user?.username && <Follow followedUser={params.user} />}
+          </Grid>
+        </Grid>
+      </Container>
+      {state === "feed" && <ProfileInfo name="User Feed" favorites={favorites} feed={feed} />}
+      {state === "movie" && <ProfileMedia type={state} user={params.user} media={data.movies} />}
+      {state === "tv" && <ProfileMedia type={state} user={params.user} media={data.user.shows} />}
+      {state === "lists" && <ProfileLists list={data.lists} usr={params.user} />}
+    </div>
   );
 };

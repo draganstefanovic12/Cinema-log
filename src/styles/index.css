@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap);
+@import url(https://use.typekit.net/yno2wnn.css);
 .svg:hover {
   cursor: pointer;
 }
@@ -17,6 +19,62 @@ body {
   padding: 0;
   background: #14181c;
   min-height: 100vh;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.img-form-menu:hover {
+  cursor: pointer;
+  background-color: #3a3a3a;
+}
+
+.movie-card-link-img {
+  border: 1px solid transparent;
+  transition: 0.25s border-color;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.movie-card-link-img:hover {
+  border-color: #6d6d6d;
+}
+
+@media (max-width: 1920px) {
+  body .cont .movie-main {
+    height: 24em;
+  }
+}
+@media (max-width: 2550px) {
+  .form-container {
+    height: 40rem;
+  }
+}
+@media (max-width: 1130px) {
+  .cont .movie-main img {
+    width: auto;
+  }
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .nav {
@@ -274,6 +332,41 @@ body {
   width: 8rem;
 }
 
+.dialog-span {
+  color: #fff;
+}
+
+.dialog-actions {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: "#14181c";
+}
+.dialog-actions .dialog-title {
+  margin: 0 auto;
+  background-color: "#14181c";
+}
+.dialog-actions .profile-foll-cont {
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 27.5rem;
+}
+.dialog-actions .profile-foll-cont .profile-foll-link {
+  display: flex;
+  margin-left: 1rem;
+}
+
+.follow-container {
+  display: flex;
+  width: 8rem;
+  height: 1.5rem;
+  justify-content: center;
+  color: #cccccc;
+  margin: 0;
+}
+
 .main-container {
   display: grid;
   padding: 1em;
@@ -380,18 +473,43 @@ body {
   -webkit-animation: fade 500ms 1 ease-in-out forwards;
           animation: fade 500ms 1 ease-in-out forwards;
 }
+.profile-container .profile-container-grid {
+  background-color: #161b22;
+}
+.profile-container .profile-container-grid .profile-container-grid-1 {
+  height: 10.5rem;
+  padding: 0.5rem;
+}
+.profile-container .profile-container-grid .profile-container-grid-1 .profile-avatar {
+  height: 9rem;
+  width: 9rem;
+}
+.profile-container .profile-container-grid .profile-container-grid-1 .profile-container-grid-2 {
+  height: 2rem;
+  display: flex;
+  flex-direction: space-between;
+}
+.profile-container .profile-container-grid .profile-container-grid-1 .profile-container-grid-2 .profile-name {
+  color: #efefef;
+  margin-left: 1rem;
+}
+.profile-container .profile-container-grid .profile-container-grid-1 .profile-container-grid-3 {
+  display: flex;
+  width: 100%;
+  align-self: flex-end;
+}
 .profile-container .profile-details {
   color: #cccccc;
 }
 .profile-container .profile-info-container {
   display: grid;
   grid-template-columns: 60% 40%;
-  height: 57.7em;
+  height: 57.7rems;
   background-color: #181e26;
   padding-top: 1.5rem;
 }
 .profile-container .favorite-container {
-  width: 25em;
+  width: 25rem;
 }
 .profile-container .favorite-container .favorite-container-card .profile-fav-link .profile-fav-img {
   height: 15.5rem;
@@ -422,14 +540,18 @@ body {
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav {
   position: absolute;
-  transform: translate(-1em);
+  transform: translate(-1rem);
   background-color: #161b22;
-  width: 14em;
-  padding: 0.5em;
+  width: 14rem;
+  padding: 0.5rem;
+}
+.profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav .search-fav-paper {
+  width: 30rem;
+  background-color: #161b22;
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-remove-icon {
   position: absolute;
-  transform: translateX(5.5em);
+  transform: translateX(5.5rem);
   color: #fff;
   z-index: 1;
 }
@@ -438,14 +560,14 @@ body {
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .fav-edit-card {
   height: 14.5rem;
-  width: 10em;
+  width: 10rem;
 }
 .profile-container .favorite-container .favorite-container-card .fav-add-icon {
   position: absolute;
-  transform: translate(2.3em, -6.6em);
+  transform: translate(2.3rem, -6.6rem);
   color: #fff;
-  width: 2em;
-  height: 3em;
+  width: 2rem;
+  height: 3rem;
 }
 .profile-container .favorite-container .favorite-container-card .fav-add-icon:hover {
   cursor: pointer;

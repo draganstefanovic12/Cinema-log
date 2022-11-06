@@ -15,7 +15,7 @@ const Nav = () => {
   const [hover, setHover] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
-  const { user, userStats } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = (e: string) => {
@@ -50,8 +50,8 @@ const Nav = () => {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={(e) => handleClick(e.key)}
               />
-              {userStats ? (
-                <NavNotifications notifications={userStats.notifications} />
+              {user ? (
+                <NavNotifications notifications={user.notifications} />
               ) : (
                 <NotificationsNoneOutlined className="notification-icon" />
               )}

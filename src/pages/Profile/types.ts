@@ -1,3 +1,4 @@
+import { List } from "../List/types";
 import { Media } from "../MediaPage/types";
 
 export type User = {
@@ -18,6 +19,7 @@ export type UserModel = {
   _id: number;
   username: string;
   notifications: [];
+  lists: List[];
   avatar: string;
   movies: UserMedia;
   shows: UserMedia;

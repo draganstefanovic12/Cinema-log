@@ -3,10 +3,10 @@ import { Container } from "@mui/system";
 import HomepageLists from "./components/HomepageLists";
 import HomepageUserFeed from "./components/HomepageUserFeed";
 import HomepageMovieCards from "./components/HomepageMovieCards";
-import MediaPageSimilarMovies from "./components/HomepageSimilarMovies";
+import HomepageSimilarMovies from "./components/HomepageSimilarMovies";
 
 export const Homepage = () => {
-  const { userStats } = useAuth();
+  const { user } = useAuth();
 
   const toprated = "/imdb/toprated";
   const trending = "/imdb/trending";
@@ -14,7 +14,7 @@ export const Homepage = () => {
   return (
     <Container maxWidth="xl" className="main-page-cont" sx={{ marginTop: "5em" }}>
       <div>
-        {userStats?.movies.watched.length !== 0 && <MediaPageSimilarMovies />}
+        {user?.movies.watched.length !== 0 && <HomepageSimilarMovies />}
         <HomepageMovieCards query={toprated} name={"Top Rated"} />
         <HomepageMovieCards query={trending} name={"Trending Movies"} />
       </div>
