@@ -8,6 +8,7 @@ export type List = {
   type?: string;
   id?: string;
   poster?: string;
+  poster_path?: string;
 };
 
 export type ListToParse = {

@@ -5,13 +5,10 @@ import { Avatar, Container, Typography } from "@mui/material";
 
 const Crew = ({ crew }: CrewArr) => {
   const navigate = useNavigate();
+
   return (
     <Container>
-      <Typography
-        className="crew-actors"
-        variant="h5"
-        sx={{ marginLeft: "1em", paddingTop: "0.5em" }}
-      >
+      <Typography className="crew-actors" variant="h6">
         Crew
       </Typography>
       <div className="crew-cont actors">
@@ -25,23 +22,18 @@ const Crew = ({ crew }: CrewArr) => {
                   <Avatar
                     onClick={() => navigate(`/person/${crew.id}`)}
                     variant="square"
-                    className="crew-avatar actor-avatar"
+                    className="crew-avatar"
                     src={`https://image.tmdb.org/t/p/w500/${crew.profile_path}`}
                   />
                   <Container>
                     <Typography
-                      className="crew-name actor-name actor-movie-name"
+                      className="crew-name"
                       onClick={() => navigate(`/person/${crew.id}`)}
-                      sx={{ color: "#fff" }}
                       noWrap
                     >
                       {crew.name}
                     </Typography>
-                    <Typography
-                      className="actor-movie-name"
-                      variant="subtitle1"
-                      sx={{ color: "#cccccc" }}
-                    >
+                    <Typography className="actor-movie-name" variant="subtitle1">
                       Director
                     </Typography>
                   </Container>

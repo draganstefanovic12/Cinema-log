@@ -1,4 +1,5 @@
 import Genre from "./components/MediaPageGenre";
+import Spinner from "@/components/Spinner";
 import MediaDetails from "./components/MediaDetails";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
@@ -8,9 +9,8 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/system";
 import { getMedia, updateUserList } from "@/features/api/backendApi";
-import { useMutation, useQueryClient } from "react-query";
 import { Grid, ListItem, Typography } from "@mui/material";
-import Spinner from "@/components/Spinner";
+import { useMutation, useQueryClient } from "react-query";
 
 export const MediaPage = () => {
   const queryClient = useQueryClient();

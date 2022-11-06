@@ -11,19 +11,18 @@ type GenreProps = {
 
 const MediaPageGenre = ({ data, type }: GenreProps) => {
   const navigate = useNavigate();
-  return (
-    <Typography className="genres">
-      {data.genres.map((genre: GenreMapped) => (
-        <ListItem
-          onClick={() => navigate(`/search/${genre.id}/${type}/`)}
-          className="genre"
-          key={genre.id}
-        >
-          {genre.name}
-        </ListItem>
-      ))}
-    </Typography>
-  );
+
+  const genres = data.genres.map((genre: GenreMapped) => (
+    <ListItem
+      onClick={() => navigate(`/search/${genre.id}/${type}/`)}
+      className="genre"
+      key={genre.id}
+    >
+      {genre.name}
+    </ListItem>
+  ));
+
+  return <Typography className="genres">{genres}</Typography>;
 };
 
 export default MediaPageGenre;

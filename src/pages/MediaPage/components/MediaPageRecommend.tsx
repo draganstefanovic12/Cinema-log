@@ -7,13 +7,13 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import backendApi from "@/features/api/backendApi";
-import RecommendIcon from "@mui/icons-material/Recommend";
 import { User } from "@/pages/Profile/types";
 import { Media } from "../types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
+import { recommendMedia } from "@/features/api/backendApi";
+import RecommendIcon from "@mui/icons-material/Recommend";
 
 type MediaPageRecommendProps = {
   media: Media;
@@ -22,7 +22,7 @@ type MediaPageRecommendProps = {
 
 const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { userStats } = useAuth();
+  const { user } = useAuth();
 
   const handleClose = () => {
     setOpen(false);
@@ -32,14 +32,10 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
     setOpen(true);
   };
 
-  const handleRecommend = async (usr: string) => {
-    await backendApi(`/user/recommendation/${usr}/`, {
-      method: "POST",
-      data: {
-        recUser: userStats?.username,
-        movie: JSON.stringify(media),
-      },
-    });
+  const handleRecommendMedia = (user: string) => {
+    const movie = JSON.stringify(media);
+    recommendMedia(movie, user);
+    handleClose();
   };
 
   return (
@@ -72,14 +68,13 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
             {"Recommend the movie to..."}
           </DialogTitle>
           <Container>
-            {userStats?.following.map((User: User) => (
+            {user?.following.map((User: User) => (
               <MenuItem
                 dense
                 sx={{ display: "flex" }}
                 key={User.name}
                 onClick={() => {
-                  handleRecommend(User.name);
-                  handleClose();
+                  handleRecommendMedia(User.name);
                 }}
               >
                 <Avatar sx={{ marginRight: "1rem" }} src={User.avatar && `${User.avatar}`} />

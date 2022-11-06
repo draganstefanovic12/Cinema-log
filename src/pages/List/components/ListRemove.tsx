@@ -1,6 +1,6 @@
-import axios from "@/features/api/backendApi";
 import { List } from "../types";
 import { useState } from "react";
+import { removeList } from "@/features/api/backendApi";
 import { useNavigate } from "react-router-dom";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 
@@ -10,15 +10,15 @@ type RemoveListProps = {
     content: object[];
     description: keyof List;
   };
-  usr: string | undefined;
 };
 
-const ListRemove = ({ usr, list }: RemoveListProps) => {
+const ListRemove = ({ list }: RemoveListProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleRemoveList = async () => {
-    await axios.delete(`/lists/delete/${list.name}`);
+    removeList(list.name);
+    navigate(`/`);
   };
 
   const handleClickOpen = () => {
@@ -33,23 +33,17 @@ const ListRemove = ({ usr, list }: RemoveListProps) => {
     <>
       <Button onClick={handleClickOpen}>Remove</Button>
       <Dialog
+        className="list-remove-dialog"
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle sx={{ backgroundColor: "#14181c" }} id="alert-dialog-title">
+        <DialogTitle className="dialog-title" id="alert-dialog-title">
           {"Are you sure you want to delete the list?"}
         </DialogTitle>
-        <DialogActions sx={{ backgroundColor: "#14181c" }}>
-          <Button
-            onClick={() => {
-              navigate(`/user/${usr}`);
-              handleRemoveList();
-            }}
-          >
-            Yes
-          </Button>
+        <DialogActions className="dialog-actions">
+          <Button onClick={handleRemoveList}>Yes</Button>
           <Button onClick={handleClose}>No</Button>
         </DialogActions>
       </Dialog>

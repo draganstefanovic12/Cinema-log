@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { usePopper } from "@/features/nav/hooks/usePopper";
 import { Notification } from "../types";
 import { ListItem, MenuList } from "@mui/material";
-import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { updateNotificationsToRead } from "@/features/api/backendApi";
+import { useMutation, useQueryClient } from "react-query";
 import NavPopper from "./NavPopper";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
@@ -14,28 +14,26 @@ type NotificationProps = {
 };
 
 const NavNotifications = ({ notifications }: NotificationProps) => {
-  const [read, setRead] = useState<boolean>(true);
+  const queryClient = useQueryClient();
   const { setOpen, open } = usePopper();
 
-  const handleReadNotification = async () => {
-    setRead(true);
-    await updateNotificationsToRead();
-  };
+  const mutateNotifications = useMutation(updateNotificationsToRead, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("currentUser");
+    },
+  });
 
-  useEffect(() => {
-    notifications.map(
-      (notification: Notification) => notification.read === false && read === true && setRead(false)
+  const checkForUnreadNotifications = notifications.filter((notification) => !notification.read);
+
+  const button =
+    checkForUnreadNotifications.length > 0 ? (
+      <NotificationsIcon className="notification-icon" />
+    ) : (
+      <NotificationsNoneOutlinedIcon className="notification-icon" />
     );
-  }, [notifications, read]);
-
-  const button = read ? (
-    <NotificationsNoneOutlinedIcon className="notification-icon" />
-  ) : (
-    <NotificationsIcon className="notification-icon" />
-  );
 
   return (
-    <div onClick={handleReadNotification}>
+    <div onClick={() => mutateNotifications.mutate()}>
       <NavPopper setOpen={setOpen} open={open} button={button}>
         <MenuList className="menu-list">
           {notifications && notifications.length > 0 ? (

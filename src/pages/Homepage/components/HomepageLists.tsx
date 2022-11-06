@@ -52,7 +52,7 @@ const HomepageLists = () => {
                               component="img"
                               height="200"
                               className="main-page-list-img svg"
-                              src={`https://image.tmdb.org/t/p/w500/${media.poster}`}
+                              src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
                             />
                           </Fragment>
                         ))}

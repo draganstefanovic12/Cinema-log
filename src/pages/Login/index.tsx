@@ -36,7 +36,7 @@ export const Login = () => {
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <FormLabel>Username</FormLabel>
         <Input
-          className="inpt"
+          className="form-input"
           type="username"
           onChange={(e) => {
             setUsername(e.target.value);
@@ -45,26 +45,18 @@ export const Login = () => {
         />
         <FormLabel>Password</FormLabel>
         <Input
-          className="inpt"
+          className="form-input"
           type="password"
           onChange={(e) => {
             setPassword(e.target.value);
             setError(null);
           }}
         />
-        <div
-          className="btn-container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-            marginTop: "1rem",
-          }}
-        >
+        <div className="btn-container">
           <Button type="submit" disabled={isLoading!}>
             Log in
           </Button>
-          <Button onClick={handleGuest} style={{ width: "13rem" }}>
+          <Button onClick={handleGuest} className="guest-button">
             Continue as guest
           </Button>
         </div>

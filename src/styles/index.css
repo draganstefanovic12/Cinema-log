@@ -219,6 +219,13 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 50%);
 }
+.cast-crew-cont .crew-actors {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.cast-crew-cont .actor-movie-name {
+  color: #cccccc;
+}
 
 .crew-cont, .actors {
   display: grid;
@@ -678,6 +685,13 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+.list-main-cont .list-wrapper .list-wrapper-createdby {
+  display: flex;
+}
+.list-main-cont .list-wrapper .list-wrapper-createdby .list-wrapper-user-link {
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+}
 .list-main-cont .list-grid-cont {
   display: grid;
   margin-top: 2rem;
@@ -687,6 +701,10 @@ body {
   padding: 1rem;
   grid-template-columns: repeat(auto-fill, 8rem);
   grid-template-rows: repeat(auto-fill, 12.5rem);
+}
+
+.list-remove-dialog .dialog-title, .list-remove-dialog .dialog-actions {
+  background-color: #14181c;
 }
 
 .person-cont {
@@ -778,16 +796,18 @@ body {
   -webkit-animation: fade 500ms 1 ease-in-out forwards;
           animation: fade 500ms 1 ease-in-out forwards;
 }
-.form-container form .inpt {
+.form-container form .form-input {
   width: 75%;
   align-self: center;
 }
-.form-container form button {
-  align-self: center;
-  width: 5em;
+.form-container form .btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
-.form-container button {
-  height: 2em;
+.form-container form .btn-container .guest-button {
+  width: 13rem;
 }
 
 body .main-page-cont {

@@ -8,11 +8,7 @@ const Cast = ({ cast }: CastArr) => {
 
   return (
     <div>
-      <Typography
-        className="crew-actors"
-        variant="h5"
-        sx={{ marginLeft: "1em", paddingTop: "0.5em" }}
-      >
+      <Typography className="crew-actors" variant="h6">
         Actors
       </Typography>
       <div className="actors">
@@ -28,12 +24,7 @@ const Cast = ({ cast }: CastArr) => {
               <Typography className="actor-name svg" onClick={() => navigate(`/person/${cast.id}`)}>
                 {cast.name}
               </Typography>
-              <Typography
-                className="actor-movie-name"
-                variant="subtitle1"
-                sx={{ color: "#cccccc" }}
-                noWrap
-              >
+              <Typography className="actor-movie-name" variant="subtitle1" noWrap>
                 {cast.character}
               </Typography>
             </Container>

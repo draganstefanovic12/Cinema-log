@@ -127,7 +127,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
               />
             )}
             <CardMedia
-              src={media ? `https://image.tmdb.org/t/p/w500/${media!.poster}` : favBg}
+              src={media ? `https://image.tmdb.org/t/p/w500/${media!.poster_path}` : favBg}
               className="fav-edit-card"
               component="img"
             />
@@ -143,7 +143,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
             component="img"
             height="350"
             className="profile-fav-img"
-            src={`https://image.tmdb.org/t/p/w500/${media.poster}`}
+            src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
           />
         </a>
       )}

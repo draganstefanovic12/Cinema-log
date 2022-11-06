@@ -96,4 +96,24 @@ export const updateUserList = async (media: UpdateType & any) => {
   return response.data;
 };
 
+export const getList = async (name: string | undefined) => {
+  const response = await backendApi.get(`/lists/list/${name}`);
+  return response.data;
+};
+
+export const likeList = async (username: string) => {
+  const response = await backendApi.post(`/user/likelist/${username}`);
+  return response.data;
+};
+
+export const removeList = async (name: string) => {
+  const response = await backendApi.delete(`/lists/delete/${name}`);
+  return response.data;
+};
+
+export const recommendMedia = async (movie: string, username: string) => {
+  const response = await backendApi.post(`/user/recommendation/${username}`, { movie: movie });
+  return response.data;
+};
+
 export default backendApi;
