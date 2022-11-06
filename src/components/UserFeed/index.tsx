@@ -13,7 +13,7 @@ export type UserFeedProps = {
 const UserFeed = ({ feed, name }: UserFeedProps) => {
   return (
     <div className="user-feed-container">
-      <Typography variant="h5" className="user-feed">
+      <Typography variant="h6" className="user-feed">
         {name}
       </Typography>
       <Card className="user-feed-div">

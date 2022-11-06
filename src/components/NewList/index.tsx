@@ -6,13 +6,11 @@ import {
   TextareaAutosize,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
-import { Media, MediaStringUndefined } from "@/pages/MediaPage/types";
-import DebouncedSearch from "../DebouncedSearch";
-import { addNewList, debouncedSearch } from "../../features/api/backendApi";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useQuery } from "react-query";
+import DebouncedSearch from "../DebouncedSearch";
+import { useState } from "react";
+import { addNewList } from "../../features/api/backendApi";
+import { Media, MediaStringUndefined } from "@/pages/MediaPage/types";
 
 type NewListProps = {
   setAdd: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,6 +36,11 @@ const NewList = ({ setAdd }: NewListProps) => {
     setContent((currCont) => [...currCont, content]);
   };
 
+  const handleAddNewList = () => {
+    content.length > 0 && setAdd(false);
+    addNewList(listToAdd);
+  };
+
   return (
     <ClickAwayListener onClickAway={() => setAdd(false)}>
       <Container className="new-list-cont">
@@ -49,11 +52,7 @@ const NewList = ({ setAdd }: NewListProps) => {
           }}
         />
         <Typography>Description</Typography>
-        <TextareaAutosize
-          style={{ backgroundColor: "#14181c", color: "#cccccc" }}
-          minRows={3}
-          onChange={(e) => setDesc(e.target.value)}
-        />
+        <TextareaAutosize minRows={3} onChange={(e) => setDesc(e.target.value)} />
         <Typography>List content</Typography>
         <DebouncedSearch handleClick={handleUpdateContent} />
         {content.map((media: MediaStringUndefined) => (
@@ -62,15 +61,7 @@ const NewList = ({ setAdd }: NewListProps) => {
             <DeleteIcon onClick={() => handleFilter(media.createdAt!)} className="svg" />
           </Container>
         ))}
-        <Button
-          sx={{ width: "10em", margin: "0 auto" }}
-          onClick={() => {
-            content.length > 0 && setAdd(false);
-            addNewList(listToAdd);
-          }}
-        >
-          Submit
-        </Button>
+        <Button onClick={handleAddNewList}>Submit</Button>
         {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
       </Container>
     </ClickAwayListener>

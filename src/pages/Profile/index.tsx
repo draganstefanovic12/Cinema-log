@@ -58,7 +58,7 @@ export const Profile = () => {
 
   return (
     <div className="profile-container">
-      <Container className="profile-container-grid">
+      <Container className="profile-container-grid" disableGutters>
         <Grid container className="profile-container-grid-1">
           <ProfileImageUploadForm
             current={
@@ -82,14 +82,14 @@ export const Profile = () => {
                   <DialogComponent
                     followComparison={user && user!.following}
                     children={followers}
-                    name={"Followers"}
+                    name={"Followers: "}
                     number={followers.length}
                     currUser={user && user!.username}
                   />
                   <DialogComponent
                     followComparison={user && user!.following}
                     children={following}
-                    name={"Following"}
+                    name={"Following: "}
                     number={following.length}
                     currUser={user && user!.username}
                   />
@@ -104,14 +104,12 @@ export const Profile = () => {
               </ListItemComponent>
             ))}
           </Grid>
-          <Grid sx={{ marginLeft: "5.5rem" }}>
-            {user && params.user !== user?.username && <Follow followedUser={params.user} />}
-          </Grid>
+          {user && params.user !== user?.username && <Follow followedUser={params.user} />}
         </Grid>
       </Container>
       {state === "feed" && <ProfileInfo name="User Feed" favorites={favorites} feed={feed} />}
       {state === "movie" && <ProfileMedia type={state} user={params.user} media={data.movies} />}
-      {state === "tv" && <ProfileMedia type={state} user={params.user} media={data.user.shows} />}
+      {state === "tv" && <ProfileMedia type={state} user={params.user} media={data.shows} />}
       {state === "lists" && <ProfileLists list={data.lists} usr={params.user} />}
     </div>
   );

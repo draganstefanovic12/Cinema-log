@@ -18,25 +18,28 @@ const MoviesOrShows = ({ media, type }: MediaProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [watchType, setWatchType] = useState<Media[]>(media.watched);
 
+  const listItems = [
+    { class: "profile-media-watched-watchlist-card", child: "Watched", media: media.watched },
+    { class: "profile-media-watched-watchlist-card", child: "Watchlist", media: media.watchlist },
+  ];
+
   return (
     <Container className="profile-media-cont">
       <div className="profile-media-watched-watchlist">
-        <ListItem
-          className="profile-media-watched-watchlist-card"
-          style={{ color: watchType === media.watched ? "#fff" : "#cccccc" }}
-          onClick={() => setWatchType(media.watched)}
-          button
-        >
-          Watched
-        </ListItem>
-        <ListItem
-          className="profile-media-watched-watchlist-card"
-          style={{ color: watchType === media.watchlist ? "#fff" : "#cccccc" }}
-          onClick={() => setWatchType(media.watchlist)}
-          button
-        >
-          Watchlist
-        </ListItem>
+        {listItems.map((list, i) => (
+          <ListItem
+            key={i}
+            className={list.class}
+            style={{
+              color: watchType === list.media ? "#fff" : "#cccccc",
+              backgroundColor: watchType === list.media ? "#161b22" : "#181e26",
+            }}
+            onClick={() => setWatchType(list.media)}
+            button
+          >
+            {list.child}
+          </ListItem>
+        ))}
       </div>
       {watchType && (
         <Container className="profile-media-grid-cont">

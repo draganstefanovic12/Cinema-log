@@ -1,14 +1,26 @@
 @import "../variables"
-
-.profiles-lists
-    display: grid
-    grid-template-columns: repeat(2, 50%)
-    grid-template-rows: repeat(auto-fill, 10em)
-    gap: 4rem
-    margin-left: 0.5rem,
-    flex-direction: row
-    justify-content: center
-    align-items: flex-start
+.profile-list-cont
+    .profiles-lists
+        display: flex
+        gap: 4rem
+        padding: 1rem
+        min-height: 70vh
+        flex-wrap: wrap
+        background-color: #181e26
+        position: relative
+        .btn-new-list
+            position: absolute
+            right: 1%
+        .profiles-lists-links
+            display: flex
+            flex-direction: column
+            width: 20rem
+            .profiles-lists-wrapper-ul
+                padding: 0
+                width: 20rem
+                display: flex
+                img
+                    object-fit: cover
     .new-list-cont
         display: flex
         justify-content: center
@@ -21,6 +33,10 @@
         left: 0
         right: 0
         z-index: 0
+        border-radius: 1rem
+        color: #ffffff
+        textarea
+            resize: none
         .list-img
             width: 8.5em
         .pagination

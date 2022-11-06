@@ -22,7 +22,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const updateMovies = async () => {
+    const updateMovies = () => {
       setFavMedia(favorites as Media[]);
     };
     updateMovies();
@@ -57,7 +57,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
       className="favorite-container"
     >
       <div className="fav-text-cont">
-        <Typography className="favorite-movies" variant="h5">
+        <Typography className="favorite-movies" variant="h6">
           Favorites
         </Typography>
         {user?.username && user.username === params.user && hover && (
@@ -106,6 +106,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
 
   const handleFavoriteMovies = (movie: Media) => {
     setFavMovies!((currMovies) => [...currMovies, movie]);
+    setInput(false);
   };
 
   return (
@@ -131,7 +132,7 @@ export const FavoriteCard = ({ media, handleRemove, edit, setFavMovies }: Favori
               component="img"
             />
             {!media && hover && (
-              <ControlPointOutlinedIcon onClick={() => setInput(true)} className="fav-add-icon" />
+              <ControlPointOutlinedIcon onClick={() => setInput(!input)} className="fav-add-icon" />
             )}
           </>
           {input && <DebouncedSearch handleClick={handleFavoriteMovies} />}

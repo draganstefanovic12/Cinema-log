@@ -31,9 +31,9 @@ const DialogComponent = (props: DialogComponentProps) => {
         href={`/Cinema-log/#/user/${user.name}`}
       >
         <Avatar src={user.avatar && `https://dragpersonalproj.xyz/cinema-log/${user.avatar}`} />
-        <ListItem sx={{ width: "5rem" }}>{user.name}</ListItem>
+        <ListItem>{user.name}</ListItem>
       </a>
-      {followComparison && currUser !== user.name && <Follow followedUser={user.name} />}
+      <p>{followComparison && currUser !== user.name && <Follow followedUser={user.name} />}</p>
     </div>
   ));
 
@@ -41,7 +41,7 @@ const DialogComponent = (props: DialogComponentProps) => {
     <>
       <Typography>
         {name}
-        <span style={{ color: "#fff" }} className="svg dialog-span" onClick={handleOpen}>
+        <span className="svg dialog-span" onClick={handleOpen}>
           {number}
         </span>
       </Typography>

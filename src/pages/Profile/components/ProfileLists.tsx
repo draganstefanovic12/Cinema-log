@@ -16,39 +16,35 @@ const ProfileLists = ({ list, usr }: ListProps) => {
   const { user } = useAuth();
 
   return (
-    <Container className="profile-list-cont">
-      {usr === user?.username && (
-        <Button onClick={() => setAdd(!add)} className="btn-new-list">
-          New List
-        </Button>
-      )}
-      <Container sx={{ height: "52em", color: "#cccccc" }} className="profiles-lists">
+    <div className="profile-list-cont">
+      <Container className="profiles-lists">
+        {usr === user?.username && (
+          <Button onClick={() => setAdd(!add)} className="btn-new-list">
+            New List
+          </Button>
+        )}
         {list &&
           list.map((list: List) => (
-            <Fragment key={list.name}>
-              <Link style={{ width: "25em" }} to={`/list/${list.name}`}>
-                <Typography variant="h5" sx={{ display: "flex", color: "#cccccc" }}>
-                  {list.name}
-                </Typography>
-                <div style={{ display: "flex", width: "20em" }}>
-                  {JSON.parse(list!.content[0])
-                    .slice()
-                    .map((movImg: { poster: string }) => (
-                      <CardMedia
-                        key={movImg.poster}
-                        className="list-img"
-                        component="img"
-                        height="200"
-                        src={`https://image.tmdb.org/t/p/w500/${movImg.poster}`}
-                      />
-                    ))}
-                </div>
-              </Link>
-            </Fragment>
+            <Link key={list.name} className="profiles-lists-links" to={`/list/${list.name}`}>
+              <Typography variant="h6">{list.name}</Typography>
+              <ul className="profiles-lists-wrapper-ul">
+                {JSON.parse(list!.content[0])
+                  .slice(0, 4)
+                  .map((movImg: { poster: string }) => (
+                    <CardMedia
+                      key={movImg.poster}
+                      className="list-img"
+                      component="img"
+                      height="200"
+                      src={`https://image.tmdb.org/t/p/w500/${movImg.poster}`}
+                    />
+                  ))}
+              </ul>
+            </Link>
           ))}
         {add && <NewList setAdd={setAdd} />}
       </Container>
-    </Container>
+    </div>
   );
 };
 

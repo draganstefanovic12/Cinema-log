@@ -38,7 +38,10 @@ export const authReducer = (state: typeof initialState, action: ACTIONS) => {
 };
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const { data: user } = useQuery(["currentUser"], getCurrentUser);
+  const { data: user } = useQuery(["currentUser"], getCurrentUser, {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {

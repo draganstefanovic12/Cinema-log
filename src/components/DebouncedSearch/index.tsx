@@ -36,6 +36,7 @@ const DebouncedSearch = ({ setInput, handleClick }: DebouncedSearchProps) => {
     <ClickAwayListener onClickAway={() => (setInput ? setInput(false) : setHidden(true))}>
       <Container className="search-fav">
         <Input
+          value={searchValue}
           onClick={() => setHidden(false)}
           placeholder="Search..."
           onChange={(e) => setSearchValue(e.target.value)}
@@ -71,6 +72,7 @@ const DebouncedSearch = ({ setInput, handleClick }: DebouncedSearchProps) => {
                           poster: poster_path,
                           type: media_type,
                         });
+                        setSearchValue("");
                       }}
                     >
                       <CardMedia
