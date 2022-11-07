@@ -67,8 +67,10 @@ export const Profile = () => {
     <div className="profile-container">
       <Container className="profile-container-grid" disableGutters>
         <Grid container className="profile-container-grid-1">
-          {user.username === params.user && <ProfileImageUploadForm current={avatarComponent} />}
-          {user.username !== params.user && avatarComponent}
+          {user && user.username === params.user && (
+            <ProfileImageUploadForm current={avatarComponent} />
+          )}
+          {user && user.username !== params.user && avatarComponent}
           <Grid className="profile-container-grid-2" item xs={3}>
             <Typography className="profile-name" align="left" variant="h4">
               {username}
