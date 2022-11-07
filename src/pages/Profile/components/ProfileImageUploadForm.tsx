@@ -15,14 +15,14 @@ const ProfileImageUploadForm = ({ current }: Curr) => {
   const mutateAvatar = useMutation(uploadAvatar, {
     onSuccess: () => {
       setOpen(false);
-      queryClient.invalidateQueries("currentUser");
+      queryClient.invalidateQueries("user");
     },
   });
 
   const deleteAvatar = useMutation(removeAvatar, {
     onSuccess: () => {
       setOpen(false);
-      queryClient.invalidateQueries("currentUser");
+      queryClient.invalidateQueries("user");
     },
   });
 

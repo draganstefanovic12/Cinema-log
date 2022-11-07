@@ -7,13 +7,13 @@ const links = [
 ];
 
 const socials = [
-  { link: "https://github.com/draganstefanovic12", img: "/github.svg", name: "GitHub" },
+  { link: "https://github.com/draganstefanovic12", img: "/Cinema-log/github.svg", name: "GitHub" },
   {
     link: "https://www.linkedin.com/in/dragan-stefanovic-0067a5215/",
-    img: "/in.png",
+    img: "/Cinema-log/in.png",
     name: "LinkedIn",
   },
-  { name: "stefanovicdragan112@gmail.com", img: "/mail.svg" },
+  { name: "stefanovicdragan112@gmail.com", img: "/Cinema-log/mail.svg" },
 ];
 
 const Footer = () => {

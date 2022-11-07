@@ -32,9 +32,13 @@ export const Profile = () => {
   const { user } = useAuth();
   const params = useParams();
 
-  const { isLoading, data } = useQuery(["user", params], () => {
-    return getUser(params?.user);
-  });
+  const { isLoading, data } = useQuery(
+    ["user", params],
+    () => {
+      return getUser(params?.user);
+    },
+    { refetchOnWindowFocus: false, refetchOnMount: false }
+  );
 
   const handleToggle = () => {
     setUpload(!upload);
