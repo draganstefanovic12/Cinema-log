@@ -6,7 +6,7 @@ const backendApi = axios.create({
 });
 
 //handles preflight error
-axios.interceptors.response.use(null!, (error) => {
+backendApi.interceptors.response.use(null!, (error) => {
   if (error && error.message === "Network Error") {
     throw new Error(`Potential network CORS preflight error at ${error.config.url}`);
   }
