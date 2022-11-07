@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { name: "Browse Users", link: "search/allusers/multi" },
@@ -17,6 +17,15 @@ const socials = [
 ];
 
 const Footer = () => {
+  const { pathname } = useLocation();
+
+  const handleLink = () => {
+    window.open("https://www.themoviedb.org/");
+  };
+
+  if (pathname === "/login" || pathname === "/register") {
+    return <p></p>;
+  }
   return (
     <footer>
       <div className="footer-cont">
@@ -28,14 +37,24 @@ const Footer = () => {
           ))}
         </ul>
         <ul className="footer-links">
-          {socials.map((social) => (
-            <li onClick={() => window.open(social.link)} className="footer-socials">
+          {socials.map((social, i) => (
+            <li
+              key={i}
+              onClick={() => social.link && window.open(social.link)}
+              className="footer-socials"
+            >
               <img className="footer-img" src={`${social.img}`} alt="social" />
               <p data-content={social.img}>{social.name}</p>
             </li>
           ))}
         </ul>
       </div>
+      <p className="footer-film-data">
+        Film data from{" "}
+        <span onClick={handleLink} className="tmdb">
+          TMDB.
+        </span>
+      </p>
     </footer>
   );
 };

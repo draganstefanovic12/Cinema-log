@@ -31,16 +31,16 @@ export const MediaPage = () => {
     },
   });
 
-  if (isLoading) {
+  if (isLoading || !user) {
     return <Spinner />;
   }
 
   const name = type === "tv" ? data.original_name : data.title;
   const date = type === "tv" ? data.first_air_date.slice(0, 4) : data.release_date.slice(0, 4);
-  const mediaType = type === "tv" ? user.shows : user.movies;
 
-  const watchedStatus = mediaType.watched.find((movie) => movie.id === id);
-  const watchlistStatus = mediaType.watchlist.find((movie) => movie.id === id);
+  const mediaType = type === "tv" ? user.shows : user.movies;
+  const watchedStatus = mediaType.watched.find((media) => media.id === id);
+  const watchlistStatus = mediaType.watchlist.find((media) => media.id === id);
 
   const updateOptions = {
     name: name,

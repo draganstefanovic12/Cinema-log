@@ -141,4 +141,12 @@ export const handleAllLists = async () => {
   return response.data;
 };
 
+export const uploadAvatar = async (file: File) => {
+  const formData = new FormData();
+  formData.append("fileupload", file);
+
+  const response = await backendApi.post("/image/upload", formData);
+  return response.data;
+};
+
 export default backendApi;

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { CrewArr, OtherCrew } from "../types";
 import { Avatar, Container, Typography } from "@mui/material";
@@ -18,7 +17,7 @@ const Crew = ({ crew }: CrewArr) => {
               .filter((director: OtherCrew) => director.known_for_department === "Directing")
               .slice(0, 1)
               .map((crew: OtherCrew) => (
-                <Fragment key={crew.id}>
+                <Container className="actor-cont svg" key={crew.id} disableGutters>
                   <Avatar
                     onClick={() => navigate(`/person/${crew.id}`)}
                     variant="square"
@@ -37,7 +36,7 @@ const Crew = ({ crew }: CrewArr) => {
                       Director
                     </Typography>
                   </Container>
-                </Fragment>
+                </Container>
               ))}
         </Container>
       </div>

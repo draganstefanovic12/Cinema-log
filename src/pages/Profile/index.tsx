@@ -52,6 +52,7 @@ export const Profile = () => {
     shows: { watched: showsWatched },
     following,
     followers,
+    avatar,
     feed,
     favorites,
   } = data;
@@ -65,7 +66,7 @@ export const Profile = () => {
               <Avatar
                 className="profile-avatar"
                 onClick={user?.username === params.user ? handleToggle : () => setUpload(false)}
-                src={""}
+                src={`https://dragpersonalproj.xyz/cinema-log${avatar[0]}`}
               />
             }
           />

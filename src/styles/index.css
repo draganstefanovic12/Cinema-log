@@ -19,6 +19,7 @@ body {
   padding: 0;
   background: #14181c;
   min-height: 100vh;
+  position: relative;
 }
 
 ul {
@@ -521,8 +522,11 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -225px;
+  width: 100%;
   height: 200px;
-  margin-top: 2rem;
   background-color: #161b22;
   box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 5px;
   color: #cccccc;
@@ -560,6 +564,16 @@ footer .footer-cont .footer-links .footer-socials .footer-img {
 footer .footer-cont .footer-links .footer-socials p {
   margin: 0;
   font-size: 0.9rem;
+}
+footer .footer-film-data {
+  color: #678;
+}
+footer .footer-film-data .tmdb {
+  color: #ffffff;
+  cursor: pointer;
+}
+footer .footer-film-data .tmdb:hover {
+  text-decoration: underline;
 }
 
 .search-container {
@@ -928,6 +942,7 @@ footer .footer-cont .footer-links .footer-socials p {
 body .main-page-cont {
   display: grid;
   min-height: 90vh;
+  flex: 1;
   justify-content: center;
   grid-template-columns: 60% 40%;
   grid-template-rows: repeat(auto-fill, 1fr);
