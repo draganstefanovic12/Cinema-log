@@ -1,15 +1,14 @@
-import { useAuth } from "@/context/AuthContext";
-import { useLogout } from "@/hooks/useLogout";
-import { usePopper } from "@/hooks/usePopper";
+import { useAuth } from "@/features/auth/context/AuthContext";
+import { useLogout } from "@/features/auth/hooks/useLogout";
+import { usePopper } from "@/features/nav/hooks/usePopper";
 import { useNavigate } from "react-router-dom";
 import { MenuItem, MenuList } from "@mui/material";
 import NavPopper from "./NavPopper";
 
 const NavDropdown = () => {
-  const { open, setOpen } = usePopper();
-
-  const { logout } = useLogout();
   const { user } = useAuth();
+  const { logout } = useLogout();
+  const { open, setOpen } = usePopper();
   const navigate = useNavigate();
 
   return (
@@ -29,9 +28,7 @@ const NavDropdown = () => {
             setOpen(false);
           }}
         >
-          <a style={{ color: "#cccccc" }} href={`/Cinema-log/#/user/${user?.username}`}>
-            Profile
-          </a>
+          <a href={`/Cinema-log/#/user/${user?.username}`}>Profile</a>
         </MenuItem>
         <MenuItem
           onClick={() => {

@@ -1,8 +1,10 @@
+@import "../variables"
+
 .nav
     display: flex
     align-items: center
     padding: 0.2em
-    background-color: #161b22
+    background-color: $main-color
     position: fixed
     width: 100%
     height: 2.3em
@@ -10,12 +12,21 @@
     z-index: 1
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 5px
     .home-link
+        margin-left: 1rem
         &:active
             height: 1.5em
     .nav-inner
         display: flex
         justify-content: space-between
         align-items: center
+        .nav-inner-user
+            .nav-popper
+                position: relative
+                z-index: 1
+                .nav-popper-btn
+                    padding: 0
+                    color: #cccccc
+                    text-transform: none
     .notification-icon
         fill: #f7f7f7
         width: 65px
@@ -23,7 +34,13 @@
             transform: translateY(5%)
     .menu-list
         color: rgb(102, 125, 147)
-        background-color: #161b22
+        background-color: $secondary-color
+        .menu-list-item
+            white-space: nowrap
+            .menu-list-item-link
+                margin-right: 0.2rem
+            .menu-list-item-link-date
+                margin-left: 0.5rem
     .avatar-container
         display: flex
         align-items: center

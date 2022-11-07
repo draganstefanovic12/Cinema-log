@@ -1,0 +1,102 @@
+.profile-container
+    margin-top: 0
+    background-size: cover
+    margin-top: 4em
+    height: calc( 100vh - 55px )
+    animation: fade 500ms 1 ease-in-out forwards
+    .profile-container-grid
+        background-color: #161b22
+        border-top-right-radius: 0.5rem
+        border-top-left-radius: 0.5rem
+        position: relative
+        .follow-list-item
+            position: absolute
+            color: #ffffff
+            width: 5rem
+            right: 1%
+            background-color: #181e26
+            border-radius: 0.5rem
+        .profile-container-grid-1
+            height: 10.5rem
+            padding-left: 0.5rem
+            padding-top: 0.5rem
+            .profile-avatar
+                height: 9rem
+                width: 9rem
+            .profile-container-grid-2
+                height: 2rem
+                display: flex
+                flex-direction: space-between
+                .profile-name
+                    color: #efefef
+                    margin-left: 1rem
+            .profile-container-grid-3
+                display: flex
+                width: 100%
+                align-self: flex-end
+                color #cccccc
+    .profile-details
+        color: #cccccc
+    .profile-info-container
+        display: grid
+        grid-template-columns: 60% 40%
+        min-height: 70vh
+        background-color: #181e26
+        padding-top: 1.5rem
+    .favorite-container
+        width: 25rem
+        .favorite-container-card
+            .profile-fav-link
+                .profile-fav-img
+                    height: 13rem
+                    width: 8rem
+                    border-radius: 1rem
+        .fav-text-cont
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .favorite-movies
+                padding-bottom: 0.5em
+                color: #cccccc
+            .fav-edit
+                align-self: center
+                &:hover
+                    cursor: pointer
+        .favorite-container-card
+            display: grid
+            grid-template-columns: repeat(auto-fill, 8rem)
+            gap: 1rem
+            .fav-edit-cont
+                margin-bottom: 1em
+                position: relative
+                .search-fav
+                    position: absolute
+                    background-color: #161b22
+                    width: 14rem
+                    z-index: 1
+                    padding: 0.5rem
+                    .search-fav-paper
+                        width: 30rem
+                        background-color: #161b22
+                .fav-remove-icon
+                    position: absolute
+                    top: 1%
+                    right: 2%
+                    color: #fff
+                    z-index: 1
+                    &:hover
+                        cursor: pointer
+                .fav-edit-card
+                    height: 13rem
+                    width: 8rem
+                    border-radius: 1rem
+            .fav-add-icon
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                color: #fff
+                width: 2rem
+                height: 3rem
+                &:hover
+                    cursor: pointer
