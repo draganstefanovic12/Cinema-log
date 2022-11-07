@@ -25,12 +25,11 @@ const HomepageSimilarMovies = () => {
       <div className="similar">
         {data &&
           data.results.slice(0, 10).map((movie: Media) => (
-            <Link style={{ width: "10.1rem" }} key={movie.id} to={`/movie/${movie.id}`}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               <Card className="movie-card-link" variant="outlined">
                 <CardMedia
                   className="movie-card-link-img"
                   component="img"
-                  sx={{ width: "9.9rem" }}
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   height="250"
                 />

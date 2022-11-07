@@ -1,6 +1,5 @@
 import "@/styles/MobileApp.css";
 import "@/styles/index.css";
-import Nav from "@/features/nav";
 import { Login } from "@/pages/Login";
 import { Search } from "@/pages/Search";
 import { Person } from "@/pages/Person";
@@ -13,6 +12,8 @@ import { MediaPage } from "@/pages/MediaPage";
 import { MyAccount } from "@/pages/MyAccount";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import Nav from "@/features/nav";
+import Footer from "@/components/Footer";
 
 const BrowserRoutes = () => {
   const { auth } = useAuth();
@@ -39,6 +40,7 @@ const BrowserRoutes = () => {
           <Route path="/account/" element={<MyAccount />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Footer />
       </ThemeProvider>
     </Router>
   );

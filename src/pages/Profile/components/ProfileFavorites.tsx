@@ -26,7 +26,7 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
       setFavMedia(favorites as Media[]);
     };
     updateMovies();
-  }, [favorites, params]);
+  }, [favorites]);
 
   const handleRemove = async (mov: string, date: string) => {
     setFavMedia(favMedia!.filter((media: Media) => media.createdAt !== date));

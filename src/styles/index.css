@@ -21,6 +21,10 @@ body {
   min-height: 100vh;
 }
 
+ul {
+  list-style: none;
+}
+
 @-webkit-keyframes fade {
   0% {
     opacity: 0;
@@ -244,15 +248,20 @@ body {
 }
 
 .pw-cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #cccccc;
   margin-top: 5em;
-  width: 17em;
+  width: 20rem;
+}
+.pw-cont .pw-cont-textfields {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+.pw-cont .pw-cont-text {
+  width: 20rem;
+  margin-bottom: 1rem;
 }
 .pw-cont .change-pw-btn {
-  display: flex;
   margin: 0 auto;
 }
 .pw-cont .account-cont {
@@ -270,6 +279,12 @@ body {
 }
 .pw-cont .account-cont .movie-cont p {
   color: #efefef;
+}
+
+.pw-cont ~ footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .user-feed-container {
@@ -445,7 +460,109 @@ body {
   grid-template-rows: repeat(auto-fill, 15.9rem);
 }
 
-.main-container {
+.recommend-btn {
+  white-space: nowrap;
+}
+.recommend-btn .recommend-btn-icon {
+  margin-right: 0.5rem;
+}
+
+.recommend-btn-dialog-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #14181c;
+}
+.recommend-btn-dialog-actions .recommend-avatar {
+  margin-right: 1rem;
+}
+
+.search-person-container .head {
+  color: #cccccc;
+}
+.search-person-container .search-person {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 15rem);
+  gap: 1rem;
+  padding: 2rem;
+}
+.search-person-container .search-person .movie-card {
+  padding: 0;
+  width: 10rem;
+  background-color: #161b22;
+}
+.search-person-container .search-person .movie-card .movie-poster-link {
+  width: 15rem;
+  color: #fff;
+}
+.search-person-container .search-person .movie-card .movie-card-name {
+  font-weight: 400;
+  background-color: #161b22;
+}
+.search-person-container .search-person .movie-card .card-grid {
+  width: 15rem;
+  color: #cccccc;
+}
+.search-person-container .search-person .movie-card .card-grid .search-overview {
+  padding: 1em;
+  justify-content: center;
+  color: #CCCCCC;
+}
+.search-person-container .search-person .movie-card-content {
+  max-width: 45em;
+  max-height: 30em;
+  margin-bottom: 1em;
+  -webkit-animation: fade 500ms 1 ease-in-out forwards;
+          animation: fade 500ms 1 ease-in-out forwards;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-top: 2rem;
+  background-color: #161b22;
+  box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 5px;
+  color: #cccccc;
+}
+footer .footer-cont {
+  display: flex;
+}
+footer .footer-cont .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+footer .footer-cont .footer-links .footer-link {
+  color: #678;
+  cursor: pointer;
+}
+footer .footer-cont .footer-links .footer-link:hover {
+  color: #9ab;
+  cursor: pointer;
+}
+footer .footer-cont .footer-links .footer-socials {
+  display: flex;
+  color: #678;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+footer .footer-cont .footer-links .footer-socials:hover {
+  color: #9ab;
+  cursor: pointer;
+}
+footer .footer-cont .footer-links .footer-socials .footer-img {
+  width: 1rem;
+  height: 1rem;
+}
+footer .footer-cont .footer-links .footer-socials p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.search-container {
   display: grid;
   padding: 1em;
   margin-top: 4em;
@@ -453,30 +570,27 @@ body {
   -webkit-animation: fade 500ms 1 ease-in-out forwards;
           animation: fade 500ms 1 ease-in-out forwards;
 }
-.main-container .movie-card {
-  padding: 0;
-  margin-bottom: 1rem;
-  height: 15.5rem;
+.search-container .search-container-media-text {
+  color: #cccccc;
+  margin-bottom: 0.4rem;
 }
-.main-container .movie-card .movie-card-content {
-  max-width: 45em;
-  max-height: 30em;
-  margin-bottom: 1em;
-  -webkit-animation: fade 500ms 1 ease-in-out forwards;
-          animation: fade 500ms 1 ease-in-out forwards;
-}
-.main-container .movie-card .poster {
+.search-container .search-container-media-text .poster {
   width: 15em;
 }
-.main-container .movie-card .movie-poster-link {
+.search-container .search-container-media-text .movie-poster-link {
   width: 15rem;
+  color: #fff;
 }
-.main-container .movie-card .movie-poster-link .movie-card-name {
+.search-container .search-container-media-text .movie-poster-link .movie-card-name {
   margin-top: 1em;
   font-weight: 400;
   margin-bottom: 1em;
 }
-.main-container .movie-card .movie-poster-link .card-grid .search-overview {
+.search-container .search-container-media-text .movie-poster-link .card-grid {
+  width: 15rem;
+  color: #cccccc;
+}
+.search-container .search-container-media-text .movie-poster-link .card-grid .search-overview {
   padding: 1em;
   justify-content: center;
   color: #CCCCCC;
@@ -485,6 +599,7 @@ body {
 .cont {
   color: #efefef;
   background-color: #181e26;
+  min-height: 80vh;
   padding: 0 0;
   -webkit-animation: fade 500ms 1 ease-in-out forwards;
           animation: fade 500ms 1 ease-in-out forwards;
@@ -595,7 +710,7 @@ body {
 .profile-container .profile-info-container {
   display: grid;
   grid-template-columns: 60% 40%;
-  min-height: 60vh;
+  min-height: 70vh;
   background-color: #181e26;
   padding-top: 1.5rem;
 }
@@ -812,7 +927,7 @@ body {
 
 body .main-page-cont {
   display: grid;
-  height: 90vh;
+  min-height: 90vh;
   justify-content: center;
   grid-template-columns: 60% 40%;
   grid-template-rows: repeat(auto-fill, 1fr);

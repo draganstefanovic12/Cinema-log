@@ -69,7 +69,7 @@ const DebouncedSearch = ({ setInput, handleClick }: DebouncedSearchProps) => {
                         handleClick({
                           title: title ? title : original_name,
                           id: id,
-                          poster: poster_path,
+                          poster_path: poster_path,
                           type: media_type,
                         });
                         setSearchValue("");

@@ -1,8 +1,8 @@
 import { List } from "@/pages/List/types";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
+import { useState } from "react";
 import { Container } from "@mui/system";
-import { Fragment, useState } from "react";
 import { Button, CardMedia, Typography } from "@mui/material";
 import NewList from "@/components/NewList";
 

@@ -3,14 +3,13 @@ import { Pagination } from "@mui/material";
 type PaginationProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
   data?: {
-    data: {
-      total_pages: number;
-    };
+    total_pages: number;
   };
   count?: number;
 };
 
 const SearchPagination = ({ setOffset, data, count }: PaginationProps) => {
+  console.log(data, count);
   return (
     <Pagination
       className="pagination"
@@ -21,7 +20,7 @@ const SearchPagination = ({ setOffset, data, count }: PaginationProps) => {
       }}
       hidePrevButton
       hideNextButton
-      count={data ? data!.data.total_pages : count}
+      count={data ? data!.total_pages : count}
       onChange={(e: React.ChangeEvent<unknown>) => {
         setOffset(parseInt((e.target as HTMLElement).innerText));
         setTimeout(() => {

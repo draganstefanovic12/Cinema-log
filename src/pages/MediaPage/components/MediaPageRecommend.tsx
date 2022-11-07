@@ -40,11 +40,9 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
 
   return (
     <>
-      <ListItem onClick={handleOpen} button sx={{ whiteSpace: "nowrap" }}>
-        <RecommendIcon sx={{ marginRight: "0.5rem" }} />
-        <Typography className="ww-li">
-          Recommend this {params === "tv" ? "show" : "movie"} to someone
-        </Typography>
+      <ListItem onClick={handleOpen} button className="recommend-btn">
+        <RecommendIcon className="recommend-btn-icon" />
+        <Typography>Recommend this {params === "tv" ? "show" : "movie"} to someone</Typography>
       </ListItem>
       <Dialog
         aria-labelledby="alert-dialog-title"
@@ -52,32 +50,20 @@ const MediaPageRecommend = ({ media, params }: MediaPageRecommendProps) => {
         open={open}
         onClose={handleClose}
       >
-        <DialogActions
-          sx={{
-            display: "grid",
-            alignItems: "flex-start",
-            backgroundColor: "#14181c",
-          }}
-        >
-          <DialogTitle
-            sx={{
-              backgroundColor: "#14181c",
-            }}
-            id="alert-dialog-title"
-          >
+        <DialogActions className="recommend-btn-dialog-actions">
+          <DialogTitle className="recommend-btn-dialog-title" id="alert-dialog-title">
             {"Recommend the movie to..."}
           </DialogTitle>
           <Container>
-            {user?.following.map((User: User) => (
+            {user?.following.map((User: User, i) => (
               <MenuItem
                 dense
-                sx={{ display: "flex" }}
-                key={User.name}
+                key={i}
                 onClick={() => {
                   handleRecommendMedia(User.name);
                 }}
               >
-                <Avatar sx={{ marginRight: "1rem" }} src={User.avatar && `${User.avatar}`} />
+                <Avatar className="recommend-avatar" src={User.avatar && `${User.avatar}`} />
                 {User.name}
               </MenuItem>
             ))}

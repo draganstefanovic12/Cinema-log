@@ -1,8 +1,10 @@
 import { Media } from "../MediaPage/types";
+import { search } from "@/features/api/backendApi";
 import { useState } from "react";
-import { useFetch } from "@/hooks/useFetch";
+import { useQuery } from "react-query";
 import { Link, useParams } from "react-router-dom";
 import { Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material";
+import Spinner from "@/components/Spinner";
 import SearchLists from "./components/SearchLists";
 import SearchUsers from "./components/SearchUsers";
 import SearchPagination from "./components/SearchPagination";
@@ -12,39 +14,38 @@ export const Search = () => {
   const query = useParams();
   const [offset, setOffset] = useState<number>(1);
 
-  //if a user is searching for a specific movie/show/user its gonna be multi. otherwise by genre
-  const data = useFetch(
+  const searchQuery =
     query.type === "multi"
-      ? `/imdb/multi/${query.query}/`
-      : `/imdb/discover/${query.query}/${query.type}/${offset}`
-  );
+      ? `/multi/${query.query}/`
+      : `/discover/${query.query}/${query.type}/${offset}`;
 
-  const checker =
-    data &&
-    data.data.results.find(
-      (result: Media) => result.media_type === "tv" || result.media_type === "movie"
-    );
+  const { isLoading, data } = useQuery(["search", query], () => {
+    return search(searchQuery);
+  });
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
-      <Container className="main-container">
-        {checker && (
-          <Typography variant="h5" sx={{ color: "#cccccc", marginBottom: "0.4rem" }}>
+      <Container className="search-container">
+        {data.results.length > 0 && data.results[0].id && (
+          <Typography className="search-container-media-text" variant="h5">
             Media:
           </Typography>
         )}
-        {data &&
-          data.data.results
-            .filter(
-              (result: Media) => result.popularity > 6.5 && (result.title || result.first_air_date)
-            )
-            .map((result: Media) => (
-              <Card className="movie-card" key={result.id}>
-                <CardContent sx={{ backgroundColor: "#161b22" }} className="movie-card">
+        {data.results
+          .filter(
+            (result: Media) => result.popularity > 6.5 && (result.title || result.first_air_date)
+          )
+          .map(
+            ({ id, first_air_date, release_date, poster_path, overview, name, title }: Media) => (
+              <Card className="movie-card" key={id}>
+                <CardContent className="movie-card">
                   <Link
-                    style={{ color: "white" }}
                     className="movie-poster-link"
-                    to={`/${result.first_air_date ? "tv" : "movie"}/${result.id}`}
+                    to={`/${first_air_date ? "tv" : "movie"}/${id}`}
                   >
                     <Grid className="search-main-grid" container>
                       <Grid className="search-img-grid">
@@ -52,37 +53,38 @@ export const Search = () => {
                           className="search-img"
                           component="img"
                           height="250"
-                          src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                         ></CardMedia>
                       </Grid>
                       <Grid className="card-grid" item xs={9.4}>
                         <Typography className="movie-card-name" align="center" variant="h5">
-                          {result.first_air_date ? (
+                          {first_air_date ? (
                             <>
-                              {result.name} ({result.first_air_date.slice(0, 4)})
+                              {name} ({first_air_date.slice(0, 4)})
                             </>
                           ) : (
                             <>
-                              {result.title} ({result.release_date.slice(0, 4)})
+                              {title} ({release_date.slice(0, 4)})
                             </>
                           )}
                         </Typography>
                         <Typography className="search-overview" variant="subtitle2">
-                          {result.overview}
+                          {overview}
                         </Typography>
                       </Grid>
                     </Grid>
                   </Link>
                 </CardContent>
               </Card>
-            ))}
+            )
+          )}
       </Container>
       {query.query === "alllists" && <SearchLists />}
-      {data && query.type !== "multi" && data.data.total_pages > 1 && (
+      {query.type !== "multi" && data.total_pages > 1 && (
         <SearchPagination setOffset={setOffset} data={data} />
       )}
       <SearchUsers query={query.query} />
-      {data && <SearchMediaTypePerson result={data.data} />}
+      {<SearchMediaTypePerson result={data} />}
     </div>
   );
 };

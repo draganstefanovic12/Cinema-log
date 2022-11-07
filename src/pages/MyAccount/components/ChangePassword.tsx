@@ -1,88 +1,52 @@
-import { useAuth } from "@/features/auth/context/AuthContext";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Container, TextField, Typography } from "@mui/material";
+import { checkPasswordChange } from "@/features/api/backendApi";
 
 const ChangePassword = () => {
   const [error, setError] = useState<boolean>(false);
+  const [change, setChange] = useState<string | null>(null);
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
-  const [checkNewPassword, setCheckNewPassword] = useState<string>("");
-  const [change, setChange] = useState<string | null>(null);
-  const [passwordMatch, setPasswordMatch] = useState<boolean>(false);
-  const { debounce } = useDebounce(oldPassword);
-  const { user } = useAuth();
 
-  const handleSubmit = () => {
-    fetch(`/user/checkpassword/${user?.username}/${debounce}/${newPassword}`, {
-      method: "POST",
-      headers: {
-        Authorization: `${user?.username} ${user?.token}`,
-      },
-    }).then((res) => {
-      if (res.status === 400) {
-        setError(true);
-      } else {
-        setChange("done");
-      }
+  const handleChangePassword = async () => {
+    const passwordStatus = await checkPasswordChange(oldPassword, newPassword).catch((err) => {
+      err && setError(true);
     });
+    passwordStatus && setChange("done");
   };
 
-  useEffect(() => {
-    const handleCheck = () => {
-      if (newPassword !== checkNewPassword) {
-        setPasswordMatch(true);
-      } else {
-        setPasswordMatch(false);
-      }
-    };
-    handleCheck();
-  }, [newPassword, checkNewPassword]);
+  const handleOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError(false);
+    setOldPassword(e.target.value);
+  };
+
+  const handleNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPassword(e.target.value);
+  };
 
   return (
-    <Container className="pw-cont" sx={{ display: "flex", width: "17em" }}>
-      <Typography sx={{ marginBottom: "1em" }}>Change Password:</Typography>
-      <TextField
-        type="password"
-        error={error}
-        label="old password"
-        onChange={(e) => {
-          setError(false);
-          setOldPassword(e.target.value);
-        }}
-        size="small"
-        sx={{ width: "15em", marginBottom: "1em" }}
-      />
-      <TextField
-        type="password"
-        onChange={(e) => {
-          setNewPassword(e.target.value);
-        }}
-        label="new password"
-        size="small"
-        sx={{ width: "15em", marginBottom: "1em" }}
-      />
-      <TextField
-        type="password"
-        error={passwordMatch}
-        onChange={(e) => {
-          setCheckNewPassword(e.target.value);
-        }}
-        label="repeat new password"
-        size="small"
-        sx={{ width: "15em", marginBottom: "1em" }}
-      />
+    <Container className="pw-cont">
+      <Typography className="pw-cont-text">Change Password:</Typography>
+      <div className="pw-cont-textfields">
+        <TextField
+          type="password"
+          error={error}
+          label="old password"
+          onChange={handleOldPassword}
+          size="small"
+        />
+        <TextField type="password" onChange={handleNewPassword} label="new password" size="small" />
+        <TextField type="password" error={error} label="repeat new password" size="small" />
+      </div>
       <Button
         color={change ? "success" : "primary"}
-        disabled={passwordMatch}
+        disabled={error}
         className="change-pw-btn"
-        onClick={handleSubmit}
+        onClick={handleChangePassword}
       >
         Submit
       </Button>
-      {change === "done" && (
-        <Typography sx={{ whiteSpace: "nowrap" }}>Password succesfully changed.</Typography>
-      )}
+      {change === "done" && <Typography className="success">Succesfully changed.</Typography>}
     </Container>
   );
 };

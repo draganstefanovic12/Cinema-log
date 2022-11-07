@@ -27,12 +27,12 @@ const HomepageLists = () => {
                   <div key={list.name}>
                     <Typography
                       className="main-page-list-name svg"
-                      variant="h6"
+                      variant="subtitle1"
                       onClick={() => navigate(`list/${list.name}`)}
                     >
                       {list.name}
                     </Typography>
-                    <Typography className="list-created-by">
+                    <Typography variant="subtitle2" className="list-created-by">
                       Created by:
                       <span
                         className="list-username svg"

@@ -116,4 +116,29 @@ export const recommendMedia = async (movie: string, username: string) => {
   return response.data;
 };
 
+export const checkPasswordChange = async (oldPw: string, newPw: string) => {
+  const response = await backendApi.post(`/user/checkpassword/${oldPw}/${newPw}`);
+  return response.data;
+};
+
+export const fetchMediaPerson = async (id: string | undefined) => {
+  const response = await backendApi.get(`/imdb/person/${id}`);
+  return response.data;
+};
+
+export const search = async (query: string) => {
+  const response = await backendApi.get(`/imdb/${query}`);
+  return response.data;
+};
+
+export const searchUsers = async (query: string) => {
+  const response = await backendApi.get(`/user/${query}`);
+  return response.data;
+};
+
+export const handleAllLists = async () => {
+  const response = await backendApi.get("/lists/all");
+  return response.data;
+};
+
 export default backendApi;

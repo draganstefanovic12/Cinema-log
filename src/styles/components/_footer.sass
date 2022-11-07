@@ -1,0 +1,38 @@
+@import "../variables"
+
+footer
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 200px
+    margin-top: 2rem
+    background-color: #161b22
+    box-shadow: rgb(0 0 0 / 24%) 2px 3px 5px
+    color: #cccccc
+    .footer-cont
+        display: flex
+        .footer-links
+            display: flex
+            flex-direction: column
+            gap: 1rem
+            .footer-link
+                color: #678
+                cursor: pointer
+                &:hover
+                    color: #9ab
+                    cursor: pointer
+            .footer-socials
+                display: flex
+                color: #678
+                align-items: flex-end
+                gap: 0.5rem
+                &:hover
+                    color: #9ab
+                    cursor: pointer
+                .footer-img
+                    width: 1rem
+                    height: 1rem
+                p
+                    margin: 0
+                    font-size: 0.9rem

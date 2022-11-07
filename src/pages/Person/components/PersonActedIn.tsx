@@ -5,47 +5,41 @@ import { Actors, Media, OtherCrew } from "@/pages/MediaPage/types";
 import { Card, CardMedia, Grid, ListItem, Typography } from "@mui/material";
 
 type PersonActedInProps = {
-  data: {
-    data: Actors & OtherCrew;
-  };
+  data: Actors & OtherCrew;
 };
 
 const PersonActedIn = ({ data }: PersonActedInProps) => {
   const [type, setType] = useState<Media[] | null>(null);
 
   useEffect(() => {
-    data.data.known_for_department === "Acting"
-      ? setType(data.data.combined_credits.cast)
-      : setType(data.data.combined_credits.crew);
-  }, [
-    data.data.combined_credits.cast,
-    data.data.combined_credits.crew,
-    data.data.known_for_department,
-  ]);
+    data.known_for_department === "Acting"
+      ? setType(data.combined_credits.cast)
+      : setType(data.combined_credits.crew);
+  }, [data.combined_credits.cast, data.combined_credits.crew, data.known_for_department]);
 
   return (
     <>
       <Grid sx={{ marginTop: "3rem", display: "flex", width: "5rem" }}>
-        {data.data.combined_credits.cast.length > 5 && (
+        {data.combined_credits.cast.length > 5 && (
           <ListItem
-            onClick={() => setType(data.data.combined_credits.cast)}
+            onClick={() => setType(data.combined_credits.cast)}
             button
             sx={{
               marginLeft: "1.7rem",
               backgroundColor:
-                type !== null && type === data.data.combined_credits.cast ? "#161b22" : "#181e26",
+                type !== null && type === data.combined_credits.cast ? "#161b22" : "#181e26",
             }}
           >
             Actor
           </ListItem>
         )}
-        {data.data.combined_credits.crew.length > 5 && (
+        {data.combined_credits.crew.length > 5 && (
           <ListItem
             sx={{
               backgroundColor:
-                type !== null && type === data.data.combined_credits.crew ? "#161b22" : "#181e26",
+                type !== null && type === data.combined_credits.crew ? "#161b22" : "#181e26",
             }}
-            onClick={() => setType(data.data.combined_credits.crew)}
+            onClick={() => setType(data.combined_credits.crew)}
             button
           >
             Director
