@@ -11,7 +11,8 @@ Features:
 - Able to see activity of users you follow to see what they watched/added to watchlist
 - Guest user to showcase the application without the need of registering
 
-Tech stack used for the project:
+Tech stack:
+
 Frontend:
 - React
 - React Query
