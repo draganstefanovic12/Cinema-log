@@ -1,9 +1,8 @@
-import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
-import { Input, MenuList } from "@mui/material";
+import { MenuList } from "@mui/material";
+import { removeAvatar, uploadAvatar } from "@/features/api/backendApi";
 import { useQueryClient, useMutation } from "react-query";
 import NavPopper from "@/features/nav/components/NavPopper";
-import backendApi, { uploadAvatar } from "@/features/api/backendApi";
 
 type Curr = {
   current: JSX.Element;
@@ -12,36 +11,25 @@ type Curr = {
 const ProfileImageUploadForm = ({ current }: Curr) => {
   const queryClient = useQueryClient();
   const [open, setOpen] = useState<boolean>(false);
-  const { user } = useAuth();
 
-  const handleClick = () => {
-    document.getElementById("hidden")?.click();
-  };
-
-  const handleSubmit = async (file: File) => {
-    setOpen(false);
-    await uploadAvatar(file);
-  };
-
-  const mutateAvatar = useMutation(handleSubmit, {
+  const mutateAvatar = useMutation(uploadAvatar, {
     onSuccess: () => {
+      setOpen(false);
       queryClient.invalidateQueries("currentUser");
     },
   });
 
-  const handleDelete = () => {
-    setOpen(false);
-    backendApi.delete(`/image/delete/${user?._id}`);
-  };
+  const deleteAvatar = useMutation(removeAvatar, {
+    onSuccess: () => {
+      setOpen(false);
+      queryClient.invalidateQueries("currentUser");
+    },
+  });
 
   return (
     <NavPopper open={open} setOpen={setOpen} button={current}>
-      <>
-        <MenuList
-          className="img-form-menu"
-          sx={{ padding: "0.5em", color: "#cccccc" }}
-          onClick={handleClick}
-        >
+      <div>
+        <MenuList className="img-form-menu" sx={{ padding: "0.5em", color: "#cccccc" }}>
           Upload file
           <input
             name="fileupload"
@@ -52,15 +40,14 @@ const ProfileImageUploadForm = ({ current }: Curr) => {
             }}
           />
         </MenuList>
-        <Input sx={{ display: "none" }} type="submit" id="submit" name="fileupload" />
         <MenuList
           className="img-form-menu"
           sx={{ padding: "0.5em", color: "#cccccc" }}
-          onClick={handleDelete}
+          onClick={() => deleteAvatar.mutate()}
         >
           Remove
         </MenuList>
-      </>
+      </div>
     </NavPopper>
   );
 };

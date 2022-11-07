@@ -8,6 +8,8 @@ import HomepageSimilarMovies from "./components/HomepageSimilarMovies";
 export const Homepage = () => {
   const { user } = useAuth();
 
+  console.log(user);
+
   return (
     <Container maxWidth="xl" className="main-page-cont" sx={{ marginTop: "5em" }}>
       <div>

@@ -1,7 +1,7 @@
-import ProfileLists from "./components/ProfileLists";
 import Follow from "@/components/Follow";
 import ProfileInfo from "./components/ProfileInfo";
 import ProfileMedia from "./components/ProfileMedia";
+import ProfileLists from "./components/ProfileLists";
 import DialogComponent from "@/components/DialogComponent";
 import ListItemComponent from "./components/ProfileListItemComponent";
 import ProfileImageUploadForm from "./components/ProfileImageUploadForm";
@@ -57,19 +57,18 @@ export const Profile = () => {
     favorites,
   } = data;
 
+  //if logged in user and current profile user are not the same user wont be able
+  //to change the avatar
+  const avatarComponent = (
+    <Avatar className="profile-avatar" onClick={handleToggle} src={avatar[0]} />
+  );
+
   return (
     <div className="profile-container">
       <Container className="profile-container-grid" disableGutters>
         <Grid container className="profile-container-grid-1">
-          <ProfileImageUploadForm
-            current={
-              <Avatar
-                className="profile-avatar"
-                onClick={user?.username === params.user ? handleToggle : () => setUpload(false)}
-                src={`https://dragpersonalproj.xyz/cinema-log${avatar[0]}`}
-              />
-            }
-          />
+          {user.username === params.user && <ProfileImageUploadForm current={avatarComponent} />}
+          {user.username !== params.user && avatarComponent}
           <Grid className="profile-container-grid-2" item xs={3}>
             <Typography className="profile-name" align="left" variant="h4">
               {username}

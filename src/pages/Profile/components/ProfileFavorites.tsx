@@ -46,14 +46,18 @@ const ProfileFavorites = ({ favorites }: FavoritesProps) => {
     setEdit(true);
   };
 
+  const handleHover = () => {
+    setHover(true);
+  };
+
+  const handleNoHover = () => {
+    setHover(false);
+  };
+
   return (
     <Container
-      onMouseEnter={() => {
-        setHover(true);
-      }}
-      onMouseLeave={() => {
-        setHover(false);
-      }}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleNoHover}
       className="favorite-container"
     >
       <div className="fav-text-cont">

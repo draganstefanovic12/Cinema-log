@@ -2,7 +2,7 @@ import { Media } from "@/pages/MediaPage/types";
 import axios from "axios";
 
 const backendApi = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "https://dragpersonalproj.xyz/cinema-log",
 });
 
 //handles preflight error
@@ -88,6 +88,7 @@ interface UpdateType {
   update_type: "tv watchlist" | "movie watchlist" | "tv watched" | "movie watched";
 }
 
+//updates tv/movie watched/watchlist depending on the parameters
 export const updateUserList = async (media: UpdateType & any) => {
   const poster = `https://image.tmdb.org/t/p/w500${media.poster}`;
   const options = { name: media.name, id: media.id, type: media.update_type, poster: poster };
@@ -96,21 +97,25 @@ export const updateUserList = async (media: UpdateType & any) => {
   return response.data;
 };
 
+//gets a single list on list page
 export const getList = async (name: string | undefined) => {
   const response = await backendApi.get(`/lists/list/${name}`);
   return response.data;
 };
 
+//likes a user list
 export const likeList = async (username: string) => {
   const response = await backendApi.post(`/user/likelist/${username}`);
   return response.data;
 };
 
+//removes a single list
 export const removeList = async (name: string) => {
   const response = await backendApi.delete(`/lists/delete/${name}`);
   return response.data;
 };
 
+//recommends tv show/movie to a user
 export const recommendMedia = async (movie: string, username: string) => {
   const response = await backendApi.post(`/user/recommendation/${username}`, { movie: movie });
   return response.data;
@@ -146,6 +151,11 @@ export const uploadAvatar = async (file: File) => {
   formData.append("fileupload", file);
 
   const response = await backendApi.post("/image/upload", formData);
+  return response.data;
+};
+
+export const removeAvatar = async () => {
+  const response = await backendApi.delete("/image/delete");
   return response.data;
 };
 
