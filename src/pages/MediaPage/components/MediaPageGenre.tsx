@@ -14,7 +14,7 @@ const MediaPageGenre = ({ data, type }: GenreProps) => {
 
   const genres = data.genres.map((genre: GenreMapped) => (
     <ListItem
-      onClick={() => navigate(`/search/${genre.id}/${type}/`)}
+      onClick={() => navigate(`/search/${genre.id}/${type}/1`)}
       className="genre"
       key={genre.id}
     >

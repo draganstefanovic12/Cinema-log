@@ -9,3 +9,5 @@ export type Result = {
 export type query = {
   query: string | undefined;
 };
+
+export type SearchSelection = "users" | "actors" | "media";

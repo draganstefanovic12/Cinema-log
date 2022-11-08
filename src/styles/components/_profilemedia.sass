@@ -2,21 +2,24 @@
 
 .profile-media-cont
     padding-top: 0.5rem
+    min-height: 750px
     background-color: #181e26
     border-bottom-left-radius: 0.5rem
     border-bottom-right-radius: 0.5rem
+    position: relative
     .profile-media-watched-watchlist
         display: flex
         width: 7rem
     .profile-media-grid-cont
-        min-height: 50vh
-        margin-bottom: 0.5rem
-        display: grid
+        display: flex
+        flex-wrap: wrap
+        align-content: flex-start
+        gap: 1rem
+        min-height: 650px
         background-color: $secondary-color
         padding: 1rem
-        grid-template-columns: repeat(auto-fill, 8.5rem)
-        grid-template-rows: repeat(auto-fill, 13.5rem)
         .movie-card-link
-            width: 8rem
+            width: 7.85rem
+            height: 12rem
             .movie-card-img
-                width: 8rem
+                width: 7.85em

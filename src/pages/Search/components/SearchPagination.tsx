@@ -1,15 +1,15 @@
 import { Pagination } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
 type PaginationProps = {
-  setOffset: React.Dispatch<React.SetStateAction<number>>;
-  data?: {
-    total_pages: number;
-  };
+  total_pages: string;
   count?: number;
 };
 
-const SearchPagination = ({ setOffset, data, count }: PaginationProps) => {
-  console.log(data, count);
+const SearchPagination = ({ total_pages, count }: PaginationProps) => {
+  const { query, type, offset } = useParams();
+  const navigate = useNavigate();
+
   return (
     <Pagination
       className="pagination"
@@ -20,12 +20,10 @@ const SearchPagination = ({ setOffset, data, count }: PaginationProps) => {
       }}
       hidePrevButton
       hideNextButton
-      count={data ? data!.total_pages : count}
+      page={Number(offset)}
+      count={total_pages ? Number(total_pages) : count}
       onChange={(e: React.ChangeEvent<unknown>) => {
-        setOffset(parseInt((e.target as HTMLElement).innerText));
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-        }, 200);
+        navigate(`/search/${query}/${type}/${parseInt((e.target as HTMLElement).innerHTML)}`);
       }}
       shape="rounded"
     />

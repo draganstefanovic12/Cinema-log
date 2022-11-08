@@ -43,7 +43,7 @@ const MoviesOrShows = ({ media, type }: MediaProps) => {
       </div>
       {watchType && (
         <Container className="profile-media-grid-cont">
-          {watchType.slice(offset, offset + 18).map((media: Media) => (
+          {watchType.slice(offset, offset + 24).map((media: Media) => (
             <Link className="movie-card-link" key={media.id} to={`/${type}/${media.id}`}>
               <Card variant="outlined">
                 <CardMedia
@@ -59,18 +59,13 @@ const MoviesOrShows = ({ media, type }: MediaProps) => {
       )}
       <Pagination
         className="pagination"
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "1em",
-        }}
         hidePrevButton
         hideNextButton
         onChange={(e: React.ChangeEvent<unknown>) => {
           const input = e.target as HTMLElement;
-          setOffset((parseInt(input.innerText) - 1) * 18);
+          setOffset((parseInt(input.innerText) - 1) * 24);
         }}
-        count={Math.ceil(media.watched.length / 18)}
+        count={Math.ceil(media.watched.length / 24)}
         shape="rounded"
       />
     </Container>

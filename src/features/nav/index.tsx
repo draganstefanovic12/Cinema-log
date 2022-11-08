@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useState } from "react";
 import { Container } from "@mui/system";
@@ -16,14 +17,14 @@ const Nav = () => {
   return (
     <nav className="nav">
       <Container className="nav-inner">
-        <a
+        <Link
           className="home-link"
           onMouseLeave={() => setHover(false)}
           onMouseEnter={() => setHover(true)}
-          href="/Cinema-log/"
+          to="/"
         >
           {hover ? <MovieCreationRoundedIcon /> : <MovieCreationOutlinedIcon />}
-        </a>
+        </Link>
         <div className="nav-inner-user">
           {user && (
             <Container className="avatar-container">

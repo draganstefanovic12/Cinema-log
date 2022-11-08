@@ -33,7 +33,7 @@ const BrowserRoutes = () => {
           <Route path="/" element={auth ? <Homepage /> : <Navigate to="/login" />} />
           <Route path="/person/:id/" element={<Person />} />
           <Route path="/user/:user" element={<Profile />} />
-          <Route path="/search/:query/:type" element={<Search />} />
+          <Route path="/search/:query/:type/:offset" element={<Search />} />
           <Route path="/:type/:id/" element={<MediaPage />} />
           <Route path="/register" element={!auth ? <Register /> : <Navigate to="/" />} />
           <Route path="/login" element={!auth ? <Login /> : <Navigate to="/" />} />

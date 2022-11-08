@@ -8,7 +8,7 @@ const NavSearch = () => {
   const navigate = useNavigate();
 
   const handleClick = (e: string) => {
-    e === "Enter" && value && navigate(`/search/${value}/multi`);
+    e === "Enter" && value && navigate(`/search/${value}/multi/1`);
   };
 
   return (
@@ -18,7 +18,7 @@ const NavSearch = () => {
         <InputAdornment position="start">
           <SearchOutlinedIcon
             className="svg"
-            onClick={() => value && navigate(`/search/${value}/multi`)}
+            onClick={() => value && navigate(`/search/${value}/multi/1`)}
           />
         </InputAdornment>
       }

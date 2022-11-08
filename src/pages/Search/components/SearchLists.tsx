@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
 import { useQuery } from "react-query";
 import { Container } from "@mui/system";
@@ -12,12 +13,11 @@ const SearchLists = () => {
   if (isLoading) {
     return <Spinner />;
   }
-  console.log(data);
 
   return (
     <Container>
       {data.map((list: ListToParse) => (
-        <a href={`/Cinema-log/#/list/${list.name}`}>
+        <Link to={`/list/${list.name}`}>
           <Card
             sx={{
               height: "20rem",
@@ -43,7 +43,7 @@ const SearchLists = () => {
               </div>
             </CardContent>
           </Card>
-        </a>
+        </Link>
       ))}
     </Container>
   );

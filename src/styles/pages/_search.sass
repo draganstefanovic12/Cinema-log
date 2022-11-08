@@ -1,11 +1,27 @@
 .search-container
-    display: grid
-    padding: 1em
+    display: flex
     margin-top: 4em
     justify-content: center
     animation: fade 500ms 1 ease-in-out forwards
     .search-container-media-text
         color: #cccccc
         margin-bottom: 0.4rem
-        .poster
-            width: 15em
+    .search-container-results
+        display: flex
+        justify-content: center
+        gap: 1rem
+        flex-wrap: wrap
+        .movie-poster-link
+            transition: transform 0.2s
+            &:hover
+                transform: scale(1.05)
+            .movie-card-name
+                font-weight: 700
+                width: 10rem
+                color: #cccccc
+                white-space: nowrap
+                text-overflow: ellipsis
+                overflow: hidden
+            .search-img
+                width: 10rem
+                border-radius: 1rem
