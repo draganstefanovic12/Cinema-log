@@ -1,10 +1,29 @@
 # Cinema Log
 
-Website I created using the MERN stack that allows users to add media (Movies/TV Shows) to their watched/watchlists. There's also an option to follow other users, create custom lists, recommend media to other users, like other users lists and many more.
+Full stack MERN application created by utilizing TMDB API. 
 
-I've set up an authorization too using JWT and I'm using bcrypt to hash and salt the passwords. 
+Features:
+- Authorization/authentication implemented by JWT.
+- Custom list creation, able to add media as a recommendation to other users.
+- Single media recommendation to users you follow.
+- Showcasing favorite media on profile and able to set avatars
+- Saving media to watchlist or setting it as watched to showcase to other users on your profile
+- Able to see activity of users you follow to see what they watched/added to watchlist
+- Guest user to showcase the application without the need of registering
 
-Come check out the site and recommend me some movies, my username is dragan.
+Tech stack:
+
+Frontend:
+- React
+- React Query
+- TypeScript
+- SASS
+- MaterialUI
+
+Backend:
+- NodeJS/Express
+- MongoDB
+- JWT/bcrypt for password hashing and authorization/authentication
 
 
 <a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
