@@ -6,12 +6,12 @@ import DebouncedSearch from "@/components/DebouncedSearch";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 
-type FavoriteCardsProps = {
+interface FavoriteCardsProps {
   isEditing: boolean;
   media: Media;
   handleRemoveFavoriteMedia: (date: string) => void;
   handleAddFavoriteMedia: (media: Media) => void;
-};
+}
 
 export const ProfileFavoriteCard = (props: FavoriteCardsProps) => {
   const [input, setInput] = useState<boolean>(false);
@@ -36,15 +36,14 @@ export const ProfileFavoriteCard = (props: FavoriteCardsProps) => {
     setInput(false);
   };
 
+  const removeFavoriteMedia = () => {
+    handleRemoveFavoriteMedia(media!.createdAt!);
+  };
+
   return isEditing ? (
     <div className="fav-edit-cont" onMouseEnter={handleHover} onMouseLeave={handleNoHover}>
       {hover && media && (
-        <HighlightOffOutlinedIcon
-          onClick={() => {
-            handleRemoveFavoriteMedia(media!.createdAt!);
-          }}
-          className="fav-remove-icon"
-        />
+        <HighlightOffOutlinedIcon onClick={removeFavoriteMedia} className="fav-remove-icon" />
       )}
       <MediaCard src={media ? `/w500/${media!.poster_path}` : undefined} style={{ height: "12.4rem" }} />
       {!media && hover && <ControlPointOutlinedIcon onClick={handleToggleInput} className="fav-add-icon" />}

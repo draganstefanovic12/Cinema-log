@@ -23,7 +23,10 @@ export const Person = () => {
   return (
     <Container className="person-cont">
       <div className="person-cont-head">
-        <MediaCard src={`/w500/${data.profile_path}`} style={{ float: "left" }} />
+        <MediaCard
+          src={`/w500/${data.profile_path}`}
+          style={{ float: "left", height: "15rem", width: "10rem" }}
+        />
         <div className="person-cont-text">
           <p>{data.name}</p>
           <p>{data.biography}</p>

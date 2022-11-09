@@ -1,7 +1,8 @@
-import { search } from "@/features/api/backendApi";
+import { searchMulti } from "@/features/api/backendApi";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { Container } from "@mui/material";
 import { SearchSelection } from "./types";
 import Spinner from "@/components/Spinner";
 import SearchLists from "./components/SearchLists";
@@ -9,7 +10,6 @@ import SearchUsers from "./components/SearchUsers";
 import SearchMedia from "./components/SearchMedia";
 import SearchOptions from "./components/SearchOptions";
 import SearchActorOrCrew from "./components/SearchActorOrCrew";
-import { Container } from "@mui/material";
 
 export const Search = () => {
   const query = useParams();
@@ -19,11 +19,12 @@ export const Search = () => {
     query.type === "multi"
       ? `/multi/${query.query}/`
       : `/discover/${query.query}/${query.type}/${query.offset}`;
+  console.log(searchQuery);
 
   const { isLoading, data } = useQuery(
     ["search", query],
     () => {
-      return search(searchQuery);
+      return searchMulti(searchQuery);
     },
     { refetchOnMount: false, refetchOnWindowFocus: false }
   );

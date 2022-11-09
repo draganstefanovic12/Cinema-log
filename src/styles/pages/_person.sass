@@ -14,11 +14,14 @@
     .person-cards
         display: flex
         flex-wrap: wrap
+        align-content: flex-start
         padding-top: 1rem
         gap: 1rem
-        align-content: flex-start
         background-color: $secondary-color
         .person-media-link
+            width: 8.5rem
             p
+                white-space: nowrap
+                overflow: hidden
                 &:nth-child(3)
                     color: #cccccc

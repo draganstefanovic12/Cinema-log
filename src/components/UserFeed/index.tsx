@@ -43,8 +43,8 @@ const UserFeed = ({ feed, name }: UserFeedProps) => {
       </Card>
       {name === "Friend Activity" && (
         <p>
-          Browse <a href="/Cinema-log/#/search/allusers/multi/1">all users</a> and find someone who
-          shares the same interests as you.
+          Browse <a href="/Cinema-log/#/search/allusers/multi/1">all users</a> and find someone who shares the
+          same interests as you.
         </p>
       )}
     </div>

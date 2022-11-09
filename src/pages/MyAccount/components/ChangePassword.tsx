@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import { checkPasswordChange } from "@/features/api/backendApi";
+import { Button, Container, TextField, Typography } from "@mui/material";
 
 const ChangePassword = () => {
   const [error, setError] = useState<boolean>(false);
@@ -9,10 +9,12 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState<string>("");
 
   const handleChangePassword = async () => {
-    const passwordStatus = await checkPasswordChange(oldPassword, newPassword).catch((err) => {
-      err && setError(true);
-    });
-    passwordStatus && setChange("done");
+    try {
+      setChange("done");
+      await checkPasswordChange(oldPassword, newPassword);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   const handleOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -63,17 +63,13 @@ export const Profile = () => {
 
   //if logged in user and current profile user are not the same user wont be able
   //to change the avatar
-  const avatarComponent = (
-    <Avatar className="profile-avatar" onClick={handleToggle} src={avatar[0]} />
-  );
+  const avatarComponent = <Avatar className="profile-avatar" onClick={handleToggle} src={avatar[0]} />;
 
   return (
     <div className="profile-container">
       <Container className="profile-container-grid" disableGutters>
         <Grid container className="profile-container-grid-1">
-          {user && user.username === params.user && (
-            <ProfileImageUploadForm current={avatarComponent} />
-          )}
+          {user && user.username === params.user && <ProfileImageUploadForm current={avatarComponent} />}
           {user && user.username !== params.user && avatarComponent}
           <Grid className="profile-container-grid-2" item xs={3}>
             <Typography className="profile-name" align="left" variant="h4">
@@ -82,9 +78,7 @@ export const Profile = () => {
                 {bio && <Typography>{bio}</Typography>}
                 <div className="profile-details">
                   <Typography variant="subtitle1">Movies watched: {watched.length}</Typography>
-                  <Typography variant="subtitle1">
-                    TV Shows watched: {showsWatched.length}
-                  </Typography>
+                  <Typography variant="subtitle1">TV Shows watched: {showsWatched.length}</Typography>
                   <DialogComponent
                     followComparison={user && user!.following}
                     children={followers}

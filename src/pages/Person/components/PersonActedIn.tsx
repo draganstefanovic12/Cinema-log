@@ -38,7 +38,7 @@ const PersonActedIn = ({ props }: PersonActedInProps) => {
           onClick={handleActor}
           button
           sx={{
-            backgroundColor: actorOrDirector !== null && actorOrDirector === cast ? "#161b22" : "#181e26",
+            backgroundColor: actorOrDirector === cast ? "#161b22" : "#181e26",
           }}
         >
           Actor
@@ -48,7 +48,7 @@ const PersonActedIn = ({ props }: PersonActedInProps) => {
         <ListItem
           className="person-profession-selection"
           sx={{
-            backgroundColor: actorOrDirector !== null && actorOrDirector === crew ? "#161b22" : "#181e26",
+            backgroundColor: actorOrDirector === crew ? "#161b22" : "#181e26",
           }}
           onClick={handleCrew}
           button

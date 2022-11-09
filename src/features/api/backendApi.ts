@@ -2,7 +2,7 @@ import { Media } from "@/pages/MediaPage/types";
 import axios from "axios";
 
 const backendApi = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "https://dragpersonalproj.xyz/cinema-log",
 });
 
 //handles preflight error
@@ -131,8 +131,13 @@ export const fetchMediaPerson = async (id: string | undefined) => {
   return response.data;
 };
 
-export const search = async (query: string) => {
+export const searchMulti = async (query: string) => {
   const response = await backendApi.get(`/imdb/${query}`);
+  return response.data;
+};
+
+export const searchActors = async (type: string, id: string) => {
+  const response = await backendApi.get(`/imdb/cast/${type}/${id}`);
   return response.data;
 };
 

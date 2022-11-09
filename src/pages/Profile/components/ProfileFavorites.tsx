@@ -10,8 +10,8 @@ import ProfileFavoriteCard from "./ProfileFavoritesCard";
 
 const ProfileFavorites = () => {
   const { user } = useAuth();
-  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [favoriteMedia, setFavoriteMedia] = useState<Media[]>([]);
   const queryClient = useQueryClient();
   const params = useParams();

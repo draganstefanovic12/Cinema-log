@@ -99,6 +99,7 @@ ul {
 }
 .nav .nav-inner .nav-inner-user .nav-popper .nav-popper-btn {
   padding: 0;
+  background-color: #14181c;
   color: #cccccc;
   text-transform: none;
 }
@@ -269,9 +270,11 @@ ul {
 .user-feed-container .user-feed-div {
   background-color: #161b22;
   width: 100%;
+  border-radius: 0.5rem;
 }
 .user-feed-container .user-feed-div .user-feed-grid {
   background-color: #161b22;
+  border-radius: 0.5rem;
   width: 100%;
 }
 .user-feed-container .user-feed-div .user-feed-grid .user-feed-mapped-grid {
@@ -416,6 +419,7 @@ ul {
 }
 .homepage-list-cont .homepage-list-cont-card-cont {
   background-color: #161b22;
+  border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 5px;
 }
 .homepage-list-cont .homepage-list-cont-card-cont .main-page-list-container {
@@ -604,6 +608,7 @@ footer .footer-film-data .tmdb:hover {
 }
 .search-container .search-container-results .movie-poster-link .movie-card-name {
   font-weight: 700;
+  font-size: 14px;
   width: 10rem;
   color: #cccccc;
   white-space: nowrap;
@@ -857,10 +862,17 @@ footer .footer-film-data .tmdb:hover {
 .person-cont .person-cards {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   padding-top: 1rem;
   gap: 1rem;
-  align-content: flex-start;
   background-color: #161b22;
+}
+.person-cont .person-cards .person-media-link {
+  width: 8.5rem;
+}
+.person-cont .person-cards .person-media-link p {
+  white-space: nowrap;
+  overflow: hidden;
 }
 .person-cont .person-cards .person-media-link p:nth-child(3) {
   color: #cccccc;
@@ -996,7 +1008,7 @@ body .main-page-cont .main-page-feed-cont .main-page-list-container {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  border-radius: 1em;
+  border-radius: 1rem;
 }
 body .main-page-cont .main-page-feed-cont .main-page-list-container .list-created-by .list-username {
   color: #fff;
