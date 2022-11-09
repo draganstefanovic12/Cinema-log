@@ -2,23 +2,23 @@ import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { Typography } from "@mui/material";
 import { updateFavorites } from "@/features/api/backendApi";
-import { useEffect, useState } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import ProfileFavoriteCard from "./ProfileFavoritesCard";
 
-const ProfileFavorites = () => {
+interface FavoriteProps {
+  favorites: Media[] | undefined;
+}
+
+const ProfileFavorites = ({ favorites }: FavoriteProps) => {
   const { user } = useAuth();
   const [hover, setHover] = useState<boolean>();
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [favoriteMedia, setFavoriteMedia] = useState<Media[]>([]);
+  const [favoriteMedia, setFavoriteMedia] = useState<Media[]>(favorites! || []);
   const queryClient = useQueryClient();
   const params = useParams();
-
-  useEffect(() => {
-    user && setFavoriteMedia(user.favorites);
-  }, [user]);
 
   const handleAddFavoriteMedia = (movie: Media) => {
     setFavoriteMedia!((currMovies: Media[]) => [...currMovies, movie]);

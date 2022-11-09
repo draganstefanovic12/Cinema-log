@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { ListItem } from "@mui/material";
 import { useState } from "react";
 import { Container } from "@mui/system";
-import { Grid, ListItem } from "@mui/material";
 import { Actors, Media, OtherCrew } from "@/pages/MediaPage/types";
 import MediaCard from "@/components/MediaCard/MediaCard";
 

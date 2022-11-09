@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { query } from "../types";
+import { Avatar } from "@mui/material";
 import { useQuery } from "react-query";
-import { Container } from "@mui/system";
 import { UserModel } from "@/pages/Profile/types";
 import { searchUsers } from "@/features/api/backendApi";
-import { Avatar, Typography } from "@mui/material";
 import Spinner from "@/components/Spinner";
 
 const SearchUsers = ({ query }: query) => {

@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { Container } from "@mui/system";
 import { Link, useParams } from "react-router-dom";
 import { getList, likeList } from "@/features/api/backendApi";
-import { CardMedia, ListItem, Typography } from "@mui/material";
+import { ListItem, Typography } from "@mui/material";
 import ListRemove from "./components/ListRemove";
 import Spinner from "@/components/Spinner";
 import MediaCard from "@/components/MediaCard/MediaCard";

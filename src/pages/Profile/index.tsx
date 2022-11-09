@@ -48,6 +48,7 @@ export const Profile = () => {
     return <CircularProgress className="spinner" />;
   }
 
+  console.log(data);
   //destructuring user for more readability
   const {
     username,
@@ -107,7 +108,7 @@ export const Profile = () => {
           {user && params.user !== user?.username && <Follow followedUser={params.user} />}
         </Grid>
       </Container>
-      {state === "feed" && <ProfileInfo name="User Feed" favorites={favorites} feed={feed} />}
+      {state === "feed" && <ProfileInfo name="User Feed" feed={feed} favorites={favorites} />}
       {state === "movie" && <ProfileMedia type={state} user={params.user} media={data.movies} />}
       {state === "tv" && <ProfileMedia type={state} user={params.user} media={data.shows} />}
       {state === "lists" && <ProfileLists list={data.lists} usr={params.user} />}

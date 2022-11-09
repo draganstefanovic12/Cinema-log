@@ -7,7 +7,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 export type UserFeedProps = {
   feed: Feed[];
   name: string;
-  favorites?: Media[] | undefined;
+  favorites?: Media[];
 };
 
 const UserFeed = ({ feed, name }: UserFeedProps) => {
