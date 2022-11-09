@@ -2,7 +2,7 @@ import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { updateFavorites } from "@/features/api/backendApi";
 import { useQueryClient, useMutation } from "react-query";
@@ -19,6 +19,10 @@ const ProfileFavorites = ({ favorites }: FavoriteProps) => {
   const [favoriteMedia, setFavoriteMedia] = useState<Media[]>(favorites! || []);
   const queryClient = useQueryClient();
   const params = useParams();
+
+  useEffect(() => {
+    setFavoriteMedia(favorites!);
+  }, [favorites]);
 
   const handleAddFavoriteMedia = (movie: Media) => {
     setFavoriteMedia!((currMovies: Media[]) => [...currMovies, movie]);

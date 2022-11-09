@@ -32,8 +32,9 @@ export const Profile = () => {
   const { user } = useAuth();
   const params = useParams();
 
+  console.log(params.user);
   const { isLoading, data } = useQuery(
-    ["user", params],
+    ["user", params.user],
     () => {
       return getUser(params?.user);
     },
@@ -108,7 +109,7 @@ export const Profile = () => {
           {user && params.user !== user?.username && <Follow followedUser={params.user} />}
         </Grid>
       </Container>
-      {state === "feed" && <ProfileInfo name="User Feed" feed={feed} favorites={favorites} />}
+      {state === "feed" && <ProfileInfo name="User Feed" feed={feed} favorites={data.favorites} />}
       {state === "movie" && <ProfileMedia type={state} user={params.user} media={data.movies} />}
       {state === "tv" && <ProfileMedia type={state} user={params.user} media={data.shows} />}
       {state === "lists" && <ProfileLists list={data.lists} usr={params.user} />}
