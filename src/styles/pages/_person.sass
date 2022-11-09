@@ -5,10 +5,20 @@
     color: #cccccc
     background-color: #181e26
     padding: 1rem
+    .person-cont-head
+        display: flex
+        gap: 1rem
+        margin-bottom: 1rem
+    .person-profession-selection
+        width: 5rem
     .person-cards
-        display: grid
-        grid-template-columns: repeat(5, 13rem)
+        display: flex
+        flex-wrap: wrap
+        padding-top: 1rem
+        gap: 1rem
+        align-content: flex-start
         background-color: $secondary-color
-        justify-content: center
-        padding-top: 1.5rem
-        padding-bottom: 1.5rem
+        .person-media-link
+            p
+                &:nth-child(3)
+                    color: #cccccc

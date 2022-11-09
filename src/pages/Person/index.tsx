@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { fetchMediaPerson } from "@/features/api/backendApi";
-import { CardMedia, Grid, Typography } from "@mui/material";
 import Spinner from "@/components/Spinner";
+import MediaCard from "@/components/MediaCard/MediaCard";
 import PersonActedIn from "./components/PersonActedIn";
 
 export const Person = () => {
@@ -11,7 +11,7 @@ export const Person = () => {
   const { isLoading, data } = useQuery(
     ["person", id],
     () => {
-      return fetchMediaPerson(id);
+      return fetchMediaPerson(id) as Promise<any>;
     },
     { refetchOnWindowFocus: false, refetchOnMount: false }
   );
@@ -22,21 +22,14 @@ export const Person = () => {
 
   return (
     <Container className="person-cont">
-      <Grid className="person-cont-grid">
-        <CardMedia
-          sx={{ width: "10rem", marginRight: "1rem", float: "left" }}
-          component="img"
-          src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
-          height={200}
-        />
-        <Grid className="person-cont-text">
-          <Typography variant="h6" sx={{ marginBottom: "1rem" }}>
-            {data.name}
-          </Typography>
-          <Typography sx={{ color: "#768697" }}>{data.biography}</Typography>
-        </Grid>
-      </Grid>
-      <PersonActedIn data={data} />
+      <div className="person-cont-head">
+        <MediaCard src={`/w500/${data.profile_path}`} style={{ float: "left" }} />
+        <div className="person-cont-text">
+          <p>{data.name}</p>
+          <p>{data.biography}</p>
+        </div>
+      </div>
+      <PersonActedIn props={data} />
     </Container>
   );
 };

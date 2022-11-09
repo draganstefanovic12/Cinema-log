@@ -40,7 +40,7 @@
     .profile-info-container
         display: grid
         grid-template-columns: 60% 40%
-        min-height: 70vh
+        min-height: 750px
         background-color: #181e26
         padding-top: 1.5rem
     .favorite-container
@@ -63,11 +63,10 @@
                 &:hover
                     cursor: pointer
         .favorite-container-card
-            display: grid
-            grid-template-columns: repeat(auto-fill, 8rem)
+            display: flex
+            flex-wrap: wrap
             gap: 1rem
             .fav-edit-cont
-                margin-bottom: 1em
                 position: relative
                 .search-fav
                     position: absolute

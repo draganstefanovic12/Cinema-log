@@ -28,8 +28,8 @@ const ProfileImageUploadForm = ({ current }: Curr) => {
 
   return (
     <NavPopper open={open} setOpen={setOpen} button={current}>
-      <div>
-        <MenuList className="img-form-menu" sx={{ padding: "0.5em", color: "#cccccc" }}>
+      <div className="img-form-menu-cont">
+        <MenuList className="img-form-menu">
           Upload file
           <input
             name="fileupload"
@@ -40,11 +40,7 @@ const ProfileImageUploadForm = ({ current }: Curr) => {
             }}
           />
         </MenuList>
-        <MenuList
-          className="img-form-menu"
-          sx={{ padding: "0.5em", color: "#cccccc" }}
-          onClick={() => deleteAvatar.mutate()}
-        >
+        <MenuList className="img-form-menu" onClick={() => deleteAvatar.mutate()}>
           Remove
         </MenuList>
       </div>

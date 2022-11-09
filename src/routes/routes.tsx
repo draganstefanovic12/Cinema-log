@@ -1,4 +1,3 @@
-import "@/styles/MobileApp.css";
 import "@/styles/index.css";
 import { Login } from "@/pages/Login";
 import { Search } from "@/pages/Search";

@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 
 const links = [
-  { name: "Browse Users", link: "search/allusers/multi" },
-  { name: "Browse Lists", link: "search/alllists/multi" },
-  { name: "Browse Users", link: "search/allusers/multi" },
+  { name: "Browse Users", link: "/search/allusers/multi/1" },
+  { name: "Browse Lists", link: "/search/alllists/multi/1" },
 ];
 
 const socials = [
@@ -38,11 +37,7 @@ const Footer = () => {
         </ul>
         <ul className="footer-links">
           {socials.map((social, i) => (
-            <li
-              key={i}
-              onClick={() => social.link && window.open(social.link)}
-              className="footer-socials"
-            >
+            <li key={i} onClick={() => social.link && window.open(social.link)} className="footer-socials">
               <img className="footer-img" src={`${social.img}`} alt="social" />
               <p data-content={social.img}>{social.name}</p>
             </li>

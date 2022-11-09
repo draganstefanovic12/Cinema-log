@@ -4,13 +4,13 @@ import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { updateFavorites } from "@/features/api/backendApi";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import ProfileFavoriteCard from "./ProfileFavoritesCard";
 
 const ProfileFavorites = () => {
   const { user } = useAuth();
-  const [edit, setEdit] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>();
   const [favoriteMedia, setFavoriteMedia] = useState<Media[]>([]);
   const queryClient = useQueryClient();
@@ -30,7 +30,7 @@ const ProfileFavorites = () => {
 
   const mutateUserFavorites = useMutation(updateFavorites, {
     onSuccess: () => {
-      setEdit(!edit);
+      setIsEditing(!isEditing);
       queryClient.invalidateQueries("currentUser");
     },
   });
@@ -40,7 +40,7 @@ const ProfileFavorites = () => {
   };
 
   const handleEditing = () => {
-    setEdit(true);
+    setIsEditing(true);
   };
 
   const handleHover = () => {
@@ -52,11 +52,7 @@ const ProfileFavorites = () => {
   };
 
   return (
-    <Container
-      onMouseEnter={handleHover}
-      onMouseLeave={handleNoHover}
-      className="favorite-container"
-    >
+    <Container onMouseEnter={handleHover} onMouseLeave={handleNoHover} className="favorite-container">
       <div className="fav-text-cont">
         <Typography className="favorite-movies" variant="h6">
           Favorites
@@ -65,34 +61,32 @@ const ProfileFavorites = () => {
           <Typography
             variant="subtitle1"
             className="favorite-movies fav-edit"
-            onClick={edit ? handleFinishEditing : handleEditing}
+            onClick={isEditing ? handleFinishEditing : handleEditing}
           >
-            {edit ? "Finish editing" : "Edit"}
+            {isEditing ? "Finish editing" : "Edit"}
           </Typography>
         )}
       </div>
       <div className="favorite-container-card">
-        {edit
+        {isEditing
           ? [...Array(6).keys()].map((i) => (
-              <Fragment key={i}>
-                <ProfileFavoriteCard
-                  edit={edit}
-                  handleRemoveFavoriteMedia={handleRemoveFavoriteMedia}
-                  handleAddFavoriteMedia={handleAddFavoriteMedia}
-                  media={favoriteMedia[i] && favoriteMedia[i]}
-                />
-              </Fragment>
+              <ProfileFavoriteCard
+                key={i}
+                isEditing={isEditing}
+                handleRemoveFavoriteMedia={handleRemoveFavoriteMedia}
+                handleAddFavoriteMedia={handleAddFavoriteMedia}
+                media={favoriteMedia[i] && favoriteMedia[i]}
+              />
             ))
           : favoriteMedia &&
             favoriteMedia.map((media: Media) => (
-              <Fragment key={media.createdAt!}>
-                <ProfileFavoriteCard
-                  edit={edit}
-                  handleRemoveFavoriteMedia={handleRemoveFavoriteMedia}
-                  handleAddFavoriteMedia={handleAddFavoriteMedia}
-                  media={media}
-                />
-              </Fragment>
+              <ProfileFavoriteCard
+                key={media.id}
+                isEditing={isEditing}
+                handleRemoveFavoriteMedia={handleRemoveFavoriteMedia}
+                handleAddFavoriteMedia={handleAddFavoriteMedia}
+                media={media}
+              />
             ))}
       </div>
     </Container>

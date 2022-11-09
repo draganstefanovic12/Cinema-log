@@ -59,7 +59,7 @@ export const MediaPage = () => {
         />
       </div>
       <Grid className="movie-info">
-        <MediaCard src={`/w500/${data.poster_path}`} width="10rem" height="225px" />
+        <MediaCard src={`/w500/${data.poster_path}`} style={{ width: "10rem", height: "225px" }} />
         <Grid className="movie-main-information">
           <div>
             <Typography className="movie-name" variant="h4">

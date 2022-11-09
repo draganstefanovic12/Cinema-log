@@ -1,14 +1,18 @@
+import favBg from "/favorites-empty-bg.png";
+
 interface MediaCardProps {
-  src: string;
-  width?: string;
-  height?: string;
+  src: string | undefined;
+  style?: {
+    [key: string]: string;
+  };
 }
 
-const MediaCard = ({ src, width, height }: MediaCardProps) => {
+const MediaCard = ({ src, style }: MediaCardProps) => {
   return (
     <img
-      src={`https://image.tmdb.org/t/p/${src}`}
-      style={{ width: width ? width : "", height: height ? height : "" }}
+      loading="lazy"
+      src={src ? `https://image.tmdb.org/t/p/${src}` : favBg}
+      style={style}
       alt="poster"
       className="media-card"
     />

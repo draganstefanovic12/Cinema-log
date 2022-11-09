@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
 import { useState } from "react";
 import { Container } from "@mui/system";
-import { Card, CardMedia, ListItem, Pagination } from "@mui/material";
+import { ListItem, Pagination } from "@mui/material";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
 type MediaProps = {
   media: {
@@ -43,16 +44,9 @@ const MoviesOrShows = ({ media, type }: MediaProps) => {
       </div>
       {watchType && (
         <Container className="profile-media-grid-cont">
-          {watchType.slice(offset, offset + 24).map((media: Media) => (
-            <Link className="movie-card-link" key={media.id} to={`/${type}/${media.id}`}>
-              <Card variant="outlined">
-                <CardMedia
-                  className="movie-card-img"
-                  component="img"
-                  src={`https://image.tmdb.org/t/p/w500/${media.poster!}`}
-                  height="200"
-                />
-              </Card>
+          {watchType.slice(offset, offset + 24).map(({ id, poster }: Media, i) => (
+            <Link className="movie-card-link" key={i} to={`/${type}/${id}`}>
+              <MediaCard src={`/w500/${poster!}`} />
             </Link>
           ))}
         </Container>

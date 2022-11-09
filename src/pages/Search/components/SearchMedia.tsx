@@ -19,21 +19,15 @@ const SearchMedia = ({ data }: SearchMediaProps) => {
   return (
     <Container className="search-container">
       <ul className="search-container-results">
-        {filterSearch.map(
-          ({ id, first_air_date, release_date, poster_path, name, title }: Media) => (
-            <Link
-              key={id}
-              className="movie-poster-link"
-              to={`/${first_air_date ? "tv" : "movie"}/${id}`}
-            >
-              <MediaCard src={`/w500/${poster_path}`} />
-              <p className="movie-card-name">
-                {first_air_date && `${name} (${first_air_date.slice(0, 4)})`}
-                {!first_air_date && `${title} (${release_date.slice(0, 4)})`}
-              </p>
-            </Link>
-          )
-        )}
+        {filterSearch.map(({ id, first_air_date, release_date, poster_path, name, title }: Media) => (
+          <Link key={id} className="movie-poster-link" to={`/${first_air_date ? "tv" : "movie"}/${id}`}>
+            <MediaCard src={`/w500/${poster_path}`} />
+            <p className="movie-card-name">
+              {first_air_date && `${name} (${first_air_date.slice(0, 4)})`}
+              {!first_air_date && `${title} (${release_date.slice(0, 4)})`}
+            </p>
+          </Link>
+        ))}
       </ul>
       <SearchPagination total_pages={data.total_pages} />
     </Container>

@@ -26,7 +26,7 @@ const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
         {data &&
           data.results.slice(0, 10).map((movie: Media) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
-              <MediaCard src={`/w500/${movie.poster_path}`} width="10rem" height="15rem" />
+              <MediaCard src={`/w500/${movie.poster_path}`} style={{ width: "10rem", height: "15rem" }} />
             </Link>
           ))}
       </div>

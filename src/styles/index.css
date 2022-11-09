@@ -43,11 +43,6 @@ ul {
     opacity: 1;
   }
 }
-.img-form-menu:hover {
-  cursor: pointer;
-  background-color: #3a3a3a;
-}
-
 .movie-card-link-img {
   border: 1px solid transparent;
   transition: 0.25s border-color;
@@ -75,13 +70,6 @@ ul {
     width: auto;
   }
 }
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -742,7 +730,7 @@ footer .footer-film-data .tmdb:hover {
 .profile-container .profile-info-container {
   display: grid;
   grid-template-columns: 60% 40%;
-  min-height: 70vh;
+  min-height: 750px;
   background-color: #181e26;
   padding-top: 1.5rem;
 }
@@ -770,12 +758,11 @@ footer .footer-film-data .tmdb:hover {
   cursor: pointer;
 }
 .profile-container .favorite-container .favorite-container-card {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 8rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont {
-  margin-bottom: 1em;
   position: relative;
 }
 .profile-container .favorite-container .favorite-container-card .fav-edit-cont .search-fav {
@@ -859,13 +846,24 @@ footer .footer-film-data .tmdb:hover {
   background-color: #181e26;
   padding: 1rem;
 }
+.person-cont .person-cont-head {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.person-cont .person-profession-selection {
+  width: 5rem;
+}
 .person-cont .person-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 13rem);
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  gap: 1rem;
+  align-content: flex-start;
   background-color: #161b22;
-  justify-content: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+}
+.person-cont .person-cards .person-media-link p:nth-child(3) {
+  color: #cccccc;
 }
 
 .register-page {

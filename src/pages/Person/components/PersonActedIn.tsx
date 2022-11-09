@@ -1,91 +1,79 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
+import { Grid, ListItem } from "@mui/material";
 import { Actors, Media, OtherCrew } from "@/pages/MediaPage/types";
-import { Card, CardMedia, Grid, ListItem, Typography } from "@mui/material";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
-type PersonActedInProps = {
-  data: Actors & OtherCrew;
-};
+interface PersonActedInProps {
+  props: Actors & OtherCrew;
+}
 
-const PersonActedIn = ({ data }: PersonActedInProps) => {
-  const [type, setType] = useState<Media[] | null>(null);
+const PersonActedIn = ({ props }: PersonActedInProps) => {
+  const {
+    known_for_department,
+    combined_credits: { crew, cast },
+  } = props;
 
-  useEffect(() => {
-    data.known_for_department === "Acting"
-      ? setType(data.combined_credits.cast)
-      : setType(data.combined_credits.crew);
-  }, [data.combined_credits.cast, data.combined_credits.crew, data.known_for_department]);
+  const [actorOrDirector, setActorOrDirector] = useState<Media[]>(
+    known_for_department === "Acting" ? cast : crew
+  );
+
+  const handleActor = () => {
+    setActorOrDirector(cast);
+  };
+
+  const handleCrew = () => {
+    setActorOrDirector(crew);
+  };
+
+  //filters persons autobiography and shows only movies/shows
+  const filterConditions = ["Self", "Himself", "archive"];
 
   return (
     <>
-      <Grid sx={{ marginTop: "3rem", display: "flex", width: "5rem" }}>
-        {data.combined_credits.cast.length > 5 && (
-          <ListItem
-            onClick={() => setType(data.combined_credits.cast)}
-            button
-            sx={{
-              marginLeft: "1.7rem",
-              backgroundColor:
-                type !== null && type === data.combined_credits.cast ? "#161b22" : "#181e26",
-            }}
-          >
-            Actor
-          </ListItem>
-        )}
-        {data.combined_credits.crew.length > 5 && (
-          <ListItem
-            sx={{
-              backgroundColor:
-                type !== null && type === data.combined_credits.crew ? "#161b22" : "#181e26",
-            }}
-            onClick={() => setType(data.combined_credits.crew)}
-            button
-          >
-            Director
-          </ListItem>
-        )}
-      </Grid>
+      {cast.length > 5 && (
+        <ListItem
+          className="person-profession-selection"
+          onClick={handleActor}
+          button
+          sx={{
+            backgroundColor: actorOrDirector !== null && actorOrDirector === cast ? "#161b22" : "#181e26",
+          }}
+        >
+          Actor
+        </ListItem>
+      )}
+      {crew.length > 5 && (
+        <ListItem
+          className="person-profession-selection"
+          sx={{
+            backgroundColor: actorOrDirector !== null && actorOrDirector === crew ? "#161b22" : "#181e26",
+          }}
+          onClick={handleCrew}
+          button
+        >
+          Director
+        </ListItem>
+      )}
       <Container className="person-cards">
-        {type &&
-          type
-            .filter((acted: Media) =>
-              acted.character
-                ? !acted.character.includes("Self") &&
-                  !acted.character.includes("Himself") &&
-                  !acted.character.includes("archive") &&
-                  acted.popularity > 10 &&
-                  acted.poster_path !== null &&
-                  acted.character !== ""
-                : acted.poster_path !== null && acted.job === "Director"
-            )
-            .sort((a: Media, b: Media) => b.popularity - a.popularity)
-            .slice(0, 20)
-            .map((acted: Media) => (
-              <Link
-                style={{
-                  width: "10rem",
-                  height: "19rem",
-                }}
-                key={acted.id}
-                to={`/${acted.media_type}/${acted.id}`}
-              >
-                <Card className="movie-card-link" variant="outlined">
-                  <CardMedia
-                    sx={{ width: "10rem" }}
-                    component="img"
-                    src={`https://image.tmdb.org/t/p/w500/${acted.poster_path}`}
-                    height="250"
-                  />
-                </Card>
-                <Typography align="center" sx={{ color: "#fff" }}>
-                  {acted.name} {acted.title}
-                </Typography>
-                <Typography align="center" sx={{ color: "#cccccc" }}>
-                  {acted.character}
-                </Typography>
-              </Link>
-            ))}
+        {actorOrDirector
+          .filter(({ character, popularity, job }: Media) =>
+            character
+              ? filterConditions.some((el) => !character.includes(el)) && popularity > 10 && character !== ""
+              : job === "Director"
+          )
+          .sort((a: Media, b: Media) => b.popularity - a.popularity)
+          .slice(0, 20)
+          .map(({ id, media_type, poster_path, name, title, character }: Media, i) => (
+            <Link className="person-media-link" key={i} to={`/${media_type}/${id}`}>
+              <MediaCard src={`/w500/${poster_path}`} style={{ height: "12.5rem" }} />
+              <p>
+                {name} {title}
+              </p>
+              <p>{character}</p>
+            </Link>
+          ))}
       </Container>
     </>
   );
