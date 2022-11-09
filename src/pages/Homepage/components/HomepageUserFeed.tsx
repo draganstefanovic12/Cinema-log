@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { Typography } from "@mui/material";
 import UserFeed from "@/components/UserFeed";
 
 const HomepageUserFeed = () => {
@@ -8,11 +8,10 @@ const HomepageUserFeed = () => {
   return (
     <>
       {user && user.followedUsersFeed.length === 0 && (
-        <Typography>
-          You're not following anyone yet. Browse{" "}
-          <a href="/Cinema-log/#/search/allusers/multi">users</a> and find someone who shares the
-          same interests as you.
-        </Typography>
+        <p>
+          You're not following anyone yet. Browse <Link to="/search/allusers/multi/1">users</Link>{" "}
+          and find someone who shares the same interests as you.
+        </p>
       )}
       {user && user.followedUsersFeed.length > 0 && (
         <UserFeed feed={user.followedUsersFeed} name={"Friend Activity"} />

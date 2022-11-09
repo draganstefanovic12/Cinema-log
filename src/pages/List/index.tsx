@@ -7,6 +7,7 @@ import { getList, likeList } from "@/features/api/backendApi";
 import { CardMedia, ListItem, Typography } from "@mui/material";
 import ListRemove from "./components/ListRemove";
 import Spinner from "@/components/Spinner";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
 export const PageList = () => {
   const { name } = useParams();
@@ -50,12 +51,7 @@ export const PageList = () => {
       <Container className="list-grid-cont">
         {parsed.map((list: List, i: number) => (
           <Link key={i} className="movie-card-link" to={`/${list.type!}/${list.id!}`}>
-            <CardMedia
-              sx={{ width: "8em" }}
-              component="img"
-              height="200"
-              src={`https://image.tmdb.org/t/p/w500/${list.poster_path}`}
-            />
+            <MediaCard src={`/w500/${list.poster_path}`} />
           </Link>
         ))}
       </Container>

@@ -24,6 +24,7 @@ export type UserModel = {
   movies: UserMedia;
   shows: UserMedia;
   name: string;
+  favorites: Media[];
   followers: [];
   following: [];
   followedUsersFeed: Feed[];

@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
 import { useQuery } from "react-query";
+import { Typography } from "@mui/material";
 import { getTopRatedOrTrending } from "@/features/api/backendApi";
-import { Card, CardMedia, Typography } from "@mui/material";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
-type HomepageMovieCardsProps = {
+interface HomepageMovieCardsProps {
   query: string;
   name: string;
-};
+}
 
 const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
   const { data } = useQuery(
-    ["homepage_lists"],
+    ["homepage_lists", query],
     () => {
       return getTopRatedOrTrending(query);
     },
@@ -19,20 +21,13 @@ const HomepageMovieCards = ({ query, name }: HomepageMovieCardsProps) => {
 
   return (
     <div>
-      <Typography variant="h5">{name}</Typography>
+      <Typography variant="h6">{name}</Typography>
       <div className="homepage-movie-cards-cont similar">
         {data &&
           data.results.slice(0, 10).map((movie: Media) => (
-            <a key={movie.id} href={`/Cinema-log/#/movie/${movie.id}`}>
-              <Card className="movie-card-link" variant="outlined">
-                <CardMedia
-                  className="movie-card-link-img"
-                  component="img"
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  height="250"
-                />
-              </Card>
-            </a>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
+              <MediaCard src={`/w500/${movie.poster_path}`} width="10rem" height="15rem" />
+            </Link>
           ))}
       </div>
     </div>

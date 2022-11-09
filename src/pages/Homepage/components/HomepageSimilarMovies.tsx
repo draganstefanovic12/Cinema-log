@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useQuery } from "react-query";
+import { Typography } from "@mui/material";
 import { getRecommendations } from "@/features/api/backendApi";
-import { Card, CardMedia, Typography } from "@mui/material";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
 const HomepageSimilarMovies = () => {
   const { user } = useAuth();
@@ -19,21 +20,12 @@ const HomepageSimilarMovies = () => {
 
   return (
     <>
-      <Typography sx={{ marginBottom: "0.5rem" }} variant="h5">
-        Recommendations based on what you already watched
-      </Typography>
+      <Typography variant="h6">Recommendations based on what you already watched</Typography>
       <div className="similar">
         {data &&
           data.results.slice(0, 10).map((movie: Media) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
-              <Card className="movie-card-link" variant="outlined">
-                <CardMedia
-                  className="movie-card-link-img"
-                  component="img"
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  height="250"
-                />
-              </Card>
+              <MediaCard src={`/w500/${movie.poster_path}`} width="10rem" height="15rem" />
             </Link>
           ))}
       </div>

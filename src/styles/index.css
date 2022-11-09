@@ -161,33 +161,14 @@ ul {
 }
 
 .user-search {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem;
 }
-.user-search .user-search-card {
-  width: 40.5rem;
-  margin-bottom: 1rem;
-}
-.user-search .user-search-card .user-search-card-content {
-  background-color: #14181c;
-}
-
-.user-grid-text {
-  width: 10rem;
-  color: #cccccc;
-}
-.user-grid-text h5 {
-  padding-left: 1rem;
-}
-.user-grid-text .div-wrapper {
+.user-search .user-search-link {
   display: flex;
-  padding-top: 1rem;
-  width: 35rem;
-}
-.user-grid-text .div-wrapper .user-text {
-  margin-right: 1rem;
-  padding-left: 1rem;
+  gap: 0.5rem;
 }
 
 .similar {
@@ -438,23 +419,38 @@ ul {
   margin-left: 1rem;
 }
 
+.homepage-list-cont {
+  padding: 1rem;
+}
 .homepage-list-cont .homepage-list-cont-text {
   margin: 1rem 0;
+  padding-y: 1rem;
 }
 .homepage-list-cont .homepage-list-cont-card-cont {
   background-color: #161b22;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 5px;
 }
-.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card {
+.homepage-list-cont .homepage-list-cont-card-cont .main-page-list-container {
+  display: flex;
+  flex-direction: column;
+}
+.homepage-list-cont .homepage-list-cont-card-cont .main-page-list-container .main-page-list {
+  padding: 0.5rem;
+  transition: background-color 0.2s;
+}
+.homepage-list-cont .homepage-list-cont-card-cont .main-page-list-container .main-page-list:hover {
+  background-color: #14181c;
+}
+.homepage-list-cont .card-cont-card {
   color: #cccccc;
   width: 33rem;
   grid-column: 2;
   margin-top: 1rem;
 }
-.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card .card-cont-card-content {
-  background-color: #161b22;
+.homepage-list-cont .card-cont-card .card-cont-card-content {
   padding: 0;
 }
-.homepage-list-cont .homepage-list-cont-card-cont .card-cont-card .card-cont-card-content .list-created-by .list-username {
+.homepage-list-cont .card-cont-card .card-cont-card-content .list-created-by .list-username {
   margin-left: 0.3rem;
 }
 
@@ -570,6 +566,7 @@ footer .footer-film-data .tmdb:hover {
   gap: 1rem;
   background-color: #161b22;
   position: absolute;
+  left: 300px;
   padding: 1rem;
   border-radius: 0.5rem;
 }
@@ -581,11 +578,16 @@ footer .footer-film-data .tmdb:hover {
   cursor: pointer;
 }
 
-.pagination {
+.media-card {
+  width: 130px;
+  border-radius: 1rem;
+}
+
+.search-pagination {
   display: flex;
   position: absolute;
-  bottom: 2%;
   left: 50%;
+  bottom: 2%;
   transform: translateX(-50%);
 }
 
@@ -602,8 +604,8 @@ footer .footer-film-data .tmdb:hover {
 }
 .search-container .search-container-results {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 .search-container .search-container-results .movie-poster-link {
@@ -732,6 +734,7 @@ footer .footer-film-data .tmdb:hover {
   display: flex;
   width: 100%;
   align-self: flex-end;
+  color: #cccccc;
 }
 .profile-container .profile-details {
   color: #cccccc;
@@ -818,7 +821,7 @@ footer .footer-film-data .tmdb:hover {
   display: flex;
   flex-direction: column;
   margin-top: 5em;
-  height: 50em;
+  height: 800px;
   width: 70rem;
   color: #cccccc;
   -webkit-animation: fade 500ms 1 ease-in-out forwards;
@@ -837,14 +840,13 @@ footer .footer-film-data .tmdb:hover {
   margin-left: 0.5rem;
 }
 .list-main-cont .list-grid-cont {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 2rem;
   background-color: #161b22;
   min-height: 55rem;
   gap: 1rem;
   padding: 1rem;
-  grid-template-columns: repeat(auto-fill, 8rem);
-  grid-template-rows: repeat(auto-fill, 12.5rem);
 }
 
 .list-remove-dialog .dialog-title, .list-remove-dialog .dialog-actions {

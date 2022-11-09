@@ -58,7 +58,7 @@ const MoviesOrShows = ({ media, type }: MediaProps) => {
         </Container>
       )}
       <Pagination
-        className="pagination"
+        className="search-pagination"
         hidePrevButton
         hideNextButton
         onChange={(e: React.ChangeEvent<unknown>) => {

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Media } from "@/pages/MediaPage/types";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import SearchPagination from "./SearchPagination";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
 interface SearchMediaProps {
   data: {
@@ -14,23 +15,22 @@ const SearchMedia = ({ data }: SearchMediaProps) => {
   const filterSearch = data.results.filter(
     (result: Media) => result.popularity > 6.5 && (result.title || result.first_air_date)
   );
-  console.log(data);
 
   return (
     <Container className="search-container">
       <ul className="search-container-results">
         {filterSearch.map(
           ({ id, first_air_date, release_date, poster_path, name, title }: Media) => (
-            <Link className="movie-poster-link" to={`/${first_air_date ? "tv" : "movie"}/${id}`}>
-              <img
-                alt="poster"
-                className="search-img"
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-              />
-              <Typography className="movie-card-name" align="center" variant="subtitle1">
+            <Link
+              key={id}
+              className="movie-poster-link"
+              to={`/${first_air_date ? "tv" : "movie"}/${id}`}
+            >
+              <MediaCard src={`/w500/${poster_path}`} />
+              <p className="movie-card-name">
                 {first_air_date && `${name} (${first_air_date.slice(0, 4)})`}
                 {!first_air_date && `${title} (${release_date.slice(0, 4)})`}
-              </Typography>
+              </p>
             </Link>
           )
         )}

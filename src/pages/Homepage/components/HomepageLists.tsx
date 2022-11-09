@@ -4,14 +4,19 @@ import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListToParse } from "@/pages/List/types";
 import { getHomepageLists } from "@/features/api/backendApi";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { CardMedia, Typography } from "@mui/material";
+import Spinner from "@/components/Spinner";
 
 const HomepageLists = () => {
   const navigate = useNavigate();
-  const { data: lists } = useQuery(["lists"], getHomepageLists, {
+  const { isLoading, data: lists } = useQuery(["lists"], getHomepageLists, {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="homepage-list-cont">
@@ -19,54 +24,49 @@ const HomepageLists = () => {
         New Lists
       </Typography>
       <div className="homepage-list-cont-card-cont">
-        <Card className="card-cont-card">
-          <CardContent component="div" className="card-cont-card-content">
-            <div className="main-page-list-container">
-              {lists &&
-                lists.slice(0, 3).map((list: ListToParse) => (
-                  <div key={list.name}>
-                    <Typography
-                      className="main-page-list-name svg"
-                      variant="subtitle1"
-                      onClick={() => navigate(`list/${list.name}`)}
-                    >
-                      {list.name}
-                    </Typography>
-                    <Typography variant="subtitle2" className="list-created-by">
-                      Created by:
-                      <span
-                        className="list-username svg"
-                        onClick={() => navigate(`/user/${list.username}`)}
-                      >
-                        {list.username}
-                      </span>
-                    </Typography>
-                    <div className="main-page-list-img-cont">
-                      {JSON.parse(list.content)
-                        .slice(0, 4)
-                        .map((media: Media) => (
-                          <Fragment key={media.id}>
-                            <CardMedia
-                              key={media.id}
-                              onClick={() => navigate(`/list/${list.name}`)}
-                              component="img"
-                              height="200"
-                              className="main-page-list-img svg"
-                              src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
-                            />
-                          </Fragment>
-                        ))}
-                    </div>
-                  </div>
-                ))}
+        <div className="main-page-list-container">
+          {lists.slice(0, 3).map((list: ListToParse) => (
+            <div key={list.name} className="main-page-list">
+              <Typography
+                className="main-page-list-name svg"
+                variant="subtitle1"
+                onClick={() => navigate(`list/${list.name}`)}
+              >
+                {list.name}
+              </Typography>
+              <Typography variant="subtitle2" className="list-created-by">
+                Created by:
+                <span
+                  className="list-username svg"
+                  onClick={() => navigate(`/user/${list.username}`)}
+                >
+                  {list.username}
+                </span>
+              </Typography>
+              <div className="main-page-list-img-cont">
+                {JSON.parse(list.content)
+                  .slice(0, 4)
+                  .map((media: Media) => (
+                    <Fragment key={media.id}>
+                      <CardMedia
+                        key={media.id}
+                        onClick={() => navigate(`/list/${list.name}`)}
+                        component="img"
+                        height="200"
+                        className="main-page-list-img svg"
+                        src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
+                      />
+                    </Fragment>
+                  ))}
+              </div>
             </div>
-          </CardContent>
-        </Card>
+          ))}
+        </div>
       </div>
-      <Typography>
-        Browse <a href="/Cinema-log/#/search/alllists/multi">all lists</a> and discover new media to
-        watch.
-      </Typography>
+      <p>
+        Browse <a href="/Cinema-log/#/search/alllists/multi/1">all lists</a> and discover new media
+        to watch.
+      </p>
     </div>
   );
 };

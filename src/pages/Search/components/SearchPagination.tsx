@@ -12,7 +12,7 @@ const SearchPagination = ({ total_pages, count }: PaginationProps) => {
 
   return (
     <Pagination
-      className="pagination"
+      className="search-pagination"
       sx={{
         display: "flex",
         justifyContent: "center",

@@ -11,6 +11,7 @@ import { Container } from "@mui/system";
 import { getMedia, updateUserList } from "@/features/api/backendApi";
 import { Grid, ListItem, Typography } from "@mui/material";
 import { useMutation, useQueryClient } from "react-query";
+import MediaCard from "@/components/MediaCard/MediaCard";
 
 export const MediaPage = () => {
   const queryClient = useQueryClient();
@@ -58,11 +59,7 @@ export const MediaPage = () => {
         />
       </div>
       <Grid className="movie-info">
-        <img
-          alt="poster"
-          className="poster-main"
-          src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
-        />
+        <MediaCard src={`/w500/${data.poster_path}`} width="10rem" height="225px" />
         <Grid className="movie-main-information">
           <div>
             <Typography className="movie-name" variant="h4">

@@ -2,7 +2,7 @@ import { Media } from "@/pages/MediaPage/types";
 import axios from "axios";
 
 const backendApi = axios.create({
-  baseURL: "https://dragpersonalproj.xyz/cinema-log",
+  baseURL: "http://localhost:5001",
 });
 
 //handles preflight error

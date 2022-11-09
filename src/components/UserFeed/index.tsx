@@ -42,10 +42,10 @@ const UserFeed = ({ feed, name }: UserFeedProps) => {
         </CardContent>
       </Card>
       {name === "Friend Activity" && (
-        <Typography>
-          Browse <a href="/Cinema-log/#/search/allusers/multi">all users</a> and find someone who
+        <p>
+          Browse <a href="/Cinema-log/#/search/allusers/multi/1">all users</a> and find someone who
           shares the same interests as you.
-        </Typography>
+        </p>
       )}
     </div>
   );

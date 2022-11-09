@@ -18,14 +18,14 @@ const SearchUsers = ({ query }: query) => {
   }
 
   return (
-    <Container className="user-search">
+    <ul className="user-search">
       {data.map(({ username, avatar, _id }: UserModel) => (
-        <Link key={_id} to={`/user/${username}`}>
+        <Link className="user-search-link" key={_id} to={`/user/${username}`}>
           <Avatar src={avatar} />
-          <Typography variant="h5">{username}</Typography>
+          <p>{username}</p>
         </Link>
       ))}
-    </Container>
+    </ul>
   );
 };
 

@@ -9,6 +9,7 @@ import SearchUsers from "./components/SearchUsers";
 import SearchMedia from "./components/SearchMedia";
 import SearchOptions from "./components/SearchOptions";
 import SearchActorOrCrew from "./components/SearchActorOrCrew";
+import { Container } from "@mui/material";
 
 export const Search = () => {
   const query = useParams();
@@ -32,12 +33,12 @@ export const Search = () => {
   }
 
   return (
-    <div>
-      <SearchOptions setSearchSelection={setSearchSelection} />
+    <Container className="search-container">
+      <SearchOptions searchSelection={searchSelection} setSearchSelection={setSearchSelection} />
       {searchSelection === "media" && <SearchMedia data={data} />}
       {query.query === "alllists" && <SearchLists />}
       {searchSelection === "users" && <SearchUsers query={query.query} />}
       {searchSelection === "actors" && <SearchActorOrCrew result={data} />}
-    </div>
+    </Container>
   );
 };

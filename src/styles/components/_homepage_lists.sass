@@ -1,16 +1,26 @@
 .homepage-list-cont
+    padding: 1rem
     .homepage-list-cont-text
         margin: 1rem 0
+        padding-y: 1rem
     .homepage-list-cont-card-cont
         background-color: #161b22
-        .card-cont-card
-            color: #cccccc
-            width: 33rem
-            grid-column: 2
-            margin-top: 1rem
-            .card-cont-card-content
-                background-color: #161b22
-                padding: 0
-                .list-created-by
-                    .list-username
-                        margin-left: 0.3rem
+        box-shadow: rgb(0 0 0 / 24%) 0px 3px 5px
+        .main-page-list-container
+            display: flex
+            flex-direction: column
+            .main-page-list
+                padding: 0.5rem
+                transition: background-color 0.2s
+                &:hover
+                    background-color: #14181c
+    .card-cont-card
+        color: #cccccc
+        width: 33rem
+        grid-column: 2
+        margin-top: 1rem
+        .card-cont-card-content
+            padding: 0
+            .list-created-by
+                .list-username
+                    margin-left: 0.3rem
