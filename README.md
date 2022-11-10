@@ -23,7 +23,9 @@ Frontend:
 Backend:
 - NodeJS/Express
 - MongoDB
-- JWT/bcrypt for password hashing and authorization/authentication
+- JWT/bcrypt for password hashing and authorization/
+
+*Still rewriting the project so no mobile optimization atm but it's coming soon tm
 
 
 <a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
