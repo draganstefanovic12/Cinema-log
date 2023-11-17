@@ -27,9 +27,6 @@ Backend:
 
 *Still rewriting the project so no mobile optimization atm but it's coming soon tm
 
-
-<a href="https://draganstefanovic12.github.io/Cinema-log/#/">Live Project</a>
-
 ![alt text](https://i.imgur.com/Doasp9H.jpeg)
 
 ![alt text](https://i.imgur.com/JBxXaDL.jpeg)
