@@ -25,8 +25,6 @@ Backend:
 - MongoDB
 - JWT/bcrypt for password hashing and authorization/
 
-*Still rewriting the project so no mobile optimization atm but it's coming soon tm
-
 ![alt text](https://i.imgur.com/Doasp9H.jpeg)
 
 ![alt text](https://i.imgur.com/JBxXaDL.jpeg)
